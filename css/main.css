@@ -1822,7 +1822,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #53ffb0;
+  background: #b3248b;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2661,5 +2661,5 @@ embed {
   display: inline-block;
 }
 .header {
-  background-image: url("/images/bgofhead.jpg");
+  background-image: url("https://ws1.sinaimg.cn/large/694830ebgy1fh3pyd05klj21kw0f2dy2.jpg");
 }

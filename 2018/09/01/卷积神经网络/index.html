@@ -110,18 +110,18 @@
 
 
 
-<meta name="description" content="做一些自己喜欢的事情.">
+<meta name="description" content="Tensorflow的tf.nn.conv2d方法方法定义tf.nn.conv2d (input, filter, strides, padding, use_cudnn_on_gpu=None, data_format=None, name=None) 参数： input : 输入的要做卷积的图片，要求为一个张量，shape为 [ batch, in_height, in_weight, in_">
 <meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="卷积神经网络">
 <meta property="og:url" content="http://yoursite.com/2018/09/01/卷积神经网络/index.html">
 <meta property="og:site_name" content="一个地方">
-<meta property="og:description" content="做一些自己喜欢的事情.">
+<meta property="og:description" content="Tensorflow的tf.nn.conv2d方法方法定义tf.nn.conv2d (input, filter, strides, padding, use_cudnn_on_gpu=None, data_format=None, name=None) 参数： input : 输入的要做卷积的图片，要求为一个张量，shape为 [ batch, in_height, in_weight, in_">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-01T02:32:21.205Z">
+<meta property="og:updated_time" content="2018-09-03T02:37:04.408Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="卷积神经网络">
-<meta name="twitter:description" content="做一些自己喜欢的事情.">
+<meta name="twitter:description" content="Tensorflow的tf.nn.conv2d方法方法定义tf.nn.conv2d (input, filter, strides, padding, use_cudnn_on_gpu=None, data_format=None, name=None) 参数： input : 输入的要做卷积的图片，要求为一个张量，shape为 [ batch, in_height, in_weight, in_">
 
 
 
@@ -404,7 +404,15 @@
       
 
       
-        
+        <h2 id="Tensorflow的tf-nn-conv2d方法"><a href="#Tensorflow的tf-nn-conv2d方法" class="headerlink" title="Tensorflow的tf.nn.conv2d方法"></a>Tensorflow的tf.nn.conv2d方法</h2><h3 id="方法定义"><a href="#方法定义" class="headerlink" title="方法定义"></a>方法定义</h3><p>tf.nn.conv2d (input, filter, strides, padding, use_cudnn_on_gpu=None, data_format=None, name=None)</p>
+<h3 id="参数："><a href="#参数：" class="headerlink" title="参数："></a>参数：</h3><ul>
+<li><strong>input :</strong> 输入的要做卷积的图片，要求为一个张量，shape为 [ batch, in_height, in_weight, in_channel ]，其中batch为图片的数量，in_height 为图片高度，in_weight 为图片宽度，in_channel 为图片的通道数，灰度图该值为1，彩色图为3。（也可以用其它值，但是具体含义不是很理解）</li>
+<li><strong>filter：</strong> 卷积核，要求也是一个张量，shape为 [ filter_height, filter_weight, in_channel, out_channels ]，其中 filter_height 为卷积核高度，filter_weight 为卷积核宽度，in_channel 是图像通道数 ，和 input 的 in_channel 要保持一致，out_channel 是卷积核数量。</li>
+<li><strong>strides：</strong> 卷积时在图像每一维的步长，这是一个一维的向量，[ 1, strides, strides, 1]，第一位和最后一位固定必须是1</li>
+<li><strong>padding：</strong> string类型，值为“SAME” 和 “VALID”，表示的是卷积的形式，是否考虑边界。”SAME”是考虑边界，不足的时候用0去填充周围，”VALID”则不考虑</li>
+<li><strong>use_cudnn_on_gpu：</strong> bool类型，是否使用cudnn加速，默认为true</li>
+</ul>
+
       
     </div>
     
@@ -496,8 +504,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -585,6 +602,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tensorflow的tf-nn-conv2d方法"><span class="nav-number">1.</span> <span class="nav-text">Tensorflow的tf.nn.conv2d方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法定义"><span class="nav-number">1.1.</span> <span class="nav-text">方法定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数："><span class="nav-number">1.2.</span> <span class="nav-text">参数：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
