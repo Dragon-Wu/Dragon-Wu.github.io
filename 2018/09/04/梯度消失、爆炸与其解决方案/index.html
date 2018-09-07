@@ -124,7 +124,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/09/04/梯度消失、爆炸与其解决方案/TIM截图20180904213014.png">
 <meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial%20loss%7D%7B%5Cpartial%20%7B%7Bx%7D_%7Bl%7D%7D%7D=%5Cfrac%7B%5Cpartial%20loss%7D%7B%5Cpartial%20%7B%7Bx%7D_%7BL%7D%7D%7D%5Ccdot%20%5Cfrac%7B%5Cpartial%20%7B%7Bx%7D_%7BL%7D%7D%7D%7B%5Cpartial%20%7B%7Bx%7D_%7Bl%7D%7D%7D=%5Cfrac%7B%5Cpartial%20loss%7D%7B%5Cpartial%20%7B%7Bx%7D_%7BL%7D%7D%7D%5Ccdot%20%5Cleft%28%201%2b%5Cfrac%7B%5Cpartial%20%7D%7B%5Cpartial%20%7B%7Bx%7D_%7BL%7D%7D%7D%5Csum%5Climits_%7Bi=l%7D%5E%7BL-1%7D%7BF%28%7B%7Bx%7D_%7Bi%7D%7D,%7B%7BW%7D_%7Bi%7D%7D%29%7D%20%5Cright%29">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/42741-b9a16a53d58ca2b9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700">
-<meta property="og:updated_time" content="2018-09-04T13:38:26.138Z">
+<meta property="og:updated_time" content="2018-09-06T10:55:06.454Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="梯度消失、爆炸与其解决方案">
 <meta name="twitter:description" content="在神经网络的训练过程中，需要通过反相传播计算权重变化的最佳梯度，以此进行权重的更新，而也经常会提到梯度消失或者梯度爆炸的问题，本文主要对解决类似问题进行了梳理">
@@ -441,7 +441,7 @@
 <p>同时也存在一些<strong>缺点</strong>：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-- 由于负数部分恒为0，会导致一些神经元无法激活（可通过设置小学习率部分解决）</span><br><span class="line"> -- 输出不是以0为中心的</span><br><span class="line">123</span><br></pre></td></tr></table></figure>
 <p>尽管relu也有缺点，但是仍然是目前使用最多的激活函数</p>
-<p><strong>leakrelu</strong><br>leakrelu就是为了解决relu的0区间带来的影响，其数学表达为：leakrelu=max(k∗x,x)leakrelu=max(k∗x,x)其中k是leak系数，一般选择0.01或者0.02，或者通过学习而来</p>
+<p><strong>leakrelu</strong><br>leakrelu就是为了解决relu的0区间带来的影响，其数学表达为：leakrelu=max(k∗x,x)其中k是leak系数，一般选择0.01或者0.02，或者通过学习而来</p>
 <p><img src="/2018/09/04/梯度消失、爆炸与其解决方案/TIM截图20180904212342.png" alt="TIM截图20180904212342"></p>
 <p>leakrelu解决了0区间带来的影响，而且包含了relu的所有优点 </p>
 <p><strong>elu</strong>  elu激活函数也是为了解决relu的0区间带来的影响，其函数及其导数数学形式为：</p>
