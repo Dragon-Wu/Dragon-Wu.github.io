@@ -99,7 +99,7 @@
 
 
 
-  <meta name="keywords" content="机器学习," />
+  <meta name="keywords" content="Tensorflow,机器学习," />
 
 
 
@@ -110,18 +110,18 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
-<meta name="keywords" content="机器学习">
+<meta name="description" content="通过Tensorflow构建三层的简单神经网络，进行热压机温度预测">
+<meta name="keywords" content="Tensorflow,机器学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2018/08/28/hello-world/index.html">
+<meta property="og:title" content="神经网络--热压机温度预测">
+<meta property="og:url" content="http://yoursite.com/2018/09/19/神经网络-热压机温度预测/index.html">
 <meta property="og:site_name" content="一个地方">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta property="og:description" content="通过Tensorflow构建三层的简单神经网络，进行热压机温度预测">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-04T13:38:27.557Z">
+<meta property="og:updated_time" content="2018-09-19T14:09:25.991Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta name="twitter:title" content="神经网络--热压机温度预测">
+<meta name="twitter:description" content="通过Tensorflow构建三层的简单神经网络，进行热压机温度预测">
 
 
 
@@ -151,13 +151,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/28/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/19/神经网络-热压机温度预测/"/>
 
 
 
 
 
-  <title>Hello World | 一个地方</title>
+  <title>神经网络--热压机温度预测 | 一个地方</title>
   
 
 
@@ -320,7 +320,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/28/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/19/神经网络-热压机温度预测/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jiageng Wu">
@@ -337,7 +337,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">神经网络--热压机温度预测</h1>
         
 
         <div class="post-meta">
@@ -349,8 +349,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-28T22:06:07+08:00">
-                2018-08-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-19T22:06:40+08:00">
+                2018-09-19
               </time>
             
 
@@ -372,8 +372,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Try/" itemprop="url" rel="index">
-                    <span itemprop="name">Try</span>
+                  <a href="/categories/CS/" itemprop="url" rel="index">
+                    <span itemprop="name">CS</span>
                   </a>
                 </span>
 
@@ -414,16 +414,9 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+        <p>通过Tensorflow构建三层的简单神经网络，进行热压机温度预测</p>
 <a id="more"></a>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> tensorboard </span><br><span class="line"></span><br><span class="line">fofdata = open(<span class="string">'data.txt'</span>,<span class="string">'r'</span>)</span><br><span class="line">xof1 = []</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> fofdata.readlines():</span><br><span class="line">    line = line.split(<span class="string">'\n'</span>)</span><br><span class="line">    <span class="keyword">for</span> a <span class="keyword">in</span> line[<span class="number">0</span>].split(<span class="string">'\t'</span>):</span><br><span class="line">        xof1.append(float(a))</span><br><span class="line">fofdata.close()</span><br><span class="line"></span><br><span class="line">xof1 = np.array(xof1)</span><br><span class="line">xof1 = xof1.reshape(<span class="number">-1</span>,<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">fofresult = open(<span class="string">'result.txt'</span>,<span class="string">'r'</span>)</span><br><span class="line">yof1 = []</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> fofresult.readlines():</span><br><span class="line">    line = line.split(<span class="string">'\n'</span>)</span><br><span class="line">    <span class="keyword">for</span> a <span class="keyword">in</span> line[<span class="number">0</span>].split(<span class="string">'\t'</span>):</span><br><span class="line">        yof1.append(float(a))</span><br><span class="line">fofresult.close()</span><br><span class="line"></span><br><span class="line">yof1 = np.array(yof1)</span><br><span class="line">yof1 = yof1.reshape(<span class="number">-1</span>,<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.name_scope(<span class="string">'inputsoft'</span>):</span><br><span class="line">    xoft = tf.placeholder(tf.float32,[<span class="keyword">None</span>,<span class="number">5</span>])</span><br><span class="line">    yoft = tf.placeholder(tf.float32,[<span class="keyword">None</span>,<span class="number">1</span>])</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_layer</span><span class="params">(name,x,sizeofin,sizeofout,activation_function=None)</span>:</span></span><br><span class="line">    nameoflayer = <span class="string">"layer_&#123;&#125;"</span>.format(name)</span><br><span class="line">    <span class="keyword">with</span> tf.name_scope(nameoflayer):</span><br><span class="line">        <span class="keyword">with</span> tf.name_scope(<span class="string">"weights"</span>):</span><br><span class="line">            Weights = tf.Variable(tf.truncated_normal([sizeofin,sizeofout]),name=<span class="string">"W"</span>)</span><br><span class="line">            tf.summary.histogram(nameoflayer+<span class="string">"/weights"</span>,Weights)</span><br><span class="line">        <span class="keyword">with</span> tf.name_scope(<span class="string">"bias"</span>):</span><br><span class="line">            biases = tf.Variable(tf.random_normal([<span class="number">1</span>,sizeofout]),name=<span class="string">"b"</span>)</span><br><span class="line">        <span class="keyword">with</span> tf.name_scope(<span class="string">"Wx_add_b"</span>):</span><br><span class="line">            Wx_add_b = tf.add(tf.matmul(x,Weights),biases)</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">if</span> activation_function <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">            outputs = Wx_add_b</span><br><span class="line">        <span class="keyword">else</span> :</span><br><span class="line">            outputs = activation_function(Wx_add_b,)</span><br><span class="line">        tf.summary.histogram(nameoflayer+<span class="string">"/outputs"</span>,outputs)</span><br><span class="line">    <span class="keyword">return</span> outputs</span><br><span class="line"></span><br><span class="line"><span class="comment">#隐藏层，扩展到100个节点</span></span><br><span class="line">layer1oft = add_layer(<span class="string">"hiddenoft"</span>,xoft,<span class="number">5</span>,<span class="number">15</span>,activation_function=tf.nn.sigmoid)</span><br><span class="line"></span><br><span class="line"><span class="comment">#预测层，压缩到1个节点输出</span></span><br><span class="line">predictionoft = add_layer(<span class="string">"predictionoft"</span>,layer1oft,<span class="number">15</span>,<span class="number">1</span>,activation_function=<span class="keyword">None</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#定义温度网络的损失函数</span></span><br><span class="line"><span class="keyword">with</span> tf.name_scope(<span class="string">'lossoft'</span>):</span><br><span class="line">    lossoft = tf.reduce_mean(</span><br><span class="line">        tf.reduce_sum(tf.square(yoft-predictionoft),reduction_indices=[<span class="number">1</span>])</span><br><span class="line">    )</span><br><span class="line">    tf.summary.scalar(<span class="string">'lossoft'</span>,lossoft)</span><br><span class="line">    </span><br><span class="line"><span class="keyword">with</span> tf.name_scope(<span class="string">'trainoft'</span>):</span><br><span class="line">    trainoft = tf.train.GradientDescentOptimizer(<span class="number">0.1</span>).minimize(lossoft)</span><br><span class="line">    </span><br><span class="line">sessoft = tf.Session()</span><br><span class="line">mergedoft = tf.summary.merge_all()</span><br><span class="line"></span><br><span class="line">writeroft = tf.summary.FileWriter(<span class="string">"logsofTempPrediciton/"</span>,sessoft.graph)</span><br><span class="line"></span><br><span class="line">initofsess = tf.global_variables_initializer()</span><br><span class="line">sessoft.run(initofsess)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000</span>):</span><br><span class="line">    sessoft.run(trainoft,feed_dict=&#123;xoft: xof1,yoft: yof1&#125;)</span><br><span class="line">    <span class="keyword">if</span> i % <span class="number">20</span> == <span class="number">0</span>:</span><br><span class="line">        result = sessoft.run(mergedoft,feed_dict=&#123;xoft: xof1,yoft: yof1&#125;)</span><br><span class="line">        writeroft.add_summary(result, i)</span><br><span class="line">    <span class="keyword">if</span> <span class="number">1</span> &lt; i &lt; <span class="number">100</span>:</span><br><span class="line">        print(sessoft.run(lossoft,feed_dict=&#123;xoft:xof1,yoft:yof1&#125;))</span><br><span class="line">    <span class="keyword">elif</span> i % <span class="number">50</span> == <span class="number">0</span>:</span><br><span class="line">        print(sessoft.run(lossoft,feed_dict=&#123;xoft:xof1,yoft:yof1&#125;))</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -441,6 +434,8 @@
       
         <div class="post-tags">
           
+            <a href="/tags/Tensorflow/" rel="tag"># Tensorflow</a>
+          
             <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
           
         </div>
@@ -454,15 +449,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/09/18/Tensorflow学习-MNIST识别-两层卷积/" rel="next" title="Tensorflow学习-MNIST识别-两层卷积">
+                <i class="fa fa-chevron-left"></i> Tensorflow学习-MNIST识别-两层卷积
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/29/训练集-验证机-测试集/" rel="prev" title="训练集&验证机&测试集">
-                训练集&验证机&测试集 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -516,17 +511,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -614,22 +600,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
