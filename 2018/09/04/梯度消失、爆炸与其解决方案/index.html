@@ -124,7 +124,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/09/04/梯度消失、爆炸与其解决方案/TIM截图20180904213014.png">
 <meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial%20loss%7D%7B%5Cpartial%20%7B%7Bx%7D_%7Bl%7D%7D%7D=%5Cfrac%7B%5Cpartial%20loss%7D%7B%5Cpartial%20%7B%7Bx%7D_%7BL%7D%7D%7D%5Ccdot%20%5Cfrac%7B%5Cpartial%20%7B%7Bx%7D_%7BL%7D%7D%7D%7B%5Cpartial%20%7B%7Bx%7D_%7Bl%7D%7D%7D=%5Cfrac%7B%5Cpartial%20loss%7D%7B%5Cpartial%20%7B%7Bx%7D_%7BL%7D%7D%7D%5Ccdot%20%5Cleft%28%201%2b%5Cfrac%7B%5Cpartial%20%7D%7B%5Cpartial%20%7B%7Bx%7D_%7BL%7D%7D%7D%5Csum%5Climits_%7Bi=l%7D%5E%7BL-1%7D%7BF%28%7B%7Bx%7D_%7Bi%7D%7D,%7B%7BW%7D_%7Bi%7D%7D%29%7D%20%5Cright%29">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/42741-b9a16a53d58ca2b9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700">
-<meta property="og:updated_time" content="2018-09-06T10:55:06.454Z">
+<meta property="og:updated_time" content="2018-10-08T12:53:43.954Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="梯度消失、爆炸与其解决方案">
 <meta name="twitter:description" content="在神经网络的训练过程中，需要通过反相传播计算权重变化的最佳梯度，以此进行权重的更新，而也经常会提到梯度消失或者梯度爆炸的问题，本文主要对解决类似问题进行了梳理">
@@ -427,11 +427,11 @@
 <p>Hinton在训练深度信念网络（Deep Belief Networks中，使用了这个方法，在各层预训练完成后，再利用BP算法对整个网络进行训练。此思想相当于是先寻找局部最优，然后整合起来寻找全局最优，此方法有一定的好处，但是目前应用的不是很多了。</p>
 <h2 id="2、梯度剪切、正则"><a href="#2、梯度剪切、正则" class="headerlink" title="2、梯度剪切、正则"></a>2、梯度剪切、正则</h2><p><strong>梯度剪切</strong>这个方案主要是针对梯度爆炸提出的，其思想是设置一个梯度剪切阈值，然后更新梯度的时候，如果梯度超过这个阈值，那么就将其强制限制在这个范围之内。这可以防止梯度爆炸。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">注：在WGAN中也有梯度剪切限制操作，但是和这个是不一样的，WGAN限制梯度更新信息是为了保证lipchitz条件。</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
-<p>另外一种解决梯度爆炸的手段是采用<strong>权重正则化</strong>（weithts regularization）比较常见的是l1l1正则，和l2l2正则，在各个深度框架中都有相应的API可以使用正则化，比如在tensorflowtensorflow中，若搭建网络的时候已经设置了正则化参数，则调用以下代码可以直接计算出正则损失：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">regularization_loss = tf.add_n(tf.losses.get_regularization_losses(scope=<span class="string">'my_resnet_50'</span>))<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>另外一种解决梯度爆炸的手段是采用<strong>权重正则化</strong>（weithts regularization）比较常见的是l1正则，和l2正则，在各个深度框架中都有相应的API可以使用正则化，比如在tensorflowtensorflow中，若搭建网络的时候已经设置了正则化参数，则调用以下代码可以直接计算出正则损失：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">regularization_loss = tf.add_n(tf.losses.get_regularization_losses(scope=<span class="string">'my_resnet_50'</span>))</span><br></pre></td></tr></table></figure>
 <p>如果没有设置初始化参数，也可以使用以下代码计算l2l2正则损失：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">l2_loss = tf.add_n([tf.nn.l2_loss(var) <span class="keyword">for</span> var <span class="keyword">in</span> tf.trainable_variables() <span class="keyword">if</span> <span class="string">'weights'</span> <span class="keyword">in</span> var.name])</span><br></pre></td></tr></table></figure>
-<p>正则化是通过对网络权重做正则限制过拟合，仔细看正则项在损失函数的形式：<br>Loss=(y−WTx)2+α||W||2<br>其中，αα是指正则项系数，因此，如果发生梯度爆炸，权值的范数就会变的非常大，通过正则化项，可以部分限制梯度爆炸的发生。</p>
+<p>正则化是通过对网络权重做正则限制过拟合，仔细看正则项在损失函数的形式：<br>Loss=(y−WTx)2+α||W||2<br>其中，α是指正则项系数，因此，如果发生梯度爆炸，权值的范数就会变的非常大，通过正则化项，可以部分限制梯度爆炸的发生。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">注：事实上，在深度神经网络中，往往是梯度消失出现的更多一些。</span><br></pre></td></tr></table></figure>
 <h2 id="3、relu、leaky-relu、elu等激活函数"><a href="#3、relu、leaky-relu、elu等激活函数" class="headerlink" title="3、relu、leaky-relu、elu等激活函数"></a>3、relu、leaky-relu、elu等激活函数</h2><p><strong>Relu:</strong>思想也很简单，如果激活函数的导数为1，那么就不存在梯度消失爆炸的问题了，每层的网络都可以得到相同的更新速度，relu就这样应运而生。先看一下relu的函数图像：</p>
 <p><img src="/2018/09/04/梯度消失、爆炸与其解决方案/TIM截图20180904212237.png" alt="TIM截图20180904212237"></p>
@@ -585,7 +585,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
