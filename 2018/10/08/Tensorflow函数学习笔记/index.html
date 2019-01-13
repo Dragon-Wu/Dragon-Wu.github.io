@@ -119,7 +119,7 @@
 <meta property="og:description" content="Tensorflow各个神奇的函数功能学习">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/10/08/Tensorflow函数学习笔记/TIM截图20181008185313.png">
-<meta property="og:updated_time" content="2019-01-10T10:34:04.778Z">
+<meta property="og:updated_time" content="2019-01-11T13:48:20.981Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tensorflow函数学习笔记">
 <meta name="twitter:description" content="Tensorflow各个神奇的函数功能学习">
@@ -418,6 +418,48 @@
       
         <p>Tensorflow各个神奇的函数功能学习</p>
 <a id="more"></a>
+<h2 id="Tensorflow的tf-nn-conv2d方法"><a href="#Tensorflow的tf-nn-conv2d方法" class="headerlink" title="Tensorflow的tf.nn.conv2d方法"></a>Tensorflow的tf.nn.conv2d方法</h2><h3 id="方法定义"><a href="#方法定义" class="headerlink" title="方法定义"></a>方法定义</h3><p>tf.nn.conv2d (input, filter, strides, padding, use_cudnn_on_gpu=None, data_format=None, name=None)</p>
+<h3 id="参数："><a href="#参数：" class="headerlink" title="参数："></a>参数：</h3><ul>
+<li><strong>input :</strong> 输入的要做卷积的图片，要求为一个张量，shape为 [ batch, in_height, in_weight, in_channel ]，其中batch为图片的数量，in_height 为图片高度，in_weight 为图片宽度，in_channel 为图片的通道数，灰度图该值为1，彩色图为3。（也可以用其它值，但是具体含义不是很理解）</li>
+<li><strong>filter：</strong> 卷积核，要求也是一个张量，shape为 [ filter_height, filter_weight, in_channel, out_channels ]，其中 filter_height 为卷积核高度，filter_weight 为卷积核宽度，in_channel 是图像通道数 ，和 input 的 in_channel 要保持一致，out_channel 是卷积核数量。</li>
+<li><strong>strides：</strong> 卷积时在图像每一维的步长，这是一个一维的向量，[ 1, strides, strides, 1]，第一位和最后一位固定必须是1。（还不了解为什么一位就可以确定的事情需要四个数字确定，之后再看）</li>
+<li><strong>padding：</strong> string类型，值为“SAME” 和 “VALID”，表示的是卷积的形式，是否考虑边界。”SAME”是考虑边界，不足的时候用0去填充周围，”VALID”则不考虑</li>
+<li><strong>use_cudnn_on_gpu：</strong> bool类型，是否使用cudnn加速，默认为true</li>
+</ul>
+<h2 id="Tensorflow的tf-nn-max-pool最大池化方法"><a href="#Tensorflow的tf-nn-max-pool最大池化方法" class="headerlink" title="Tensorflow的tf.nn.max_pool最大池化方法"></a>Tensorflow的tf.nn.max_pool最大池化方法</h2><h3 id="tf-nn-max-pool-value-ksize-strides-padding-name-None"><a href="#tf-nn-max-pool-value-ksize-strides-padding-name-None" class="headerlink" title="tf.nn.max_pool(value, ksize, strides, padding, name=None)"></a><code>tf.nn.max_pool(value, ksize, strides, padding, name=None)</code></h3><p>参数是四个，和卷积很类似：</p>
+<p>第一个参数value：需要池化的输入，一般池化层接在卷积层后面，所以输入通常是feature map，依然是[batch, height, width, channels]这样的shape</p>
+<p>第二个参数ksize：池化窗口的大小，取一个四维向量，一般是<code>[1, height, width, 1]，因为我们不想在batch和channels上做池化，所以这两个维度设为了1</code></p>
+<p>第三个参数strides：和卷积类似，窗口在每一个维度上滑动的步长，一般也是<code>[1, stride,stride, 1]</code></p>
+<p>第四个参数padding：和卷积类似，可以取’VALID’ 或者’SAME’</p>
+<p>返回一个Tensor，类型不变，shape仍然是<code>[batch, height, width, channels]</code>这种形式</p>
+<h2 id="Tensorflow的生成随机权重方法"><a href="#Tensorflow的生成随机权重方法" class="headerlink" title="Tensorflow的生成随机权重方法"></a>Tensorflow的生成随机权重方法</h2><ol>
+<li><p>tf.truncated_normal(shape, mean=0.0, stddev=1.0, dtype=tf.float32, seed=None, name=None)</p>
+<p>从<strong>截断</strong>的正态分布中输出随机值。<br>生成的值服从具有指定平均值和标准偏差的正态分布，如果生成的值大于平均值2个标准偏差的值则丢弃重新选择。</p>
+<p>在正态分布的曲线中，横轴区间（μ-σ，μ+σ）内的面积为68.268949%。<br>横轴区间（μ-2σ，μ+2σ）内的面积为95.449974%。<br>横轴区间（μ-3σ，μ+3σ）内的面积为99.730020%。<br>X落在（μ-3σ，μ+3σ）以外的概率小于千分之三，在实际问题中常认为相应的事件是不会发生的，基本上可以把区间（μ-3σ，μ+3σ）看作是随机变量X实际可能的取值区间，这称之为正态分布的“3σ”原则。<br>在tf.truncated_normal中如果x的取值在区间（μ-2σ，μ+2σ）之外则重新进行选择。这样保证了生成的值都在均值附近。</p>
+<p>参数:</p>
+</li>
+</ol>
+<ul>
+<li>shape: 一维的张量，也是输出的张量。</li>
+<li>mean: 正态分布的均值。</li>
+<li>stddev: 正态分布的标准差。</li>
+<li>dtype: 输出的类型。</li>
+<li>seed: 一个整数，当设置之后，每次生成的随机数都一样。</li>
+<li>name: 操作的名字。</li>
+</ul>
+<ol>
+<li><p>tf.random_normal(shape, mean=0.0, stddev=1.0, dtype=tf.float32, seed=None, name=None)</p>
+<p>从正态分布中输出随机值。<br>参数:</p>
+<ul>
+<li>shape: 一维的张量，也是输出的张量。</li>
+<li>mean: 正态分布的均值。</li>
+<li>stddev: 正态分布的标准差。</li>
+<li>dtype: 输出的类型。</li>
+<li>seed: 一个整数，当设置之后，每次生成的随机数都一样。</li>
+<li>name: 操作的名字。</li>
+</ul>
+</li>
+</ol>
 <h2 id="tf-strided-slice："><a href="#tf-strided-slice：" class="headerlink" title="tf.strided_slice："></a>tf.strided_slice：</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">strided_slice</span><span class="params">(input_,</span></span></span><br><span class="line"><span class="function"><span class="params">                  begin,</span></span></span><br><span class="line"><span class="function"><span class="params">                  end,</span></span></span><br><span class="line"><span class="function"><span class="params">                  strides=None,</span></span></span><br><span class="line"><span class="function"><span class="params">                  begin_mask=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                  end_mask=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                  ellipsis_mask=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                  new_axis_mask=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                  shrink_axis_mask=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                  var=None,</span></span></span><br><span class="line"><span class="function"><span class="params">                  name=None)</span>:</span></span><br></pre></td></tr></table></figure>
 <p>tf.slice(data, begin, end)<br>和tf.slice的区别是slice的end索引是闭区间，stride_slice的end索引是开区间（不包含范围本身），所以一个截掉最后一列(remove the last element or column of each line)的小技巧是用stride_slice(data, [0, 0], [rows, -1])，但是如果是用slice(data, [0, 0], [rows, -1])则仍是原矩阵。</p>
 <p>begin、end、stride都是3维的向量，分别代表取行、取列、取通道，例如：    </p>
@@ -430,6 +472,12 @@
 <p>input_x = [<br>​    [<br>​        [1, 2, 3, 4],<br>​        [5, 6, 7, 8],<br>​        [9, 10, 11, 12]<br>​    ],<br>​    [<br>​        [13, 14, 15, 16],<br>​        [17, 18, 19, 20],<br>​        [21, 22, 23, 24]<br>​    ]</p>
 <p>]</p>
 <p>input_x 是一个 2x3x4的一个tensor, 假设perm = [1,0,2], 就是将最外2层转置,得到tensor应该是3x2x4的一个张量</p>
+<h2 id="TensorFlow的image图像预处理"><a href="#TensorFlow的image图像预处理" class="headerlink" title="TensorFlow的image图像预处理"></a>TensorFlow的image图像预处理</h2><p><a href="https://www.cnblogs.com/dong-zhen/" target="_blank" rel="noopener">怀念那时的自己</a></p>
+<h2 id="图像预处理之图像翻转、图像色彩调整、图像尺寸调整"><a href="#图像预处理之图像翻转、图像色彩调整、图像尺寸调整" class="headerlink" title="图像预处理之图像翻转、图像色彩调整、图像尺寸调整"></a><a href="https://www.cnblogs.com/dong-zhen/p/9604483.html" target="_blank" rel="noopener">图像预处理之图像翻转、图像色彩调整、图像尺寸调整</a></h2><p><strong>图像翻转</strong> </p>
+<p>tf.image.flip_up_down：上下翻转<br>tf.image.flip_left_right：左右翻转<br>tf.image.transpose_image：对角线翻转<br>除此之外，TensorFlow还提供了随机翻转的函数，保证了样本的样本的随机性：<br>tf.image.random_flip_up_down：随机上下翻转图片<br>tf.image.random_flip_left_right：随机左右翻转图片</p>
+<p><strong>图像色彩调整</strong> </p>
+<p><strong>亮度：</strong><br>tf.image.adjust_brightness：调整图片亮度<br>tf.image.random_brightness：在某范围随机调整图片亮度<br><strong>对比度：</strong><br>tf.image.adjust_contrast：调整图片对比度<br>tf.image.random_contrast：在某范围随机调整图片对比度<br><strong>色相：</strong><br>tf.image.adjust_hue：调整图片色相<br>tf.image.random_hue：在某范围随机调整图片色相<br><strong>饱和度：</strong><br>tf.image.adjust_saturation：调整图片饱和度<br>tf.image.random_saturation：在某范围随机调整图片饱和度<br><strong>归一化：</strong><br>per_image_standardization：三维矩阵中的数字均值变为0，方差变为1。在以前的版本中，它其实叫做per_image_whitening，也就是白化操作。</p>
+<p><strong>图像尺寸调整</strong><br>图像尺寸调整属于基础的图像几何变换，TensorFlow提供了几种尺寸调整的函数：<br>tf.image.resize_images：将原始图像缩放成指定的图像大小，其中的参数method（默认值为ResizeMethod.BILINEAR）提供了四种插值算法，具体解释可以参考<a href="http://blog.csdn.net/chaipp0607/article/details/65658736" target="_blank" rel="noopener">图像几何变换（缩放、旋转）中的常用的插值算法</a><br>tf.image.resize_image_with_crop_or_pad：剪裁或填充处理，会根据原图像的尺寸和指定的目标图像的尺寸选择剪裁还是填充，如果原图像尺寸大于目标图像尺寸，则在中心位置剪裁，反之则用黑色像素填充。<br>tf.image.central_crop：比例调整，central_fraction决定了要指定的比例，取值范围为(0，1]，该函数会以中心点作为基准，选择整幅图中的指定比例的图像作为新的图像。</p>
 
       
     </div>
@@ -636,7 +684,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tf-strided-slice："><span class="nav-number">1.</span> <span class="nav-text">tf.strided_slice：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf-app-flags-DEFINE"><span class="nav-number">2.</span> <span class="nav-text">tf.app.flags.DEFINE_:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf-transpose"><span class="nav-number">3.</span> <span class="nav-text">tf.transpose():</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tensorflow的tf-nn-conv2d方法"><span class="nav-number">1.</span> <span class="nav-text">Tensorflow的tf.nn.conv2d方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法定义"><span class="nav-number">1.1.</span> <span class="nav-text">方法定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数："><span class="nav-number">1.2.</span> <span class="nav-text">参数：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tensorflow的tf-nn-max-pool最大池化方法"><span class="nav-number">2.</span> <span class="nav-text">Tensorflow的tf.nn.max_pool最大池化方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-nn-max-pool-value-ksize-strides-padding-name-None"><span class="nav-number">2.1.</span> <span class="nav-text">tf.nn.max_pool(value, ksize, strides, padding, name=None)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tensorflow的生成随机权重方法"><span class="nav-number">3.</span> <span class="nav-text">Tensorflow的生成随机权重方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf-strided-slice："><span class="nav-number">4.</span> <span class="nav-text">tf.strided_slice：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf-app-flags-DEFINE"><span class="nav-number">5.</span> <span class="nav-text">tf.app.flags.DEFINE_:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf-transpose"><span class="nav-number">6.</span> <span class="nav-text">tf.transpose():</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TensorFlow的image图像预处理"><span class="nav-number">7.</span> <span class="nav-text">TensorFlow的image图像预处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图像预处理之图像翻转、图像色彩调整、图像尺寸调整"><span class="nav-number">8.</span> <span class="nav-text">图像预处理之图像翻转、图像色彩调整、图像尺寸调整</span></a></li></ol></div>
             
 
           </div>
