@@ -99,7 +99,7 @@
 
 
 
-  <meta name="keywords" content="机器学习," />
+  <meta name="keywords" content="机器学习，Python库," />
 
 
 
@@ -110,18 +110,21 @@
 
 
 
-<meta name="description" content="当前机器学习主要分为监督学习和无监督学习，监督学习在训练的过程中，需要大量有标注的数据，而其中就涉及到了训练集、验证集、测试集的概念">
-<meta name="keywords" content="机器学习">
+<meta name="description" content="关于常用的pandas库的部分说明">
+<meta name="keywords" content="机器学习，Python库">
 <meta property="og:type" content="article">
-<meta property="og:title" content="训练集&amp;验证机&amp;测试集">
-<meta property="og:url" content="http://yoursite.com/2018/08/29/训练集-验证机-测试集/index.html">
+<meta property="og:title" content="pandas各种">
+<meta property="og:url" content="http://yoursite.com/2019/01/16/pandas各种/index.html">
 <meta property="og:site_name" content="一个地方">
-<meta property="og:description" content="当前机器学习主要分为监督学习和无监督学习，监督学习在训练的过程中，需要大量有标注的数据，而其中就涉及到了训练集、验证集、测试集的概念">
+<meta property="og:description" content="关于常用的pandas库的部分说明">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-19T06:07:28.151Z">
+<meta property="og:image" content="http://yoursite.com/2019/01/16/pandas各种/TIM截图20190116203449.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/16/pandas各种/TIM截图20190116203539.png">
+<meta property="og:updated_time" content="2019-01-16T13:51:06.331Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="训练集&amp;验证机&amp;测试集">
-<meta name="twitter:description" content="当前机器学习主要分为监督学习和无监督学习，监督学习在训练的过程中，需要大量有标注的数据，而其中就涉及到了训练集、验证集、测试集的概念">
+<meta name="twitter:title" content="pandas各种">
+<meta name="twitter:description" content="关于常用的pandas库的部分说明">
+<meta name="twitter:image" content="http://yoursite.com/2019/01/16/pandas各种/TIM截图20190116203449.png">
 
 
 
@@ -151,13 +154,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/29/训练集-验证机-测试集/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/01/16/pandas各种/"/>
 
 
 
 
 
-  <title>训练集&验证机&测试集 | 一个地方</title>
+  <title>pandas各种 | 一个地方</title>
   
 
 
@@ -320,7 +323,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/29/训练集-验证机-测试集/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/16/pandas各种/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jiageng Wu">
@@ -337,7 +340,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">训练集&验证机&测试集</h1>
+          <h1 class="post-title" itemprop="name headline">pandas各种</h1>
         
 
         <div class="post-meta">
@@ -349,8 +352,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-29T21:56:36+08:00">
-                2018-08-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-16T20:32:22+08:00">
+                2019-01-16
               </time>
             
 
@@ -414,12 +417,12 @@
       
 
       
-        <p>当前机器学习主要分为监督学习和无监督学习，监督学习在训练的过程中，需要大量有标注的数据，而其中就涉及到了训练集、验证集、测试集的概念<br><a id="more"></a></p>
-<h2 id="划分"><a href="#划分" class="headerlink" title="划分"></a>划分</h2><p>拿到数据集后，首先需要对数据集进行划分，通常采取8:1:1的比例，当然比例可以是根据实际需要调整的；同时通常采取均匀随机抽样的方法，使得三个集合的分布都是相同的，这一点是很必要的</p>
-<p>如果是做比赛，官方只提供了一个标注的数据集（作为训练集）以及一个没有标注的测试集，那么我们做模型的时候，通常会人工从训练集中划分一个验证集出来。</p>
-<p>这时候我们通常不再划分一个测试集，可能的原因有两个：1、比赛方基本都很抠，训练集的样本本来就少；2、我们也没法保证要提交的测试集是否跟训练集完全同分布，因此再划分一个跟训练集同分布的测试集就没多大意义了。</p>
-<p>附：iteration:数据进行一次前向-后向的训练（更新一次参数<br>​    batchsize：每次iteration训练的样本数量<br>​    epoch：将所有样本通过训练一次<br>​    例如：假如有1280000张图片，batchsize=256，则1个epoch需要1280000/256=5000次iteration，假如它的max-iteration=450000，则共有450000/5000=90个epoch</p>
-<h2 id="为什么有了验证集还需要测试集"><a href="#为什么有了验证集还需要测试集" class="headerlink" title="为什么有了验证集还需要测试集"></a>为什么有了验证集还需要测试集</h2><p>有了模型后，训练集就是用来训练参数，即用于梯度下降，而每次epoch后更新参数，包括<strong>普通参数</strong>和<strong>超参数</strong>：<br>普通参数比如各个节点的权重等，是经过训练而得到的，就是可以被梯度下降所更新的，也就是训练集所更新的；超参数，比如网络的层数和节点的个数、迭代次数、学习速率等等，是不在梯度下降更新的范围内的，所以可以通过验证集的结果来调整这些参数，那么实际上，验证集也算作是参与了超参数的训练。<br>所以，我们还是需要一个完全没有经过任何训练的集合，也就是测试集，用于真正评估最后的准确率。<br>虽然，我们也能发现，我们也可能通过最后的测试集结果再调整结构、参数等等，那么不就再次陷入了上述的情景，但是事实上：一是，我们不可能无限制的划分加入新的集合，二是，我认为，如果是调整完结构后，应该需要重新进行训练、验证、测试，评估自然也需要重新开始，也就能够逐渐消除影响</p>
+        <p>关于常用的pandas库的部分说明</p>
+<a id="more"></a>
+<h3 id="iloc和loc"><a href="#iloc和loc" class="headerlink" title="iloc和loc"></a>iloc和loc</h3><p>.iloc：根据标签的所在位置，从0开始计数，选取列；[index1,index2]，前者是列，后者是行的范围</p>
+<p>loc：根据DataFrame的具体标签选取列</p>
+<p><img src="/2019/01/16/pandas各种/TIM截图20190116203449.png" alt="TIM截图20190116203449"></p>
+<p><img src="/2019/01/16/pandas各种/TIM截图20190116203539.png" alt="TIM截图20190116203539"></p>
 
       
     </div>
@@ -437,7 +440,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+            <a href="/tags/机器学习，Python库/" rel="tag"># 机器学习，Python库</a>
           
         </div>
       
@@ -450,14 +453,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/01/11/归一化、标准化、中心化/" rel="next" title="归一化、标准化、中心化">
+                <i class="fa fa-chevron-left"></i> 归一化、标准化、中心化
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/30/Tensorflow学习-MNIST识别/" rel="prev" title="Tensorflow学习--MNISTT识别">
-                Tensorflow学习--MNISTT识别 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/01/16/sklearn各种/" rel="prev" title="sklearn各种">
+                sklearn各种 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -620,7 +627,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#划分"><span class="nav-number">1.</span> <span class="nav-text">划分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么有了验证集还需要测试集"><span class="nav-number">2.</span> <span class="nav-text">为什么有了验证集还需要测试集</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#iloc和loc"><span class="nav-number">1.</span> <span class="nav-text">iloc和loc</span></a></li></ol></div>
             
 
           </div>
