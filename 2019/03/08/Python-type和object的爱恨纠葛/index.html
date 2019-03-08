@@ -118,7 +118,7 @@
 <meta property="og:site_name" content="一个地方">
 <meta property="og:description" content="type和object，真的太绕了">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-08T03:33:58.823Z">
+<meta property="og:updated_time" content="2019-03-08T06:33:17.476Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python-type和object的爱恨纠葛">
 <meta name="twitter:description" content="type和object，真的太绕了">
@@ -416,8 +416,12 @@
       
         <p>type和object，真的太绕了</p>
 <a id="more"></a>
-<p>Python 的 type 和 object 之间是怎么一种关系？<a href="https://www.zhihu.com/question/38791962" target="_blank" rel="noopener">https://www.zhihu.com/question/38791962</a></p>
-<p>先有Class还是先有Object？ <a href="https://www.zhihu.com/question/30301819" target="_blank" rel="noopener">https://www.zhihu.com/question/30301819</a></p>
+<p><strong>Python 的 type 和 object 之间是怎么一种关系？</strong></p>
+<p>在Python的世界中，object是父子关系的顶端，所有的数据类型的父类都是它；type是类型实例关系的顶端，所有对象都是它的实例的。它们两个的关系可以这样描述：<br>- object是一个type，object is and instance of type。即Object是type的一个实例。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;object.__class__</span><br><span class="line">&lt;type <span class="string">'type'</span>&gt;</span><br><span class="line">&gt;&gt;&gt;object.__bases__  <span class="comment"># object 无父类，因为它是链条顶端。</span></span><br><span class="line">()</span><br><span class="line">- type是一种object， type <span class="keyword">is</span> kind of object。即Type是object的子类。</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;type.__bases__</span><br><span class="line">(&lt;type <span class="string">'object'</span>&gt;,)</span><br><span class="line">&gt;&gt;&gt;type.__class__  <span class="comment"># type的类型是自己</span></span><br><span class="line">&lt;type <span class="string">'type'</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>作者：jeff kit</p>
+<p>链接：<a href="https://www.zhihu.com/question/38791962/answer/78172929" target="_blank" rel="noopener">https://www.zhihu.com/question/38791962/answer/78172929</a></p>
+<p><strong>先有Class还是先有Object？ <a href="https://www.zhihu.com/question/30301819" target="_blank" rel="noopener">https://www.zhihu.com/question/30301819</a></strong></p>
 <p><a href="https://www.cnblogs.com/busui/p/7283137.html" target="_blank" rel="noopener">python中的type和object详解</a></p>
 
       
