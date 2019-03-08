@@ -110,18 +110,25 @@
 
 
 
-<meta name="description" content="关于Pyhton3中类相关知识，例如新式类，类函数self参数等">
+<meta name="description" content="关于Pyhton3中类相关知识，例如抓狂的self！！！">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python3类">
 <meta property="og:url" content="http://yoursite.com/2019/03/06/Python3类/index.html">
 <meta property="og:site_name" content="一个地方">
-<meta property="og:description" content="关于Pyhton3中类相关知识，例如新式类，类函数self参数等">
+<meta property="og:description" content="关于Pyhton3中类相关知识，例如抓狂的self！！！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-06T02:41:50.319Z">
+<meta property="og:image" content="http://yoursite.com/2019/03/06/Python3类/TIM截图20190308105428.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/06/Python3类/TIM截图20190308105154.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/06/Python3类/TIM截图20190308105832.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/06/Python3类/TIM截图20190307163841.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/06/Python3类/TIM截图20190307172218.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/06/Python3类/TIM截图20190307172600.png">
+<meta property="og:updated_time" content="2019-03-08T03:03:19.841Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python3类">
-<meta name="twitter:description" content="关于Pyhton3中类相关知识，例如新式类，类函数self参数等">
+<meta name="twitter:description" content="关于Pyhton3中类相关知识，例如抓狂的self！！！">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/06/Python3类/TIM截图20190308105428.png">
 
 
 
@@ -414,9 +421,38 @@
       
 
       
-        <p>关于Pyhton3中类相关知识，例如新式类，类函数self参数等</p>
+        <p>关于Pyhton3中类相关知识，例如抓狂的self！！！</p>
 <a id="more"></a>
-<h2 id="1-新式类-object-经典类"><a href="#1-新式类-object-经典类" class="headerlink" title="1 新式类(object)/经典类"></a>1 新式类(object)/经典类</h2>
+<h2 id="0-继承-重写-Super"><a href="#0-继承-重写-Super" class="headerlink" title="0 继承/重写/Super"></a>0 继承/重写/Super</h2><h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Family</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"we are family"</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span><span class="params">(Parent)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">father = Parent()</span><br><span class="line">son = Child()</span><br><span class="line"></span><br><span class="line">father.Family()</span><br><span class="line">son.Family()</span><br></pre></td></tr></table></figure>
+<p>​    在这里，<code>Parent</code> 类是父类，<code>Child</code> 类是子类，但是通过定义，继承了父类。所以在后面实例化之后，<code>son</code> 依然可以调用父类的函数。最后的运行结果如下： </p>
+<h3 id="重写（Override）"><a href="#重写（Override）" class="headerlink" title="重写（Override）"></a>重写（Override）</h3><p>​    子类除了可以继承父类的函数，也能够对父类函数进行重写</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Family</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"we are family"</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span><span class="params">(Parent)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Family</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"hey,i am son"</span>)</span><br><span class="line"></span><br><span class="line">father = Parent()</span><br><span class="line">son = Child()</span><br><span class="line"></span><br><span class="line">father.Family()</span><br><span class="line">son.Family()</span><br></pre></td></tr></table></figure>
+<h3 id="Super"><a href="#Super" class="headerlink" title="Super"></a>Super</h3><p>​    Super，超类，当既重写了同名的父类函数也在重写时调用了父类函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Family</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"we are family"</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span><span class="params">(Parent)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Family</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"hey,i am son"</span>)</span><br><span class="line">        super(Child,self).Family()</span><br><span class="line">        print(<span class="string">"again, i am son"</span>)</span><br><span class="line"></span><br><span class="line">father = Parent()</span><br><span class="line">son = Child()</span><br><span class="line"></span><br><span class="line">father.Family()</span><br><span class="line">son.Family()</span><br></pre></td></tr></table></figure>
+<h2 id="1-为什么要加Object呢"><a href="#1-为什么要加Object呢" class="headerlink" title="1 为什么要加Object呢"></a>1 为什么要加Object呢</h2><h3 id="1-1-Object？"><a href="#1-1-Object？" class="headerlink" title="1.1 Object？"></a>1.1 Object？</h3><p>​    <a href="https://www.cnblogs.com/busui/p/7283137.html" target="_blank" rel="noopener">python中的type和object详解</a></p>
+<h3 id="1-2-为啥？"><a href="#1-2-为啥？" class="headerlink" title="1.2 为啥？"></a>1.2 为啥？</h3><p>​    Python2时，都建议在类声明的时候加上object，其实就是继承，使其具有更多的操作对象，而在Python3中，已经默认加载了Object了<br>​    Python2</p>
+<p>​    <img src="/2019/03/06/Python3类/TIM截图20190308105428.png" alt="TIM截图20190308105428"></p>
+<p>​    Python3</p>
+<p>​    <img src="/2019/03/06/Python3类/TIM截图20190308105154.png" alt="TIM截图20190308105154"></p>
+<h3 id="1-3-经典类-新式类"><a href="#1-3-经典类-新式类" class="headerlink" title="1.3 经典类/新式类"></a>1.3 经典类/新式类</h3><p>​    其实还有个小问题，就是在Python2中，存在多重继承时的继承方式寻找问题，如果是不继承object的则是经典类，如果继承了object则为新式类，二者的具体区别如下图所示，而Python3中呢，前文已经提到所有类在定义时都默认继承了object，所以你猜他是啥类？<br>​    <img src="/2019/03/06/Python3类/TIM截图20190308105832.png" alt="TIM截图20190308105832"></p>
+<h2 id="2-为什么一定要加self"><a href="#2-为什么一定要加self" class="headerlink" title="2 为什么一定要加self"></a>2 为什么一定要加self</h2><h3 id="2-1-为什么"><a href="#2-1-为什么" class="headerlink" title="2.1  为什么"></a>2.1  为什么</h3><p>​    self指向的是类的实例，如下图，蓝色框中</p>
+<p>​    <img src="/2019/03/06/Python3类/TIM截图20190307163841.png" alt="TIM截图20190307163841"></p>
+<p>像函数一样，Python中的类方法也是一种对象。由于既可以通过实例也可以通过类来访问方法，所以在Python里有两种风格：<br><strong>未绑定的类方法：没有self</strong><br>    <strong>通过类来引用方法返回一个未绑定方法对象。要调用它，你必须显示地提供一个实例作为第一个参数。</strong><br><strong>绑定的实例方法：有self</strong><br>    <strong>通过实例访问方法返回一个绑定的方法对象。Python自动地给方法绑定一个实例，所以我们调用它时不用再传一个实例参数。</strong><br>两种方法都是对象，它们可以被传递、存入列表等待。两者运行时都需要一个实例作为第一参数，但当通过一个实例调用一个绑定方法时Python自动会提供一个。</p>
+<p>​    而在Python的编译中，如上图蓝色框中所示，t.prt()是会转化为test.prt(t)，二者是等价的，所以如果在类函数定义时加入了self参数，相当于绑定了实例</p>
+<p>​    而如果不加self参数，那么只能够通过自己暂时实例化一个类调用，例如下图蓝框中第二种方式，如果是第一种方式，则会显示多给了一个参数，原因是编译的时候默认加入了self参数，所以显示参数多了，如红框中的使用，t4.add(1,2)=test4.add(t4,1,2)</p>
+<p><img src="/2019/03/06/Python3类/TIM截图20190307172218.png" alt="TIM截图20190307172218"></p>
+<h3 id="2-2-一定要self"><a href="#2-2-一定要self" class="headerlink" title="2.2 一定要self?"></a>2.2 一定要self?</h3><p>​    习惯了C指针的也可以用this</p>
+<p>​    <img src="/2019/03/06/Python3类/TIM截图20190307172600.png" alt="TIM截图20190307172600"></p>
+<p>​    而事实上，啥名都行，他会默认用函数的第一个参数作为self</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">prt</span><span class="params">(runoob)</span>:</span></span><br><span class="line">        print(runoob)</span><br><span class="line">        print(runoob.__class__)</span><br><span class="line"> </span><br><span class="line">t = Test()</span><br><span class="line">t.prt()</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-是谁的self"><a href="#2-3-是谁的self" class="headerlink" title="2.3 是谁的self?"></a>2.3 是谁的self?</h3><p>​    那如果我是继承父类的函数，那么继承函数的self是谁的self呢？</p>
+<p>​    在继承时，是哪个实例的函数，就是谁的self，而非定义时的self</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pprt</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(self)</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span><span class="params">(Parent)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">cprt</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(self)</span><br><span class="line">c = Child()</span><br><span class="line">c.cprt()</span><br><span class="line">c.pprt()</span><br><span class="line">p = Parent()</span><br><span class="line">p.pprt()</span><br><span class="line"></span><br><span class="line">---输出---------------------------------------------------</span><br><span class="line">&lt;__main__.Child object at <span class="number">0x0000000002A47080</span>&gt;</span><br><span class="line">&lt;__main__.Child object at <span class="number">0x0000000002A47080</span>&gt;</span><br><span class="line">&lt;__main__.Parent object at <span class="number">0x0000000002A47240</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>​    </p>
+<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p><a href="https://www.cnblogs.com/attitudeY/p/6789370.html" target="_blank" rel="noopener">Python中新式类 经典类的区别（即类是否继承object）</a></p>
+<p><a href="https://www.cnblogs.com/blackmatrix/p/5630515.html" target="_blank" rel="noopener">Python新式类与经典类的区别</a></p>
+<p><a href="https://www.cnblogs.com/busui/p/7283137.html" target="_blank" rel="noopener">python中的type和object详解</a></p>
+
       
     </div>
     
@@ -616,7 +652,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-新式类-object-经典类"><span class="nav-number">1.</span> <span class="nav-text">1 新式类(object)/经典类</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-继承-重写-Super"><span class="nav-number">1.</span> <span class="nav-text">0 继承/重写/Super</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#继承"><span class="nav-number">1.1.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重写（Override）"><span class="nav-number">1.2.</span> <span class="nav-text">重写（Override）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Super"><span class="nav-number">1.3.</span> <span class="nav-text">Super</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-为什么要加Object呢"><span class="nav-number">2.</span> <span class="nav-text">1 为什么要加Object呢</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Object？"><span class="nav-number">2.1.</span> <span class="nav-text">1.1 Object？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-为啥？"><span class="nav-number">2.2.</span> <span class="nav-text">1.2 为啥？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-经典类-新式类"><span class="nav-number">2.3.</span> <span class="nav-text">1.3 经典类/新式类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-为什么一定要加self"><span class="nav-number">3.</span> <span class="nav-text">2 为什么一定要加self</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-为什么"><span class="nav-number">3.1.</span> <span class="nav-text">2.1  为什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-一定要self"><span class="nav-number">3.2.</span> <span class="nav-text">2.2 一定要self?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-是谁的self"><span class="nav-number">3.3.</span> <span class="nav-text">2.3 是谁的self?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用"><span class="nav-number">3.4.</span> <span class="nav-text">引用</span></a></li></ol></li></ol></div>
             
 
           </div>
