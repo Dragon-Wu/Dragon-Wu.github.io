@@ -453,7 +453,7 @@
 <h2 id="啥时候用："><a href="#啥时候用：" class="headerlink" title="啥时候用："></a>啥时候用：</h2><h3 id="1）模型的伸缩不变性"><a href="#1）模型的伸缩不变性" class="headerlink" title="1）模型的伸缩不变性"></a>1）模型的伸缩不变性</h3><p>​    这一点是看<a href="https://www.zhihu.com/question/30038463/answer/50491149这个王赟大佬的回答，觉得蛮有道理的，说是根据模型是否具有伸缩不变性" target="_blank" rel="noopener">https://www.zhihu.com/question/30038463/answer/50491149这个王赟大佬的回答，觉得蛮有道理的，说是根据模型是否具有伸缩不变性</a></p>
 <p>​    有些模型在各个维度进行<strong>不均匀伸缩</strong>后，最优解的值与原来是不同的，比如前文提到的<strong>SVM、KNN</strong>，除非原来样本各个特征的值域范围比较接近，否则<strong>必须</strong>进行标准化，以免模型参数被分布范围较大或者较小的特征dominate</p>
 <p>​    而有的模型在不均匀伸缩后不改变原来的最优解，例如逻辑斯蒂回归，对于这样的模型，标准化前后理论上不会改变最优解，是<strong>可以不用</strong>的，但是前文也提到了，实际求解中往往使用迭代算法，为了防止Z型缓慢下降，所有也<strong>最好使用</strong>数据标准化。作者也提到，使用神经网络会使得<strong>神经网络</strong>的训练更容易</p>
-<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p>标准化和归一化什么区别？ - 知乎：<a href="https://www.zhihu.com/question/20467170" target="_blank" rel="noopener">https://www.zhihu.com/question/20467170</a><br>R–数据标准化、归一化、中心化处理：<a href="https://zhuanlan.zhihu.com/p/33727799" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/33727799</a><br>特征工程中的[归一化]有什么作用？ - 知乎：<a href="https://www.zhihu.com/question/20455227" target="_blank" rel="noopener">https://www.zhihu.com/question/20455227</a><br>神经网络为什么要归一化：<a href="http://nnetinfo.com/nninfo/showText.jsp?id=37" target="_blank" rel="noopener">http://nnetinfo.com/nninfo/showText.jsp?id=37</a><br>归一化 （Normalization）、标准化 （Standardization）和中心化/零均值化 （Zero-centered）<br>                                                -简书 <a href="https://www.jianshu.com/p/95a8f035c86c" target="_blank" rel="noopener">https://www.jianshu.com/p/95a8f035c86c</a><br>特征工程中的「归一化」有什么作用？ - 王赟 Maigo的回答<br>                                    -知乎 <a href="https://www.zhihu.com/question/20455227/answer/75202300" target="_blank" rel="noopener">https://www.zhihu.com/question/20455227/answer/75202300</a></p>
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p>标准化和归一化什么区别？ - 知乎：<a href="https://www.zhihu.com/question/20467170" target="_blank" rel="noopener">https://www.zhihu.com/question/20467170</a><br>R—数据标准化、归一化、中心化处理：<a href="https://zhuanlan.zhihu.com/p/33727799" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/33727799</a><br>特征工程中的[归一化]有什么作用？ - 知乎：<a href="https://www.zhihu.com/question/20455227" target="_blank" rel="noopener">https://www.zhihu.com/question/20455227</a><br>神经网络为什么要归一化：<a href="http://nnetinfo.com/nninfo/showText.jsp?id=37" target="_blank" rel="noopener">http://nnetinfo.com/nninfo/showText.jsp?id=37</a><br>归一化 （Normalization）、标准化 （Standardization）和中心化/零均值化 （Zero-centered）<br>                                                -简书 <a href="https://www.jianshu.com/p/95a8f035c86c" target="_blank" rel="noopener">https://www.jianshu.com/p/95a8f035c86c</a><br>特征工程中的「归一化」有什么作用？ - 王赟 Maigo的回答<br>                                    -知乎 <a href="https://www.zhihu.com/question/20455227/answer/75202300" target="_blank" rel="noopener">https://www.zhihu.com/question/20455227/answer/75202300</a></p>
 
       
     </div>
@@ -891,6 +891,8 @@
   
 
   
+  
+
 
   
 

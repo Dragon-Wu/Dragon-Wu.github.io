@@ -470,7 +470,7 @@
 <p>同时，使得程序在使用命令行运行程序时，可以通过命令行添加程序参数</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow  <span class="keyword">as</span> tf</span><br><span class="line">FLAGS=tf.app.flags.FLAGS</span><br><span class="line">tf.app.flags.DEFINE_float(</span><br><span class="line">    <span class="string">'flag_float'</span>, <span class="number">0.01</span>, <span class="string">'input a float'</span>)</span><br><span class="line">tf.app.flags.DEFINE_integer(</span><br><span class="line">    <span class="string">'flag_int'</span>, <span class="number">400</span>, <span class="string">'input a int'</span>)</span><br><span class="line">tf.app.flags.DEFINE_boolean(</span><br><span class="line">    <span class="string">'flag_bool'</span>, <span class="keyword">True</span>, <span class="string">'input a bool'</span>)</span><br><span class="line">tf.app.flags.DEFINE_string(</span><br><span class="line">    <span class="string">'flag_string'</span>, <span class="string">'yes'</span>, <span class="string">'input a string'</span>)</span><br><span class="line"> </span><br><span class="line">print(FLAGS.flag_float)</span><br><span class="line">print(FLAGS.flag_int)</span><br><span class="line">print(FLAGS.flag_bool)</span><br><span class="line">print(FLAGS.flag_string)</span><br></pre></td></tr></table></figure>
 <h2 id="tf-transpose"><a href="#tf-transpose" class="headerlink" title="tf.transpose():"></a>tf.transpose():</h2><p>def transpose(a, perm=None, name=”transpose”):<br>  “””Transposes <code>a</code>. Permutes the dimensions according to <code>perm</code>.<br>a:是传入的数组</p>
-<p>perm:控制转置的操作,以perm = [0,1,2] 3个维度的数组为例, 0–代表的是最外层的一维, 1–代表外向内数第二维, 2–代表最内层的一维,这种perm是默认的值.现在以如下输入数组来理解这个函数和参数perm</p>
+<p>perm:控制转置的操作,以perm = [0,1,2] 3个维度的数组为例, 0—代表的是最外层的一维, 1—代表外向内数第二维, 2—代表最内层的一维,这种perm是默认的值.现在以如下输入数组来理解这个函数和参数perm</p>
 <p>input_x = [<br>​    [<br>​        [1, 2, 3, 4],<br>​        [5, 6, 7, 8],<br>​        [9, 10, 11, 12]<br>​    ],<br>​    [<br>​        [13, 14, 15, 16],<br>​        [17, 18, 19, 20],<br>​        [21, 22, 23, 24]<br>​    ]</p>
 <p>]</p>
 <p>input_x 是一个 2x3x4的一个tensor, 假设perm = [1,0,2], 就是将最外2层转置,得到tensor应该是3x2x4的一个张量</p>
@@ -918,6 +918,8 @@
   
 
   
+  
+
 
   
 
