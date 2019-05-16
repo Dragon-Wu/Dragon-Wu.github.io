@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("https://dragon-wu.github.io/");
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "e3b38aa8"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/myblue.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/myblue.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/myblue.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/myblue.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Cryo-EM," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Some fundamental knowledge about Cryo-EM. 翻译： 太菜了，就精卫填海吧先">
+<meta name="keywords" content="Cryo-EM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cryo-EM">
+<meta property="og:url" content="http://yoursite.com/2019/04/20/Cryo-EM/index.html">
+<meta property="og:site_name" content="一个地方">
+<meta property="og:description" content="Some fundamental knowledge about Cryo-EM. 翻译： 太菜了，就精卫填海吧先">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/04/20/Cryo-EM/单张与三维结构的关系.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/20/Cryo-EM/中心截面定理.png">
+<meta property="og:updated_time" content="2019-05-16T02:46:29.211Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cryo-EM">
+<meta name="twitter:description" content="Some fundamental knowledge about Cryo-EM. 翻译： 太菜了，就精卫填海吧先">
+<meta name="twitter:image" content="http://yoursite.com/2019/04/20/Cryo-EM/单张与三维结构的关系.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/20/Cryo-EM/"/>
+
+
+
+
+
+  <title>Cryo-EM | 一个地方</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?08bb4fc5c3d2998285280a0eabfdca3b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一个地方</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Wu's Blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-today">
+          <a href="/Today/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            Today
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/20/Cryo-EM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiageng Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/myshow.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个地方">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Cryo-EM</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-20T17:34:10+08:00">
+                2019-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS文献阅读/" itemprop="url" rel="index">
+                    <span itemprop="name">CS文献阅读</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>  阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Some fundamental knowledge about Cryo-EM.</p>
+<p>翻译：</p>
+<p>太菜了，就精卫填海吧先</p>
+<a id="more"></a>
+<h2 id="电镜原理"><a href="#电镜原理" class="headerlink" title="电镜原理"></a>电镜原理</h2><h4 id="玻璃态"><a href="#玻璃态" class="headerlink" title="玻璃态"></a>玻璃态</h4><p>玻璃态并不是物质的一个状态，而是指他的结构是一种非晶体结构（也许因为玻璃就是典型的非晶体）。</p>
+<h4 id="非晶体"><a href="#非晶体" class="headerlink" title="非晶体"></a>非晶体</h4><p>是指<strong>结构无序</strong>或者近程有序而长程无序的物质，组成该物质的分子<strong>不呈空间有规则周期性排列的固体</strong>，<strong>没有一定的外形</strong>，而构成晶体的原子（或离子或分子）具有一定的空间结构（即<a href="https://baike.baidu.com/item/%E6%99%B6%E6%A0%BC/9522351" target="_blank" rel="noopener">晶格</a>），非晶体的物理性质在各个方向上是相同的，叫“各向同性”，没有<strong>固定的熔点</strong><br>非晶体没有固定的熔点，随着温度升高，物质首先变软，然后由稠逐渐变稀，成为流体，具有一定的熔点是一切晶体的宏观特性，也是晶体和非晶体的主要区别</p>
+<h4 id="透射电子显微镜"><a href="#透射电子显微镜" class="headerlink" title="透射电子显微镜"></a>透射电子显微镜</h4><p>电子束穿透样品，再用电子透镜成像放大。光路与光学显微镜相似，直接获得一个样本的投影通过改变物镜的透镜系统人们可以直接放大物镜的焦点的像。由此人们可以获得电子衍射像。使用这个像可以分析样本的晶体结构。在这种电子显微镜中，图像细节的对比度是由样品的原子对电子束的散射形成的。由于电子需要穿过样本，因此<strong>样本必须非常薄</strong>；组成样本的原子的原子量、加速电子的电压和所希望获得的分辨率决定样本的厚度。样本的厚度可以从数纳米到数微米不等。</p>
+<p>透射电镜的分辨率为0.1～0.2nm，放大倍数为几万～几十万倍。由于电子易散射或被物体吸收，故穿透力低，必须制备更薄的超薄切片（通常为50～100nm）。</p>
+<p>透射式电子显微镜镜筒的顶部是<a href="https://baike.baidu.com/item/%E7%94%B5%E5%AD%90%E6%9E%AA" target="_blank" rel="noopener">电子枪</a>，电子由钨丝热阴极发射出、通过第一，第二两个聚光镜使电子束聚焦。电子束通过样品后由物镜成像于中间镜上，再通过中间镜和投影镜逐级放大，成像于<a href="https://baike.baidu.com/item/%E8%8D%A7%E5%85%89%E5%B1%8F" target="_blank" rel="noopener">荧光屏</a>或照相干版上。中间镜主要通过对<a href="https://baike.baidu.com/item/%E5%8A%B1%E7%A3%81%E7%94%B5%E6%B5%81" target="_blank" rel="noopener">励磁电流</a>的调节，放大倍数可从几十倍连续地变化到几十万倍；改变中间镜的焦距，即可在同一样品的微小部位上得到电子显微像和电子衍射图像。</p>
+<h4 id="扫描电子显微镜"><a href="#扫描电子显微镜" class="headerlink" title="扫描电子显微镜"></a>扫描电子显微镜</h4><p><a href="https://baike.baidu.com/item/%E6%89%AB%E6%8F%8F%E7%94%B5%E5%AD%90%E6%98%BE%E5%BE%AE%E9%95%9C" target="_blank" rel="noopener">扫描电子显微镜</a>的电子束<strong>不穿过样品</strong>，仅以电子束尽量聚焦在样本的一小块地方，然后一行一行地扫描样本。入射的电子使样本表面激发出次级电子。显微镜观察的是这些每个点散射出来的电子，放在样品旁边的闪烁晶体接收次级电子，通过放大后调制显像管的电子束强度，从而改变显像管荧光屏上的亮度。图像为立体形象，反映了标本的表面结构。</p>
+<h2 id="结构生物学"><a href="#结构生物学" class="headerlink" title="结构生物学"></a>结构生物学</h2><h4 id="生物大分子"><a href="#生物大分子" class="headerlink" title="生物大分子"></a>生物大分子</h4><p>生物大分子是指生物体细胞内存在的蛋白质、核酸、多糖等大分子；每个生物大分子内有几千到几十万个原子，分子量从几万到几百万以。生物大分子的结构很复杂,但其基本的结构单元并不复杂。蛋白质分子是由氨基酸分子以一定的顺序排列成的长链。氨基酸分子是大部分生命物质的组成材料,不同的氨基酸分子有好几十种。</p>
+<p>生物大分子(biomacromolecule)与低<a href="https://baike.baidu.com/item/相对分子量" target="_blank" rel="noopener">相对分子量</a>的生物<a href="https://baike.baidu.com/item/有机化合物" target="_blank" rel="noopener">有机化合物</a>相比，高相对分子量的有机化合物具有更高级的物质群 。它们是由低相对分子量的有机化合物经过聚合而成的<a href="https://baike.baidu.com/item/多分子体系" target="_blank" rel="noopener">多分子体系</a>。</p>
+<h4 id="X-射线晶体学"><a href="#X-射线晶体学" class="headerlink" title="X-射线晶体学"></a>X-射线晶体学</h4><p>..</p>
+<h4 id="核磁共振波谱学-NMR"><a href="#核磁共振波谱学-NMR" class="headerlink" title="核磁共振波谱学 NMR"></a>核磁共振波谱学 NMR</h4><p>..</p>
+<h4 id="电镜技术"><a href="#电镜技术" class="headerlink" title="电镜技术"></a>电镜技术</h4><p><a href="https://www.sohu.com/a/205352342_243686" target="_blank" rel="noopener">https://www.sohu.com/a/205352342_243686</a></p>
+<h2 id="乙型肝炎病毒（hepatitis-B-virus-HBV）"><a href="#乙型肝炎病毒（hepatitis-B-virus-HBV）" class="headerlink" title="乙型肝炎病毒（hepatitis B virus, HBV）"></a>乙型肝炎病毒（hepatitis B virus, HBV）</h2><h4 id="病毒"><a href="#病毒" class="headerlink" title="病毒"></a>病毒</h4><p>病毒是一种个体微小，结构简单，只含一种核酸（DNA或RNA），必须在活细胞内寄生并以复制方式增殖的非细胞型生物。</p>
+<p>病毒是一种非细胞生命形态，它由一个核酸长链和蛋白质外壳构成，病毒没有自己的代谢机构，没有酶系统。因此病毒离开了<a href="https://baike.baidu.com/item/宿主细胞/1276396" target="_blank" rel="noopener">宿主细胞</a>，就成了没有任何生命活动、也不能独立自我繁殖的化学物质。一旦进入宿主细胞后，它就可以利用细胞中的物质和能量以及复制、<a href="https://baike.baidu.com/item/转录/1503653" target="_blank" rel="noopener">转录</a>和<a href="https://baike.baidu.com/item/转译/2029705" target="_blank" rel="noopener">转译</a>的能力，按照它自己的核酸所包含的遗传信息产生和它一样的新一代病毒。</p>
+<h4 id="乙肝五项-肝两对半"><a href="#乙肝五项-肝两对半" class="headerlink" title="乙肝五项/肝两对半"></a>乙肝五项/肝两对半</h4><p><a href="https://baike.baidu.com/item/乙肝两对半" target="_blank" rel="noopener">https://baike.baidu.com/item/乙肝两对半</a></p>
+<h5 id="乙肝五项检查内容："><a href="#乙肝五项检查内容：" class="headerlink" title="乙肝五项检查内容："></a>乙肝五项检查内容：</h5><p>1.HBsAg（乙肝表面抗原）</p>
+<p>是乙肝病毒的外壳物质，本身没有传染性。HBsAg阳性往往提示有完整的病毒颗粒存在。通常在感染病毒后2～6个月，血清转氨酶还未上升时便可在血清中测到HBsAg阳性。急性乙肝患者绝大多数可以在病程初期转阴，但慢性乙肝患者会持续阳性。</p>
+<p>2.抗-HBs（乙肝表面抗体，HbsAb）</p>
+<p>是乙型肝炎病毒（HBV）自然感染人恢复期出现的抗体，此时HBsAg往往已自然消失。它的存在提示人对乙肝有了抵抗力，是体内对乙肝病毒的免疫和保护性抗体。我国有27%以上的人口有此抗体。</p>
+<p>3.HBeAg（乙型肝炎e抗原）</p>
+<p>产生于病毒内部，可分泌到血液中，e抗原阳性提示病毒有活动，而且是具有传染性的指标。e抗原通常在乙肝病毒感染后，表面抗原阳性同时，或其后数天便可测得阳性。</p>
+<p>4.抗-HBe（乙肝e抗体，HBeAb）</p>
+<p>是人体针对e抗原产生的一种蛋白质，阳性结果提示病毒的传染性变弱，病情已处于恢复阶段，e抗体阳性在抗原转阴后数月出现。但另一种情况可能是乙肝病毒发生了变异，此时血清中无HBeAg，但可产生抗-HBe，出现这种情况就需要检查HBV-DNA以便判定是否还有病毒存在。</p>
+<p>5.抗-HBc（乙肝核心抗体，HbcAb）</p>
+<p>乙肝核心抗体分IgM和lgG两种：抗HBc-IgM阳性提示病毒活动，有传染性；抗HBc-IgG阳性提示为以往感染，无传染性，不需抗病毒治疗。核心抗体一般在表面抗原出现后3～5周，乙肝症状出现前便会在血清中检查出来。</p>
+<p>其他，HBV-DNA是病毒的遗传基因，存在于病毒的核心部位，它的阳性和HBeAg阳性意义基本是一致的。因此，目前公认的抗病毒治疗是否有效，主要是以HBeAg和HBV-DNA的阴转或定量的明显减少为指标。</p>
+<h5 id="乙肝五项检查对照："><a href="#乙肝五项检查对照：" class="headerlink" title="乙肝五项检查对照："></a>乙肝五项检查对照：</h5><p>1.乙肝五项第1项阳性，其余四项阴性，说明是急性病毒感染的潜伏期后期。</p>
+<p>2.乙肝五项第1、3、5项阳性，其余两项阴性，俗称乙肝大三阳，说明是急、慢性乙肝，传染性相对较强。</p>
+<p>3.乙肝五项第1、4、5项阳性，其余两项阴性，俗称乙肝小三阳，说明是急、慢性乙肝，传染性相对较弱。</p>
+<p>4.乙肝五项第1、3项阳性，其余三项阴性。说明是急性乙肝的早期。</p>
+<p>5.乙肝五项第1、3、4、5项阳性，说明急性乙肝感染趋向恢复，或者为慢性乙肝病毒携带者。</p>
+<p>6.乙肝五项第1、4项阳性，其余三项阴性，说明慢性乙肝表面抗原携带者易转阴，或者是急性感染趋向恢复。</p>
+<p>7.乙肝五项第1、5项阳性，其余三项阴性，说明是急、慢性乙肝，即：①急性HBV感染；②慢性HBsAg携带者；③传染性弱。</p>
+<p>8.乙肝五项第5项阳性，其余四项阴性，说明：①既往感染未能测出抗-HBs；②恢复期HBsAg已消，抗-HBs尚未出现；③无症状HBsAg携带者。</p>
+<p>9.乙肝五项第2、4、5项阳性，其余两项阴性，说明是乙肝的恢复期，已有免疫力。</p>
+<p>10.乙肝五项第2项阳性，其余四项阴性，说明：①曾经注射过乙肝疫苗并产生了抗体，有免疫力；②曾经有过乙肝病毒的感染，并且有一定的免疫力；③假阳性。</p>
+<p>11.乙肝五项第2、5项阳性，其余三项阴性，说明是接种了乙肝疫苗以后，或是乙肝病毒感染后已康复，已有免疫力。</p>
+<p>12.乙肝五项第4、5项阳性，其余三项阴性，说明是急性乙肝病毒感染的恢复期，或曾经感染过病毒。</p>
+<p>13.乙肝五项全阴，说明过去和现在未感染过HBV，但目前没有保护性抗体。</p>
+<p>中心截面定理</p>
+<p>电镜三维重构基于的原理就是傅里叶变换的中心截面定理</p>
+<p><strong>物体投影结构的傅里叶变换与该物体三维傅里叶变换的一个中心截面等价</strong> </p>
+<p><strong>如果收集足够多物体在各个方向的二维投影像，即可获得足够多傅里叶空间中的中心截面，将这些中心截面按其方向组合起来，即可获得物体三维傅里叶变换的近似值，将它作傅里叶逆变换，就得到物体的三维图像。</strong></p>
+<p><img src="/2019/04/20/Cryo-EM/单张与三维结构的关系.png" alt="中心截面定理"></p>
+<p><img src="/2019/04/20/Cryo-EM/中心截面定理.png" alt="中心截面定理"></p>
+<h2 id="傅里叶变换"><a href="#傅里叶变换" class="headerlink" title="傅里叶变换"></a>傅里叶变换</h2><p>只能说：</p>
+<p><strong>牛逼</strong></p>
+<p><strong>相关资料：</strong></p>
+<p><a href="https://zhuanlan.zhihu.com/p/19763358" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/19763358</a> 傅里叶分析之掐死教程（完整版）更新于2014.06.06</p>
+<p><a href="https://www.bilibili.com/video/av19141078?from=search&amp;seid=3411146207299915686" target="_blank" rel="noopener">https://www.bilibili.com/video/av19141078?from=search&amp;seid=3411146207299915686</a> 形象展示傅里叶变换</p>
+<p><a href="https://blog.csdn.net/Replus_/article/details/81945495" target="_blank" rel="noopener">https://blog.csdn.net/Replus_/article/details/81945495</a> 图像处理：如何理解傅里叶变换在图像处理中的应用</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Cryo-EM/" rel="tag"># Cryo-EM</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/30/some-basic-knowledge-of-DL/" rel="next" title="some basic knowledge of DL">
+                <i class="fa fa-chevron-left"></i> some basic knowledge of DL
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/26/Python串口程序/" rel="prev" title="Python串口程序">
+                Python串口程序 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/myshow.jpg"
+                alt="Jiageng Wu" />
+            
+              <p class="site-author-name" itemprop="name">Jiageng Wu</p>
+              <p class="site-description motion-element" itemprop="description">做一些自己喜欢的事情.</p>
+          </div>
+          
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=4894368&auto=1&height=66"></iframe>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Dragon-Wu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wujg1995@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.cnblogs.com/Dragon5/" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#电镜原理"><span class="nav-number">1.</span> <span class="nav-text">电镜原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#玻璃态"><span class="nav-number">1.0.1.</span> <span class="nav-text">玻璃态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非晶体"><span class="nav-number">1.0.2.</span> <span class="nav-text">非晶体</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#透射电子显微镜"><span class="nav-number">1.0.3.</span> <span class="nav-text">透射电子显微镜</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#扫描电子显微镜"><span class="nav-number">1.0.4.</span> <span class="nav-text">扫描电子显微镜</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结构生物学"><span class="nav-number">2.</span> <span class="nav-text">结构生物学</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#生物大分子"><span class="nav-number">2.0.1.</span> <span class="nav-text">生物大分子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#X-射线晶体学"><span class="nav-number">2.0.2.</span> <span class="nav-text">X-射线晶体学</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#核磁共振波谱学-NMR"><span class="nav-number">2.0.3.</span> <span class="nav-text">核磁共振波谱学 NMR</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#电镜技术"><span class="nav-number">2.0.4.</span> <span class="nav-text">电镜技术</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#乙型肝炎病毒（hepatitis-B-virus-HBV）"><span class="nav-number">3.</span> <span class="nav-text">乙型肝炎病毒（hepatitis B virus, HBV）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#病毒"><span class="nav-number">3.0.1.</span> <span class="nav-text">病毒</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#乙肝五项-肝两对半"><span class="nav-number">3.0.2.</span> <span class="nav-text">乙肝五项/肝两对半</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#乙肝五项检查内容："><span class="nav-number">3.0.2.1.</span> <span class="nav-text">乙肝五项检查内容：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#乙肝五项检查对照："><span class="nav-number">3.0.2.2.</span> <span class="nav-text">乙肝五项检查对照：</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#傅里叶变换"><span class="nav-number">4.</span> <span class="nav-text">傅里叶变换</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiageng Wu</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+-->
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
