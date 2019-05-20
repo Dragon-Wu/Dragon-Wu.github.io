@@ -118,7 +118,7 @@
 <meta property="og:site_name" content="一个地方">
 <meta property="og:description" content="Try to use the frequently-used approach  to cryo-EM structure determination">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-20T13:10:12.645Z">
+<meta property="og:updated_time" content="2019-05-20T13:30:31.963Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RELION3.0 Tutorial">
 <meta name="twitter:description" content="Try to use the frequently-used approach  to cryo-EM structure determination">
@@ -416,7 +416,17 @@
       
         <p>Try to use the frequently-used approach  to cryo-EM structure determination</p>
 <a id="more"></a>
-<h2 id="1-预处理"><a href="#1-预处理" class="headerlink" title="1 预处理"></a>1 预处理</h2><h3 id="1-1"><a href="#1-1" class="headerlink" title="1.1"></a>1.1</h3>
+<h2 id="1-预处理"><a href="#1-预处理" class="headerlink" title="1 预处理"></a>1 预处理</h2><h3 id="1-1-建立项目"><a href="#1-1-建立项目" class="headerlink" title="1.1  建立项目"></a>1.1  建立项目</h3><p>1、建议为每一个项目创建一个单独的路径，称之为项目路径，必须要在项目路径下打开RELION软件，之后所有操作都在该路径下</p>
+<p>2、建立Movie文件夹放原始图像或者视频（MRC or TIFF），We like to call this directory Movies/ if all movies are in one<br>directory, or for example Movies/15jan16/ and Movies/23jan16/ if they are in different directories (e.g. because they were collected on different dates).<br>    如果不把原始数据放入Movie文件夹，需要创建符号链接，用于指向实际存放地址</p>
+<p>3、Single-image micrographs should have a .mrc extension, movies can have a .mrc, .mrcs or .tiff extension.<br>如果我们下载了tutorial的测试数据，the (Movies/) directory was created. It should contain 24 movies in compressed TIFF format, a gain-reference file (gain.mrc) and a NOTES file with information about the experiment.</p>
+<p>4、每次打开RELION都需在该项目路径下，Therefore, the first time you launch the GUI in a new directory, you should not use the “&amp;” character to launch it in the background. Make sure you are inside the project directory, and launch the GUI by typing:</p>
+<p><strong>relion</strong></p>
+<p>and answer “y” to set up a new relion project here.</p>
+<p>5、将数据导入流水线，Select “Import” from the job-type browser, and fill in the following parameters:<br><strong>• Input files: Movies/*.tiff</strong><br><strong>• Node type: 2D micrograph movies</strong></p>
+<p>提供job的别名，in the white field named Current job: Give_alias_here. Clicking the <em>*Run now</em>! button will launch the job.</p>
+<p>A directory called Import/job001/ will be created,together with a symbolic link to this directory that is called import/movies.Inside the newly created directory a star file with all the movies is created.Have a look at it using:</p>
+<p><strong>less Import/job001/movies.star</strong></p>
+<h3 id="1-2"><a href="#1-2" class="headerlink" title="1.2"></a>1.2</h3>
       
     </div>
     
@@ -530,7 +540,7 @@
               <p class="site-description motion-element" itemprop="description">做一些自己喜欢的事情.</p>
           </div>
           
-          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=4894368&auto=1&height=66"></iframe>
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=386844&auto=1&height=66"></iframe>
 
           <nav class="site-state motion-element">
 
@@ -616,7 +626,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-预处理"><span class="nav-number">1.</span> <span class="nav-text">1 预处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1"><span class="nav-number">1.1.</span> <span class="nav-text">1.1</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-预处理"><span class="nav-number">1.</span> <span class="nav-text">1 预处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-建立项目"><span class="nav-number">1.1.</span> <span class="nav-text">1.1  建立项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2"><span class="nav-number">1.2.</span> <span class="nav-text">1.2</span></a></li></ol></li></ol></div>
             
 
           </div>
