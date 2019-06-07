@@ -162,7 +162,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/05/20/RELION3-0-Tutorial/3.1.1.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/20/RELION3-0-Tutorial/E:/Python-100-Days-master/3.1.2.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/20/RELION3-0-Tutorial/3.1.3.png">
-<meta property="og:updated_time" content="2019-06-07T13:30:39.559Z">
+<meta property="og:updated_time" content="2019-06-07T14:25:41.408Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RELION3.0 Tutorial">
 <meta name="twitter:description" content="Try to use the frequently-used approach  to cryo-EM structure determination">
@@ -319,16 +319,6 @@
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-today">
-          <a href="/Today/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
-            
-            Today
           </a>
         </li>
       
@@ -528,7 +518,9 @@
 <h3 id="3-1-运行作业"><a href="#3-1-运行作业" class="headerlink" title="3.1 运行作业"></a>3.1 运行作业</h3><p>选中3D initial model然后再I/O tab，选中刚刚生成的Select/class2d_aftersort/particles.star，CTF tab则不需要修改，而在optimisation tab页：<br><img src="/2019/05/20/RELION3-0-Tutorial/3.1.1.png" alt="3.1.1"><br>然后SGD tab的话，建议不修改参数，但是为了这个tutorial的加速，我们只是用平常一半的迭代数：<br>• Number of initial iterations 25<br>• Number of in-between iterations 100<br>• Number of final iterations 25</p>
 <p>然后在computer的tab里，就根据自己的系统进行优化，我的参数设置：<br>computer tab:<br><img src="/2019/05/20/RELION3-0-Tutorial/E:/Python-100-Days-master\3.1.2.png" alt="3.1.2"><br>running tab：<br><img src="/2019/05/20/RELION3-0-Tutorial/3.1.3.png" alt="3.1.3"></p>
 <p>然后是c004节点，ppn=2，我们大概使用了</p>
-<h3 id="3-2-分析结果"><a href="#3-2-分析结果" class="headerlink" title="3.2 分析结果"></a>3.2 分析结果</h3><p>查看刚才输出的三维图像（(InitialModel/job017/run_it150_class001.mrc)），如果在这个点上认出了其他的点群对称，按照RELION的惯例，将对称轴和坐标系的主X,Y,Z轴对齐：<br><strong>Run it as follows from the command line:</strong><br><em>relion_align_symmetry —i InitialModel/job017/run_it150_class001.mrc \</em><br><em>—o InitialModel/job017/run_it150_class001_alignD2.mrc —sym D2</em></p>
+<h3 id="3-2-分析结果"><a href="#3-2-分析结果" class="headerlink" title="3.2 分析结果"></a>3.2 分析结果</h3><p>查看刚才输出的三维图像（(InitialModel/job017/run_it150_class001.mrc)），需要使用chimera软件打开：</p>
+<p>首先，登陆baode02：ssh baode02 -Y<br>然后，输入：chimera 接着打开生成的  InitialModel/job017/run_it150_class001.mrc 那个it后面的数字是迭代到的代数</p>
+<p>如果在这个点上认出了其他的点群对称，按照RELION的惯例，将对称轴和坐标系的主X,Y,Z轴对齐：<br><strong>Run it as follows from the command line:</strong><br><em>relion_align_symmetry —i InitialModel/job017/run_it150_class001.mrc \</em><br><em>—o InitialModel/job017/run_it150_class001_alignD2.mrc —sym D2</em></p>
 <p><strong>And after confirming in UCSF Chimera or relion_display that the symmetry axes in the map are now indeed aligned with the X, Y and Z-axes, we can now impose D2 symmetry using:</strong><br><em>relion_image_handler —i InitialModel/job017/run_it150_class001_alignD2.mrc \</em><br><em>—o InitialModel/job017/run_it150_class001_symD2.mrc —sym D2</em><br><strong>The output map of the latter command should be similar to the input map.You could check this by:</strong><br><em>relion_display —i InitialModel/job017/run_it150_class001_alignD2.mrc &amp;</em><br><em>relion_display —i InitialModel/job017/run_it150_class001_symD2.mrc &amp;</em></p>
 <h2 id="4-无监督的三维分类-Unsupervised-3D-classification"><a href="#4-无监督的三维分类-Unsupervised-3D-classification" class="headerlink" title="4 无监督的三维分类(Unsupervised 3D classification)"></a>4 无监督的三维分类(Unsupervised 3D classification)</h2><p>所有的数据集都是不均一的！问题就在于，你有多能忍。RELION的3D多参考调优过程提供了一个有效的无监督3D分类方法；</p>
 <h3 id="4-1-运行作业"><a href="#4-1-运行作业" class="headerlink" title="4.1 运行作业"></a>4.1 运行作业</h3>
