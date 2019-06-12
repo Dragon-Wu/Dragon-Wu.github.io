@@ -110,18 +110,23 @@
 
 
 
-<meta name="description" content="边缘检测相关">
+<meta name="description" content="LoG算子：是高斯和拉普拉斯的双结合，即集平滑和边沿于一身的算子模型名字很复杂，原理还好">
 <meta name="keywords" content="机器学习,计算机视觉">
 <meta property="og:type" content="article">
-<meta property="og:title" content="边缘检测相关">
-<meta property="og:url" content="http://yoursite.com/2019/06/01/边缘检测相关/index.html">
+<meta property="og:title" content="Laplacian of Gaussian(LOG)高斯拉普拉斯算子">
+<meta property="og:url" content="http://yoursite.com/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/index.html">
 <meta property="og:site_name" content="一个地方">
-<meta property="og:description" content="边缘检测相关">
+<meta property="og:description" content="LoG算子：是高斯和拉普拉斯的双结合，即集平滑和边沿于一身的算子模型名字很复杂，原理还好">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-12T08:16:42.186Z">
+<meta property="og:image" content="http://yoursite.com/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/F:/bLoG/source/_posts/Laplacian-of-Gaussian-LoG-高斯拉普拉斯算子/20131017211041468.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/F:/bLoG/source/_posts/Laplacian-of-Gaussian-LoG-高斯拉普拉斯算子/20131017211058718.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/F:/bLoG/source/_posts/Laplacian-of-Gaussian-LoG-高斯拉普拉斯算子/20131017210636625.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/F:/bLoG/source/_posts/Laplacian-of-Gaussian-LoG-高斯拉普拉斯算子/20181022182149896.png">
+<meta property="og:updated_time" content="2019-06-12T09:09:29.157Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="边缘检测相关">
-<meta name="twitter:description" content="边缘检测相关">
+<meta name="twitter:title" content="Laplacian of Gaussian(LOG)高斯拉普拉斯算子">
+<meta name="twitter:description" content="LoG算子：是高斯和拉普拉斯的双结合，即集平滑和边沿于一身的算子模型名字很复杂，原理还好">
+<meta name="twitter:image" content="http://yoursite.com/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/F:/bLoG/source/_posts/Laplacian-of-Gaussian-LoG-高斯拉普拉斯算子/20131017211041468.jpg">
 
 
 
@@ -151,13 +156,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/06/01/边缘检测相关/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/"/>
 
 
 
 
 
-  <title>边缘检测相关 | 一个地方</title>
+  <title>Laplacian of Gaussian(LOG)高斯拉普拉斯算子 | 一个地方</title>
   
 
 
@@ -310,7 +315,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/01/边缘检测相关/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jiageng Wu">
@@ -327,7 +332,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">边缘检测相关</h1>
+          <h1 class="post-title" itemprop="name headline">Laplacian of Gaussian(LOG)高斯拉普拉斯算子</h1>
         
 
         <div class="post-meta">
@@ -339,8 +344,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-01T19:56:23+08:00">
-                2019-06-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-12T15:46:20+08:00">
+                2019-06-12
               </time>
             
 
@@ -404,10 +409,42 @@
       
 
       
-        <p>边缘检测相关</p>
+        <p>LoG算子：是高斯和拉普拉斯的双结合，即集平滑和边沿于一身的算子模型<br>名字很复杂，原理还好</p>
 <a id="more"></a>
-<h2 id="Canny边缘检测"><a href="#Canny边缘检测" class="headerlink" title="Canny边缘检测"></a>Canny边缘检测</h2><p><a href="https://www.cnblogs.com/techyan1990/p/7291771.html" target="_blank" rel="noopener">边缘检测之Canny</a> 非常详尽</p>
-<p><a href="https://blog.csdn.net/u014485485/article/details/78364573" target="_blank" rel="noopener">https://blog.csdn.net/u014485485/article/details/78364573</a> <strong>图像边缘检测——二阶微分算子（上）Laplace算子、LOG算子、DOG算子（Matlab实现）</strong></p>
+<h2 id="高斯平滑"><a href="#高斯平滑" class="headerlink" title="高斯平滑"></a>高斯平滑</h2><p>图像高斯平滑也是邻域平均的思想对图像进行平滑的一种方法，在图像高斯平滑中，对图像进行平均时，不同位置的像素被赋予了不同的权重。<br>（具体可以看上篇：<a href="https://wujg.xyz/2019/06/11/图像增强之图像平滑、锐化/" target="_blank" rel="noopener">图像增强之图像平滑、锐化</a>）</p>
+<h2 id="拉普拉斯算子"><a href="#拉普拉斯算子" class="headerlink" title="拉普拉斯算子"></a>拉普拉斯算子</h2><p>在图像中，边缘的附近必然存在着灰度值的变化，所以边缘可以看做是位于一阶导数较大的像素处</p>
+<p><img src="/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/F:/bLoG\source\_posts\Laplacian-of-Gaussian-LoG-高斯拉普拉斯算子\20131017211041468.jpg" alt="20131017211041468"></p>
+<p>因此，可以通过求图像灰度值的一阶导数来确定图像的边缘，像sobel算子等一系列的算子都是基于这个思想的：</p>
+<p><img src="/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/F:/bLoG\source\_posts\Laplacian-of-Gaussian-LoG-高斯拉普拉斯算子\20131017211058718.jpg" alt="20131017211058718"></p>
+<p>如上图表示图像边缘时的灰度导数，由于边缘最明显的地方就在于灰度值变化最剧烈，所以也就是导数极值出现的点，也就是对应灰度值二阶导数为0处，如下图：</p>
+<p><img src="/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/F:/bLoG\source\_posts\Laplacian-of-Gaussian-LoG-高斯拉普拉斯算子\20131017210636625.jpg" alt="20131017210636625"></p>
+<p>其实高斯平滑就是仿照高斯分布的均匀分布进行平滑：</p>
+<p><img src="/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/F:/bLoG\source\_posts\Laplacian-of-Gaussian-LoG-高斯拉普拉斯算子\20181022182149896.png" alt="20181022182149896"></p>
+<p>（具体可以看上篇：<a href="https://wujg.xyz/2019/06/11/图像增强之图像平滑、锐化/" target="_blank" rel="noopener">图像增强之图像平滑、锐化</a>）</p>
+<h2 id="高斯拉普拉斯算子"><a href="#高斯拉普拉斯算子" class="headerlink" title="高斯拉普拉斯算子"></a>高斯拉普拉斯算子</h2><p>由于Laplace算子是通过对图像进行微分操作实现边缘检测的，所以对离散点和噪声比较敏感。</p>
+<p>于是，首先对图像进行高斯卷积滤波进行降噪处理，再采用Laplace算子进行边缘检测，就可以提高算子对噪声和离散点的鲁棒性，如此，拉普拉斯高斯算子LoG（Laplace of Gaussian）就诞生了。</p>
+<p>因为卷积满足结合律，所以可以先对高斯平滑和拉普拉斯算子进行卷积，之后再将卷积结果和图像进行卷积，这样带来了两个好处：</p>
+<p>1.两个Filter都比较小，所以卷积起来运算很少<br>2.在对图像进行卷积的时候，只进行一次的卷积运算</p>
+<p>于是就成了对图像进行Laplacian of Gaussian卷积。</p>
+<p><strong>高斯函数</strong></p>
+<script type="math/tex; mode=display">
+G(x,y,\sigma)=\frac{1}{2\pi\sigma^2}e^{-(x^2+y^2)/2\sigma^2}</script><p><strong>拉普拉斯算子</strong></p>
+<script type="math/tex; mode=display">
+\nabla^2f=\frac{\partial^2f}{\partial{x^2}}+\frac{\partial^2f}{\partial{y^2}}</script><p> <strong>对二维高斯函数应用拉普拉斯算子得</strong> </p>
+<script type="math/tex; mode=display">
+\nabla^2G=\frac{\partial^2G}{\partial{x^2}}+\frac{\partial^2G}{\partial{y^2}}=
+\frac{-2\sigma^2+x^2+y^2}{2\pi\sigma^6}e^{-(x^2+y^2)/2\sigma^2}</script><p> LoG（ Laplacian of Gaussian ）算子定义为 ：</p>
+<script type="math/tex; mode=display">
+LoG=\sigma^2\nabla^2G</script><p>所以最后，在边缘处的LoG相应具有以下特点：</p>
+<ul>
+<li>zero at a long distance from the edge；</li>
+<li>positve just to one side of the edge；</li>
+<li>negative just to the other side of the edge；</li>
+<li>zero at some point in between, on the edge itself</li>
+</ul>
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p><a href="https://bLoG.csdn.net/touch_dream/article/details/62237018" target="_blank" rel="noopener">https://bLoG.csdn.net/touch_dream/article/details/62237018</a>  LoG高斯-拉普拉斯算子</p>
+<p><a href="https://bLoG.csdn.net/qq_25638133/article/details/83276318" target="_blank" rel="noopener">https://bLoG.csdn.net/qq_25638133/article/details/83276318</a> Laplacian of Gaussian (LoG) 高斯拉普拉斯算子</p>
+<p><a href="https://bLoG.csdn.net/u014485485/article/details/78364573" target="_blank" rel="noopener">https://bLoG.csdn.net/u014485485/article/details/78364573</a>  图像边缘检测——二阶微分算子（上）Laplace算子、LoG算子、DOG算子（Matlab实现）</p>
 
       
     </div>
@@ -440,8 +477,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/21/傅里叶变换/" rel="next" title="傅里叶变换">
-                <i class="fa fa-chevron-left"></i> 傅里叶变换
+              <a href="/2019/06/11/图像增强之图像平滑、锐化/" rel="next" title="图像增强之图像平滑、锐化">
+                <i class="fa fa-chevron-left"></i> 图像增强之图像平滑、锐化
               </a>
             
           </div>
@@ -449,10 +486,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/11/图像增强之图像平滑、锐化/" rel="prev" title="图像增强之图像平滑、锐化">
-                图像增强之图像平滑、锐化 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -614,7 +647,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Canny边缘检测"><span class="nav-number">1.</span> <span class="nav-text">Canny边缘检测</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#高斯平滑"><span class="nav-number">1.</span> <span class="nav-text">高斯平滑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拉普拉斯算子"><span class="nav-number">2.</span> <span class="nav-text">拉普拉斯算子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高斯拉普拉斯算子"><span class="nav-number">3.</span> <span class="nav-text">高斯拉普拉斯算子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考："><span class="nav-number">4.</span> <span class="nav-text">参考：</span></a></li></ol></div>
             
 
           </div>
