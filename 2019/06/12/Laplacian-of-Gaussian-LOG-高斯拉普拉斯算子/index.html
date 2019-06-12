@@ -118,15 +118,19 @@
 <meta property="og:site_name" content="一个地方">
 <meta property="og:description" content="LoG算子：是高斯和拉普拉斯的双结合，即集平滑和边沿于一身的算子模型名字很复杂，原理还好">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/F:/bLoG/source/_posts/Laplacian-of-Gaussian-LoG-高斯拉普拉斯算子/20131017211041468.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/F:/bLoG/source/_posts/Laplacian-of-Gaussian-LoG-高斯拉普拉斯算子/20131017211058718.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/F:/bLoG/source/_posts/Laplacian-of-Gaussian-LoG-高斯拉普拉斯算子/20131017210636625.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/F:/bLoG/source/_posts/Laplacian-of-Gaussian-LoG-高斯拉普拉斯算子/20181022182149896.png">
-<meta property="og:updated_time" content="2019-06-12T09:09:29.157Z">
+<meta property="og:image" content="http://yoursite.com/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/20131017211041468.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/20131017211058718.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/20131017210636625.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/20181022182149896.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/fofgaussian.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/foflaplacian.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/foflog.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/foflog算子.png">
+<meta property="og:updated_time" content="2019-06-12T10:32:53.376Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Laplacian of Gaussian(LOG)高斯拉普拉斯算子">
 <meta name="twitter:description" content="LoG算子：是高斯和拉普拉斯的双结合，即集平滑和边沿于一身的算子模型名字很复杂，原理还好">
-<meta name="twitter:image" content="http://yoursite.com/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/F:/bLoG/source/_posts/Laplacian-of-Gaussian-LoG-高斯拉普拉斯算子/20131017211041468.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/20131017211041468.jpg">
 
 
 
@@ -413,13 +417,13 @@
 <a id="more"></a>
 <h2 id="高斯平滑"><a href="#高斯平滑" class="headerlink" title="高斯平滑"></a>高斯平滑</h2><p>图像高斯平滑也是邻域平均的思想对图像进行平滑的一种方法，在图像高斯平滑中，对图像进行平均时，不同位置的像素被赋予了不同的权重。<br>（具体可以看上篇：<a href="https://wujg.xyz/2019/06/11/图像增强之图像平滑、锐化/" target="_blank" rel="noopener">图像增强之图像平滑、锐化</a>）</p>
 <h2 id="拉普拉斯算子"><a href="#拉普拉斯算子" class="headerlink" title="拉普拉斯算子"></a>拉普拉斯算子</h2><p>在图像中，边缘的附近必然存在着灰度值的变化，所以边缘可以看做是位于一阶导数较大的像素处</p>
-<p><img src="/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/F:/bLoG\source\_posts\Laplacian-of-Gaussian-LoG-高斯拉普拉斯算子\20131017211041468.jpg" alt="20131017211041468"></p>
+<p><img src="/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/20131017211041468.jpg" alt="20131017211041468"></p>
 <p>因此，可以通过求图像灰度值的一阶导数来确定图像的边缘，像sobel算子等一系列的算子都是基于这个思想的：</p>
-<p><img src="/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/F:/bLoG\source\_posts\Laplacian-of-Gaussian-LoG-高斯拉普拉斯算子\20131017211058718.jpg" alt="20131017211058718"></p>
+<p><img src="/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/20131017211058718.jpg" alt="20131017211058718"></p>
 <p>如上图表示图像边缘时的灰度导数，由于边缘最明显的地方就在于灰度值变化最剧烈，所以也就是导数极值出现的点，也就是对应灰度值二阶导数为0处，如下图：</p>
-<p><img src="/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/F:/bLoG\source\_posts\Laplacian-of-Gaussian-LoG-高斯拉普拉斯算子\20131017210636625.jpg" alt="20131017210636625"></p>
+<p><img src="/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/20131017210636625.jpg" alt="20131017210636625"></p>
 <p>其实高斯平滑就是仿照高斯分布的均匀分布进行平滑：</p>
-<p><img src="/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/F:/bLoG\source\_posts\Laplacian-of-Gaussian-LoG-高斯拉普拉斯算子\20181022182149896.png" alt="20181022182149896"></p>
+<p><img src="/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/20181022182149896.png" alt="20181022182149896"></p>
 <p>（具体可以看上篇：<a href="https://wujg.xyz/2019/06/11/图像增强之图像平滑、锐化/" target="_blank" rel="noopener">图像增强之图像平滑、锐化</a>）</p>
 <h2 id="高斯拉普拉斯算子"><a href="#高斯拉普拉斯算子" class="headerlink" title="高斯拉普拉斯算子"></a>高斯拉普拉斯算子</h2><p>由于Laplace算子是通过对图像进行微分操作实现边缘检测的，所以对离散点和噪声比较敏感。</p>
 <p>于是，首先对图像进行高斯卷积滤波进行降噪处理，再采用Laplace算子进行边缘检测，就可以提高算子对噪声和离散点的鲁棒性，如此，拉普拉斯高斯算子LoG（Laplace of Gaussian）就诞生了。</p>
@@ -427,13 +431,17 @@
 <p>1.两个Filter都比较小，所以卷积起来运算很少<br>2.在对图像进行卷积的时候，只进行一次的卷积运算</p>
 <p>于是就成了对图像进行Laplacian of Gaussian卷积。</p>
 <p><strong>高斯函数</strong></p>
+<p><img src="/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/fofgaussian.png" alt="fofgaussian"></p>
 <script type="math/tex; mode=display">
 G(x,y,\sigma)=\frac{1}{2\pi\sigma^2}e^{-(x^2+y^2)/2\sigma^2}</script><p><strong>拉普拉斯算子</strong></p>
+<p><img src="/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/foflaplacian.png" alt="foflaplacian"></p>
 <script type="math/tex; mode=display">
 \nabla^2f=\frac{\partial^2f}{\partial{x^2}}+\frac{\partial^2f}{\partial{y^2}}</script><p> <strong>对二维高斯函数应用拉普拉斯算子得</strong> </p>
+<p><img src="/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/foflog.png" alt="foflog"></p>
 <script type="math/tex; mode=display">
 \nabla^2G=\frac{\partial^2G}{\partial{x^2}}+\frac{\partial^2G}{\partial{y^2}}=
 \frac{-2\sigma^2+x^2+y^2}{2\pi\sigma^6}e^{-(x^2+y^2)/2\sigma^2}</script><p> LoG（ Laplacian of Gaussian ）算子定义为 ：</p>
+<p><img src="/2019/06/12/Laplacian-of-Gaussian-LOG-高斯拉普拉斯算子/foflog算子.png" alt="foflog算子"></p>
 <script type="math/tex; mode=display">
 LoG=\sigma^2\nabla^2G</script><p>所以最后，在边缘处的LoG相应具有以下特点：</p>
 <ul>
