@@ -169,7 +169,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/05/20/RELION3-0-Tutorial/3.2.1.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/20/RELION3-0-Tutorial/3.2.2.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/20/RELION3-0-Tutorial/particle_image.png">
-<meta property="og:updated_time" content="2019-06-12T08:21:05.878Z">
+<meta property="og:updated_time" content="2019-06-14T17:09:33.452Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RELION3.0 Tutorial">
 <meta name="twitter:description" content="Try to use the frequently-used approach  to cryo-EM structure determination">
@@ -540,7 +540,19 @@
 <p>如果在这个点上认出了其他的点群对称，按照RELION的惯例，将对称轴和坐标系的主X,Y,Z轴对齐：<br><strong>Run it as follows from the command line:</strong><br><em>relion_align_symmetry —i InitialModel/job017/run_it150_class001.mrc \</em><br><em>—o InitialModel/job017/run_it150_class001_alignD2.mrc —sym D2</em></p>
 <p><strong>And after confirming in UCSF Chimera or relion_display that the symmetry axes in the map are now indeed aligned with the X, Y and Z-axes, we can now impose D2 symmetry using:</strong><br><em>relion_image_handler —i InitialModel/job017/run_it150_class001_alignD2.mrc \</em><br><em>—o InitialModel/job017/run_it150_class001_symD2.mrc —sym D2</em><br><strong>The output map of the latter command should be similar to the input map.You could check this by:</strong><br><em>relion_display —i InitialModel/job017/run_it150_class001_alignD2.mrc &amp;</em><br><em>relion_display —i InitialModel/job017/run_it150_class001_symD2.mrc &amp;</em></p>
 <h2 id="4-无监督的三维分类-Unsupervised-3D-classification"><a href="#4-无监督的三维分类-Unsupervised-3D-classification" class="headerlink" title="4 无监督的三维分类(Unsupervised 3D classification)"></a>4 无监督的三维分类(Unsupervised 3D classification)</h2><p>所有的数据集都是不均一的！问题就在于，你有多能忍。RELION的3D多参考调优过程提供了一个有效的无监督3D分类方法；</p>
-<h3 id="4-1-运行作业"><a href="#4-1-运行作业" class="headerlink" title="4.1 运行作业"></a>4.1 运行作业</h3><p>3D classification</p>
+<h3 id="4-1-运行作业"><a href="#4-1-运行作业" class="headerlink" title="4.1 运行作业"></a>4.1 运行作业</h3><p><strong>3D classification：</strong></p>
+<ol>
+<li><p><strong>On the I/O tab set:</strong><br><strong>• Input images STAR file: Select/class2d aftersort/particles.star</strong><br><strong>• Reference map: InitialModel/job017/run it150 class001 symD2.mrc</strong><br>(Note that this map does not appear in the Browse button as it is not part of the pipeline. You can either type it’s name into the entry field, or first import the map using the Import jobtype. Also note that, because we wil be running in symmetry C1, we could have also chosen to use the non-symmetric InitialModel/job017/run_it150_class001.mrc. However,already being in the right symmetry setting is more convenient later on.)<br><strong>• Reference mask (optional):</strong><br>(Leave this empty. This is the place where we for example provided large/small-subunit masks for our focussed ribosome refinements. If left empty, a spherical mask with the particle diameter given on the Optimisation tab will be used. This introduces the least bias into the classification.)</p>
+</li>
+<li><p><strong>On the Reference tab set:</strong><br><strong>• Ref. map is on absolute greyscale: Yes</strong><br>(Given that this map was reconstructed from this data set, it is already on the correct greyscale. Any map that is not reconstructed from the same data in relion should probably be considered as not being on the correct greyscale.)<br><strong>• Initial low-pass filter (A): 50</strong><br>(One should NOT use high-resolution starting models as they may introduce bias into the refinement process. As also explained in [12], one should filter the initial map as much as one can. For ribosome we often use 70°A,<br>for smaller particles we typically use values of 40-60°A.)<br><strong>• Symmetry: C1</strong><br>(Although we know that this sample has D2 symmetry, it is often a good idea to perform an initial classification without any symmetry,so bad particles, which are not symmetry, can get separated from proper ones, and the symmetry can be verified in the reconstructed maps.)</p>
+</li>
+<li><p>On the CTF tab set:<br><strong>• Do CTF correction? Yes</strong><br><strong>• Has reference been CTF-corrected? Yes</strong><br>(As this model was made using CTF-correction in the SGD.)<br><strong>• Have data been phase flipped? No</strong><br><strong>• Ignore CTFs until first peak? No</strong><br>(Only use this option if you also did so in the 2D classification job that you used to create the references.)</p>
+</li>
+<li><p>On the Optimisation tab set:</p>
+<p><strong>• Number of classes: 4</strong><br>(Using more classes will divide the data set into more subsets, potentially<br>describing more variability. The computational costs scales linearly with<br>the number of classes, both in terms of CPU time and required computer<br>memory.)<br><strong>• Number of iterations: 25</strong><br>(We typically do not change this.)<br><strong>• Regularisation parameter T: 4</strong><br>For the exact definition of T, please refer to [13]. For cryo-EM 2D classification we typically use values of T=1-2, and for 3D classification values of 2-4. For negative stain sometimes slightly lower values are better. In general, if your class averages appear noisy, then lower T; if your class averages remain too-low resolution, then increase T. The main thing isto be aware of overfitting high-resolution noise. We happened to use a value of 2 in our pre-calculated results. Probably a value of 4 would have worked equally well…<br><strong>• Mask diameter (A): 200</strong><br>(Just use the same value as we did before in the 2D classification job-type.)<br><strong>• Mask individual particles with zeros? Yes</strong><br><strong>• Limit resolution E-step to (A): -1</strong><br>(If a positive value is given, then no frequencies beyond this value will be included in the alignment. This can also be useful to prevent overfitting.Here we don’t really need it, but it could have been set to 10-15A anyway.)</p>
+<p>而sampling tab一般不需要修改参数，</p>
+</li>
+</ol>
 
       
     </div>
@@ -668,7 +680,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
