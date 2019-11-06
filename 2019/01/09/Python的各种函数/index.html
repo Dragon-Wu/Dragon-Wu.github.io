@@ -118,7 +118,7 @@
 <meta property="og:site_name" content="一个地方">
 <meta property="og:description" content="遇到过的各个函数">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-11T14:02:40.727Z">
+<meta property="og:updated_time" content="2019-11-06T13:06:54.853Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python的各种函数">
 <meta name="twitter:description" content="遇到过的各个函数">
@@ -408,11 +408,6 @@
 <a id="more"></a>
 <h2 id="os-mkdir-和os-mkdirs（）"><a href="#os-mkdir-和os-mkdirs（）" class="headerlink" title="os.mkdir()和os.mkdirs（）"></a>os.mkdir()和os.mkdirs（）</h2><p>1.mkdir( path [,mode] )<br>​      作用：创建一个目录，可以是相对或者绝对路径，mode的默认模式是0777。<br>​      如果目录有多级，则创建最后一级。如果最后一级目录的上级目录有不存在的，则会抛出一个OSError。</p>
 <p> 2.makedirs( path [,mode] )<br>​      作用： 创建递归的目录树，可以是相对或者绝对路径，mode的默认模式也是0777。<br>​      如果子目录创建失败或者已经存在，会抛出一个OSError的异常，如果path只有一级，与mkdir一样。</p>
-<h2 id="Xrange"><a href="#Xrange" class="headerlink" title="Xrange"></a>Xrange</h2><p>Python2中常用类似xrange(10)，生成列表进行迭代，Python3取消了xrange</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;type(xrange(<span class="number">10</span>))</span><br><span class="line">&lt;type <span class="string">'list'</span>&gt;</span><br></pre></td></tr></table></figure>
-<p>python2中，range的返回值是list，这意味着内存将会分布相应的长度的空间给list</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(range(<span class="number">10</span>))</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">range</span>'&gt;</span></span><br></pre></td></tr></table></figure>
-<p>python3中返回的是一个对象，并没有将数据完全实例化，所以内存中只有一个对象的空间，对性能优化还是很有帮助的</p>
 <h2 id="six-moves："><a href="#six-moves：" class="headerlink" title="six.moves："></a>six.moves：</h2><p>six是用来兼容python 2 和 3的，名字就是用的2和3的最小公倍数</p>
 <p>six.moves 是用来处理那些在2 和 3里面函数的位置有变化的，直接用six.moves就可以屏蔽掉这些变化</p>
 <h2 id="urllib-request-urlretrieve"><a href="#urllib-request-urlretrieve" class="headerlink" title="urllib.request.urlretrieve:"></a>urllib.request.urlretrieve:</h2><p><strong>描述</strong><br>urllib.request.urlretrieve(url, filename=None, reporthook=None, data=None)</p>
@@ -551,7 +546,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -628,7 +623,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#os-mkdir-和os-mkdirs（）"><span class="nav-number">1.</span> <span class="nav-text">os.mkdir()和os.mkdirs（）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Xrange"><span class="nav-number">2.</span> <span class="nav-text">Xrange</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#six-moves："><span class="nav-number">3.</span> <span class="nav-text">six.moves：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#urllib-request-urlretrieve"><span class="nav-number">4.</span> <span class="nav-text">urllib.request.urlretrieve:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">4.1.</span> <span class="nav-text"> </span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#os-mkdir-和os-mkdirs（）"><span class="nav-number">1.</span> <span class="nav-text">os.mkdir()和os.mkdirs（）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#six-moves："><span class="nav-number">2.</span> <span class="nav-text">six.moves：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#urllib-request-urlretrieve"><span class="nav-number">3.</span> <span class="nav-text">urllib.request.urlretrieve:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">3.1.</span> <span class="nav-text"> </span></a></li></ol></li></ol></div>
             
 
           </div>
