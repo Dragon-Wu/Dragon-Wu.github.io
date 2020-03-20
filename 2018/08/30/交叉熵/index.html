@@ -120,8 +120,8 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/08/30/交叉熵/公式.png">
 <meta property="og:image" content="http://yoursite.com/2018/08/30/交叉熵/KL.png">
-<meta property="og:image" content="http://yoursite.com/2018/08/30/交叉熵/交叉熵.png">
-<meta property="og:updated_time" content="2020-03-20T07:44:25.852Z">
+<meta property="og:image" content="http://yoursite.com/2018/08/30/交叉熵/交叉/交叉熵.png">
+<meta property="og:updated_time" content="2020-03-20T08:27:24.146Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="交叉熵">
 <meta name="twitter:description" content="交叉熵（Cross-Entropy）是机器学习中一种常用的损失函数，是用来评估当前预测状态与正确状态之间的差异，之前做毕设时，在推导决策树的过程中，了解了部分关于信息熵（Infomation Entropy）的知识，与交叉熵有一些地方相同，却也有不同，特此学习了进行总结。">
@@ -462,7 +462,7 @@
 <p>在机器学习中，P往往用来表示样本的真实分布，比如[1,0,0]表示当前样本属于第一类。Q用来表示模型所预测的分布，比如[0.7,0.2,0.1]<br>直观的理解就是如果用P来描述样本，那么就非常完美。而用Q来描述样本，虽然可以大致描述，但是不是那么的完美，信息量不足，需要额外的一些“信息增量”才能达到和P一样完美的描述。如果我们的Q通过反复训练，也能完美的描述样本，那么就不再需要额外的“信息增量”，Q等价于P。</p>
 <p>KL散度的计算公式： </p>
 <p><img src="/2018/08/30/交叉熵/KL.png" alt="KL"></p>
-<h2 id="交叉熵"><a href="#交叉熵" class="headerlink" title="交叉熵"></a>交叉熵</h2><p><img src="/2018/08/30/交叉熵/交叉熵.png" alt="交叉熵"></p>
+<h2 id="交叉熵"><a href="#交叉熵" class="headerlink" title="交叉熵"></a>交叉熵</h2><p><img src="/2018/08/30/交叉熵/交叉/交叉熵.png" alt="交叉熵"></p>
 <p>等式的前一部分恰巧就是p的熵，等式的后一部分，就是交叉熵： </p>
 <pre><code>                                H(p,q)=−∑p(xi)log(q(xi))
 </code></pre><p>在机器学习中，我们需要评估label和predicts之间的差距，使用KL散度刚刚好，即DKL(y||y^)，由于KL散度中的前一部分−H(y)不变，故在优化过程中，只需要关注交叉熵就可以了。所以一般在机器学习中直接用用交叉熵做loss，评估模型。</p>
@@ -597,7 +597,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
