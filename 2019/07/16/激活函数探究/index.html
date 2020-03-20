@@ -133,7 +133,9 @@
 <meta property="og:image" content="http://yoursite.com/2019/07/16/激活函数探究/606386-20180712202915278-1408388561.png">
 <meta property="og:image" content="http://yoursite.com/2019/07/16/激活函数探究/TIM截图20190716110013.png">
 <meta property="og:image" content="http://yoursite.com/2019/07/16/激活函数探究/TIM截图20190716110241.png">
-<meta property="og:updated_time" content="2019-07-16T03:16:51.238Z">
+<meta property="og:image" content="http://yoursite.com/2019/07/16/激活函数探究/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E6%8E%A2%E7%A9%B6/606386-20171009171758918-776097243.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/07/16/激活函数探究/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E6%8E%A2%E7%A9%B6/image-20200320162315310.png">
+<meta property="og:updated_time" content="2020-03-20T08:23:17.824Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="激活函数探究">
 <meta name="twitter:description" content="在神经网络训练时，经常需要通过激活函数加入非线性因素，以此提高模型的泛化能力">
@@ -521,11 +523,19 @@
 <p>由于梯度的公式包含每层激励的导数以及权重的乘积,因此让中间层的乘积约等于1即可.但是sigmoid这种函数的导数值又与权重有关系(最大值1/4,两边对称下降),所以含有sigmoid的神经网络不容易解决,输出层的activation大部分饱和,因此不建议使用sigmoid.<br>ReLU在自变量大于0时导数为1,小于0时导数为0,因此可以解决上述问题.</p>
 <p><strong>梯度爆炸</strong><br>由于sigmoid,ReLU等函数的梯度都在[0,1]以内，所以不会引发梯度爆炸问题。 而梯度爆炸需要采用梯度裁剪、BN、设置较小学习率等方式解决。</p>
 <h2 id="激活函数选择"><a href="#激活函数选择" class="headerlink" title="激活函数选择"></a>激活函数选择</h2><ol>
-<li>首先尝试ReLU,速度快,但要注意训练的状态.</li>
-<li>如果ReLU效果欠佳,尝试Leaky ReLU或Maxout等变种。</li>
-<li>尝试tanh正切函数(以零点为中心,零点处梯度为1)</li>
-<li>sigmoid/tanh在RNN（LSTM、注意力机制等）结构中有所应用，作为门控或者概率值.</li>
-<li>在浅层神经网络中，如不超过4层的，可选择使用多种激励函数，没有太大的影响。</li>
+<li><p>首先尝试ReLU,速度快,但要注意训练的状态.</p>
+</li>
+<li><p>如果ReLU效果欠佳,尝试Leaky ReLU或Maxout等变种。</p>
+</li>
+<li><p>尝试tanh正切函数(以零点为中心,零点处梯度为1)</p>
+</li>
+<li><p>sigmoid/tanh在RNN（LSTM、注意力机制等）结构中有所应用，作为门控或者概率值.</p>
+</li>
+<li><p>在浅层神经网络中，如不超过4层的，可选择使用多种激励函数，没有太大的影响。</p>
+</li>
+<li><p><img src="/2019/07/16/激活函数探究/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E6%8E%A2%E7%A9%B6/606386-20171009171758918-776097243.jpg" alt="606386-20171009171758918-776097243"></p>
+<p><img src="/2019/07/16/激活函数探究/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E6%8E%A2%E7%A9%B6/image-20200320162315310.png" alt="image-20200320162315310"></p>
+</li>
 </ol>
 <hr>
 <p>主要参考：<a href="https://www.cnblogs.com/makefile/p/activation-function.html" target="_blank" rel="noopener">激活函数(ReLU, Swish, Maxout)</a></p>
@@ -663,7 +673,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -685,7 +695,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -760,7 +770,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-snowflake-o"></i>
   </span>
