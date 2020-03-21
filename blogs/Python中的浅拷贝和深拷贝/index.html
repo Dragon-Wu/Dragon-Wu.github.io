@@ -101,7 +101,7 @@
 
 
 
-  <meta name="keywords" content="机器学习,Tensorflow," />
+  <meta name="keywords" content="Python," />
 
 
 
@@ -112,18 +112,18 @@
 
 
 
-<meta name="description" content="卷积神经网络，作为最热门的机器视觉模型之一，具有很强的识别能力，但其本身有很多细节需要掌握，结合Tensorflow框架对其代码实现做一定的知识补充。">
-<meta name="keywords" content="机器学习,Tensorflow">
+<meta name="description" content="浅拷贝，深拷贝，老生常谈了，写下来，希望记住">
+<meta name="keywords" content="Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="卷积神经网络">
-<meta property="og:url" content="http://jgwu.top/blogs/卷积神经网络/index.html">
+<meta property="og:title" content="Python中的浅拷贝和深拷贝">
+<meta property="og:url" content="http://jgwu.top/blogs/Python中的浅拷贝和深拷贝/index.html">
 <meta property="og:site_name" content="一个地方">
-<meta property="og:description" content="卷积神经网络，作为最热门的机器视觉模型之一，具有很强的识别能力，但其本身有很多细节需要掌握，结合Tensorflow框架对其代码实现做一定的知识补充。">
+<meta property="og:description" content="浅拷贝，深拷贝，老生常谈了，写下来，希望记住">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-20T07:42:22.976Z">
+<meta property="og:updated_time" content="2020-03-21T13:30:15.101Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="卷积神经网络">
-<meta name="twitter:description" content="卷积神经网络，作为最热门的机器视觉模型之一，具有很强的识别能力，但其本身有很多细节需要掌握，结合Tensorflow框架对其代码实现做一定的知识补充。">
+<meta name="twitter:title" content="Python中的浅拷贝和深拷贝">
+<meta name="twitter:description" content="浅拷贝，深拷贝，老生常谈了，写下来，希望记住">
 
 
 
@@ -153,13 +153,13 @@
 
 
 
-  <link rel="canonical" href="http://jgwu.top/blogs/卷积神经网络/"/>
+  <link rel="canonical" href="http://jgwu.top/blogs/Python中的浅拷贝和深拷贝/"/>
 
 
 
 
 
-  <title>卷积神经网络 | 一个地方</title>
+  <title>Python中的浅拷贝和深拷贝 | 一个地方</title>
   
 
 
@@ -347,7 +347,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://jgwu.top/blogs/卷积神经网络/">
+    <link itemprop="mainEntityOfPage" href="http://jgwu.top/blogs/Python中的浅拷贝和深拷贝/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jiageng Wu">
@@ -364,7 +364,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">卷积神经网络</h2>
+          <h2 class="post-title" itemprop="name headline">Python中的浅拷贝和深拷贝</h2>
         
 
         <div class="post-meta">
@@ -376,8 +376,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-01T10:31:31+08:00">
-                2018-09-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-21T20:58:29+08:00">
+                2020-03-21
               </time>
             
 
@@ -417,8 +417,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/blogs/卷积神经网络/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/blogs/卷积神经网络/" itemprop="commentCount"></span>
+                <a href="/blogs/Python中的浅拷贝和深拷贝/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/blogs/Python中的浅拷贝和深拷贝/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -445,7 +445,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  972
+                  813
                 </span>
               
 
@@ -482,56 +482,29 @@
       
 
       
-        <p>卷积神经网络，作为最热门的机器视觉模型之一，具有很强的识别能力，但其本身有很多细节需要掌握，结合Tensorflow框架对其代码实现做一定的知识补充。</p>
+        <p>浅拷贝，深拷贝，老生常谈了，写下来，希望记住</p>
 <a id="more"></a>
-<h2 id="Tensorflow的tf-nn-conv2d方法"><a href="#Tensorflow的tf-nn-conv2d方法" class="headerlink" title="Tensorflow的tf.nn.conv2d方法"></a>Tensorflow的tf.nn.conv2d方法</h2><h3 id="方法定义"><a href="#方法定义" class="headerlink" title="方法定义"></a>方法定义</h3><p>tf.nn.conv2d (input, filter, strides, padding, use_cudnn_on_gpu=None, data_format=None, name=None)</p>
-<h3 id="参数："><a href="#参数：" class="headerlink" title="参数："></a>参数：</h3><ul>
-<li><strong>input :</strong> 输入的要做卷积的图片，要求为一个张量，shape为 [ batch, in_height, in_weight, in_channel ]，其中batch为图片的数量，in_height 为图片高度，in_weight 为图片宽度，in_channel 为图片的通道数，灰度图该值为1，彩色图为3。（也可以用其它值，但是具体含义不是很理解）</li>
-<li><strong>filter：</strong> 卷积核，要求也是一个张量，shape为 [ filter_height, filter_weight, in_channel, out_channels ]，其中 filter_height 为卷积核高度，filter_weight 为卷积核宽度，in_channel 是图像通道数 ，和 input 的 in_channel 要保持一致，out_channel 是卷积核数量。</li>
-<li><strong>strides：</strong> 卷积时在图像每一维的步长，这是一个一维的向量，[ 1, strides, strides, 1]，第一位和最后一位固定必须是1。（还不了解为什么一位就可以确定的事情需要四个数字确定，之后再看）</li>
-<li><strong>padding：</strong> string类型，值为“SAME” 和 “VALID”，表示的是卷积的形式，是否考虑边界。”SAME”是考虑边界，不足的时候用0去填充周围，”VALID”则不考虑</li>
-<li><strong>use_cudnn_on_gpu：</strong> bool类型，是否使用cudnn加速，默认为true</li>
-</ul>
-<h2 id="Tensorflow的tf-nn-max-pool最大池化方法"><a href="#Tensorflow的tf-nn-max-pool最大池化方法" class="headerlink" title="Tensorflow的tf.nn.max_pool最大池化方法"></a>Tensorflow的tf.nn.max_pool最大池化方法</h2><h3 id="tf-nn-max-pool-value-ksize-strides-padding-name-None"><a href="#tf-nn-max-pool-value-ksize-strides-padding-name-None" class="headerlink" title="tf.nn.max_pool(value, ksize, strides, padding, name=None)"></a><code>tf.nn.max_pool(value, ksize, strides, padding, name=None)</code></h3><p>参数是四个，和卷积很类似：</p>
-<p>第一个参数value：需要池化的输入，一般池化层接在卷积层后面，所以输入通常是feature map，依然是[batch, height, width, channels]这样的shape</p>
-<p>第二个参数ksize：池化窗口的大小，取一个四维向量，一般是<code>[1, height, width, 1]，因为我们不想在batch和channels上做池化，所以这两个维度设为了1</code></p>
-<p>第三个参数strides：和卷积类似，窗口在每一个维度上滑动的步长，一般也是<code>[1, stride,stride, 1]</code></p>
-<p>第四个参数padding：和卷积类似，可以取’VALID’ 或者’SAME’</p>
-<p>返回一个Tensor，类型不变，shape仍然是<code>[batch, height, width, channels]</code>这种形式</p>
-<h2 id="Tensorflow的生成随机权重方法"><a href="#Tensorflow的生成随机权重方法" class="headerlink" title="Tensorflow的生成随机权重方法"></a>Tensorflow的生成随机权重方法</h2><ol>
-<li><p>tf.truncated_normal(shape, mean=0.0, stddev=1.0, dtype=tf.float32, seed=None, name=None)</p>
-<p>从<strong>截断</strong>的正态分布中输出随机值。<br>生成的值服从具有指定平均值和标准偏差的正态分布，如果生成的值大于平均值2个标准偏差的值则丢弃重新选择。</p>
-<p>在正态分布的曲线中，横轴区间（μ-σ，μ+σ）内的面积为68.268949%。<br>横轴区间（μ-2σ，μ+2σ）内的面积为95.449974%。<br>横轴区间（μ-3σ，μ+3σ）内的面积为99.730020%。<br>X落在（μ-3σ，μ+3σ）以外的概率小于千分之三，在实际问题中常认为相应的事件是不会发生的，基本上可以把区间（μ-3σ，μ+3σ）看作是随机变量X实际可能的取值区间，这称之为正态分布的“3σ”原则。<br>在tf.truncated_normal中如果x的取值在区间（μ-2σ，μ+2σ）之外则重新进行选择。这样保证了生成的值都在均值附近。</p>
-<p>参数:</p>
-</li>
-</ol>
-<ul>
-<li><p>shape: 一维的张量，也是输出的张量。</p>
-</li>
-<li><p>mean: 正态分布的均值。</p>
-</li>
-<li><p>stddev: 正态分布的标准差。</p>
-</li>
-<li><p>dtype: 输出的类型。</p>
-</li>
-<li><p>seed: 一个整数，当设置之后，每次生成的随机数都一样。</p>
-</li>
-<li><p>name: 操作的名字。</p>
-</li>
-</ul>
-<ol>
-<li><p>tf.random_normal(shape, mean=0.0, stddev=1.0, dtype=tf.float32, seed=None, name=None)</p>
-<p>从正态分布中输出随机值。<br>参数:</p>
-<ul>
-<li>shape: 一维的张量，也是输出的张量。</li>
-<li>mean: 正态分布的均值。</li>
-<li>stddev: 正态分布的标准差。</li>
-<li>dtype: 输出的类型。</li>
-<li>seed: 一个整数，当设置之后，每次生成的随机数都一样。</li>
-<li>name: 操作的名字。</li>
-</ul>
-</li>
-</ol>
+<p>在编程的时候经常会遇到拷贝问题，其中有浅拷贝与深拷贝之分，关乎之后的数据变动，需要分清。</p>
+<h2 id="拷贝"><a href="#拷贝" class="headerlink" title="拷贝"></a>拷贝</h2><p>浅拷贝：对象地址的拷贝</p>
+<p>深拷贝：对象资源的拷贝</p>
+<p>我们申请变量并进行赋值的时候，</p>
+<p>首先是在内存开辟一个空间，用于存放我们定义的值，而后再将存放的地址赋予我们的变量。</p>
+<p>所以存在对象资源和地址拷贝的区别。</p>
+<h2 id="Python中的变量赋值"><a href="#Python中的变量赋值" class="headerlink" title="Python中的变量赋值"></a>Python中的变量赋值</h2><p>在Python中，</p>
+<p>修改不可变对象（str、 tuple）需要开辟新的空间</p>
+<p>修改可变对象（list、set.dict）时不需要开辟新的空间</p>
+<p>具体实验如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">'bb'</span></span><br><span class="line">print(a,id(a))</span><br><span class="line">a = <span class="string">'bbb'</span></span><br><span class="line">print(a,id(a))</span><br><span class="line">b = [<span class="number">1</span>,<span class="number">2</span>]</span><br><span class="line">print(b,id(b))</span><br><span class="line">b.append(<span class="number">3</span>)</span><br><span class="line">print(b,id(b))</span><br><span class="line">b += [<span class="number">4</span>]</span><br><span class="line">print(b,id(b))</span><br><span class="line">b = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">print(b,id(b))</span><br><span class="line">Output：</span><br><span class="line">bb <span class="number">1685542671392</span></span><br><span class="line">bbb <span class="number">1685535539248</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>] <span class="number">1685601411400</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] <span class="number">1685601411400</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>] <span class="number">1685601411400</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>] <span class="number">1685605110920</span></span><br></pre></td></tr></table></figure>
+<p>当a修改字符串后，指向的是新的’bbb’的空间，而b如果是通过增加的方式，地址是不会变的，但是如果是通过整体赋值的方式，还是会改变的</p>
+<h2 id="Python中的浅拷贝和深拷贝"><a href="#Python中的浅拷贝和深拷贝" class="headerlink" title="Python中的浅拷贝和深拷贝"></a>Python中的浅拷贝和深拷贝</h2><h3 id="浅拷贝："><a href="#浅拷贝：" class="headerlink" title="浅拷贝："></a>浅拷贝：</h3><p>仅是拷贝了对象的地址，二者一定程度上还是绑定在一起的，一定程度的原因就在于是否是可变对象</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="string">'hello'</span>,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]]</span><br><span class="line">b = a[:]</span><br><span class="line">print(<span class="string">"Initial a,b"</span>)</span><br><span class="line">print(a) </span><br><span class="line">print( [ id(x) <span class="keyword">for</span> x <span class="keyword">in</span> a] )</span><br><span class="line">print(b)</span><br><span class="line">print( [ id(x)<span class="keyword">for</span> x <span class="keyword">in</span> b] )</span><br><span class="line">a[<span class="number">0</span>] = <span class="string">"world-a"</span></span><br><span class="line">a[<span class="number">1</span>].append(<span class="number">4</span>)</span><br><span class="line">print(<span class="string">"Change a"</span>)</span><br><span class="line">print(a) </span><br><span class="line">print( [ id(x) <span class="keyword">for</span> x <span class="keyword">in</span> a] )</span><br><span class="line">print(b)</span><br><span class="line">print( [ id(x)<span class="keyword">for</span> x <span class="keyword">in</span> b] )</span><br><span class="line">b[<span class="number">0</span>] = <span class="string">'world-b'</span></span><br><span class="line">b[<span class="number">1</span>].append(<span class="number">5</span>)</span><br><span class="line">print(<span class="string">"Change b"</span>)</span><br><span class="line">print(a) </span><br><span class="line">print( [ id(x) <span class="keyword">for</span> x <span class="keyword">in</span> a] )</span><br><span class="line">print(b)</span><br><span class="line">print( [ id(x)<span class="keyword">for</span> x <span class="keyword">in</span> b] )</span><br><span class="line">Output：</span><br><span class="line">Initial a,b</span><br><span class="line">[<span class="string">'hello'</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]]</span><br><span class="line">[<span class="number">1685595499688</span>, <span class="number">1685596629704</span>]</span><br><span class="line">[<span class="string">'hello'</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]]</span><br><span class="line">[<span class="number">1685595499688</span>, <span class="number">1685596629704</span>]</span><br><span class="line">Change a</span><br><span class="line">[<span class="string">'world-a'</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]]</span><br><span class="line">[<span class="number">1685597381720</span>, <span class="number">1685596629704</span>]</span><br><span class="line">[<span class="string">'hello'</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]]</span><br><span class="line">[<span class="number">1685595499688</span>, <span class="number">1685596629704</span>]</span><br><span class="line">Change b</span><br><span class="line">[<span class="string">'world-a'</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]]</span><br><span class="line">[<span class="number">1685597381720</span>, <span class="number">1685596629704</span>]</span><br><span class="line">[<span class="string">'world-b'</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]]</span><br><span class="line">[<span class="number">1685597383848</span>, <span class="number">1685596629704</span>]</span><br></pre></td></tr></table></figure>
+<p>如果是通过=这种方式，是浅拷贝，可以发现：</p>
+<p>对于<strong>不可变量</strong>，即a和b中的第一个元素，a或者b修改后，会各自修改，因为a修改后，指向了新的地址，而b指向的还是旧地址，所以b没有变动，同样的，咱们改了b，a也不会变，</p>
+<p>对于<strong>可变量</strong>，即a和b中的列表，a或者b修改后，会同步修改，因为二者指向的都是一个地址，那么动一发而牵全身</p>
+<h3 id="深拷贝："><a href="#深拷贝：" class="headerlink" title="深拷贝："></a>深拷贝：</h3><p>完全拷贝了一个副本，对象内部元素地址都不一样</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> copy <span class="keyword">import</span> deepcopy</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a=[<span class="string">'hello'</span>,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b=deepcopy(a)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[id(x) <span class="keyword">for</span> x <span class="keyword">in</span> a]</span><br><span class="line">[<span class="number">55792504</span>, <span class="number">55645000</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[id(x) <span class="keyword">for</span> x <span class="keyword">in</span> b]</span><br><span class="line">[<span class="number">55792504</span>, <span class="number">58338824</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a[<span class="number">0</span>]=<span class="string">'world'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a[<span class="number">1</span>].append(<span class="number">4</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(a)</span><br><span class="line">[<span class="string">'world'</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(b)</span><br><span class="line">[<span class="string">'hello'</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]]</span><br></pre></td></tr></table></figure>
+<p>显而易见，一开始我们拷贝的时候，除了不可变量的地址是相同的，可变量的地址就已经不同的，各过各的，分裂地更”深刻”</p>
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p><a href="https://www.jianshu.com/p/efa9dd51f5cc" target="_blank" rel="noopener">谈谈python中的深拷贝和浅拷贝</a></p>
 
       
     </div>
@@ -549,9 +522,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
-          
-            <a href="/tags/Tensorflow/" rel="tag"># Tensorflow</a>
+            <a href="/tags/Python/" rel="tag"># Python</a>
           
         </div>
       
@@ -583,8 +554,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blogs/交叉熵/" rel="next" title="交叉熵">
-                <i class="fa fa-chevron-left"></i> 交叉熵
+              <a href="/blogs/Typora-hexo发布博客/" rel="next" title="Typora+hexo发布博客">
+                <i class="fa fa-chevron-left"></i> Typora+hexo发布博客
               </a>
             
           </div>
@@ -592,10 +563,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/blogs/梯度消失、爆炸与其解决方案/" rel="prev" title="梯度消失、爆炸与其解决方案">
-                梯度消失、爆炸与其解决方案 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -760,7 +727,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tensorflow的tf-nn-conv2d方法"><span class="nav-number">1.</span> <span class="nav-text">Tensorflow的tf.nn.conv2d方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法定义"><span class="nav-number">1.1.</span> <span class="nav-text">方法定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数："><span class="nav-number">1.2.</span> <span class="nav-text">参数：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tensorflow的tf-nn-max-pool最大池化方法"><span class="nav-number">2.</span> <span class="nav-text">Tensorflow的tf.nn.max_pool最大池化方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-nn-max-pool-value-ksize-strides-padding-name-None"><span class="nav-number">2.1.</span> <span class="nav-text">tf.nn.max_pool(value, ksize, strides, padding, name=None)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tensorflow的生成随机权重方法"><span class="nav-number">3.</span> <span class="nav-text">Tensorflow的生成随机权重方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#拷贝"><span class="nav-number">1.</span> <span class="nav-text">拷贝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python中的变量赋值"><span class="nav-number">2.</span> <span class="nav-text">Python中的变量赋值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python中的浅拷贝和深拷贝"><span class="nav-number">3.</span> <span class="nav-text">Python中的浅拷贝和深拷贝</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#浅拷贝："><span class="nav-number">3.1.</span> <span class="nav-text">浅拷贝：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深拷贝："><span class="nav-number">3.2.</span> <span class="nav-text">深拷贝：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考："><span class="nav-number">4.</span> <span class="nav-text">参考：</span></a></li></ol></div>
             
 
           </div>
