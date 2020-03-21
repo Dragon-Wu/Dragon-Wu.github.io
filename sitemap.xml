@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jgwu.top/about/index.html</loc>
+    
+    <lastmod>2020-03-21T06:10:05.078Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jgwu.top/categories/index.html</loc>
+    
+    <lastmod>2020-03-21T06:09:56.741Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jgwu.top/tags/index.html</loc>
+    
+    <lastmod>2020-03-21T06:09:42.421Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jgwu.top/blogs/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E6%8E%A2%E7%A9%B6/</loc>
     
     <lastmod>2020-03-20T17:27:08.157Z</lastmod>
@@ -247,13 +268,6 @@
   </url>
   
   <url>
-    <loc>http://jgwu.top/about/index.html</loc>
-    
-    <lastmod>2019-03-09T08:48:14.214Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://jgwu.top/blogs/Python-type%E5%92%8Cobject%E7%9A%84%E7%88%B1%E6%81%A8%E7%BA%A0%E8%91%9B/</loc>
     
     <lastmod>2019-03-08T06:33:17.476Z</lastmod>
@@ -299,20 +313,6 @@
     <loc>http://jgwu.top/blogs/hello-world/</loc>
     
     <lastmod>2019-01-15T02:01:32.136Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jgwu.top/categories/index.html</loc>
-    
-    <lastmod>2018-08-29T09:07:33.917Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jgwu.top/tags/index.html</loc>
-    
-    <lastmod>2018-08-29T09:07:16.030Z</lastmod>
     
   </url>
   
