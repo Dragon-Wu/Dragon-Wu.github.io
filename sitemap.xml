@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jgwu.top/blogs/LeetCode%E5%BE%81%E9%80%94/</loc>
+    
+    <lastmod>2020-03-29T12:24:24.355Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jgwu.top/blogs/Python%E8%A7%A3%E9%87%8A%E5%99%A8/</loc>
     
-    <lastmod>2020-03-29T12:03:17.547Z</lastmod>
+    <lastmod>2020-03-29T12:24:14.507Z</lastmod>
     
   </url>
   
@@ -19,13 +26,6 @@
     <loc>http://jgwu.top/blogs/Python%E5%8A%A0%E9%80%9F-Numba-Cupy/</loc>
     
     <lastmod>2020-03-29T11:57:04.910Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jgwu.top/blogs/LeetCode%E5%BE%81%E9%80%94/</loc>
-    
-    <lastmod>2020-03-29T08:41:18.718Z</lastmod>
     
   </url>
   
