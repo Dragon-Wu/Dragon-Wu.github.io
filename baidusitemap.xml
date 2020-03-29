@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://jgwu.top/blogs/Python%E8%A7%A3%E9%87%8A%E5%99%A8/</loc>
+    <lastmod>2020-03-29</lastmod>
+  </url>  <url>
+    <loc>http://jgwu.top/blogs/%E8%8F%9C-%E5%9D%91/</loc>
+    <lastmod>2020-03-29</lastmod>
+  </url>  <url>
+    <loc>http://jgwu.top/blogs/Python%E5%8A%A0%E9%80%9F-Numba-Cupy/</loc>
+    <lastmod>2020-03-29</lastmod>
+  </url>  <url>
     <loc>http://jgwu.top/blogs/LeetCode%E5%BE%81%E9%80%94/</loc>
-    <lastmod>2020-03-28</lastmod>
+    <lastmod>2020-03-29</lastmod>
   </url>  <url>
     <loc>http://jgwu.top/blogs/Python%E4%B8%AD%E7%9A%84%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D/</loc>
     <lastmod>2020-03-27</lastmod>
