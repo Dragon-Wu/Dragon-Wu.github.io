@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>EM算法深度解析与其在单颗粒冷冻电镜中的应用</title>
+      <link href="/blogs/EM%E7%AE%97%E6%B3%95%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90%E4%B8%8E%E5%85%B6%E5%9C%A8%E5%8D%95%E9%A2%97%E7%B2%92%E5%86%B7%E5%86%BB%E7%94%B5%E9%95%9C%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/"/>
+      <url>/blogs/EM%E7%AE%97%E6%B3%95%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90%E4%B8%8E%E5%85%B6%E5%9C%A8%E5%8D%95%E9%A2%97%E7%B2%92%E5%86%B7%E5%86%BB%E7%94%B5%E9%95%9C%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/</url>
+      
+        <content type="html"><![CDATA[<p>我真的是他妈的太菜了</p><p>还他妈爱装牛角尖</p><p>还爱跳步 想法太多</p><p>真的是被这个算法搞死了！！！</p><p>但是终于看懂了，通了，那爽！！！</p><p>其实过程中也因为没有一份称心如意的介绍，总有我觉得他一语带过但是我非常非常困惑的点，所以先留个坑，等接下来有空了，写一份EM算法的前世今生上下五千年之通关大宝典！！！</p><a id="more"></a><p>留坑，必写，不写是小狗！！！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> CS </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Cryo-EM </tag>
+            
+            <tag> 机器学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>菜-坑</title>
       <link href="/blogs/%E8%8F%9C-%E5%9D%91/"/>
       <url>/blogs/%E8%8F%9C-%E5%9D%91/</url>
@@ -841,7 +868,7 @@
       <link href="/blogs/Save-some-code/"/>
       <url>/blogs/Save-some-code/</url>
       
-        <content type="html"><![CDATA[<p>save some code for typing</p><a id="more"></a><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<p>save some code for typing</p><a id="more"></a><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><script type="math/tex; mode=display">L(\theta) - L(\theta^{<i>})=\sum_{j}\log\sum_Z P(Y=y_j,  Z;\theta) - \sum_{j}\log  P(Y=y_j; \theta^{<i>})\\=\sum_{j}\left[\log\sum_ZP(Z\mid Y=y_j;\theta^{<i>})\frac{P(Y=y_j,  Z;\theta)}{P(Z\mid Y=y_j;\theta^{<i>})}- \log  P(Y=y_j;\theta^{<i>})\right]\\\ge\sum_{j}\left[\sum_Z P(Z\mid Y=y_j;\theta^{<i>})\log\frac{P(Y=y_j,  Z;\theta)}{P(Z\mid Y=y_j;\theta^{<i>})}- \log P(Y=y_j;\theta^{<i>})\right]\\=\sum_{j}\left[\sum_Z P(Z\mid Y=y_j;\theta^{<i>})\log\frac{P(Y=y_j\mid Z;\theta)P(Z;\theta)}{P(Z\mid Y=y_j;\theta^{<i>})}- \log P(Y=y_i;\theta^{<i>})\times 1 \right]\\=\sum_{j}\left[\sum_Z P(Z\mid Y=y_j;\theta^{<i>})\log\frac{P(Y=y_j\mid Z;\theta)P(Z;\theta)}{P(Z\mid Y=y_j;\theta^{<i>})}\\- \log P(Y=y_j;\theta^{<i>})\times \sum_Z P(Z\mid Y=y_j;\theta^{<i>})\right]\\=\sum_{j}\left[\sum_Z P(Z\mid Y=y_j;\theta^{<i>})\log\frac{P(Y=y_j\mid Z;\theta)P(Z;\theta)}{P(Z\mid Y=y_j;\theta^{<i>}) P(Y=y_j;\theta^{<i>})}\right]</script><script type="math/tex; mode=display">P(Z\mid Y=y_j;\theta^{<i>})=\frac 1 {n_Z}\\\frac{P(Y=y_j,  Z;\theta)}{P(Z\mid Y=y_j;\theta^{<i>})}=\text{const}</script>]]></content>
       
       
       <categories>
@@ -1213,9 +1240,9 @@
     
     
     <entry>
-      <title>categories</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>tags</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -1224,9 +1251,9 @@
     
     
     <entry>
-      <title>tags</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       

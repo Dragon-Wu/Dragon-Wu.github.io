@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="一个地方">
 <meta property="og:description" content="save some code for typing">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-31T12:09:41.402Z">
+<meta property="og:updated_time" content="2020-04-05T09:09:00.273Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Save-some-code">
 <meta name="twitter:description" content="save some code for typing">
@@ -445,7 +445,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  6
+                  215
                 </span>
               
 
@@ -485,7 +485,24 @@
         <p>save some code for typing</p>
 <a id="more"></a>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
+<script type="math/tex; mode=display">
+L(\theta) - L(\theta^{<i>})=\sum_{j}\log\sum_Z P(Y=y_j,  Z;\theta) - \sum_{j}\log  P(Y=y_j; \theta^{<i>})\\
+=\sum_{j}\left[\log\sum_ZP(Z\mid Y=y_j;\theta^{<i>})\frac{P(Y=y_j,  Z;\theta)}{P(Z\mid Y=y_j;\theta^{<i>})}
+- \log  P(Y=y_j;\theta^{<i>})
+\right]\\
+\ge\sum_{j}\left[\sum_Z P(Z\mid Y=y_j;\theta^{<i>})\log\frac{P(Y=y_j,  Z;\theta)}{P(Z\mid Y=y_j;\theta^{<i>})}
+- \log P(Y=y_j;\theta^{<i>})
+\right]\\
+=\sum_{j}\left[\sum_Z P(Z\mid Y=y_j;\theta^{<i>})\log\frac{P(Y=y_j\mid Z;\theta)P(Z;\theta)}{P(Z\mid Y=y_j;\theta^{<i>})}
+- \log P(Y=y_i;\theta^{<i>})\times 1 \right]\\
+=\sum_{j}\left[\sum_Z P(Z\mid Y=y_j;\theta^{<i>})\log\frac{P(Y=y_j\mid Z;\theta)P(Z;\theta)}{P(Z\mid Y=y_j;\theta^{<i>})}
+\\
+- \log P(Y=y_j;\theta^{<i>})\times \sum_Z P(Z\mid Y=y_j;\theta^{<i>})
+\right]\\
+=\sum_{j}\left[\sum_Z P(Z\mid Y=y_j;\theta^{<i>})\log\frac{P(Y=y_j\mid Z;\theta)P(Z;\theta)}{P(Z\mid Y=y_j;\theta^{<i>}) P(Y=y_j;\theta^{<i>})}
+\right]</script><script type="math/tex; mode=display">
+P(Z\mid Y=y_j;\theta^{<i>})=\frac 1 {n_Z}\\
+\frac{P(Y=y_j,  Z;\theta)}{P(Z\mid Y=y_j;\theta^{<i>})}=\text{const}</script>
       
     </div>
     
@@ -625,7 +642,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -731,7 +748,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共57.5k字</span>
+  <span class="post-count">博客全站共57.8k字</span>
 </div>
         
 <div class="busuanzi-count">

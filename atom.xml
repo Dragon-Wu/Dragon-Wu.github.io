@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jgwu.top/"/>
-  <updated>2020-04-01T14:29:04.904Z</updated>
+  <updated>2020-04-10T04:02:02.803Z</updated>
   <id>http://jgwu.top/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>EM算法深度解析与其在单颗粒冷冻电镜中的应用</title>
+    <link href="http://jgwu.top/blogs/EM%E7%AE%97%E6%B3%95%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90%E4%B8%8E%E5%85%B6%E5%9C%A8%E5%8D%95%E9%A2%97%E7%B2%92%E5%86%B7%E5%86%BB%E7%94%B5%E9%95%9C%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/"/>
+    <id>http://jgwu.top/blogs/EM%E7%AE%97%E6%B3%95%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90%E4%B8%8E%E5%85%B6%E5%9C%A8%E5%8D%95%E9%A2%97%E7%B2%92%E5%86%B7%E5%86%BB%E7%94%B5%E9%95%9C%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/</id>
+    <published>2020-04-10T03:56:39.000Z</published>
+    <updated>2020-04-10T04:02:02.803Z</updated>
+    
+    <content type="html"><![CDATA[<p>我真的是他妈的太菜了</p><p>还他妈爱装牛角尖</p><p>还爱跳步 想法太多</p><p>真的是被这个算法搞死了！！！</p><p>但是终于看懂了，通了，那爽！！！</p><p>其实过程中也因为没有一份称心如意的介绍，总有我觉得他一语带过但是我非常非常困惑的点，所以先留个坑，等接下来有空了，写一份EM算法的前世今生上下五千年之通关大宝典！！！</p><a id="more"></a><p>留坑，必写，不写是小狗！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我真的是他妈的太菜了&lt;/p&gt;
+&lt;p&gt;还他妈爱装牛角尖&lt;/p&gt;
+&lt;p&gt;还爱跳步 想法太多&lt;/p&gt;
+&lt;p&gt;真的是被这个算法搞死了！！！&lt;/p&gt;
+&lt;p&gt;但是终于看懂了，通了，那爽！！！&lt;/p&gt;
+&lt;p&gt;其实过程中也因为没有一份称心如意的介绍，总有我觉得他一语带过但是我非常非常困惑的点，所以先留个坑，等接下来有空了，写一份EM算法的前世今生上下五千年之通关大宝典！！！&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="CS" scheme="http://jgwu.top/categories/CS/"/>
+    
+    
+      <category term="Cryo-EM" scheme="http://jgwu.top/tags/Cryo-EM/"/>
+    
+      <category term="机器学习" scheme="http://jgwu.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>菜-坑</title>
@@ -267,7 +297,7 @@
     <link href="http://jgwu.top/blogs/Python%E6%93%8D%E4%BD%9Cexcel/"/>
     <id>http://jgwu.top/blogs/Python%E6%93%8D%E4%BD%9Cexcel/</id>
     <published>2019-11-04T08:45:24.000Z</published>
-    <updated>2020-03-20T09:01:04.892Z</updated>
+    <updated>2020-04-10T03:31:27.103Z</updated>
     
     <content type="html"><![CDATA[<p>最近读取数据和帮助师兄师姐做一些简单的生信信息分析都需要用到excel解析数据，故对python操作excel的工具做个整理</p><a id="more"></a><h2 id="使用哪个库？"><a href="#使用哪个库？" class="headerlink" title="使用哪个库？"></a>使用哪个库？</h2><p>​    其实一搜就发现，Python操作excel的各个教学博文蛮多的，主要就是xlrd、xlwt和openpyxl两类，接下来就主要讲讲如何评估二者</p><h3 id="各个库的介绍"><a href="#各个库的介绍" class="headerlink" title="各个库的介绍"></a>各个库的介绍</h3><h4 id="xlrd"><a href="#xlrd" class="headerlink" title="xlrd"></a>xlrd</h4><p>​    跨平台的python模块，然后有特意提到他more like a native python coding style，且支持xls和xlsx，但是只是读取</p><p>( It is a Python Module for dealing with Excel files that can work on Windows, Linux as well as Mac platforms. It has more like a native python coding style and very helpful in accessing all types of excel files if they are xls or even xlsx. However it is used only for reading purposes. )</p><h4 id="xlwt"><a href="#xlwt" class="headerlink" title="xlwt"></a>xlwt</h4><p>​    算是xlrd的配套，仅支持Excel95-2003的编辑，所以xlwt不能写入超过65535行、256列的数据</p><p>​    也提到了他的风格是全python的，pythoner可能会更喜欢他的原生触感</p><p>( xlwt library allows developers to create spreadsheets compatible to Excel 95-2003. Hence we can say that it can be used for older files. Module is in pure Python form and exists as independent entity. Python programmers like to code in it as it has a native touch and taste.  )</p><h4 id="xlsxwriter"><a href="#xlsxwriter" class="headerlink" title="xlsxwriter"></a>xlsxwriter</h4><p>​    上面的xlwt只能支持到xls，但是现在大多是xlsx，这个库就是新增用于xlsx的使用</p><p>​    惊闻噩耗：它只能写入新文件！！！不可修改文档</p><p>( It is an alternative Python module for Writing data in Excel file. It specializes in formatting of data and it can also be used for charts in Excel 2010 xlsx formats. It is a wonderful package with many qualites, which if truly harnessed can do magic in terms of data writing and formatting.  )</p><h4 id="openpyxl"><a href="#openpyxl" class="headerlink" title="openpyxl"></a>openpyxl</h4><p>​    新的python操作excel库，主要由 Eric Gazoni and Charlie Clark开发，开源且免费，支持 Excel xlsx/xlsm/xltm/xltx files without using the Excel software，而且他是支持读写的，也就是不用像上述的库只能读或者写，介绍就主要讲了啥excel操作很复杂， it may take hours, and if the files are hundreds or thousands it can take days or sometimes weeks 但是你要是用了我们的库， you just write a simple program usually spending a few minutes and your hectic boring work is done by computer in no time ，牛逼吧。。。事实上我觉得很多时候，excel的很多工具和函数很方便的，主要是一方面看你哪方面比较厉害，另一方面是看你需不需要其他处理和接口</p><h4 id="来源："><a href="#来源：" class="headerlink" title="来源："></a>来源：</h4><p>​    <a href="https://www.pythonexcel.com" target="_blank" rel="noopener">https://www.pythonexcel.com</a> </p><p>​    <a href="http://www.python-excel.org" target="_blank" rel="noopener">http://www.python-excel.org</a></p><p>​    其实很好奇这俩网站咋来的，然后前者网站感觉是openpyxl整的，因为吹了很多它，并且还有其教学课程的链接，10刀。。我甚至没找到他的reference链接，这个还挺烦的 = = </p><h3 id="权衡"><a href="#权衡" class="headerlink" title="权衡"></a>权衡</h3><h4 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h4><p>​    首先openpyxl，一直被各种安利，我觉得好处是有的，毕竟比较新，而且进行了整合，读写同一个库，同时对各个版本的excel文件格式都兼容，这一点上还是有较大优势的</p><h4 id="扩展性"><a href="#扩展性" class="headerlink" title="扩展性"></a>扩展性</h4><p>​    openpyxl特意提到 <a href="http://www.pythonexcel.com/openpyxl.php" target="_blank" rel="noopener">openpyxl</a> is the default reader for Python Pandas ，而且看reference里有很多关于panda、numpy的接口，比如讲worksheet直接转成dataframe等，这一点上，openpyxl的优点还挺明显的。当然，我还没用过xlrd，不知道他们的支持情况</p><h4 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h4><p>​    还有最关键的性能问题，这一点openpyxl还是挺老实的，自己坦白了说我们这个库，在权衡性能和功能上，选择了功能（致敬python？，所以性能上确实有欠缺，具体可以看<a href="https://openpyxl.readthedocs.io/en/stable/performance.html，就提到了openpyxl和xlrd/xlwt的比较，总体来说前者还是慢些，但是注意一点：可以再读写时注明只读或者只写，能快些，但是openpyxl在只写的时候，只能append，不能插入。" target="_blank" rel="noopener">https://openpyxl.readthedocs.io/en/stable/performance.html，就提到了openpyxl和xlrd/xlwt的比较，总体来说前者还是慢些，但是注意一点：可以再读写时注明只读或者只写，能快些，但是openpyxl在只写的时候，只能append，不能插入。</a></p><h3 id="But"><a href="#But" class="headerlink" title="But"></a>But</h3><p>​    上面的都是通过手册和各个blog得出的结论，关于具体的性能和服务支持上，没有实际跑过，差距不好说，保留意见</p><h2 id="openpyxl："><a href="#openpyxl：" class="headerlink" title="openpyxl："></a>openpyxl：</h2><p><a href="https://openpyxl.readthedocs.io/en/stable/tutorial.html" target="_blank" rel="noopener">https://openpyxl.readthedocs.io/en/stable/tutorial.html</a> Openpyxl Reference</p><h2 id="xlrd："><a href="#xlrd：" class="headerlink" title="xlrd："></a>xlrd：</h2><p><a href="https://xlrd.readthedocs.io/en/latest/api.html" target="_blank" rel="noopener">https://xlrd.readthedocs.io/en/latest/api.html</a> xlrd的reference</p><h2 id="xlsxwriter："><a href="#xlsxwriter：" class="headerlink" title="xlsxwriter："></a>xlsxwriter：</h2><p> <a href="https://xlsxwriter.readthedocs.io/index.html#" target="_blank" rel="noopener">https://xlsxwriter.readthedocs.io/index.html#</a>  </p><h2 id="其他神仙"><a href="#其他神仙" class="headerlink" title="其他神仙"></a>其他神仙</h2><p>读写Excel文件第三方库汇总，<a href="https://zhuanlan.zhihu.com/p/83591092Python" target="_blank" rel="noopener">你想要的都在这儿</a>！</p><h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p><a href="https://www.pythonexcel.com" target="_blank" rel="noopener">https://www.pythonexcel.com</a></p><p><a href="http://www.python-excel.org" target="_blank" rel="noopener">http://www.python-excel.org</a></p><p><a href="https://www.pythonexcel.com/openpyxl.php" target="_blank" rel="noopener">https://www.pythonexcel.com/openpyxl.php</a> Openpyxl Tutorial</p>]]></content>
     
@@ -474,31 +504,6 @@
       <category term="机器学习" scheme="http://jgwu.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="计算机视觉" scheme="http://jgwu.top/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>傅里叶变换</title>
-    <link href="http://jgwu.top/blogs/%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/"/>
-    <id>http://jgwu.top/blogs/%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/</id>
-    <published>2019-05-21T07:40:26.000Z</published>
-    <updated>2020-03-20T08:31:24.483Z</updated>
-    
-    <content type="html"><![CDATA[<p>只能说：</p><p><strong>牛逼</strong></p><p>所以他值得一篇专门的文</p><a id="more"></a><h1 id="傅里叶变换"><a href="#傅里叶变换" class="headerlink" title="傅里叶变换"></a>傅里叶变换</h1><p><strong>相关资料：</strong></p><p><a href="https://zhuanlan.zhihu.com/p/19763358" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/19763358</a> 傅里叶分析之掐死教程（完整版）更新于2014.06.06</p><p><a href="https://www.bilibili.com/video/av19141078?from=search&amp;seid=3411146207299915686" target="_blank" rel="noopener">https://www.bilibili.com/video/av19141078?from=search&amp;seid=3411146207299915686</a> 形象展示傅里叶变换</p><p><a href="https://blog.csdn.net/Replus_/article/details/81945495" target="_blank" rel="noopener">https://blog.csdn.net/Replus_/article/details/81945495</a> 图像处理：如何理解傅里叶变换在图像处理中的应用</p><p><a href="https://www.matongxue.com/madocs/8.html" target="_blank" rel="noopener">https://www.matongxue.com/madocs/8.html</a> 如何通俗地解释欧拉公式（e^πi+1=0）？</p><p><a href="https://imlogm.github.io/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/image-fft/" target="_blank" rel="noopener">https://imlogm.github.io/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/image-fft/</a> 二维图像的傅立叶变换</p><p><a href="https://www.zhihu.com/question/19714540/answer/334686351" target="_blank" rel="noopener">“如何理解傅里叶变换公式？-马同学的回答”</a>。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;只能说：&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;牛逼&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;所以他值得一篇专门的文&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Math" scheme="http://jgwu.top/categories/Math/"/>
-    
-    
-      <category term="机器学习" scheme="http://jgwu.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
