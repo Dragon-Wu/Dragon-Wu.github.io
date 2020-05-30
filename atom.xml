@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jgwu.top/"/>
-  <updated>2020-04-10T04:07:42.464Z</updated>
+  <updated>2020-05-29T09:52:42.690Z</updated>
   <id>http://jgwu.top/</id>
   
   <author>
@@ -17,13 +17,39 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>好好学习，才能天天向上</title>
+    <link href="http://jgwu.top/blogs/%E5%A5%BD%E5%A5%BD%E5%AD%A6%E4%B9%A0%EF%BC%8C%E6%89%8D%E8%83%BD%E5%A4%A9%E5%A4%A9%E5%90%91%E4%B8%8A/"/>
+    <id>http://jgwu.top/blogs/%E5%A5%BD%E5%A5%BD%E5%AD%A6%E4%B9%A0%EF%BC%8C%E6%89%8D%E8%83%BD%E5%A4%A9%E5%A4%A9%E5%90%91%E4%B8%8A/</id>
+    <published>2020-05-02T08:49:59.000Z</published>
+    <updated>2020-05-29T09:52:42.690Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a><h2 id="5-2"><a href="#5-2" class="headerlink" title="5.2"></a>5.2</h2><p>上午9.30醒，10.20才起床,11点到实验室，划水吃饭，两点钟开始工作</p><p>自动编码器</p><p><a href="https://www.cnblogs.com/neopenx/p/4370350.html" target="_blank" rel="noopener">降噪自动编码器（Denoising Autoencoder)</a></p><p><a href="https://blog.csdn.net/zbzcDZF/article/details/86570761" target="_blank" rel="noopener">堆叠降噪自动编码器 Stacked Denoising Auto Encoder（SDAE）</a></p><p>聚类算法</p><p><a href="https://www.biaodianfu.com/cluster-score.html" target="_blank" rel="noopener">聚类算法的评估指标</a></p><p><a href="https://zhuanlan.zhihu.com/p/46524857" target="_blank" rel="noopener">深度学习中的互信息：无监督提取特征</a></p><p>存疑：</p><p>DEC（Deep Embedding Networks）  </p><p><a href="https://blog.csdn.net/SCS199411/article/details/90759274" target="_blank" rel="noopener">Unsupervised Deep Embedding for Clustering Analysis论文介绍</a></p><h2 id="5-3"><a href="#5-3" class="headerlink" title="5.3"></a>5.3</h2><p>早上背单词，划水</p><p>下午修电脑，划水，编码了FFT的尝试</p><p>晚上修电脑，回去取衣服，划水，FFT编码</p><h2 id="5-26"><a href="#5-26" class="headerlink" title="5.26"></a>5.26</h2><p><strong>学习课程</strong></p><p>李宏毅老师的ML课程第一课：<a href="https://www.bilibili.com/video/BV1JE411g7XF?p=3" target="_blank" rel="noopener">regression</a> 第二课：<a href="https://www.bilibili.com/video/BV1JE411g7XF?p=4" target="_blank" rel="noopener">basic concept</a></p><p>作业hw1：<a href="https://docs.google.com/presentation/d/18MG1wSTTx8AentGnMfIRUp8ipo8bLpgAj16bJoqW-b0/edit#slide=id.g4cd6560e29_0_48" target="_blank" rel="noopener">silide</a>，<a href="https://www.bilibili.com/video/BV1gE411F7td?p=1" target="_blank" rel="noopener">video</a></p><p><strong>查看资料</strong></p><p><a href="https://colab.research.google.com/drive/131sSqmrmWXfjFZ3jWSELl8cm0Ox5ah3C?pli=1#scrollTo=p9FfatPz6MU3&amp;forceEdit=true&amp;sandboxMode=true" target="_blank" rel="noopener">Homework 1: Linear Regression</a></p><p><a href="https://blog.csdn.net/willduan1/article/details/78070086" target="_blank" rel="noopener">深度学习优化算法解析(Momentum, RMSProp, Adam)</a></p><h2 id="5-29"><a href="#5-29" class="headerlink" title="5.29"></a>5.29</h2><p>先验知识的加入一定好吗？生成模型与判别模型的思考</p><p>神经网络，也许就是一种找到合适Kernel能够做有效的feature transform，从而使得可判别</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;5-2&quot;&gt;&lt;a href=&quot;#5-2&quot; class=&quot;headerlink&quot; title=&quot;5.2&quot;&gt;&lt;/a&gt;5.2&lt;/h2&gt;&lt;p&gt;上午9.30醒，10.20才起床,11点到实验室，划水吃饭，两点钟开始工作&lt;/p&gt;
+&lt;p&gt;自动编
+      
+    
+    </summary>
+    
+    
+      <category term="个人" scheme="http://jgwu.top/categories/%E4%B8%AA%E4%BA%BA/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>EM算法深度解析与其在单颗粒冷冻电镜中的应用</title>
     <link href="http://jgwu.top/blogs/EM%E7%AE%97%E6%B3%95%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90%E4%B8%8E%E5%85%B6%E5%9C%A8%E5%8D%95%E9%A2%97%E7%B2%92%E5%86%B7%E5%86%BB%E7%94%B5%E9%95%9C%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/"/>
     <id>http://jgwu.top/blogs/EM%E7%AE%97%E6%B3%95%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90%E4%B8%8E%E5%85%B6%E5%9C%A8%E5%8D%95%E9%A2%97%E7%B2%92%E5%86%B7%E5%86%BB%E7%94%B5%E9%95%9C%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/</id>
     <published>2020-04-10T03:56:39.000Z</published>
-    <updated>2020-04-10T04:07:42.464Z</updated>
+    <updated>2020-05-25T13:09:43.466Z</updated>
     
-    <content type="html"><![CDATA[<p>我真的是他妈的太菜了</p><p>还他妈爱装牛角尖</p><p>还爱跳步 想法太多</p><p>真的是被这个算法搞死了！！！</p><p>但是终于看懂了，通了，那爽！！！</p><p>其实过程中也因为没有一份称心如意的介绍，总有我觉得他一语带过但是我非常非常困惑的点，所以先留个坑，等接下来有空了，写一份EM算法的前世今生上下五千年之通关大宝典！！！</p><a id="more"></a><p>留坑，必写，不写是小狗！！！——2020.04.10</p><h4 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h4><p>其实过程中看了不知多少个blog和书，交叉混合看，最后觉得成体系可以理解的有以下</p><p><a href="http://www.huaxiaozhuan.com/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0/chapters/13_EM.html" target="_blank" rel="noopener">EM 算法</a></p><p><a href="https://zhuanlan.zhihu.com/p/61768577" target="_blank" rel="noopener">可能是最容易理解的EM算法入门文章</a></p><p><a href="https://blog.csdn.net/weixin_43661031/article/details/91358990" target="_blank" rel="noopener">EM算法深度解析</a></p><p>还有李航的《统计学习方法》</p>]]></content>
+    <content type="html"><![CDATA[<p>我真的是他妈的太菜了</p><p>还他妈爱装牛角尖</p><p>还爱跳步 想法太多</p><p>真的是被这个算法搞死了！！！</p><p>但是终于看懂了，通了，那爽！！！</p><p>其实过程中也因为没有一份称心如意的介绍，总有我觉得他一语带过但是我非常非常困惑的点，所以先留个坑，等接下来有空了，写一份EM算法的前世今生上下五千年之通关大宝典！！！</p><a id="more"></a><p>留坑，必写，不写是小狗！！！——2020.04.10Identifying Conformational States of Macromolecules by Eigen-Analysis of Resampled Cryo-EM Images</p><p>还有收敛性证明还未看——记得</p><h4 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h4><p>其实过程中看了不知多少个blog和书，交叉混合看，最后觉得成体系可以理解的有以下</p><p><a href="http://www.huaxiaozhuan.com/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0/chapters/13_EM.html" target="_blank" rel="noopener">EM 算法</a></p><p><a href="https://zhuanlan.zhihu.com/p/61768577" target="_blank" rel="noopener">可能是最容易理解的EM算法入门文章</a> 用代码理解</p><p><a href="https://blog.csdn.net/weixin_43661031/article/details/91358990" target="_blank" rel="noopener">EM算法深度解析</a> 公式清楚</p><p><a href="https://www.zhihu.com/question/22371861" target="_blank" rel="noopener">最大似然估计和EM算法的关系是什么？</a> 宏观解释</p><p><a href="https://blog.csdn.net/lin_limin/article/details/81048411#comments" target="_blank" rel="noopener">详解EM算法与混合高斯模型(Gaussian mixture model, GMM)</a> 图好</p><p>还有《统计学习方法》</p>]]></content>
     
     <summary type="html">
     
@@ -40,9 +66,9 @@
       <category term="CS" scheme="http://jgwu.top/categories/CS/"/>
     
     
-      <category term="Cryo-EM" scheme="http://jgwu.top/tags/Cryo-EM/"/>
-    
       <category term="机器学习" scheme="http://jgwu.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="Cryo-EM" scheme="http://jgwu.top/tags/Cryo-EM/"/>
     
   </entry>
   
@@ -469,31 +495,6 @@
     <summary type="html">
     
       &lt;p&gt;图像增强，是对图像进行处理，使其原始图像能够更适合于特定的应用。对于图像的某些特征，比如边缘、轮廓等进行强调或者锐化，以便于找到想要的信息，便于显示、观察与进一步的分析与处理。&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="CS" scheme="http://jgwu.top/categories/CS/"/>
-    
-    
-      <category term="机器学习" scheme="http://jgwu.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-      <category term="计算机视觉" scheme="http://jgwu.top/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>边缘检测相关</title>
-    <link href="http://jgwu.top/blogs/%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B%E7%9B%B8%E5%85%B3/"/>
-    <id>http://jgwu.top/blogs/%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B%E7%9B%B8%E5%85%B3/</id>
-    <published>2019-06-01T11:56:23.000Z</published>
-    <updated>2019-07-21T07:41:48.437Z</updated>
-    
-    <content type="html"><![CDATA[<p>边缘检测相关</p><a id="more"></a><h2 id="Canny边缘检测"><a href="#Canny边缘检测" class="headerlink" title="Canny边缘检测"></a>Canny边缘检测</h2><p><a href="https://www.cnblogs.com/techyan1990/p/7291771.html" target="_blank" rel="noopener">边缘检测之Canny</a> 非常详尽</p><p><strong>图像边缘检测——<a href="https://blog.csdn.net/u014485485/article/details/78364573" target="_blank" rel="noopener">二阶微分算子</a>（上）Laplace算子、LOG算子、DOG算子（Matlab实现）</strong></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;边缘检测相关&lt;/p&gt;
     
     </summary>
     

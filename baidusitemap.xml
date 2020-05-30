@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://jgwu.top/blogs/numpy%E5%90%84%E7%A7%8D/</loc>
+    <lastmod>2020-05-30</lastmod>
+  </url>  <url>
+    <loc>http://jgwu.top/blogs/%E5%A5%BD%E5%A5%BD%E5%AD%A6%E4%B9%A0%EF%BC%8C%E6%89%8D%E8%83%BD%E5%A4%A9%E5%A4%A9%E5%90%91%E4%B8%8A/</loc>
+    <lastmod>2020-05-29</lastmod>
+  </url>  <url>
     <loc>http://jgwu.top/blogs/EM%E7%AE%97%E6%B3%95%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90%E4%B8%8E%E5%85%B6%E5%9C%A8%E5%8D%95%E9%A2%97%E7%B2%92%E5%86%B7%E5%86%BB%E7%94%B5%E9%95%9C%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/</loc>
-    <lastmod>2020-04-10</lastmod>
+    <lastmod>2020-05-25</lastmod>
+  </url>  <url>
+    <loc>http://jgwu.top/blogs/%E4%BA%A4%E5%8F%89%E7%86%B5/</loc>
+    <lastmod>2020-05-02</lastmod>
+  </url>  <url>
+    <loc>http://jgwu.top/blogs/hello-world/</loc>
+    <lastmod>2020-04-18</lastmod>
   </url>  <url>
     <loc>http://jgwu.top/blogs/Python%E6%93%8D%E4%BD%9Cexcel/</loc>
     <lastmod>2020-04-10</lastmod>
@@ -14,9 +26,6 @@
     <lastmod>2020-04-05</lastmod>
   </url>  <url>
     <loc>http://jgwu.top/blogs/Bayesian-and-MLE-MAP/</loc>
-    <lastmod>2020-04-04</lastmod>
-  </url>  <url>
-    <loc>http://jgwu.top/blogs/%E4%BA%A4%E5%8F%89%E7%86%B5/</loc>
     <lastmod>2020-04-04</lastmod>
   </url>  <url>
     <loc>http://jgwu.top/blogs/Python%E8%A7%A3%E9%87%8A%E5%99%A8/</loc>
@@ -59,9 +68,6 @@
     <lastmod>2020-03-20</lastmod>
   </url>  <url>
     <loc>http://jgwu.top/blogs/Clustering-Algorithm/</loc>
-    <lastmod>2020-03-20</lastmod>
-  </url>  <url>
-    <loc>http://jgwu.top/blogs/numpy%E5%90%84%E7%A7%8D/</loc>
     <lastmod>2020-03-20</lastmod>
   </url>  <url>
     <loc>http://jgwu.top/blogs/pandas%E5%90%84%E7%A7%8D/</loc>
@@ -141,8 +147,5 @@
   </url>  <url>
     <loc>http://jgwu.top/blogs/%E5%BD%92%E4%B8%80%E5%8C%96%E3%80%81%E6%A0%87%E5%87%86%E5%8C%96%E3%80%81%E4%B8%AD%E5%BF%83%E5%8C%96/</loc>
     <lastmod>2019-03-06</lastmod>
-  </url>  <url>
-    <loc>http://jgwu.top/blogs/hello-world/</loc>
-    <lastmod>2019-01-15</lastmod>
   </url>
 </urlset>
