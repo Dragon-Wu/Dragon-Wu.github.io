@@ -1,3 +1,4 @@
+http://jgwu.top/blogs/Deep-Dream/
 http://jgwu.top/blogs/Batch-Normalization/
 http://jgwu.top/blogs/numpy中的dot-matmul-multiply/
 http://jgwu.top/blogs/好好学习，才能天天向上/
@@ -47,4 +48,3 @@ http://jgwu.top/blogs/Tensorflow出现Nan值问题/
 http://jgwu.top/blogs/梯度消失、爆炸与其解决方案/
 http://jgwu.top/blogs/卷积神经网络/
 http://jgwu.top/blogs/交叉熵/
-http://jgwu.top/blogs/Tensorflow学习-MNIST识别/
