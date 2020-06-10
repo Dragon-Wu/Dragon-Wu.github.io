@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jgwu.top/"/>
-  <updated>2020-06-10T04:15:40.984Z</updated>
+  <updated>2020-06-10T04:28:51.370Z</updated>
   <id>http://jgwu.top/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://jgwu.top/blogs/Deep-Dream/"/>
     <id>http://jgwu.top/blogs/Deep-Dream/</id>
     <published>2020-06-10T04:00:30.000Z</published>
-    <updated>2020-06-10T04:15:40.984Z</updated>
+    <updated>2020-06-10T04:28:51.370Z</updated>
     
     <content type="html"><![CDATA[<p>Deep Dream，是在探讨卷积神经网络到底学习到了什么，其实一直以来就觉得卷积神经网络就是一个能够自动提取特征且能够提取到高层次特征的网络，提到特征后就和传统的模式识别一样做滤波匹配，其实在冷冻电镜的颗粒挑选，就有好多用卷积神经网络的，记得其中Toshihiko Ogura and Chikara Sato在2001年和2003年的时候就分析过神经网络挑选颗粒的原理。</p><p>通过Google的Deep Dream觉得更好地理解了卷积神经网络的工作原理，值得一看，但既有前人珠玉在前，我就仅做整理好了（其实是比较懒，嘿嘿</p><a id="more"></a><h2 id="Theory："><a href="#Theory：" class="headerlink" title="Theory："></a>Theory：</h2><p><a href="https://www.zhihu.com/question/31572348" target="_blank" rel="noopener">Google 的神经网络生成图像 (Inceptionism) 是怎么做到的？</a>里面各个大佬的回答</p><h2 id="Show："><a href="#Show：" class="headerlink" title="Show："></a>Show：</h2><p><a href="https://dreamscopeapp.com/" target="_blank" rel="noopener">Dreamscope</a></p><p><a href="https://photos.google.com/share/AF1QipPX0SCl7OzWilt9LnuQliattX4OUCj_8EP65_cTVnBmS1jnYgsGQAieQUc1VQWdgQ?key=aVBxWjhwSzg2RjJWLWRuVFBBZEN1d205bUdEMnhB" target="_blank" rel="noopener">Inceptionism: Going deeper into Neural Networks</a></p><h2 id="Test："><a href="#Test：" class="headerlink" title="Test："></a>Test：</h2><p><a href="https://towardsdatascience.com/how-to-visualize-convolutional-features-in-40-lines-of-code-70b7d87b0030" target="_blank" rel="noopener">How to visualize convolutional features in 40 lines of code</a></p><p><a href="https://mathpretty.com/10475.html" target="_blank" rel="noopener">CNN可视化Convolutional Features</a></p><h2 id="Simple-test-code："><a href="#Simple-test-code：" class="headerlink" title="Simple test code："></a>Simple test code：</h2><p><a href="deep-dream-pytorch.ipynb" title="Deep Dream-Pytorch">Deep Dream-Pytorch Notebook下载</a> 参考上述test的第二个链接</p><p><a href="clossup.jpg" title="右键另存为下载">clossup.jpg</a></p><p><a href="res1.jpg" title="右键另存为下载">res1.jpg</a></p>]]></content>
     
