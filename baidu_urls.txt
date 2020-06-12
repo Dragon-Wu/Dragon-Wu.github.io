@@ -1,3 +1,4 @@
+http://jgwu.top/blogs/Pytorch相关/
 http://jgwu.top/blogs/Deep-Dream/
 http://jgwu.top/blogs/Batch-Normalization/
 http://jgwu.top/blogs/numpy中的dot-matmul-multiply/
@@ -7,4 +8,3 @@ http://jgwu.top/blogs/菜-坑/
 http://jgwu.top/blogs/Python解释器/
 http://jgwu.top/blogs/Python加速-Numba-Cupy/
 http://jgwu.top/blogs/LeetCode征途/
-http://jgwu.top/blogs/Python中的浅拷贝和深拷贝/

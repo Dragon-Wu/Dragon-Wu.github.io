@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Pytorch相关</title>
+      <link href="/blogs/Pytorch%E7%9B%B8%E5%85%B3/"/>
+      <url>/blogs/Pytorch%E7%9B%B8%E5%85%B3/</url>
+      
+        <content type="html"><![CDATA[<p>之前用的都是TensorFlow，觉得TensorBoard比较酷，最近也学习学习Pytorch，记录一下相关的内容</p><a id="more"></a><h2 id="Transforms"><a href="#Transforms" class="headerlink" title="Transforms"></a>Transforms</h2><p>本文对transforms.py中的各个预处理方法进行介绍和总结。主要从官方文档中总结而来，官方文档只是将方法陈列，没有归纳总结，顺序很乱，这里总结一共有四大类，方便大家索引：</p><ol><li>裁剪——Crop 中心裁剪：transforms.CenterCrop 随机裁剪：transforms.RandomCrop 随机长宽比裁剪：transforms.RandomResizedCrop 上下左右中心裁剪：transforms.FiveCrop 上下左右中心裁剪后翻转，transforms.TenCrop</li><li>翻转和旋转——Flip and Rotation 依概率p水平翻转：transforms.RandomHorizontalFlip(p=0.5) 依概率p垂直翻转：transforms.RandomVerticalFlip(p=0.5) 随机旋转：transforms.RandomRotation</li><li>图像变换 resize：transforms.Resize 标准化：transforms.Normalize 转为tensor，并归一化至[0-1]：transforms.ToTensor 填充：transforms.Pad 修改亮度、对比度和饱和度：transforms.ColorJitter 转灰度图：transforms.Grayscale 线性变换：transforms.LinearTransformation() 仿射变换：transforms.RandomAffine 依概率p转为灰度图：transforms.RandomGrayscale 将数据转换为PILImage：transforms.ToPILImage transforms.Lambda：Apply a user-defined lambda as a transform.</li><li>对transforms操作，使数据增强更灵活 transforms.RandomChoice(transforms)， 从给定的一系列transforms中选一个进行操作 transforms.RandomApply(transforms, p=0.5)，给一个transform加上概率，依概率进行操作 transforms.RandomOrder，将transforms中的操作随机打乱</li></ol><p><a href="https://blog.csdn.net/qq_38410428/article/details/94719553" target="_blank" rel="noopener">PyTorch 学习笔记:transforms的二十二个方法（transforms用法非常详细）</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> CS </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 机器学习 </tag>
+            
+            <tag> Pytorch </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Deep Dream</title>
       <link href="/blogs/Deep-Dream/"/>
       <url>/blogs/Deep-Dream/</url>
@@ -1329,6 +1356,17 @@
     
     
     <entry>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>好好学习，天天向上</title>
       <link href="/about/index.html"/>
       <url>/about/index.html</url>
@@ -1343,17 +1381,6 @@
       <title>tags</title>
       <link href="/tags/index.html"/>
       <url>/tags/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>categories</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
