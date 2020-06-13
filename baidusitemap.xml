@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://jgwu.top/blogs/Batch-Normalization/</loc>
+    <lastmod>2020-06-13</lastmod>
+  </url>  <url>
+    <loc>http://jgwu.top/blogs/%E5%A5%BD%E5%A5%BD%E5%AD%A6%E4%B9%A0%EF%BC%8C%E6%89%8D%E8%83%BD%E5%A4%A9%E5%A4%A9%E5%90%91%E4%B8%8A/</loc>
+    <lastmod>2020-06-13</lastmod>
+  </url>  <url>
+    <loc>http://jgwu.top/blogs/%E8%8F%9C-%E5%9D%91/</loc>
+    <lastmod>2020-06-13</lastmod>
+  </url>  <url>
+    <loc>http://jgwu.top/blogs/hello-world/</loc>
+    <lastmod>2020-06-13</lastmod>
+  </url>  <url>
+    <loc>http://jgwu.top/blogs/Deep-Dream/</loc>
+    <lastmod>2020-06-13</lastmod>
+  </url>  <url>
+    <loc>http://jgwu.top/blogs/R-CNN%E3%80%81SPP-Net%E3%80%81Fast-R-CNN%E7%AD%89/</loc>
+    <lastmod>2020-06-13</lastmod>
+  </url>  <url>
+    <loc>http://jgwu.top/blogs/%E6%B1%A0%E5%8C%96%E7%9A%84%E4%BD%9C%E7%94%A8/</loc>
+    <lastmod>2020-06-13</lastmod>
+  </url>  <url>
     <loc>http://jgwu.top/blogs/numpy%E5%90%84%E7%A7%8D/</loc>
     <lastmod>2020-06-13</lastmod>
   </url>  <url>
@@ -22,19 +43,7 @@
     <loc>http://jgwu.top/blogs/EM%E7%AE%97%E6%B3%95%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90%E4%B8%8E%E5%85%B6%E5%9C%A8%E5%8D%95%E9%A2%97%E7%B2%92%E5%86%B7%E5%86%BB%E7%94%B5%E9%95%9C%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/</loc>
     <lastmod>2020-06-13</lastmod>
   </url>  <url>
-    <loc>http://jgwu.top/blogs/Deep-Dream/</loc>
-    <lastmod>2020-06-13</lastmod>
-  </url>  <url>
     <loc>http://jgwu.top/blogs/Pytorch%E7%9B%B8%E5%85%B3/</loc>
-    <lastmod>2020-06-13</lastmod>
-  </url>  <url>
-    <loc>http://jgwu.top/blogs/Batch-Normalization/</loc>
-    <lastmod>2020-06-13</lastmod>
-  </url>  <url>
-    <loc>http://jgwu.top/blogs/%E6%B1%A0%E5%8C%96%E7%9A%84%E4%BD%9C%E7%94%A8/</loc>
-    <lastmod>2020-06-13</lastmod>
-  </url>  <url>
-    <loc>http://jgwu.top/blogs/R-CNN%E3%80%81SPP-Net%E3%80%81Fast-R-CNN%E7%AD%89/</loc>
     <lastmod>2020-06-13</lastmod>
   </url>  <url>
     <loc>http://jgwu.top/blogs/%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B%E7%9B%B8%E5%85%B3/</loc>
@@ -52,23 +61,14 @@
     <loc>http://jgwu.top/blogs/%E6%97%A0%E5%81%8F%E4%BC%B0%E8%AE%A1%E4%B8%8B%E7%9A%84%E5%9D%87%E5%80%BC%E4%B8%8E%E6%96%B9%E5%B7%AE/</loc>
     <lastmod>2020-06-12</lastmod>
   </url>  <url>
-    <loc>http://jgwu.top/blogs/%E8%8F%9C-%E5%9D%91/</loc>
-    <lastmod>2020-06-10</lastmod>
-  </url>  <url>
     <loc>http://jgwu.top/blogs/%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1%E3%80%81%E7%88%86%E7%82%B8%E4%B8%8E%E5%85%B6%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</loc>
     <lastmod>2020-06-09</lastmod>
-  </url>  <url>
-    <loc>http://jgwu.top/blogs/%E5%A5%BD%E5%A5%BD%E5%AD%A6%E4%B9%A0%EF%BC%8C%E6%89%8D%E8%83%BD%E5%A4%A9%E5%A4%A9%E5%90%91%E4%B8%8A/</loc>
-    <lastmod>2020-06-03</lastmod>
   </url>  <url>
     <loc>http://jgwu.top/blogs/numpy%E4%B8%AD%E7%9A%84dot-matmul-multiply/</loc>
     <lastmod>2020-05-30</lastmod>
   </url>  <url>
     <loc>http://jgwu.top/blogs/%E4%BA%A4%E5%8F%89%E7%86%B5/</loc>
     <lastmod>2020-05-02</lastmod>
-  </url>  <url>
-    <loc>http://jgwu.top/blogs/hello-world/</loc>
-    <lastmod>2020-04-18</lastmod>
   </url>  <url>
     <loc>http://jgwu.top/blogs/Python%E6%93%8D%E4%BD%9Cexcel/</loc>
     <lastmod>2020-04-10</lastmod>

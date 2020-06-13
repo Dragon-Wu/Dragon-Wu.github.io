@@ -22,9 +22,9 @@
             
             <tag> Machine Learning </tag>
             
-            <tag> CNN </tag>
-            
             <tag> Computer Vision </tag>
+            
+            <tag> CNN </tag>
             
         </tags>
       
@@ -101,7 +101,7 @@
       
         <tags>
             
-            <tag> Machine Learnig </tag>
+            <tag> Machine Learning </tag>
             
             <tag> Pytorch </tag>
             
@@ -227,12 +227,6 @@
           
       </categories>
       
-      
-        <tags>
-            
-            <tag> UnKonwn </tag>
-            
-        </tags>
       
     </entry>
     
@@ -535,6 +529,8 @@
             <tag> Machine Learning </tag>
             
             <tag> Computer Vision </tag>
+            
+            <tag> CNN </tag>
             
         </tags>
       
@@ -1077,16 +1073,10 @@
       
       <categories>
           
-          <category> Try </category>
+          <category> Something </category>
           
       </categories>
       
-      
-        <tags>
-            
-            <tag> 机器学习 </tag>
-            
-        </tags>
       
     </entry>
     
@@ -1408,9 +1398,9 @@
     
     
     <entry>
-      <title>好好学习，天天向上</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
+      <title>tags</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -1430,9 +1420,9 @@
     
     
     <entry>
-      <title>tags</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>好好学习，天天向上</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       

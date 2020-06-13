@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jgwu.top/"/>
-  <updated>2020-06-13T04:11:33.184Z</updated>
+  <updated>2020-06-13T04:25:49.235Z</updated>
   <id>http://jgwu.top/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://jgwu.top/blogs/%E6%B1%A0%E5%8C%96%E7%9A%84%E4%BD%9C%E7%94%A8/"/>
     <id>http://jgwu.top/blogs/%E6%B1%A0%E5%8C%96%E7%9A%84%E4%BD%9C%E7%94%A8/</id>
     <published>2020-06-13T02:58:01.000Z</published>
-    <updated>2020-06-13T04:11:33.184Z</updated>
+    <updated>2020-06-13T04:25:49.235Z</updated>
     
     <content type="html"><![CDATA[<p>池化(pooling)，是卷积神经网络中的重要一环，但是人们经常提到的是卷积层带来的特征提取，池化的作用，原来我只觉得是降维，那如果只是降维的话，从提高准确率的角度，如果有足够的内存和计算资源，不需要池化，也许能够获得更棒的结果？</p><a id="more"></a><h2 id="个人理解"><a href="#个人理解" class="headerlink" title="个人理解"></a>个人理解</h2><p>看完一些博主的回答，我理解为：</p><p>首先，最简单的，池化能够降维，提高效率</p><p>其次，在一定程度上降低过拟合</p><p>最后，池化能够增强网络的泛化能力，具体体现在对一些平移、旋转、拉伸的不变性</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>魏秀参博士在CNN_book一书中做了很好的解答：</p><ol><li>特征不变性（feature invariant）汇合操作使模型更关注是否存在某些特征而不是特征具体的位置可看作是一种很强的先验，使特征学习包含某种程度自由度，能容忍一些特征微小的位移</li><li>特征降维由于汇合操作的降采样作用，汇合结果中的一个元素对应于原输入数据的一个子区域（sub-region），因此汇合相当于在空间范围内做了维度约减（spatially dimension reduction），从而使模型可以抽取更广范围的特征同时减小了下一层输入大小，进而减小计算量和参数个数</li><li>在一定程度上能防止过拟合的发生  </li></ol><p><a href="https://www.zhihu.com/question/338077802" target="_blank" rel="noopener">假如算力无限制，设计卷积神经网络(CNN)的过程中还需要池化(pooling)吗？</a>中<a href="https://www.zhihu.com/question/338077802/answer/770851777" target="_blank" rel="noopener">刘冬煜的解答</a></p><p>首先我站池化派，认为池化层依旧能发挥作用。</p><p>最早的依据依旧是猫的两种视觉细胞——一种叫S型细胞，负责组合信息，抽取特征，对应着我们现在的卷积层；另一种叫C型细胞，负责抽象和容错，对应着我们现在的池化层。细胞分工如此明确，是生物进化的结果，这也暗示了跨步卷积层较之池化层，或许也存在不合理之处。</p><p>接下来说池化层的作用，主要体现在容错性上：</p><p><img src="/blogs/池化的作用/v2-5e7d7aa2620cd7e2f732912f467c3cc5_hd.webp" alt="img"></p><p>而且这一层没有参数，不需要学习，因此如果网络结构合理，池化层能有效防止过拟合，发挥的作用不容小觑。</p><p>再通过反向传播来看，最大池化能使误差稀疏，平均池化能使误差均摊，而跨步卷积的结果又要另说。</p><p>另外，池化层能使得特征对齐，而跨步卷积可能会合并特征，导致网络特征提取出现问题。</p><p><img src="/blogs/池化的作用/v2-c9c20f344e055326597295c9dacbf644_720w.jpg" alt="img"></p><p>最后，若要支持任意大小图片输入，卷积神经网络又不得不用池化——全连接层前的空间金字塔池化，或全卷积网络的末层特征图做平均池化得到输出。</p><p>总而言之，池化层的作用远不只是降低维度。池化层的作用也不能一棒子打死，未来有可能会提出新的池化层结构。</p><p>以上则是鄙人的拙见。</p>]]></content>
     
@@ -37,9 +37,9 @@
     
       <category term="Machine Learning" scheme="http://jgwu.top/tags/Machine-Learning/"/>
     
-      <category term="CNN" scheme="http://jgwu.top/tags/CNN/"/>
-    
       <category term="Computer Vision" scheme="http://jgwu.top/tags/Computer-Vision/"/>
+    
+      <category term="CNN" scheme="http://jgwu.top/tags/CNN/"/>
     
   </entry>
   
@@ -96,7 +96,7 @@
     <link href="http://jgwu.top/blogs/Deep-Dream/"/>
     <id>http://jgwu.top/blogs/Deep-Dream/</id>
     <published>2020-06-10T04:00:30.000Z</published>
-    <updated>2020-06-13T04:16:17.852Z</updated>
+    <updated>2020-06-13T06:07:28.997Z</updated>
     
     <content type="html"><![CDATA[<p>Deep Dream，是在探讨卷积神经网络到底学习到了什么，其实一直以来就觉得卷积神经网络就是一个能够自动提取特征且能够提取到高层次特征的网络，提到特征后就和传统的模式识别一样做滤波匹配，其实在冷冻电镜的颗粒挑选，就有好多用卷积神经网络的，记得其中Toshihiko Ogura and Chikara Sato在2001年和2003年的时候就分析过神经网络挑选颗粒的原理。</p><p>通过Google的Deep Dream觉得更好地理解了卷积神经网络的工作原理，值得一看，但既有前人珠玉在前，我就仅做整理好了（其实是比较懒，嘿嘿</p><a id="more"></a><h2 id="Theory："><a href="#Theory：" class="headerlink" title="Theory："></a>Theory：</h2><p><a href="https://www.zhihu.com/question/31572348" target="_blank" rel="noopener">Google 的神经网络生成图像 (Inceptionism) 是怎么做到的？</a>里面各个大佬的回答</p><h2 id="Show："><a href="#Show：" class="headerlink" title="Show："></a>Show：</h2><p><a href="https://dreamscopeapp.com/" target="_blank" rel="noopener">Dreamscope</a></p><p><a href="https://photos.google.com/share/AF1QipPX0SCl7OzWilt9LnuQliattX4OUCj_8EP65_cTVnBmS1jnYgsGQAieQUc1VQWdgQ?key=aVBxWjhwSzg2RjJWLWRuVFBBZEN1d205bUdEMnhB" target="_blank" rel="noopener">Inceptionism: Going deeper into Neural Networks</a></p><h2 id="Test："><a href="#Test：" class="headerlink" title="Test："></a>Test：</h2><p><a href="https://towardsdatascience.com/how-to-visualize-convolutional-features-in-40-lines-of-code-70b7d87b0030" target="_blank" rel="noopener">How to visualize convolutional features in 40 lines of code</a></p><p><a href="https://mathpretty.com/10475.html" target="_blank" rel="noopener">CNN可视化Convolutional Features</a></p><h2 id="Simple-test-code："><a href="#Simple-test-code：" class="headerlink" title="Simple test code："></a>Simple test code：</h2><p><a href="deep-dream-pytorch.ipynb" title="Deep Dream-Pytorch">Deep Dream-Pytorch Notebook下载</a> 参考上述test的第二个链接</p><p><a href="clossup.jpg" title="右键另存为下载">clossup.jpg</a></p><p><a href="res1.jpg" title="右键另存为下载">res1.jpg</a></p>]]></content>
     
@@ -111,7 +111,7 @@
       <category term="CS" scheme="http://jgwu.top/categories/CS/"/>
     
     
-      <category term="Machine Learnig" scheme="http://jgwu.top/tags/Machine-Learnig/"/>
+      <category term="Machine Learning" scheme="http://jgwu.top/tags/Machine-Learning/"/>
     
       <category term="Pytorch" scheme="http://jgwu.top/tags/Pytorch/"/>
     
@@ -124,7 +124,7 @@
     <link href="http://jgwu.top/blogs/Batch-Normalization/"/>
     <id>http://jgwu.top/blogs/Batch-Normalization/</id>
     <published>2020-06-09T16:01:30.000Z</published>
-    <updated>2020-06-13T04:14:51.505Z</updated>
+    <updated>2020-06-13T06:10:17.937Z</updated>
     
     <content type="html"><![CDATA[<p>其实听到蛮多次了，一开始以为就是类似Dropout的trick，仔细查了下，感觉还是蛮有意思的，看了一些材料，做一个记录，感谢愿意分享的大佬们</p><p>Batch Normalization，BM，是神经网络训练中非常有用的神器，不仅能够减少对调参的依赖，加速训练，同时有很多改进如LN、WN等，很有意思，详情如下</p><a id="more"></a><p>Batch Normalization，BN，顾名思义，其实就是”批规范化”，batch好理解，就是mini-batch训练的那个batch，通过少量样本来训练，精华在于normalization，而这里的Normalization其实和数据预处理时的Normalization一个意思，不过结合上具体的训练过程就很有意思了</p><h2 id="Why-we-need-BN？"><a href="#Why-we-need-BN？" class="headerlink" title="Why we need BN？"></a>Why we need BN？</h2><h3 id="数据的独立同分布"><a href="#数据的独立同分布" class="headerlink" title="数据的独立同分布"></a>数据的独立同分布</h3><p>independent and identically distributed，简称为 <em>i.i.d.</em> 是我们在做ML时最开心的了，这也是朴素贝叶斯为什么叫朴素贝叶斯的原因，因为i.i.d可以简化常规机器学习模型的训练、提升机器学习模型的预测能力，是一个共识。</p><p>所以，一般我们在把数据喂给model前，会先进行白化（whitening），主要目的是：</p><ul><li><strong>使得输入特征分布具有相同的均值与方差。</strong>其中PCA白化保证了所有特征分布均值为0，方差为1；而ZCA白化则保证了所有特征分布均值为0，方差相同；</li><li><strong>去除特征之间的相关性。</strong></li></ul><p>（关于白化，可阅：<a href="https://blog.csdn.net/hjimce/article/details/50864602" target="_blank" rel="noopener">机器学习（七）白化whitening</a>）</p><p>但是白化：</p><ul><li><strong>白化过程计算成本太高，</strong>并且在每一轮训练中的每一层我们都需要做如此高成本计算的白化操作；</li><li><strong>白化过程由于改变了网络每一层的分布</strong>，因而改变了网络层中本身数据的表达能力。底层网络学习到的参数信息会被白化操作丢失掉。</li></ul><p>既然有了上面两个问题，那我们的解决思路就很简单，一方面，我们提出的normalization方法要能够简化计算过程；另一方面又需要经过规范化处理后让数据尽可能保留原始的表达能力。于是就有了简化+改进版的白化——Batch Normalization。</p><h3 id="深度学习中的-Internal-Covariate-Shift"><a href="#深度学习中的-Internal-Covariate-Shift" class="headerlink" title="深度学习中的 Internal Covariate Shift"></a>深度学习中的 Internal Covariate Shift</h3><p>那么为什么深度学习会这么困难的，为啥咱们调参小心翼翼呢？</p><p>因为深度学习的层次通常比较多，而参数不断更新的时候，越高层的参数越容易因底层参数的调整而波动，不断去适应，所以我们需要非常谨慎地去设定参数，</p><p>Google 将这一现象总结为 Internal Covariate Shift，简称 ICS. 什么是 ICS 呢？<a href="https://www.zhihu.com/people/b716bc76c2990cd06dae2f9c1f984e6d" target="_blank" rel="noopener">@魏秀参</a> 在<a href="https://www.zhihu.com/question/38102762/answer/85238569" target="_blank" rel="noopener">一个回答</a>中做出了一个很好的解释</p><h3 id="ICS导致的问题"><a href="#ICS导致的问题" class="headerlink" title="ICS导致的问题"></a>ICS导致的问题</h3><p>简而言之，每个神经元的输入数据不再是“独立同分布”。</p><p>其一，上层参数需要不断适应新的输入数据分布，降低学习速度。</p><p>其二，下层输入的变化可能趋向于变大或者变小，导致上层落入饱和区，使得学习过早停止。</p><p>其三，每层的更新都会影响到其它层，因此每层的参数更新策略需要尽可能的谨慎。</p><h2 id="General-framework-and-basic-ideas-of-BN"><a href="#General-framework-and-basic-ideas-of-BN" class="headerlink" title="General framework and basic ideas of BN"></a>General framework and basic ideas of BN</h2><p>我的理解：先通过normalization，在通过计算<img src="/blogs/Batch-Normalization/image-20200610001944538.png" alt="image-20200610001944538">，使得能够再还原回去，这是为了使得BN不剥夺底层辛苦训练出的数据分布信息，大佬们是叫做保证了模型的capacity</p><h2 id="主流-Normalization-方法梳理"><a href="#主流-Normalization-方法梳理" class="headerlink" title="主流 Normalization 方法梳理"></a>主流 Normalization 方法梳理</h2><p>查看<a href="https://zhuanlan.zhihu.com/p/33173246" target="_blank" rel="noopener">详解深度学习中的Normalization，BN/LN/WN</a>中的第三章</p><h2 id="各种Normalization方法-为什么会有效？"><a href="#各种Normalization方法-为什么会有效？" class="headerlink" title="各种Normalization方法 为什么会有效？"></a>各种Normalization方法 为什么会有效？</h2><p>查看<a href="https://zhuanlan.zhihu.com/p/33173246" target="_blank" rel="noopener">详解深度学习中的Normalization，BN/LN/WN</a>中的第四章</p><h2 id="Why-BN-Work："><a href="#Why-BN-Work：" class="headerlink" title="Why BN Work："></a>Why BN Work：</h2><p>那BN到底是什么原理呢？说到底还是<strong>为了防止“梯度弥散”</strong>。关于梯度弥散，大家都知道一个简单的栗子：0.9^30≈0.04。在BN中，是通过将activation规范为均值和方差一致的手段使得原本会减小的activation的scale变大。可以说是一种更有效的local response normalization方法（见4.2.1节）。</p><h2 id="Reference："><a href="#Reference：" class="headerlink" title="Reference："></a>Reference：</h2><p><a href="https://zhuanlan.zhihu.com/p/33173246" target="_blank" rel="noopener">详解深度学习中的Normalization，BN/LN/WN</a></p><p><a href="https://zhuanlan.zhihu.com/p/34879333" target="_blank" rel="noopener">Batch Normalization原理与实战</a></p><p>深度学习中 Batch Normalization为什么效果好？——<a href="https://www.zhihu.com/question/38102762/answer/85238569" target="_blank" rel="noopener">魏秀参老师的回答</a></p><p><a href="http://makaidong.com/shixiangwan/137429_9138294.html" target="_blank" rel="noopener">参数优化方法</a></p>]]></content>
     
@@ -175,7 +175,7 @@
     <link href="http://jgwu.top/blogs/%E5%A5%BD%E5%A5%BD%E5%AD%A6%E4%B9%A0%EF%BC%8C%E6%89%8D%E8%83%BD%E5%A4%A9%E5%A4%A9%E5%90%91%E4%B8%8A/"/>
     <id>http://jgwu.top/blogs/%E5%A5%BD%E5%A5%BD%E5%AD%A6%E4%B9%A0%EF%BC%8C%E6%89%8D%E8%83%BD%E5%A4%A9%E5%A4%A9%E5%90%91%E4%B8%8A/</id>
     <published>2020-05-02T08:49:59.000Z</published>
-    <updated>2020-06-03T15:20:54.721Z</updated>
+    <updated>2020-06-13T06:10:15.669Z</updated>
     
     <content type="html"><![CDATA[<p>emmm</p><a id="more"></a><h2 id="5-2"><a href="#5-2" class="headerlink" title="5.2"></a>5.2</h2><p>上午9.30醒，10.20才起床,11点到实验室，划水吃饭，两点钟开始工作</p><p>自动编码器</p><p><a href="https://www.cnblogs.com/neopenx/p/4370350.html" target="_blank" rel="noopener">降噪自动编码器（Denoising Autoencoder)</a></p><p><a href="https://blog.csdn.net/zbzcDZF/article/details/86570761" target="_blank" rel="noopener">堆叠降噪自动编码器 Stacked Denoising Auto Encoder（SDAE）</a></p><p>聚类算法</p><p><a href="https://www.biaodianfu.com/cluster-score.html" target="_blank" rel="noopener">聚类算法的评估指标</a></p><p><a href="https://zhuanlan.zhihu.com/p/46524857" target="_blank" rel="noopener">深度学习中的互信息：无监督提取特征</a></p><p>存疑：</p><p>DEC（Deep Embedding Networks）  </p><p><a href="https://blog.csdn.net/SCS199411/article/details/90759274" target="_blank" rel="noopener">Unsupervised Deep Embedding for Clustering Analysis论文介绍</a></p><h2 id="5-3"><a href="#5-3" class="headerlink" title="5.3"></a>5.3</h2><p>早上背单词，划水</p><p>下午修电脑，划水，编码了FFT的尝试</p><p>晚上修电脑，回去取衣服，划水，FFT编码</p><h2 id="5-26"><a href="#5-26" class="headerlink" title="5.26"></a>5.26</h2><p><strong>学习课程</strong></p><p>李宏毅老师的ML课程第一课：<a href="https://www.bilibili.com/video/BV1JE411g7XF?p=3" target="_blank" rel="noopener">regression</a> 第二课：<a href="https://www.bilibili.com/video/BV1JE411g7XF?p=4" target="_blank" rel="noopener">basic concept</a></p><p>作业hw1：<a href="https://docs.google.com/presentation/d/18MG1wSTTx8AentGnMfIRUp8ipo8bLpgAj16bJoqW-b0/edit#slide=id.g4cd6560e29_0_48" target="_blank" rel="noopener">silide</a>，<a href="https://www.bilibili.com/video/BV1gE411F7td?p=1" target="_blank" rel="noopener">video</a></p><p><strong>查看资料</strong></p><p><a href="https://colab.research.google.com/drive/131sSqmrmWXfjFZ3jWSELl8cm0Ox5ah3C?pli=1#scrollTo=p9FfatPz6MU3&amp;forceEdit=true&amp;sandboxMode=true" target="_blank" rel="noopener">Homework 1: Linear Regression</a></p><p><a href="https://blog.csdn.net/willduan1/article/details/78070086" target="_blank" rel="noopener">深度学习优化算法解析(Momentum, RMSProp, Adam)</a></p><h2 id="5-29"><a href="#5-29" class="headerlink" title="5.29"></a>5.29</h2><p>先验知识的加入一定好吗？生成模型与判别模型的思考</p><p>神经网络，也许就是一种找到合适Kernel能够做有效的feature transform，从而使得可判别</p><h2 id="5-30"><a href="#5-30" class="headerlink" title="5.30"></a>5.30</h2><p>深度学习，深比宽好，层次化的利用之前的feature，这种模组化的思维，需要更少的数据（数据在不同的模组重复利用）</p><h2 id="6-2"><a href="#6-2" class="headerlink" title="6.2"></a>6.2</h2><p>早上起太晚了，上午和下午主要在看Scheres的最大似然法，主要是07的两篇文章和2012年那篇贝叶斯框架，贝叶斯框架那篇认真拜读了一下，</p><p>整理了一下他的进化过程和最终形态，因为前期钻的比较深，所以还算是比较了解，挺爽的</p><p>晚上写了写numpy100题里的50-70,70以后的跳着做了</p><p>接下来看李宏毅老师的深度学习，然后补笔记，预计1点钟回去</p><h2 id="6-3"><a href="#6-3" class="headerlink" title="6.3"></a>6.3</h2>]]></content>
     
@@ -221,7 +221,7 @@
     <link href="http://jgwu.top/blogs/%E8%8F%9C-%E5%9D%91/"/>
     <id>http://jgwu.top/blogs/%E8%8F%9C-%E5%9D%91/</id>
     <published>2020-03-29T11:13:14.000Z</published>
-    <updated>2020-06-10T03:55:21.045Z</updated>
+    <updated>2020-06-13T06:10:14.499Z</updated>
     
     <content type="html"><![CDATA[<p>为什么被坑绊倒了，因为菜</p><p>所以想学，但是太菜了，精卫填海非一朝一夕</p><p>只好，自己挖坑立碑，留待有时间，有脑子的时候来</p><p>愚公移山 T T </p><a id="more"></a><h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p><a href="https://zhuanlan.zhihu.com/p/120215615" target="_blank" rel="noopener">首款 Jupyter 官方可视化 Debug 工具，JupyterLab 未来可默认支持 Debug</a></p><h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><p>数据结构（Python）：堆、树、图</p><p><a href="https://www.cnblogs.com/ECJTUACM-873284962/p/7637875.html" target="_blank" rel="noopener">从入门到精通之Boyer-Moore字符串搜索算法详解</a></p><p>素数筛法：<a href="http://sunshuyi.vip/2020/02/29/leetcode/leetcode-prime-number/#more" target="_blank" rel="noopener">leetcode实战—素数（埃拉托色尼筛选法包括证明、哈希、RSA）</a></p><p>排序：<a href="http://sunshuyi.vip/2020/03/26/leetcode/tim-sort/#more" target="_blank" rel="noopener">世界上最快的排序算法——Timsort</a> <a href="http://sunshuyi.vip/2020/03/15/leetcode/leetcode-sort/#more" target="_blank" rel="noopener">十二种排序</a></p><p>递增子序列：673 727</p><h2 id="Trick"><a href="#Trick" class="headerlink" title="Trick"></a>Trick</h2><p><a href="https://mp.weixin.qq.com/s?__biz=MjM5NzU0MzU0Nw==&amp;mid=2651384070&amp;idx=1&amp;sn=fc5fc1db1497118ae5a030731ed4d6f7&amp;chksm=bd2422128a53ab049b986f3f215fb78613c5aff2074d4dfc1e7eff286395125b857233aeb594&amp;scene=0&amp;xtrack=1&amp;key=7c963fd9cffd28ea07ca2592c9f0671edb20e4b58a4ed0be637ebdaf68673d0fdb63dfc70808b27e799f32ee5afec11df4cc635d722a1a76db5f53855c6dea12bf931a6815a86c1abb4242ed09cab350&amp;ascene=14&amp;uin=MjQ1NDMzMzQ4NA%3D%3D&amp;devicetype=Windows+10&amp;version=62080079&amp;lang=zh_CN&amp;exportkey=Aad4IMivqRoiP0mxI3X1Z3I%3D&amp;pass_ticket=twjWQyIhowYwH9XxmGVRL2ctmZU7pG9Auk%2FsS0SKZ%2BwqDMNBXUh%2BY4hGaLMPD2q7" target="_blank" rel="noopener">使用无损压缩减少NumPy的内存使用</a></p><p><a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017642838127488" target="_blank" rel="noopener">常用内建模块</a>：包括collections等</p>]]></content>
     
@@ -237,8 +237,6 @@
     
       <category term="CS" scheme="http://jgwu.top/categories/CS/"/>
     
-    
-      <category term="UnKonwn" scheme="http://jgwu.top/tags/UnKonwn/"/>
     
   </entry>
   

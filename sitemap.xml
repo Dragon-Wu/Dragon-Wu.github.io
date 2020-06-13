@@ -2,6 +2,55 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jgwu.top/blogs/Batch-Normalization/</loc>
+    
+    <lastmod>2020-06-13T06:10:17.937Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jgwu.top/blogs/%E5%A5%BD%E5%A5%BD%E5%AD%A6%E4%B9%A0%EF%BC%8C%E6%89%8D%E8%83%BD%E5%A4%A9%E5%A4%A9%E5%90%91%E4%B8%8A/</loc>
+    
+    <lastmod>2020-06-13T06:10:15.669Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jgwu.top/blogs/%E8%8F%9C-%E5%9D%91/</loc>
+    
+    <lastmod>2020-06-13T06:10:14.499Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jgwu.top/blogs/hello-world/</loc>
+    
+    <lastmod>2020-06-13T06:10:13.416Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jgwu.top/blogs/Deep-Dream/</loc>
+    
+    <lastmod>2020-06-13T06:07:28.997Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jgwu.top/blogs/R-CNN%E3%80%81SPP-Net%E3%80%81Fast-R-CNN%E7%AD%89/</loc>
+    
+    <lastmod>2020-06-13T06:06:36.535Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jgwu.top/blogs/%E6%B1%A0%E5%8C%96%E7%9A%84%E4%BD%9C%E7%94%A8/</loc>
+    
+    <lastmod>2020-06-13T04:25:49.235Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jgwu.top/blogs/numpy%E5%90%84%E7%A7%8D/</loc>
     
     <lastmod>2020-06-13T04:19:29.062Z</lastmod>
@@ -51,37 +100,9 @@
   </url>
   
   <url>
-    <loc>http://jgwu.top/blogs/Deep-Dream/</loc>
-    
-    <lastmod>2020-06-13T04:16:17.852Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://jgwu.top/blogs/Pytorch%E7%9B%B8%E5%85%B3/</loc>
     
     <lastmod>2020-06-13T04:15:21.263Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jgwu.top/blogs/Batch-Normalization/</loc>
-    
-    <lastmod>2020-06-13T04:14:51.505Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jgwu.top/blogs/%E6%B1%A0%E5%8C%96%E7%9A%84%E4%BD%9C%E7%94%A8/</loc>
-    
-    <lastmod>2020-06-13T04:11:33.184Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jgwu.top/blogs/R-CNN%E3%80%81SPP-Net%E3%80%81Fast-R-CNN%E7%AD%89/</loc>
-    
-    <lastmod>2020-06-13T03:59:32.227Z</lastmod>
     
   </url>
   
@@ -121,23 +142,9 @@
   </url>
   
   <url>
-    <loc>http://jgwu.top/blogs/%E8%8F%9C-%E5%9D%91/</loc>
-    
-    <lastmod>2020-06-10T03:55:21.045Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://jgwu.top/blogs/%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1%E3%80%81%E7%88%86%E7%82%B8%E4%B8%8E%E5%85%B6%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</loc>
     
     <lastmod>2020-06-09T16:39:55.666Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jgwu.top/blogs/%E5%A5%BD%E5%A5%BD%E5%AD%A6%E4%B9%A0%EF%BC%8C%E6%89%8D%E8%83%BD%E5%A4%A9%E5%A4%A9%E5%90%91%E4%B8%8A/</loc>
-    
-    <lastmod>2020-06-03T15:20:54.721Z</lastmod>
     
   </url>
   
@@ -152,13 +159,6 @@
     <loc>http://jgwu.top/blogs/%E4%BA%A4%E5%8F%89%E7%86%B5/</loc>
     
     <lastmod>2020-05-02T12:48:25.401Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jgwu.top/blogs/hello-world/</loc>
-    
-    <lastmod>2020-04-18T14:56:37.277Z</lastmod>
     
   </url>
   
