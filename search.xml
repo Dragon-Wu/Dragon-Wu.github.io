@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>池化的作用</title>
+      <link href="/blogs/%E6%B1%A0%E5%8C%96%E7%9A%84%E4%BD%9C%E7%94%A8/"/>
+      <url>/blogs/%E6%B1%A0%E5%8C%96%E7%9A%84%E4%BD%9C%E7%94%A8/</url>
+      
+        <content type="html"><![CDATA[<p>池化(pooling)，是卷积神经网络中的重要一环，但是人们经常提到的是卷积层带来的特征提取，池化的作用，原来我只觉得是降维，那如果只是降维的话，从提高准确率的角度，如果有足够的内存和计算资源，不需要池化，也许能够获得更棒的结果？</p><a id="more"></a><h2 id="个人理解"><a href="#个人理解" class="headerlink" title="个人理解"></a>个人理解</h2><p>看完一些博主的回答，我理解为：</p><p>首先，最简单的，池化能够降维，提高效率</p><p>其次，在一定程度上降低过拟合</p><p>最后，池化能够增强网络的泛化能力，具体体现在对一些平移、旋转、拉伸的不变性</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>魏秀参博士在CNN_book一书中做了很好的解答：</p><ol><li>特征不变性（feature invariant）汇合操作使模型更关注是否存在某些特征而不是特征具体的位置可看作是一种很强的先验，使特征学习包含某种程度自由度，能容忍一些特征微小的位移</li><li>特征降维由于汇合操作的降采样作用，汇合结果中的一个元素对应于原输入数据的一个子区域（sub-region），因此汇合相当于在空间范围内做了维度约减（spatially dimension reduction），从而使模型可以抽取更广范围的特征同时减小了下一层输入大小，进而减小计算量和参数个数</li><li>在一定程度上能防止过拟合的发生  </li></ol><p><a href="https://www.zhihu.com/question/338077802" target="_blank" rel="noopener">假如算力无限制，设计卷积神经网络(CNN)的过程中还需要池化(pooling)吗？</a>中<a href="https://www.zhihu.com/question/338077802/answer/770851777" target="_blank" rel="noopener">刘冬煜的解答</a></p><p>首先我站池化派，认为池化层依旧能发挥作用。</p><p>最早的依据依旧是猫的两种视觉细胞——一种叫S型细胞，负责组合信息，抽取特征，对应着我们现在的卷积层；另一种叫C型细胞，负责抽象和容错，对应着我们现在的池化层。细胞分工如此明确，是生物进化的结果，这也暗示了跨步卷积层较之池化层，或许也存在不合理之处。</p><p>接下来说池化层的作用，主要体现在容错性上：</p><p><img src="/blogs/池化的作用/v2-5e7d7aa2620cd7e2f732912f467c3cc5_hd.webp" alt="img"></p><p>而且这一层没有参数，不需要学习，因此如果网络结构合理，池化层能有效防止过拟合，发挥的作用不容小觑。</p><p>再通过反向传播来看，最大池化能使误差稀疏，平均池化能使误差均摊，而跨步卷积的结果又要另说。</p><p>另外，池化层能使得特征对齐，而跨步卷积可能会合并特征，导致网络特征提取出现问题。</p><p><img src="/blogs/池化的作用/v2-c9c20f344e055326597295c9dacbf644_720w.jpg" alt="img"></p><p>最后，若要支持任意大小图片输入，卷积神经网络又不得不用池化——全连接层前的空间金字塔池化，或全卷积网络的末层特征图做平均池化得到输出。</p><p>总而言之，池化层的作用远不只是降低维度。池化层的作用也不能一棒子打死，未来有可能会提出新的池化层结构。</p><p>以上则是鄙人的拙见。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> CS </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Machine Learning </tag>
+            
+            <tag> CNN </tag>
+            
+            <tag> Computer Vision </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>无偏估计下的均值与方差</title>
       <link href="/blogs/%E6%97%A0%E5%81%8F%E4%BC%B0%E8%AE%A1%E4%B8%8B%E7%9A%84%E5%9D%87%E5%80%BC%E4%B8%8E%E6%96%B9%E5%B7%AE/"/>
       <url>/blogs/%E6%97%A0%E5%81%8F%E4%BC%B0%E8%AE%A1%E4%B8%8B%E7%9A%84%E5%9D%87%E5%80%BC%E4%B8%8E%E6%96%B9%E5%B7%AE/</url>
@@ -45,9 +74,9 @@
       
         <tags>
             
-            <tag> 机器学习 </tag>
-            
             <tag> Pytorch </tag>
+            
+            <tag> Library of ML </tag>
             
         </tags>
       
@@ -72,9 +101,11 @@
       
         <tags>
             
-            <tag> 机器学习 </tag>
+            <tag> Machine Learnig </tag>
             
             <tag> Pytorch </tag>
+            
+            <tag> CNN </tag>
             
         </tags>
       
@@ -99,9 +130,9 @@
       
         <tags>
             
-            <tag> 机器学习 </tag>
+            <tag> Machine Learning </tag>
             
-            <tag> trick </tag>
+            <tag> Trick </tag>
             
         </tags>
       
@@ -172,7 +203,7 @@
       
         <tags>
             
-            <tag> 机器学习 </tag>
+            <tag> Machine Learning </tag>
             
             <tag> Cryo-EM </tag>
             
@@ -248,8 +279,6 @@
       
       
         <tags>
-            
-            <tag> 机器学习 </tag>
             
             <tag> Python </tag>
             
@@ -503,9 +532,9 @@
       
         <tags>
             
-            <tag> 机器学习 </tag>
+            <tag> Machine Learning </tag>
             
-            <tag> 计算机视觉 </tag>
+            <tag> Computer Vision </tag>
             
         </tags>
       
@@ -605,9 +634,9 @@
       
         <tags>
             
-            <tag> 机器学习 </tag>
+            <tag> Machine Learning </tag>
             
-            <tag> 计算机视觉 </tag>
+            <tag> Computer Vision </tag>
             
         </tags>
       
@@ -632,9 +661,9 @@
       
         <tags>
             
-            <tag> 机器学习 </tag>
+            <tag> Machine Learning </tag>
             
-            <tag> 计算机视觉 </tag>
+            <tag> Computer Vision </tag>
             
         </tags>
       
@@ -659,9 +688,9 @@
       
         <tags>
             
-            <tag> 机器学习 </tag>
+            <tag> Machine Learning </tag>
             
-            <tag> 计算机视觉 </tag>
+            <tag> Computer Vision </tag>
             
         </tags>
       
@@ -886,9 +915,9 @@
       
         <tags>
             
-            <tag> 机器学习 </tag>
+            <tag> Machine Learning </tag>
             
-            <tag> Python </tag>
+            <tag> Library of ML </tag>
             
         </tags>
       
@@ -913,9 +942,9 @@
       
         <tags>
             
-            <tag> 机器学习 </tag>
+            <tag> Machine Learning </tag>
             
-            <tag> Python </tag>
+            <tag> Library of ML </tag>
             
         </tags>
       
@@ -940,9 +969,9 @@
       
         <tags>
             
-            <tag> 机器学习 </tag>
+            <tag> Machine Learning </tag>
             
-            <tag> Python </tag>
+            <tag> Library of ML </tag>
             
         </tags>
       
@@ -955,7 +984,7 @@
       <link href="/blogs/%E5%BD%92%E4%B8%80%E5%8C%96%E3%80%81%E6%A0%87%E5%87%86%E5%8C%96%E3%80%81%E4%B8%AD%E5%BF%83%E5%8C%96/"/>
       <url>/blogs/%E5%BD%92%E4%B8%80%E5%8C%96%E3%80%81%E6%A0%87%E5%87%86%E5%8C%96%E3%80%81%E4%B8%AD%E5%BF%83%E5%8C%96/</url>
       
-        <content type="html"><![CDATA[<p>在数据前期预处理时，常常接触到normalization、standardization、Zero-center等操作，但是一直不了解其原因和效果以及具体操作，查询后作此整理</p><a id="more"></a><h2 id="为什么："><a href="#为什么：" class="headerlink" title="为什么："></a>为什么：</h2><p>​    首先归一化和标准化具有一个优点，就是他的计算基本都是线性的，线性变换就有很多良好的性质，比如不会因为数值的改变而改变其大小排序，这些性质决定了处理后的数据不会出现“失效”的情况，反而能够提高数据的表现，这是能够进行这些处理的的基础。（归一化中有非线性的变换，如对数函数）</p><h3 id="1-避免数值问题"><a href="#1-避免数值问题" class="headerlink" title="1.避免数值问题"></a>1.避免数值问题</h3><p>数值过大可能会造成计算效率低和训练过程中值域越界的情况，比如遇到过的TensorFlow在训练中出现Nan报错</p><h3 id="2-无量纲化"><a href="#2-无量纲化" class="headerlink" title="2.无量纲化"></a>2.无量纲化</h3><p>防止不同量纲特征中，数值变化范围大的特征掩盖数值变化范围小的特征</p><h3 id="3-模型训练需要"><a href="#3-模型训练需要" class="headerlink" title="3.模型训练需要"></a>3.模型训练需要</h3><h4 id="1）加快梯度下降的速度"><a href="#1）加快梯度下降的速度" class="headerlink" title="1）加快梯度下降的速度"></a>1）加快梯度下降的速度</h4><p>​    如下图所示，在梯度下降时，如未进行归一化和标准化的等高线偏椭圆，迭代时可能陷入来回振荡的“之”型下降路线（垂直于长轴），从而使得迭代效率降低，而右图对两个特征进行了归一化，等高线趋向圆，梯度下降时收敛地更快</p><p><img src="/blogs/归一化、标准化、中心化/TIM截图20190114143034.png" alt="TIM截图20190114143034"></p><p>​                <img src="/blogs/归一化、标准化、中心化/TIM截图20190114143525.png" alt="TIM截图20190114143525"></p><h4 id="2）分类器性能需要"><a href="#2）分类器性能需要" class="headerlink" title="2）分类器性能需要"></a>2）分类器性能需要</h4><p>​    一些分类器在训练时，其实类似上文提到的某一个特征数值过大的情况，比如在KNN的训练时，每个特征的重要性都是一样的，那么如果每一个特征的值域范围特别大，那么距离计算就是主要取决于这个特征，从而使得更重要但值域小的特征被掩盖</p><h2 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h2><h3 id="1-归一化（Normalization）"><a href="#1-归一化（Normalization）" class="headerlink" title="1.归一化（Normalization）"></a>1.归一化（Normalization）</h3><p>​    1）把值域缩放到（0,1）或者（-1,1）之间，使得数据处理更加快捷</p><p>​    2）把有量纲表达式变成无量纲表达式，便于不同量级的指标能够进行比较和加权。</p><p>​    归一化是一种简化计算的方式，即将有量纲的表达式，经过变化，化为无量纲的表达式，成为标量</p><h3 id="2-标准化（Standardization）"><a href="#2-标准化（Standardization）" class="headerlink" title="2.标准化（Standardization）"></a>2.标准化（Standardization）</h3><p>​    使数据以0为中心左右分布，标准差为1，一般为线性缩放</p><p>​    1）以0为中心分布，比如在去中心化的数据上做<a href="https://en.wikipedia.org/wiki/Singular_value_decomposition" target="_blank" rel="noopener">SVD</a>分解等价于在原始数据上做<a href="https://en.wikipedia.org/wiki/Principal_component_analysis" target="_blank" rel="noopener">PCA</a>；机器学习中很多函数如<a href="https://en.wikipedia.org/wiki/Sigmoid_function" target="_blank" rel="noopener">Sigmoid</a>、<a href="https://en.wikipedia.org/wiki/Hyperbolic_function#Tanh" target="_blank" rel="noopener">Tanh</a>、<a href="https://en.wikipedia.org/wiki/Softmax_function" target="_blank" rel="noopener">Softmax</a>等都以0为中心左右分布（不一定对称）</p><p>​    2）标准差为1，标准差为1有什么好处呢？这个更复杂一些</p><p>​    对于xi与xi′两点间距离，往往表示为<br>​    <img src="/blogs/归一化、标准化、中心化/TIM截图20190114202412.png" alt="TIM截图20190114202412"><br>​    其中dj(xij,xi′j)是属性jj两个点之间的距离，wj是该属性间距离在总距离中的权重，注意设wj=1,∀j并不能实现每个属性对最后的结果贡献度相同。对于给定的数据集，所有点对间距离的平均值是个定值，即:<br>​    <img src="/blogs/归一化、标准化、中心化/TIM截图20190114202511.png" alt="TIM截图20190114202511"><br>​    可以使所有属性对全数据集平均距离的贡献相同。现在设dj为欧式距离（或称为二范数）的平方，它是最常用的距离衡量方法之一，则有<br>​    <img src="/blogs/归一化、标准化、中心化/TIM截图20190114202732.png" alt="TIM截图20190114202732"><br>​    其中Varj是Var(Xj)的样本估计，也就是说每个变量的重要程度正比于这个变量在这个数据集上的方差。如果我们让每一维变量的标准差都为1（即方差都为1），每维变量在计算距离的时候重要程度相同。</p><h3 id="3-中心化（Zero-centered）"><a href="#3-中心化（Zero-centered）" class="headerlink" title="3.中心化（Zero-centered）"></a>3.中心化（Zero-centered）</h3><p>​    处理后使得平均值为0，对标准差无要求</p><h3 id="4-归一化、标准化和中心化的区别"><a href="#4-归一化、标准化和中心化的区别" class="headerlink" title="4.归一化、标准化和中心化的区别"></a>4.归一化、标准化和中心化的区别</h3><p>​    1）方法上来说，中心化是减去均值，而标准化一般是减去均值后再除以标准差，都是线性的比例缩放，而归一化虽然大多是线性缩放，但也存在非线性缩放</p><p>​    2）主要影响的值<br>​    归一化是将样本特征值的变化范围缩放到[-1,1]或[0,1]之间，事实上仅有两端极值确定，而标准化，通过z-score的方式，根据均值和标准差使得值转化为标准正态分布，和整体样本的分布相关，每个样本点都对标准化产生影响，通过方差（variance）体现出来当数据较为集中时，标准差更小，于是数据在标准化后就会更加分散。如果数据本身分布很广，那么标准差较大，数据就会被集中到更小的范围内。</p><p>​    3）</p><h2 id="怎么用"><a href="#怎么用" class="headerlink" title="怎么用"></a>怎么用</h2><h2 id="操作："><a href="#操作：" class="headerlink" title="操作："></a>操作：</h2><h3 id="归一化："><a href="#归一化：" class="headerlink" title="归一化："></a>归一化：</h3><p>​    <strong>（1）Min-Max Normalization</strong><br>        x’ = (x - X_min) / (X_max - X_min)</p><p>​    <strong>（2）平均归一化**</strong><br>        x’ = (x - μ) / (MaxValue - MinValue)</p><p>​    <strong>（3）非线性归一化</strong><br>       1）对数函数转换：<br>​                        y = log10(x)<br>       2）反余切函数转换：<br>​                        y = atan(x) * 2 / π</p><p>（1）和（2）有一个缺陷就是当有新数据加入时，可能导致max和min的变化，需要重新定义。（3）经常用在数据分化比较大的场景，有些数值很大，有些很小。通过一些数学函数，将原始值进行映射。该方法包括 log、指数，正切等。需要根据数据分布的情况，决定非线性函数的曲线，比如log(V, 2)还是log(V, 10)等。</p><h3 id="标准化："><a href="#标准化：" class="headerlink" title="标准化："></a>标准化：</h3><p><strong>Z-score规范化（标准差标准化 / 零均值标准化）</strong><br>  x’ = (x - μ)／σ</p><h3 id="中心化："><a href="#中心化：" class="headerlink" title="中心化："></a>中心化：</h3><p>​    x’ = x - μ</p><h2 id="咋用："><a href="#咋用：" class="headerlink" title="咋用："></a>咋用：</h2><p>​    这一点就比较杂了，看了挺多回答，有蛮多个人见解的，粗略整理下：</p><h3 id="归一化和标准化："><a href="#归一化和标准化：" class="headerlink" title="归一化和标准化："></a>归一化和标准化：</h3><p>​    二者都能缩放，但是理论上，标准化的输出范围是负无穷到正无穷，所以：<br>​    <strong>对输出结果的范围有要求</strong>，用归一化<br>​    <strong>数据分布的均匀、比较稳定，不存在极端的最值</strong>，用归一化<br>​    如果<strong>数据存在异常值和较多噪音</strong>，用标准化，可以间接通过中心化避免异常值和极端值的影响</p><p>​    <a href="https://www.zhihu.com/question/20455227/answer/370658612" target="_blank" rel="noopener">某知乎答主的回答</a>提到了他个人经验：一般来说，我个人建议优先使用标准哈。对于输出有要求时再尝试别的方法，如归一化或者更加复杂的方法。很多方法都可以将输出范围调整到[0, 1]，如果我们对于数据的分布有假设的话，更加有效的方法是使用相对应的概率密度函数来转换。让我们以高斯分布为例，我们可以首先计算高斯误差函数（Gaussian Error Function），此处定为er fc(·)，那么可以用下式进行转化：<br>​                                 <img src="/blogs/归一化、标准化、中心化/TIM截图20190114213916.png" alt="TIM截图20190114213916"><br>​    <a href="https://blog.csdn.net/uestc_c2_403/article/details/75804617" target="_blank" rel="noopener">这篇博客</a>提到他的经验：1） 在分类、聚类算法中，需要使用距离来度量相似性的时候、或者使用PCA技术进行降维的时候，第二种方法(Z-score standardization)表现更好。2） 在不涉及距离度量、协方差计算、数据不符合正太分布的时候，可以使用第一种方法或其他归一化方法。比如图像处理中，将RGB图像转换为灰度图像后将其值限定在[0 255]的范围。</p><h2 id="啥时候用："><a href="#啥时候用：" class="headerlink" title="啥时候用："></a>啥时候用：</h2><h3 id="1）模型的伸缩不变性"><a href="#1）模型的伸缩不变性" class="headerlink" title="1）模型的伸缩不变性"></a>1）模型的伸缩不变性</h3><p>​    这一点是看<a href="https://www.zhihu.com/question/30038463/answer/50491149这个王赟大佬的回答，觉得蛮有道理的，说是根据模型是否具有伸缩不变性" target="_blank" rel="noopener">https://www.zhihu.com/question/30038463/answer/50491149这个王赟大佬的回答，觉得蛮有道理的，说是根据模型是否具有伸缩不变性</a></p><p>​    有些模型在各个维度进行<strong>不均匀伸缩</strong>后，最优解的值与原来是不同的，比如前文提到的<strong>SVM、KNN</strong>，除非原来样本各个特征的值域范围比较接近，否则<strong>必须</strong>进行标准化，以免模型参数被分布范围较大或者较小的特征dominate</p><p>​    而有的模型在不均匀伸缩后不改变原来的最优解，例如逻辑斯蒂回归，对于这样的模型，标准化前后理论上不会改变最优解，是<strong>可以不用</strong>的，但是前文也提到了，实际求解中往往使用迭代算法，为了防止Z型缓慢下降，所有也<strong>最好使用</strong>数据标准化。作者也提到，使用神经网络会使得<strong>神经网络</strong>的训练更容易</p><h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p>标准化和归一化什么区别？ - 知乎：<a href="https://www.zhihu.com/question/20467170" target="_blank" rel="noopener">https://www.zhihu.com/question/20467170</a><br>R—数据标准化、归一化、中心化处理：<a href="https://zhuanlan.zhihu.com/p/33727799" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/33727799</a><br>特征工程中的[归一化]有什么作用？ - 知乎：<a href="https://www.zhihu.com/question/20455227" target="_blank" rel="noopener">https://www.zhihu.com/question/20455227</a><br>神经网络为什么要归一化：<a href="http://nnetinfo.com/nninfo/showText.jsp?id=37" target="_blank" rel="noopener">http://nnetinfo.com/nninfo/showText.jsp?id=37</a><br>归一化 （Normalization）、标准化 （Standardization）和中心化/零均值化 （Zero-centered）<br>                                                -简书 <a href="https://www.jianshu.com/p/95a8f035c86c" target="_blank" rel="noopener">https://www.jianshu.com/p/95a8f035c86c</a><br>特征工程中的「归一化」有什么作用？ - 王赟 Maigo的回答<br>                                    -知乎 <a href="https://www.zhihu.com/question/20455227/answer/75202300" target="_blank" rel="noopener">https://www.zhihu.com/question/20455227/answer/75202300</a></p>]]></content>
+        <content type="html"><![CDATA[<p>在数据前期预处理时，常常接触到normalization、standardization、Zero-center等操作，但是一直不了解其原因和效果以及具体操作，查询后作此整理</p><a id="more"></a><h2 id="为什么："><a href="#为什么：" class="headerlink" title="为什么："></a>为什么：</h2><p>​    首先归一化和标准化具有一个优点，就是他的计算基本都是线性的，线性变换就有很多良好的性质，比如不会因为数值的改变而改变其大小排序，这些性质决定了处理后的数据不会出现“失效”的情况，反而能够提高数据的表现，这是能够进行这些处理的的基础。（归一化中有非线性的变换，如对数函数）</p><h3 id="1-避免数值问题"><a href="#1-避免数值问题" class="headerlink" title="1.避免数值问题"></a>1.避免数值问题</h3><p>数值过大可能会造成计算效率低和训练过程中值域越界的情况，比如遇到过的TensorFlow在训练中出现Nan报错</p><h3 id="2-无量纲化"><a href="#2-无量纲化" class="headerlink" title="2.无量纲化"></a>2.无量纲化</h3><p>防止不同量纲特征中，数值变化范围大的特征掩盖数值变化范围小的特征</p><h3 id="3-模型训练需要"><a href="#3-模型训练需要" class="headerlink" title="3.模型训练需要"></a>3.模型训练需要</h3><h4 id="1）加快梯度下降的速度"><a href="#1）加快梯度下降的速度" class="headerlink" title="1）加快梯度下降的速度"></a>1）加快梯度下降的速度</h4><p>​    如下图所示，在梯度下降时，如未进行归一化和标准化的等高线偏椭圆，迭代时可能陷入来回振荡的“之”型下降路线（垂直于长轴），从而使得迭代效率降低，而右图对两个特征进行了归一化，等高线趋向圆，梯度下降时收敛地更快</p><p><img src="/blogs/归一化、标准化、中心化/TIM截图20190114143034.png" alt="TIM截图20190114143034">                <img src="/blogs/归一化、标准化、中心化/TIM截图20190114143525.png" alt="TIM截图20190114143525"></p><h4 id="2）分类器性能需要"><a href="#2）分类器性能需要" class="headerlink" title="2）分类器性能需要"></a>2）分类器性能需要</h4><p>​    一些分类器在训练时，其实类似上文提到的某一个特征数值过大的情况，比如在KNN的训练时，每个特征的重要性都是一样的，那么如果每一个特征的值域范围特别大，那么距离计算就是主要取决于这个特征，从而使得更重要但值域小的特征被掩盖</p><h2 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h2><h3 id="1-归一化（Normalization）"><a href="#1-归一化（Normalization）" class="headerlink" title="1.归一化（Normalization）"></a>1.归一化（Normalization）</h3><p>​    1）把值域缩放到（0,1）或者（-1,1）之间，使得数据处理更加快捷</p><p>​    2）把有量纲表达式变成无量纲表达式，便于不同量级的指标能够进行比较和加权。</p><p>​    归一化是一种简化计算的方式，即将有量纲的表达式，经过变化，化为无量纲的表达式，成为标量</p><h3 id="2-标准化（Standardization）"><a href="#2-标准化（Standardization）" class="headerlink" title="2.标准化（Standardization）"></a>2.标准化（Standardization）</h3><p>​    使数据以0为中心左右分布，标准差为1，一般为线性缩放</p><p>​    1）以0为中心分布，比如在去中心化的数据上做<a href="https://en.wikipedia.org/wiki/Singular_value_decomposition" target="_blank" rel="noopener">SVD</a>分解等价于在原始数据上做<a href="https://en.wikipedia.org/wiki/Principal_component_analysis" target="_blank" rel="noopener">PCA</a>；机器学习中很多函数如<a href="https://en.wikipedia.org/wiki/Sigmoid_function" target="_blank" rel="noopener">Sigmoid</a>、<a href="https://en.wikipedia.org/wiki/Hyperbolic_function#Tanh" target="_blank" rel="noopener">Tanh</a>、<a href="https://en.wikipedia.org/wiki/Softmax_function" target="_blank" rel="noopener">Softmax</a>等都以0为中心左右分布（不一定对称）</p><p>​    2）标准差为1，标准差为1有什么好处呢？这个更复杂一些</p><p>​    对于xi与xi′两点间距离，往往表示为<br>​    <img src="/blogs/归一化、标准化、中心化/TIM截图20190114202412.png" alt="TIM截图20190114202412"><br>​    其中dj(xij,xi′j)是属性jj两个点之间的距离，wj是该属性间距离在总距离中的权重，注意设wj=1,∀j并不能实现每个属性对最后的结果贡献度相同。对于给定的数据集，所有点对间距离的平均值是个定值，即:<br>​    <img src="/blogs/归一化、标准化、中心化/TIM截图20190114202511.png" alt="TIM截图20190114202511"><br>​    可以使所有属性对全数据集平均距离的贡献相同。现在设dj为欧式距离（或称为二范数）的平方，它是最常用的距离衡量方法之一，则有<br>​    <img src="/blogs/归一化、标准化、中心化/TIM截图20190114202732.png" alt="TIM截图20190114202732"><br>​    其中Varj是Var(Xj)的样本估计，也就是说每个变量的重要程度正比于这个变量在这个数据集上的方差。如果我们让每一维变量的标准差都为1（即方差都为1），每维变量在计算距离的时候重要程度相同。</p><h3 id="3-中心化（Zero-centered）"><a href="#3-中心化（Zero-centered）" class="headerlink" title="3.中心化（Zero-centered）"></a>3.中心化（Zero-centered）</h3><p>​    处理后使得平均值为0，对标准差无要求</p><h3 id="4-归一化、标准化和中心化的区别"><a href="#4-归一化、标准化和中心化的区别" class="headerlink" title="4.归一化、标准化和中心化的区别"></a>4.归一化、标准化和中心化的区别</h3><p>​    1）方法上来说，中心化是减去均值，而标准化一般是减去均值后再除以标准差，都是线性的比例缩放，而归一化虽然大多是线性缩放，但也存在非线性缩放</p><p>​    2）主要影响的值<br>​    归一化是将样本特征值的变化范围缩放到[-1,1]或[0,1]之间，事实上仅有两端极值确定，而标准化，通过z-score的方式，根据均值和标准差使得值转化为标准正态分布，和整体样本的分布相关，每个样本点都对标准化产生影响，通过方差（variance）体现出来当数据较为集中时，标准差更小，于是数据在标准化后就会更加分散。如果数据本身分布很广，那么标准差较大，数据就会被集中到更小的范围内。</p><p>​    3）</p><h2 id="怎么用"><a href="#怎么用" class="headerlink" title="怎么用"></a>怎么用</h2><h2 id="操作："><a href="#操作：" class="headerlink" title="操作："></a>操作：</h2><h3 id="归一化："><a href="#归一化：" class="headerlink" title="归一化："></a>归一化：</h3><p>​    <strong>（1）Min-Max Normalization</strong><br>        x’ = (x - X_min) / (X_max - X_min)</p><p>​    <strong>（2）平均归一化**</strong><br>        x’ = (x - μ) / (MaxValue - MinValue)</p><p>​    <strong>（3）非线性归一化</strong><br>       1）对数函数转换：<br>​                        y = log10(x)<br>       2）反余切函数转换：<br>​                        y = atan(x) * 2 / π</p><p>（1）和（2）有一个缺陷就是当有新数据加入时，可能导致max和min的变化，需要重新定义。（3）经常用在数据分化比较大的场景，有些数值很大，有些很小。通过一些数学函数，将原始值进行映射。该方法包括 log、指数，正切等。需要根据数据分布的情况，决定非线性函数的曲线，比如log(V, 2)还是log(V, 10)等。</p><h3 id="标准化："><a href="#标准化：" class="headerlink" title="标准化："></a>标准化：</h3><p><strong>Z-score规范化（标准差标准化 / 零均值标准化）</strong><br>  x’ = (x - μ)／σ</p><h3 id="中心化："><a href="#中心化：" class="headerlink" title="中心化："></a>中心化：</h3><p>​    x’ = x - μ</p><h2 id="咋用："><a href="#咋用：" class="headerlink" title="咋用："></a>咋用：</h2><p>​    这一点就比较杂了，看了挺多回答，有蛮多个人见解的，粗略整理下：</p><h3 id="归一化和标准化："><a href="#归一化和标准化：" class="headerlink" title="归一化和标准化："></a>归一化和标准化：</h3><p>​    二者都能缩放，但是理论上，标准化的输出范围是负无穷到正无穷，所以：<br>​    <strong>对输出结果的范围有要求</strong>，用归一化<br>​    <strong>数据分布的均匀、比较稳定，不存在极端的最值</strong>，用归一化<br>​    如果<strong>数据存在异常值和较多噪音</strong>，用标准化，可以间接通过中心化避免异常值和极端值的影响</p><p>​    <a href="https://www.zhihu.com/question/20455227/answer/370658612" target="_blank" rel="noopener">某知乎答主的回答</a>提到了他个人经验：一般来说，我个人建议优先使用标准哈。对于输出有要求时再尝试别的方法，如归一化或者更加复杂的方法。很多方法都可以将输出范围调整到[0, 1]，如果我们对于数据的分布有假设的话，更加有效的方法是使用相对应的概率密度函数来转换。让我们以高斯分布为例，我们可以首先计算高斯误差函数（Gaussian Error Function），此处定为er fc(·)，那么可以用下式进行转化：<br>​                                 <img src="/blogs/归一化、标准化、中心化/TIM截图20190114213916.png" alt="TIM截图20190114213916"><br>​    <a href="https://blog.csdn.net/uestc_c2_403/article/details/75804617" target="_blank" rel="noopener">这篇博客</a>提到他的经验：1） 在分类、聚类算法中，需要使用距离来度量相似性的时候、或者使用PCA技术进行降维的时候，第二种方法(Z-score standardization)表现更好。2） 在不涉及距离度量、协方差计算、数据不符合正太分布的时候，可以使用第一种方法或其他归一化方法。比如图像处理中，将RGB图像转换为灰度图像后将其值限定在[0 255]的范围。</p><h2 id="啥时候用："><a href="#啥时候用：" class="headerlink" title="啥时候用："></a>啥时候用：</h2><h3 id="1）模型的伸缩不变性"><a href="#1）模型的伸缩不变性" class="headerlink" title="1）模型的伸缩不变性"></a>1）模型的伸缩不变性</h3><p>​    这一点是看<a href="https://www.zhihu.com/question/30038463/answer/50491149这个王赟大佬的回答，觉得蛮有道理的，说是根据模型是否具有伸缩不变性" target="_blank" rel="noopener">https://www.zhihu.com/question/30038463/answer/50491149这个王赟大佬的回答，觉得蛮有道理的，说是根据模型是否具有伸缩不变性</a></p><p>​    有些模型在各个维度进行<strong>不均匀伸缩</strong>后，最优解的值与原来是不同的，比如前文提到的<strong>SVM、KNN</strong>，除非原来样本各个特征的值域范围比较接近，否则<strong>必须</strong>进行标准化，以免模型参数被分布范围较大或者较小的特征dominate</p><p>​    而有的模型在不均匀伸缩后不改变原来的最优解，例如逻辑斯蒂回归，对于这样的模型，标准化前后理论上不会改变最优解，是<strong>可以不用</strong>的，但是前文也提到了，实际求解中往往使用迭代算法，为了防止Z型缓慢下降，所有也<strong>最好使用</strong>数据标准化。作者也提到，使用神经网络会使得<strong>神经网络</strong>的训练更容易</p><h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p>标准化和归一化什么区别？ - 知乎：<a href="https://www.zhihu.com/question/20467170" target="_blank" rel="noopener">https://www.zhihu.com/question/20467170</a><br>R—数据标准化、归一化、中心化处理：<a href="https://zhuanlan.zhihu.com/p/33727799" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/33727799</a><br>特征工程中的[归一化]有什么作用？ - 知乎：<a href="https://www.zhihu.com/question/20455227" target="_blank" rel="noopener">https://www.zhihu.com/question/20455227</a><br>神经网络为什么要归一化：<a href="http://nnetinfo.com/nninfo/showText.jsp?id=37" target="_blank" rel="noopener">http://nnetinfo.com/nninfo/showText.jsp?id=37</a><br>归一化 （Normalization）、标准化 （Standardization）和中心化/零均值化 （Zero-centered）<br>                                                -简书 <a href="https://www.jianshu.com/p/95a8f035c86c" target="_blank" rel="noopener">https://www.jianshu.com/p/95a8f035c86c</a><br>特征工程中的「归一化」有什么作用？ - 王赟 Maigo的回答<br>                                    -知乎 <a href="https://www.zhihu.com/question/20455227/answer/75202300" target="_blank" rel="noopener">https://www.zhihu.com/question/20455227/answer/75202300</a></p>]]></content>
       
       
       <categories>
@@ -967,7 +996,7 @@
       
         <tags>
             
-            <tag> 机器学习 </tag>
+            <tag> Machine Learning </tag>
             
         </tags>
       
@@ -993,8 +1022,6 @@
         <tags>
             
             <tag> Python </tag>
-            
-            <tag> Tensorflow </tag>
             
         </tags>
       
@@ -1290,7 +1317,7 @@
       
         <tags>
             
-            <tag> 机器学习 </tag>
+            <tag> CNN </tag>
             
             <tag> Tensorflow </tag>
             
