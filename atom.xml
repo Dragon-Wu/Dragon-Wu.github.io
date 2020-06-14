@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jgwu.top/"/>
-  <updated>2020-06-13T04:25:49.235Z</updated>
+  <updated>2020-06-13T06:40:37.281Z</updated>
   <id>http://jgwu.top/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://jgwu.top/blogs/%E6%B1%A0%E5%8C%96%E7%9A%84%E4%BD%9C%E7%94%A8/"/>
     <id>http://jgwu.top/blogs/%E6%B1%A0%E5%8C%96%E7%9A%84%E4%BD%9C%E7%94%A8/</id>
     <published>2020-06-13T02:58:01.000Z</published>
-    <updated>2020-06-13T04:25:49.235Z</updated>
+    <updated>2020-06-13T06:40:37.281Z</updated>
     
-    <content type="html"><![CDATA[<p>池化(pooling)，是卷积神经网络中的重要一环，但是人们经常提到的是卷积层带来的特征提取，池化的作用，原来我只觉得是降维，那如果只是降维的话，从提高准确率的角度，如果有足够的内存和计算资源，不需要池化，也许能够获得更棒的结果？</p><a id="more"></a><h2 id="个人理解"><a href="#个人理解" class="headerlink" title="个人理解"></a>个人理解</h2><p>看完一些博主的回答，我理解为：</p><p>首先，最简单的，池化能够降维，提高效率</p><p>其次，在一定程度上降低过拟合</p><p>最后，池化能够增强网络的泛化能力，具体体现在对一些平移、旋转、拉伸的不变性</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>魏秀参博士在CNN_book一书中做了很好的解答：</p><ol><li>特征不变性（feature invariant）汇合操作使模型更关注是否存在某些特征而不是特征具体的位置可看作是一种很强的先验，使特征学习包含某种程度自由度，能容忍一些特征微小的位移</li><li>特征降维由于汇合操作的降采样作用，汇合结果中的一个元素对应于原输入数据的一个子区域（sub-region），因此汇合相当于在空间范围内做了维度约减（spatially dimension reduction），从而使模型可以抽取更广范围的特征同时减小了下一层输入大小，进而减小计算量和参数个数</li><li>在一定程度上能防止过拟合的发生  </li></ol><p><a href="https://www.zhihu.com/question/338077802" target="_blank" rel="noopener">假如算力无限制，设计卷积神经网络(CNN)的过程中还需要池化(pooling)吗？</a>中<a href="https://www.zhihu.com/question/338077802/answer/770851777" target="_blank" rel="noopener">刘冬煜的解答</a></p><p>首先我站池化派，认为池化层依旧能发挥作用。</p><p>最早的依据依旧是猫的两种视觉细胞——一种叫S型细胞，负责组合信息，抽取特征，对应着我们现在的卷积层；另一种叫C型细胞，负责抽象和容错，对应着我们现在的池化层。细胞分工如此明确，是生物进化的结果，这也暗示了跨步卷积层较之池化层，或许也存在不合理之处。</p><p>接下来说池化层的作用，主要体现在容错性上：</p><p><img src="/blogs/池化的作用/v2-5e7d7aa2620cd7e2f732912f467c3cc5_hd.webp" alt="img"></p><p>而且这一层没有参数，不需要学习，因此如果网络结构合理，池化层能有效防止过拟合，发挥的作用不容小觑。</p><p>再通过反向传播来看，最大池化能使误差稀疏，平均池化能使误差均摊，而跨步卷积的结果又要另说。</p><p>另外，池化层能使得特征对齐，而跨步卷积可能会合并特征，导致网络特征提取出现问题。</p><p><img src="/blogs/池化的作用/v2-c9c20f344e055326597295c9dacbf644_720w.jpg" alt="img"></p><p>最后，若要支持任意大小图片输入，卷积神经网络又不得不用池化——全连接层前的空间金字塔池化，或全卷积网络的末层特征图做平均池化得到输出。</p><p>总而言之，池化层的作用远不只是降低维度。池化层的作用也不能一棒子打死，未来有可能会提出新的池化层结构。</p><p>以上则是鄙人的拙见。</p>]]></content>
+    <content type="html"><![CDATA[<p>池化(pooling)，是卷积神经网络中的重要一环，但是人们经常提到的是卷积层带来的特征提取，池化的作用，原来我只觉得是降维，那如果只是降维的话，从提高准确率的角度，如果有足够的内存和计算资源，不需要池化，也许能够获得更棒的结果？</p><a id="more"></a><h2 id="个人理解"><a href="#个人理解" class="headerlink" title="个人理解"></a>个人理解</h2><p>看完一些博主的回答，我理解为：</p><p>首先，最简单的，池化能够降维，提高效率</p><p>其次，在一定程度上降低过拟合</p><p>最后，池化能够增强网络的泛化能力，具体体现在对一些平移、旋转、拉伸的不变性，降低卷积层对位置的敏感性</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>魏秀参博士在CNN_book一书中做了很好的解答：</p><ol><li>特征不变性（feature invariant）汇合操作使模型更关注是否存在某些特征而不是特征具体的位置可看作是一种很强的先验，使特征学习包含某种程度自由度，能容忍一些特征微小的位移</li><li>特征降维由于汇合操作的降采样作用，汇合结果中的一个元素对应于原输入数据的一个子区域（sub-region），因此汇合相当于在空间范围内做了维度约减（spatially dimension reduction），从而使模型可以抽取更广范围的特征同时减小了下一层输入大小，进而减小计算量和参数个数</li><li>在一定程度上能防止过拟合的发生  </li></ol><p><a href="https://www.zhihu.com/question/338077802" target="_blank" rel="noopener">假如算力无限制，设计卷积神经网络(CNN)的过程中还需要池化(pooling)吗？</a>中<a href="https://www.zhihu.com/question/338077802/answer/770851777" target="_blank" rel="noopener">刘冬煜的解答</a></p><p>首先我站池化派，认为池化层依旧能发挥作用。</p><p>最早的依据依旧是猫的两种视觉细胞——一种叫S型细胞，负责组合信息，抽取特征，对应着我们现在的卷积层；另一种叫C型细胞，负责抽象和容错，对应着我们现在的池化层。细胞分工如此明确，是生物进化的结果，这也暗示了跨步卷积层较之池化层，或许也存在不合理之处。</p><p>接下来说池化层的作用，主要体现在容错性上：</p><p><img src="/blogs/池化的作用/v2-5e7d7aa2620cd7e2f732912f467c3cc5_hd.webp" alt="img"></p><p>而且这一层没有参数，不需要学习，因此如果网络结构合理，池化层能有效防止过拟合，发挥的作用不容小觑。</p><p>再通过反向传播来看，最大池化能使误差稀疏，平均池化能使误差均摊，而跨步卷积的结果又要另说。</p><p>另外，池化层能使得特征对齐，而跨步卷积可能会合并特征，导致网络特征提取出现问题。</p><p><img src="/blogs/池化的作用/v2-c9c20f344e055326597295c9dacbf644_720w.jpg" alt="img"></p><p>最后，若要支持任意大小图片输入，卷积神经网络又不得不用池化——全连接层前的空间金字塔池化，或全卷积网络的末层特征图做平均池化得到输出。</p><p>总而言之，池化层的作用远不只是降低维度。池化层的作用也不能一棒子打死，未来有可能会提出新的池化层结构。</p><p>以上则是鄙人的拙见。</p>]]></content>
     
     <summary type="html">
     
@@ -37,9 +37,9 @@
     
       <category term="Machine Learning" scheme="http://jgwu.top/tags/Machine-Learning/"/>
     
-      <category term="Computer Vision" scheme="http://jgwu.top/tags/Computer-Vision/"/>
-    
       <category term="CNN" scheme="http://jgwu.top/tags/CNN/"/>
+    
+      <category term="Computer Vision" scheme="http://jgwu.top/tags/Computer-Vision/"/>
     
   </entry>
   
