@@ -5,6 +5,6 @@ http://jgwu.top/blogs/Deep-Dream/
 http://jgwu.top/blogs/Batch-Normalization/
 http://jgwu.top/blogs/numpy中的dot-matmul-multiply/
 http://jgwu.top/blogs/好好学习，才能天天向上/
+http://jgwu.top/blogs/卷积神经网络/
 http://jgwu.top/blogs/EM算法深度解析与其在单颗粒冷冻电镜中的应用/
 http://jgwu.top/blogs/菜-坑/
-http://jgwu.top/blogs/Python解释器/
