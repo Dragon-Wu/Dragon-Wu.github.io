@@ -1,3 +1,6 @@
+http://jgwu.top/blogs/Windows下查看cuda与cuDNN的版本n-Tensorflow与Pytorch/
+http://jgwu.top/blogs/Something-interesting-in-Cryo-EM/
+http://jgwu.top/blogs/目标检测方法-R-CNN-Fast-R-CNN-Faster-R-CNN-YOLO-SSD/
 http://jgwu.top/blogs/池化的作用/
 http://jgwu.top/blogs/无偏估计下的均值与方差/
 http://jgwu.top/blogs/Pytorch相关/
@@ -5,6 +8,3 @@ http://jgwu.top/blogs/Deep-Dream/
 http://jgwu.top/blogs/Batch-Normalization/
 http://jgwu.top/blogs/numpy中的dot-matmul-multiply/
 http://jgwu.top/blogs/好好学习，才能天天向上/
-http://jgwu.top/blogs/卷积神经网络/
-http://jgwu.top/blogs/EM算法深度解析与其在单颗粒冷冻电镜中的应用/
-http://jgwu.top/blogs/菜-坑/

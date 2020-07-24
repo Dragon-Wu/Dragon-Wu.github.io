@@ -171,7 +171,7 @@
 <meta property="og:image" content="http://jgwu.top/blogs/RELION3-0-Tutorial/3.2.1.png">
 <meta property="og:image" content="http://jgwu.top/blogs/RELION3-0-Tutorial/3.2.2.png">
 <meta property="og:image" content="http://jgwu.top/blogs/RELION3-0-Tutorial/particle_image.png">
-<meta property="og:updated_time" content="2019-06-14T17:09:33.452Z">
+<meta property="og:updated_time" content="2020-07-23T12:14:12.002Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RELION3.0 Tutorial">
 <meta name="twitter:description" content="Try to use the frequently-used approach  to cryo-EM structure determination">
@@ -588,7 +588,7 @@
 <p>当对整个坐标集感到满意，将需要重新运行particle extraction job，保持一切与以前一样，并更改新生成的、自动生成的Input coordinates。;这将生成最初的单粒子数据集，用于下面的进一步细化。也许像template_based这样的别名是有意义的?</p>
 <h3 id="1-9-缩放参数（The-shrink-parameter）"><a href="#1-9-缩放参数（The-shrink-parameter）" class="headerlink" title="1.9 缩放参数（The shrink parameter）"></a>1.9 缩放参数（The shrink parameter）</h3><p>…</p>
 <h3 id="1-10-颗粒排序（particle-sorting）"><a href="#1-10-颗粒排序（particle-sorting）" class="headerlink" title="1.10 颗粒排序（particle sorting）"></a>1.10 颗粒排序（particle sorting）</h3><p>前文extarct出颗粒后，开始对颗粒进行优良排序：</p>
-<p>Particle Job：<img src="/blogs/RELION3-0-Tutorial/1.10.1.png" alt="1.10.1"><br><img src="/blogs/RELION3-0-Tutorial/1.10.2.png" alt="1.10.2"><br>然后可以在out那里看到，particle_sort.star；</p>
+<p>Particle Job：<br><img src="/blogs/RELION3-0-Tutorial/1.10.1.png" alt="1.10.1"><br><img src="/blogs/RELION3-0-Tutorial/1.10.2.png" alt="1.10.2"><br>然后可以在out那里看到，particle_sort.star；</p>
 <p>接着，Subset selection job，在 OR select from particles.star. 中选择刚刚生成的particle_sort.satr 然后RUN，然后就要选择颗粒了，可以选到一个觉得不大合适的点了，右键select all above，选中前面所有的，然后再右键save，建议将这个subset job命名为after_sorting；</p>
 <p>在RELION3.0中可以自动选择sorting颗粒，方法就是在刚才的Subset Selection的job中，现在I/O tab中，OR select from particle中选中刚才的particle_sort.star，其他的注意不要选，再在subsets的tabs中选择参数：<br>• Select based on metadata vaklues? Yes<br>• Metadata labal for subset selection rlnParticleSelectZScore<br>• Minimum metadata value: -9999.<br>• Maximum metadata value: 0.8<br>• OR: select on image statistics? No<br>• OR: split into subsets? No</p>
 <h2 id="2-无参考的2D类别平均-Reference-free-2D-class-averaging"><a href="#2-无参考的2D类别平均-Reference-free-2D-class-averaging" class="headerlink" title="2  无参考的2D类别平均(Reference-free 2D class averaging)"></a>2  无参考的2D类别平均(Reference-free 2D class averaging)</h2><p>我们几乎都是使用无参考的2D类别平均来扔掉不好的颗粒。尽管我们经常为了颗粒提取的环节，而在前面的环节中努力只包括好的颗粒（比如对提取的颗粒进行派去，从而进行手动地监督自动挑选的结果），但是还是会存在坏颗粒的情况；因为他们没有平均得很好，经常会有相关的小类别中存在一些很差的2D类别平均。如果能把它们排除掉，就是一个清理我们数据的一个好办法。</p>
@@ -780,7 +780,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -802,7 +802,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -902,7 +902,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共70.8k字</span>
+  <span class="post-count">博客全站共73.7k字</span>
 </div>
         
 <div class="busuanzi-count">
