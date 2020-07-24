@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title>Windows下查看cuda与cuDNN的版本n,Tensorflow与Pytorch</title>
+      <title>Windows下查看cuda与cuDNN的版本n-Tensorflow与Pytorch</title>
       <link href="/blogs/Windows%E4%B8%8B%E6%9F%A5%E7%9C%8Bcuda%E4%B8%8EcuDNN%E7%9A%84%E7%89%88%E6%9C%ACn-Tensorflow%E4%B8%8EPytorch/"/>
       <url>/blogs/Windows%E4%B8%8B%E6%9F%A5%E7%9C%8Bcuda%E4%B8%8EcuDNN%E7%9A%84%E7%89%88%E6%9C%ACn-Tensorflow%E4%B8%8EPytorch/</url>
       
@@ -76,9 +76,9 @@
       
         <tags>
             
-            <tag> Computer Vision </tag>
-            
             <tag> CNN </tag>
+            
+            <tag> Computer Vision </tag>
             
         </tags>
       
@@ -105,9 +105,9 @@
             
             <tag> Machine Learning </tag>
             
-            <tag> Computer Vision </tag>
-            
             <tag> CNN </tag>
+            
+            <tag> Computer Vision </tag>
             
         </tags>
       
@@ -286,9 +286,9 @@
       
         <tags>
             
-            <tag> Computer Vision </tag>
-            
             <tag> CNN </tag>
+            
+            <tag> Computer Vision </tag>
             
         </tags>
       
@@ -638,9 +638,9 @@
             
             <tag> Machine Learning </tag>
             
-            <tag> Computer Vision </tag>
-            
             <tag> CNN </tag>
+            
+            <tag> Computer Vision </tag>
             
         </tags>
       
@@ -1481,9 +1481,9 @@
     
     
     <entry>
-      <title>categories</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>好好学习，天天向上</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -1492,9 +1492,9 @@
     
     
     <entry>
-      <title>好好学习，天天向上</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
