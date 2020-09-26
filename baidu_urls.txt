@@ -1,3 +1,4 @@
+http://jgwu.top/blogs/图像降噪/
 http://jgwu.top/blogs/Windows下查看cuda与cuDNN的版本n-Tensorflow与Pytorch/
 http://jgwu.top/blogs/Something-interesting-in-Cryo-EM/
 http://jgwu.top/blogs/目标检测方法-R-CNN-Fast-R-CNN-Faster-R-CNN-YOLO-SSD/
@@ -7,4 +8,3 @@ http://jgwu.top/blogs/Pytorch相关/
 http://jgwu.top/blogs/Deep-Dream/
 http://jgwu.top/blogs/Batch-Normalization/
 http://jgwu.top/blogs/numpy中的dot-matmul-multiply/
-http://jgwu.top/blogs/好好学习，才能天天向上/

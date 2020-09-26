@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jgwu.top/"/>
-  <updated>2020-07-24T12:27:57.050Z</updated>
+  <updated>2020-09-26T17:16:51.979Z</updated>
   <id>http://jgwu.top/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>图像降噪</title>
+    <link href="http://jgwu.top/blogs/%E5%9B%BE%E5%83%8F%E9%99%8D%E5%99%AA/"/>
+    <id>http://jgwu.top/blogs/%E5%9B%BE%E5%83%8F%E9%99%8D%E5%99%AA/</id>
+    <published>2020-09-26T16:20:42.000Z</published>
+    <updated>2020-09-26T17:16:51.979Z</updated>
+    
+    <content type="html"><![CDATA[<p>嗯，老实讲，最近的心态不是特别好，有些焦虑和浮躁吧，但是怎么说呢，归根到底还是要慢慢努力，变强才是硬道理，机会你抓不住自然就会错过，但是只要我们一直努力，总还是能到下一个机会的，种一棵树，最好的是十年前，其次，就是现在了，本科高老师的一句话，至今仍挂心头，努力吧！</p><p>以上都是个人的废话，还是好好讲降噪的事情吧，因为在做电镜图像的内容，而电镜图像最突出的问题就在于：为了避免高能电子束对样品的辐照损伤，只能采用低剂量的电子束进行拍摄，而由此导致了极低的信噪比，而这极低的信噪比和目标的极高分辨率之间就是第一个矛盾，为此，可以通过大量的投影的进行复原，也就是单颗粒技术的核心思想。而如果我们能够进行高效的降噪，那么一切是不是就简单了很多呢？所以降噪还是蛮值得去探索的，这篇就是记录一些降噪有意思的内容和方向，因为是记录的个人思考过程，写的不是很专业，但是思路来源都记载了，推荐阅读原文。</p><a id="more"></a><h2 id="降噪问题"><a href="#降噪问题" class="headerlink" title="降噪问题"></a>降噪问题</h2><p>本质上来讲就是 y(t)=x(t)+e(y)，我们观测到的y，是真值x与噪声带来的e一起组成的，我们的目的就是如果从观测到的y中剥离e，从而恢复出x</p><h2 id="高斯噪声"><a href="#高斯噪声" class="headerlink" title="高斯噪声"></a>高斯噪声</h2><p>为了去除噪声，我们需要尽可能地挖掘出x的一些信息，帮助我们去恢复它，如形态信息等约束，另一方面，我们则要去找到噪声的信息，比如噪声的模型与分析，比如噪声呈现某种分布。</p><p>在很多降噪的探索中，一般会假设噪声是呈高斯分布的，这个在冷冻电镜图像的研究过程中也是，一直以来都是以观察图像去拟合高斯分布以找到噪声的分布，而后期逐渐引入了与频率相关的噪声，从而更好地描述实际受到CTF调制影响的噪声</p><p>高斯噪声，一般假设该噪声与x无关，也就是他是随机从高斯分布中采样的，那么为什么都采用高斯分布呢，有为什么是work的呢？</p><p>其实我最早的浅显想法是比较符合实际的设想，比如噪声符合一个标准正态分布，就是有可能这个点比真值亮一点或者暗一点，而如果整体的拍摄环境比较亮，那就是分布的均值往正值移一些（μ变大），而如果随机亮暗的程度波动比较大，那就是分布的方差变大一些（σ变大），与图像本身的真值无关且完全随机；而且还有一个好处是，其模型参数就μ和σ，还是比较好去找的，所以其简单比较靠谱的特性得到了广泛青睐。</p><p>比较有趣的解读还有，</p><p>为什么深度学习去噪都采用高斯白噪声？ - Bihan Wen的回答 - 知乎 <a href="https://www.zhihu.com/question/67938028/answer/259014596" target="_blank" rel="noopener">https://www.zhihu.com/question/67938028/answer/259014596</a><br>——总结一下：</p><blockquote><ul><li>说明了对图像进行生成噪声污染的原因：<strong>对降噪问题的分析/算法的设计</strong>：降噪的本质是对数据本身的重建，以起到排除污染（corruption）的作用。这里面涉及到需要对(1)数据，(2)污染（噪音）的模型和分析。所以，也需要在降噪过程后，对效果进行评估，常见的metric有Peak Signal-to-Noise Ratio （PSNR），Mean Square Error（MSE），Structured Similarity（SSIM），所以用合成噪声能够比较方便地分析处理完的噪声和我们添加的生成噪声。</li><li>为什么用高斯呢？噪声来自多个情况，是多个独立随机变量的复合影响，根据中心极限定理，他们的normalized sum随着噪声源数量的提升趋近于一个高斯分布（中心极限定理说明，大量相互独立的随机变量，其均值的分布以正态分布为极限）</li><li>能work吗，在实际情况中？这很好理解了，你要是有更合适的，肯定去找更fit的呀，但是高斯噪声还是比较符合情况的，而且</li><li>其中deep learning在降噪的中特性，由于其模型本身是高度data-driven的，并不是rule-based的，深度学习算法的设计，或者说网络结构的设计，并不强烈依赖于噪音的概率分布。这对于降噪算法的generalization是很好的。</li></ul></blockquote><p>高斯噪声是最糟糕的噪声呢！</p><p>为什么深度学习去噪都采用高斯白噪声？ - 李青云的回答 - 知乎 <a href="https://www.zhihu.com/question/67938028/answer/260490087" target="_blank" rel="noopener">https://www.zhihu.com/question/67938028/answer/260490087</a></p><p>为什么深度学习去噪都采用高斯白噪声？ - Hikaru的回答 - 知乎 <a href="https://www.zhihu.com/question/67938028/answer/260974112" target="_blank" rel="noopener">https://www.zhihu.com/question/67938028/answer/260974112</a></p><blockquote><p>香农信息论中用熵表示信息的不确定程度。根据限功率最大熵定理：如果平均功率受限，那么当信源符合高斯分布时，信源的熵最大（噪声的不确定性最大，对信源的干扰最大）。即如果假定功率受限，高斯白噪声是最干扰信息的噪声。</p></blockquote><p>总之一句话，要有更好的，谁用高斯啊，但要是没有更好的，他都在那里等着你，不悲不喜，等着去fit你的data，妈耶，老实人高斯。</p><h2 id="降噪方法"><a href="#降噪方法" class="headerlink" title="降噪方法"></a>降噪方法</h2><p>传统的肯定就是各类滤波，是通信/信号处理中的老大哥了，比如中值滤波、均值滤波等方式去平滑图像等</p><p>较新的就是类似自动编码器的深度学习方式，通过噪声图像与真实图像的图像对模型进行训练，学习如何去噪，而后进行降噪</p><p>而有一位老师总结的很好，不仅有上面我理解的两类，其实还有更多方法：可复现的图像降噪算法总结 - Bihan Wen的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/32502816" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/32502816</a></p><h2 id="有意思的工作"><a href="#有意思的工作" class="headerlink" title="有意思的工作"></a>有意思的工作</h2><p>未完待续</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;嗯，老实讲，最近的心态不是特别好，有些焦虑和浮躁吧，但是怎么说呢，归根到底还是要慢慢努力，变强才是硬道理，机会你抓不住自然就会错过，但是只要我们一直努力，总还是能到下一个机会的，种一棵树，最好的是十年前，其次，就是现在了，本科高老师的一句话，至今仍挂心头，努力吧！&lt;/p&gt;
+&lt;p&gt;以上都是个人的废话，还是好好讲降噪的事情吧，因为在做电镜图像的内容，而电镜图像最突出的问题就在于：为了避免高能电子束对样品的辐照损伤，只能采用低剂量的电子束进行拍摄，而由此导致了极低的信噪比，而这极低的信噪比和目标的极高分辨率之间就是第一个矛盾，为此，可以通过大量的投影的进行复原，也就是单颗粒技术的核心思想。而如果我们能够进行高效的降噪，那么一切是不是就简单了很多呢？所以降噪还是蛮值得去探索的，这篇就是记录一些降噪有意思的内容和方向，因为是记录的个人思考过程，写的不是很专业，但是思路来源都记载了，推荐阅读原文。&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Windows下查看cuda与cuDNN的版本n-Tensorflow与Pytorch</title>
@@ -482,29 +502,6 @@
         &lt;p&gt;用python画图的时候，尤其是用Jupyter开发的时候，经常会看到又是是plt.figure()有时候有需要添加figure，感觉很迷糊，查阅了资料，觉得下面第一个链接里的知乎博主很靠谱，讲得很到位，特此记录：&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://zhuan
       
-    
-    </summary>
-    
-    
-      <category term="CS" scheme="http://jgwu.top/categories/CS/"/>
-    
-    
-      <category term="Python" scheme="http://jgwu.top/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Jupyter中显示图片并调整大小</title>
-    <link href="http://jgwu.top/blogs/Jupyter%E4%B8%AD%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87%E5%B9%B6%E8%B0%83%E6%95%B4%E5%A4%A7%E5%B0%8F/"/>
-    <id>http://jgwu.top/blogs/Jupyter%E4%B8%AD%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87%E5%B9%B6%E8%B0%83%E6%95%B4%E5%A4%A7%E5%B0%8F/</id>
-    <published>2019-12-24T13:26:38.000Z</published>
-    <updated>2020-03-20T09:15:04.705Z</updated>
-    
-    <content type="html"><![CDATA[<p>最近主要在使用Jupyter进行调试和编程，而Jupyter有点麻烦的就是显示图片问题，而显示图片还是挺简单的，但是更麻烦的调整显示的图片尺寸，接下来整理了几个简单的显示方法</p><a id="more"></a><h2 id="显示图片"><a href="#显示图片" class="headerlink" title="显示图片"></a>显示图片</h2><p>首先当然是你得能够显示图片，还是很简单的，直接在cell中写入</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure><p>然后就会在执行结果里显示出来，比如：</p><p><img src="/blogs/Jupyter中显示图片并调整大小/inline.png" alt="inline"></p><h2 id="忘了为啥没写完了。。。下次继续"><a href="#忘了为啥没写完了。。。下次继续" class="headerlink" title="忘了为啥没写完了。。。下次继续"></a>忘了为啥没写完了。。。下次继续</h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;最近主要在使用Jupyter进行调试和编程，而Jupyter有点麻烦的就是显示图片问题，而显示图片还是挺简单的，但是更麻烦的调整显示的图片尺寸，接下来整理了几个简单的显示方法&lt;/p&gt;
     
     </summary>
     
