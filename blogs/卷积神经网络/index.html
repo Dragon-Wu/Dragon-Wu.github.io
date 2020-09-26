@@ -146,7 +146,7 @@
 <meta property="og:image" content="http://jgwu.top/blogs/卷积神经网络/v2-4f4a0d1043be73c1bdb2eec3956e3471_720w.jpg">
 <meta property="og:image" content="http://jgwu.top/blogs/卷积神经网络/v2-6ef0e971cb56483f11a9e1d087a69ee1_720w.jpg">
 <meta property="og:image" content="http://jgwu.top/blogs/卷积神经网络/v2-80bd14eccd37f725b7740b6d67538e26_720w.jpg">
-<meta property="og:updated_time" content="2020-06-15T09:02:24.410Z">
+<meta property="og:updated_time" content="2020-08-13T15:33:10.417Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="卷积神经网络">
 <meta name="twitter:description" content="卷积神经网络，作为最热门的机器视觉模型之一，具有很强的识别能力，但其本身有很多细节需要掌握 当然，还是要感谢各位先贤能够想出这么多厉害的idea，同样感谢各位愿意分享自己见解，让我们更好理解到只是的传道者们，感谢Internet！">
@@ -514,7 +514,7 @@
 <a id="more"></a>
 <h2 id="建议阅读"><a href="#建议阅读" class="headerlink" title="建议阅读"></a>建议阅读</h2><p><a href="https://zhuanlan.zhihu.com/p/34621135" target="_blank" rel="noopener">卷积神经网络结构演变（form Hubel and Wiesel to SENet）——学习总结，文末附参考论文</a> 梳理的特别好，从60年代，神经网络提出到，Lecun的LeNet，再到AlexNet，以及之后的各种网络，而且归类的特别好，看历史发展看这篇就够了，然后有看不懂和感兴趣的，自己再去查就好，真的真的非常感谢！</p>
 <p><a href="https://mp.weixin.qq.com/s?__biz=MzIyNjM2MzQyNg==&amp;mid=2247499511&amp;idx=1&amp;sn=a420a254f767241e6b3c40e55b28a963&amp;chksm=e8732fbadf04a6ace6364021f5d41f37f855c0e715f93bbd06ce1d23a927658539e1e4397f99&amp;mpshare=1&amp;scene=1&amp;srcid=&amp;sharer_sharetime=1591796810982&amp;sharer_shareid=8724c7983f20914ec3c0c086bba89335&amp;key=2e8f81eda3e54fad1f8fbb27bb7dff67e8f5dec52eb69bbbcbabf6f232a646e7beb156b35bc5a5c16a0b1dfe565304b9da7dc945a767505caf117efc06a31a7b1da0428a9410b43955035e04bf889eb8&amp;ascene=14&amp;uin=MjQ1NDMzMzQ4NA%3D%3D&amp;devicetype=Windows+10+x64&amp;version=62090070&amp;lang=zh_CN&amp;exportkey=AWarqKkyDD0casPx234816I%3D&amp;pass_ticket=9VlgKOu2mwo5kd6c1KjKKa3LUOXtDpwa%2BaZFMiLL%2BTRardHW9gz4dPTkDqCTKriL" target="_blank" rel="noopener">深入浅出卷积神经网络及实现</a> 对各个模型讲解的比较细致，同样非常感谢和推荐</p>
-<h2 id="LeNet5"><a href="#LeNet5" class="headerlink" title="LeNet5"></a>LeNet5</h2><p>1998年，继1989年Lecun第一次提出三层神经网络训练邮政数字训练之后，通过9年的积累，第一次提出了卷积网络（Convolution Network）的概念，并且把结果同各种方法做了一个比较，基本唯一能抗衡的就是V-SVM poly9,结果祭出大杀器Boost，Boosted LeNet-4，以0.1%的优势干掉了SVM。</p>
+<h2 id="LeNet5"><a href="#LeNet5" class="headerlink" title="LeNet5"></a>LeNet5</h2><p>1998年，继1989年Lecun第一次提出三层神经网络训练邮政数字训练之后，通过9年的积累，第一次提出了卷积网络（Convolution Network）的概念，并且把结果同各种方法做了一个比较，基本唯一能抗衡的就是V-SVM poly9，结果祭出大杀器Boost，Boosted LeNet-4，以0.1%的优势干掉了SVM。</p>
 <p>此时就明确了卷积、池化、参数共享等操作，避免了大量的计算成本，最后再使用全连接神经网络进行分类识别，这个网络也是最近大量神经网络架构的起点。</p>
 <p><img src="/blogs/卷积神经网络/v2-6826aed2693147951a6e6e9af0d482f7_r.jpg" alt="preview"></p>
 <p>LeCun在这篇论文里面非常详细的介绍了自己的工作，看看网络结构，就是经典的卷积、池化（或叫降采样），最后是全连接层</p>
@@ -526,7 +526,7 @@
 <p><img src="/blogs/卷积神经网络/640 (1" alt="640 (1)">.png)</p>
 <p><img src="/blogs/卷积神经网络/v2-45715701e5ecea42d07f15fb3ae87100_r.jpg" alt="preview"></p>
 <ol>
-<li><p>与相对较小的LeNet相比，AlexNet包含8层变换，其中有5层卷积和2层全连接隐藏层，以及1个全连接输出层。<strong>下面我们来详细描述这些层的设计</strong>：AlexNet第一层中的卷积窗口形状是11<em>11。因为ImageNet中绝大多数图像的高和宽均比MNIST图像的高和宽大10倍以上，ImageNet图像的物体占用更多的像素，所以需要更大的卷积窗口来捕获物体。第二层中的卷积窗口形状减小到5</em>5，之后全采用3<em>3。此外，第一、第二和第五个卷积层之后都使用了窗口形状为3</em>3、步幅为2的最大池化层。而且，AlexNet使用的卷积通道数也大于LeNet中的卷积通道数数十倍。紧接着最后一个卷积层的是两个输出个数为4096的全连接层。这两个巨大的全连接层带来将近1 GB的模型参数。由于早期显存的限制，最早的AlexNet使用双数据流的设计使一个GPU只需要处理一半模型。幸运的是，显存在过去几年得到了长足的发展，因此通常我们不再需要这样的特别设计了。</p>
+<li><p>与相对较小的LeNet相比，AlexNet包含8层变换，其中有5层卷积和2层全连接隐藏层，以及1个全连接输出层。<strong>下面我们来详细描述这些层的设计</strong>：AlexNet第一层中的卷积窗口形状是11x11。因为ImageNet中绝大多数图像的高和宽均比MNIST图像的高和宽大10倍以上，ImageNet图像的物体占用更多的像素，所以需要更大的卷积窗口来捕获物体。第二层中的卷积窗口形状减小到5x5，之后全采用3x3。此外，第一、第二和第五个卷积层之后都使用了窗口形状为3x3、步幅为2的最大池化层。而且，AlexNet使用的卷积通道数也大于LeNet中的卷积通道数数十倍。紧接着最后一个卷积层的是两个输出个数为4096的全连接层。这两个巨大的全连接层带来将近1 GB的模型参数。由于早期显存的限制，最早的AlexNet使用双数据流的设计使一个GPU只需要处理一半模型。幸运的是，显存在过去几年得到了长足的发展，因此通常我们不再需要这样的特别设计了。</p>
 </li>
 <li><p>AlexNet将sigmoid激活函数改成了更加简单的ReLU激活函数。一方面，ReLU激活函数的计算更简单，例如它并没有sigmoid激活函数中的求幂运算。另一方面，ReLU激活函数在不同的参数初始化方法下使模型更容易训练。这是由于当sigmoid激活函数输出极接近0或1时，这些区域的梯度几乎为0，从而造成反向传播无法继续更新部分模型参数；而ReLU激活函数在正区间的梯度恒为1。因此，若模型参数初始化不当，sigmoid函数可能在正区间得到几乎为0的梯度，从而令模型无法得到有效训练。</p>
 </li>
@@ -947,7 +947,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共73.7k字</span>
+  <span class="post-count">博客全站共78.8k字</span>
 </div>
         
 <div class="busuanzi-count">

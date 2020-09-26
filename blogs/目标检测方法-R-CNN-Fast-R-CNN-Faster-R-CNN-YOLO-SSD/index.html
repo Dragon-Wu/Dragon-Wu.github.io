@@ -120,10 +120,12 @@
 <meta property="og:site_name" content="一个地方">
 <meta property="og:description" content="目标检测方法:R-CNN/Fast R-CNN/Faster R-CNN/YOLO/SSD">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-06-15T15:00:14.871Z">
+<meta property="og:image" content="http://jgwu.top/blogs/目标检测方法-R-CNN-Fast-R-CNN-Faster-R-CNN-YOLO-SSD/v2-4b15828dfee19be726835b671748cc4d_r.jpg">
+<meta property="og:updated_time" content="2020-08-14T08:04:42.429Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="目标检测方法:R-CNN&#x2F;Fast R-CNN&#x2F;Faster R-CNN&#x2F;YOLO&#x2F;SSD">
 <meta name="twitter:description" content="目标检测方法:R-CNN/Fast R-CNN/Faster R-CNN/YOLO/SSD">
+<meta name="twitter:image" content="http://jgwu.top/blogs/目标检测方法-R-CNN-Fast-R-CNN-Faster-R-CNN-YOLO-SSD/v2-4b15828dfee19be726835b671748cc4d_r.jpg">
 
 
 
@@ -445,7 +447,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  90
+                  801
                 </span>
               
 
@@ -461,7 +463,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -487,6 +489,23 @@
 <p>状态有点不好，就先不自己总结了，记录下有价值的链接，留待之后再说</p>
 <p><a href="https://mp.weixin.qq.com/s?__biz=MzI0ODcxODk5OA==&amp;mid=2247517347&amp;idx=3&amp;sn=9165b9311d13c9e41c70312d3652c044&amp;chksm=e99eb75adee93e4cbb0ca1bb16f2a0888b7df10383c4aa0f52c7ff0b5aca1ec8fec351fe1a2e&amp;mpshare=1&amp;scene=24&amp;srcid=&amp;sharer_sharetime=1591382023243&amp;sharer_shareid=fd7933897befbfa1718ff68f4bef0d08&amp;key=070a779d36af0f7cc48b8faeecb93f365a608ee3b1477d4400d0ebfe602858c0a69d932f3cfbd355fcdb1d517b070c50673201eef75fe912f353ffddb79b1af903f5e0b79b49de71fb8b977c44d91dc6&amp;ascene=14&amp;uin=MjQ1NDMzMzQ4NA%3D%3D&amp;devicetype=Windows+10+x64&amp;version=62090070&amp;lang=zh_CN&amp;exportkey=AamrTwcSyxPs1Jq14YZxCTQ%3D&amp;pass_ticket=GiGNQmSqWOMIOPQJNKiSnsbT%2FFUPhyTKN5VaIP1GRmtICaGAHuRdJHAgwObavu5s" target="_blank" rel="noopener">万字长文综述目标检测领域，你要的都在这里</a></p>
 <p><a href="https://mp.weixin.qq.com/s?__biz=MzU2OTA0NzE2NA==&amp;mid=2247498178&amp;idx=1&amp;sn=3f82c7686cf692d2837c466c9ddb83d6&amp;chksm=fc8618d1cbf191c76fc689f7032b8ce88a09f254e32359cfd2de8d2497378098def6e1995fb7&amp;mpshare=1&amp;scene=2&amp;srcid=09215sThHO9mKMCeYXehXdiB&amp;from=timeline&amp;key=2e8f81eda3e54fad8d908ce51f766f088f4bd6b87752431419219c24b66ef70004adde41b911453c786b9c22c5d0461a855280f91b1ca7a97c7d4249a3f6acbd68d4767de900aa2ebad0e15e094d419b&amp;ascene=14&amp;uin=MjQ1NDMzMzQ4NA%3D%3D&amp;devicetype=Windows+10+x64&amp;version=62090070&amp;lang=zh_CN&amp;exportkey=AUvqnqEBXMxhS9OO0vfSSfE%3D&amp;pass_ticket=GiGNQmSqWOMIOPQJNKiSnsbT%2FFUPhyTKN5VaIP1GRmtICaGAHuRdJHAgwObavu5s" target="_blank" rel="noopener">从R-CNN到RFBNet,深度目标检测5年纵览，文章+代码让你从入门到精通</a></p>
+<p><strong>CNN：</strong>包括CNN ResNet一直到Object Detection <a href="https://www.cnblogs.com/fxjwind/p/8732844.html" target="_blank" rel="noopener">AndrewNG Deep learning课程笔记 - CNN</a></p>
+<h2 id="一些思考"><a href="#一些思考" class="headerlink" title="一些思考"></a>一些思考</h2><h3 id="为什么R-CNN需要SVM？"><a href="#为什么R-CNN需要SVM？" class="headerlink" title="为什么R-CNN需要SVM？"></a>为什么R-CNN需要SVM？</h3><p>参考链接：<a href="https://www.zhihu.com/question/54117650" target="_blank" rel="noopener">为什么RCNN用SVM做分类而不直接用CNN全连接之后softmax输出？</a></p>
+<p>一开始很不明白CNN和SVM的作用，后来明白，其实CNN只是用来提取特征的，真正做分类的是SVM</p>
+<p>那么为什么需要有需要SVM在CNN之后做分类呢？</p>
+<p>一方面，CNN训练需要大量的数据，所以在训练的时候，训练数据的IOU&gt;0.5就认为是正类，其他都是负类，包括瞎选的背景，所以训练数据较多；而SVM训练的时候，GT才是正类，而负类是IoU&lt;0.3，而中间的忽略</p>
+<p>第二，也因为训练样本的选择方式不同，其实作者也用过softmax在cnn最后，但是效果不好，他分析，CNN训练，负样本是随机选取的，而不是sVM中用于训练的hard negative，所以分类mAP下降（具体可以看<a href="https://zhuanlan.zhihu.com/p/80841970" target="_blank" rel="noopener">RCNN用SVM做分类而不用softmax</a>）</p>
+<p>那么，为什么SVM可以通过上述的选择方式提高性能呢？</p>
+<p>参考上面链接中<a href="https://www.zhihu.com/question/54117650/answer/259889216" target="_blank" rel="noopener">不可不疯癫的回答</a>，说的很好，因为SVM不容易受到非支持向量样本的影响，而平常的LR容易受到所有样本的影响，能够适应于这种难例挖掘的时间</p>
+<p>关于难负例挖掘问题，可以看<a href="https://zhuanlan.zhihu.com/p/78837273" target="_blank" rel="noopener">薰风AI知识点：Hard Negative Mining/OHEM 你真的知道二者的区别吗？</a></p>
+<h2 id="候选框是怎么选择和训练的"><a href="#候选框是怎么选择和训练的" class="headerlink" title="候选框是怎么选择和训练的"></a>候选框是怎么选择和训练的</h2><p>通过对已有的框进行移动和放缩，看与真实坐标的差值</p>
+<p>详见：<a href="https://blog.csdn.net/zijin0802034/article/details/77685438#commentsedit" target="_blank" rel="noopener">边框回归(Bounding Box Regression)详解</a></p>
+<h3 id="Fast-R-CNN"><a href="#Fast-R-CNN" class="headerlink" title="Fast R-CNN"></a>Fast R-CNN</h3><p>原来的R-CNN，先对完整图像提取ROI，对每一个ROI进行卷积，有大量的重复操作，Fast R-CNN是先对完整图像进行卷积提取特征，再提取ROI的对应特征，并且为了保证ROI不同区域的特征数在进入FCN前能统一，借鉴了SPP-net的池化方式，SPP-Net是把完整图像切割成16+4+1=21个，Fast R-CNN简化了一下，强制切成7*7</p>
+<h3 id="Faster-R-CNN"><a href="#Faster-R-CNN" class="headerlink" title="Faster R-CNN"></a>Faster R-CNN</h3><p>虽然Fast-R-CNN效果不错，但是有个问题是他仍是需要先通过selective search找到proposal region，非常低效，而Faster R-CNN通过RPN（region proposal network）完成了侯选框的锚定，每一个像素取9个</p>
+<p><img src="/blogs/目标检测方法-R-CNN-Fast-R-CNN-Faster-R-CNN-YOLO-SSD/v2-4b15828dfee19be726835b671748cc4d_r.jpg" alt="preview"></p>
+<p>最全的介绍，非常好<a href="https://zhuanlan.zhihu.com/p/31426458" target="_blank" rel="noopener">一文读懂Faster RCNN</a> ，还有代码的解释<a href="https://zhuanlan.zhihu.com/p/145842317" target="_blank" rel="noopener">捋一捋pytorch官方FasterRCNN代码</a></p>
+<h3 id="先分类还是想NMS"><a href="#先分类还是想NMS" class="headerlink" title="先分类还是想NMS"></a>先分类还是想NMS</h3><p>按道理应该可以先分类在NMS，但是一般情况下很少两个不同类别的叠加在附近，所有检测NMS后在分类</p>
+<h3 id="Yolo的图"><a href="#Yolo的图" class="headerlink" title="Yolo的图"></a>Yolo的图</h3><p>图无敌了，<a href="https://www.cnblogs.com/sandy-t/p/7397713.html" target="_blank" rel="noopener">快速理解YOLO目标检测</a></p>
 
       
     </div>
@@ -607,8 +626,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -697,6 +725,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一些思考"><span class="nav-number">1.</span> <span class="nav-text">一些思考</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么R-CNN需要SVM？"><span class="nav-number">1.1.</span> <span class="nav-text">为什么R-CNN需要SVM？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#候选框是怎么选择和训练的"><span class="nav-number">2.</span> <span class="nav-text">候选框是怎么选择和训练的</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Fast-R-CNN"><span class="nav-number">2.1.</span> <span class="nav-text">Fast R-CNN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Faster-R-CNN"><span class="nav-number">2.2.</span> <span class="nav-text">Faster R-CNN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#先分类还是想NMS"><span class="nav-number">2.3.</span> <span class="nav-text">先分类还是想NMS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Yolo的图"><span class="nav-number">2.4.</span> <span class="nav-text">Yolo的图</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -735,7 +779,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共73.7k字</span>
+  <span class="post-count">博客全站共78.8k字</span>
 </div>
         
 <div class="busuanzi-count">

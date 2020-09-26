@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jgwu.top/blogs/LeetCode%E5%BE%81%E9%80%94/</loc>
+    
+    <lastmod>2020-09-18T08:09:34.220Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jgwu.top/blogs/Batch-Normalization/</loc>
+    
+    <lastmod>2020-09-01T09:16:51.947Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jgwu.top/blogs/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95-R-CNN-Fast-R-CNN-Faster-R-CNN-YOLO-SSD/</loc>
+    
+    <lastmod>2020-08-14T08:04:42.429Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jgwu.top/blogs/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</loc>
+    
+    <lastmod>2020-08-13T15:33:10.417Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jgwu.top/blogs/Windows%E4%B8%8B%E6%9F%A5%E7%9C%8Bcuda%E4%B8%8EcuDNN%E7%9A%84%E7%89%88%E6%9C%ACn-Tensorflow%E4%B8%8EPytorch/</loc>
     
     <lastmod>2020-07-24T12:27:57.050Z</lastmod>
@@ -44,20 +72,6 @@
   </url>
   
   <url>
-    <loc>http://jgwu.top/blogs/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95-R-CNN-Fast-R-CNN-Faster-R-CNN-YOLO-SSD/</loc>
-    
-    <lastmod>2020-06-15T15:00:14.871Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jgwu.top/blogs/Batch-Normalization/</loc>
-    
-    <lastmod>2020-06-15T14:18:00.918Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://jgwu.top/blogs/%E6%AD%A3%E5%88%99%E5%8C%96%E4%BD%9C%E7%94%A8%E5%8F%8A%E5%85%B6%E6%8E%A8%E5%AF%BC/</loc>
     
     <lastmod>2020-06-15T13:32:08.157Z</lastmod>
@@ -68,13 +82,6 @@
     <loc>http://jgwu.top/blogs/hello-world/</loc>
     
     <lastmod>2020-06-15T13:31:02.631Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jgwu.top/blogs/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</loc>
-    
-    <lastmod>2020-06-15T09:02:24.410Z</lastmod>
     
   </url>
   
@@ -229,13 +236,6 @@
     <loc>http://jgwu.top/blogs/Python%E8%A7%A3%E9%87%8A%E5%99%A8/</loc>
     
     <lastmod>2020-04-04T08:31:21.792Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jgwu.top/blogs/LeetCode%E5%BE%81%E9%80%94/</loc>
-    
-    <lastmod>2020-04-04T07:45:19.776Z</lastmod>
     
   </url>
   
