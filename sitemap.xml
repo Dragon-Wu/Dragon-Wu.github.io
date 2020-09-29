@@ -2,23 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://jgwu.top/blogs/%E5%9B%BE%E5%83%8F%E9%99%8D%E5%99%AA/</loc>
+    <loc>http://jgwu.top/blogs/R-CNN%E3%80%81SPP-Net%E3%80%81Fast-R-CNN%E7%AD%89/</loc>
     
-    <lastmod>2020-09-26T17:16:51.979Z</lastmod>
+    <lastmod>2020-09-29T12:21:26.973Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://jgwu.top/blogs/LeetCode%E5%BE%81%E9%80%94/</loc>
+    <loc>http://jgwu.top/blogs/%E5%9B%BE%E5%83%8F%E9%99%8D%E5%99%AA/</loc>
     
-    <lastmod>2020-09-18T08:09:34.220Z</lastmod>
+    <lastmod>2020-09-29T12:20:58.385Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://jgwu.top/blogs/Batch-Normalization/</loc>
     
-    <lastmod>2020-09-01T09:16:51.947Z</lastmod>
+    <lastmod>2020-09-29T12:20:30.990Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jgwu.top/blogs/LeetCode%E5%BE%81%E9%80%94/</loc>
+    
+    <lastmod>2020-09-29T12:17:52.361Z</lastmod>
     
   </url>
   
@@ -110,13 +117,6 @@
     <loc>http://jgwu.top/blogs/Deep-Dream/</loc>
     
     <lastmod>2020-06-13T06:07:28.997Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jgwu.top/blogs/R-CNN%E3%80%81SPP-Net%E3%80%81Fast-R-CNN%E7%AD%89/</loc>
-    
-    <lastmod>2020-06-13T06:06:36.535Z</lastmod>
     
   </url>
   

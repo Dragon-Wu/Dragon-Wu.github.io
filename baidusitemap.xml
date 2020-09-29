@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://jgwu.top/blogs/%E5%9B%BE%E5%83%8F%E9%99%8D%E5%99%AA/</loc>
-    <lastmod>2020-09-26</lastmod>
+    <loc>http://jgwu.top/blogs/R-CNN%E3%80%81SPP-Net%E3%80%81Fast-R-CNN%E7%AD%89/</loc>
+    <lastmod>2020-09-29</lastmod>
   </url>  <url>
-    <loc>http://jgwu.top/blogs/LeetCode%E5%BE%81%E9%80%94/</loc>
-    <lastmod>2020-09-18</lastmod>
+    <loc>http://jgwu.top/blogs/%E5%9B%BE%E5%83%8F%E9%99%8D%E5%99%AA/</loc>
+    <lastmod>2020-09-29</lastmod>
   </url>  <url>
     <loc>http://jgwu.top/blogs/Batch-Normalization/</loc>
-    <lastmod>2020-09-01</lastmod>
+    <lastmod>2020-09-29</lastmod>
+  </url>  <url>
+    <loc>http://jgwu.top/blogs/LeetCode%E5%BE%81%E9%80%94/</loc>
+    <lastmod>2020-09-29</lastmod>
   </url>  <url>
     <loc>http://jgwu.top/blogs/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95-R-CNN-Fast-R-CNN-Faster-R-CNN-YOLO-SSD/</loc>
     <lastmod>2020-08-14</lastmod>
@@ -47,9 +50,6 @@
     <lastmod>2020-06-13</lastmod>
   </url>  <url>
     <loc>http://jgwu.top/blogs/Deep-Dream/</loc>
-    <lastmod>2020-06-13</lastmod>
-  </url>  <url>
-    <loc>http://jgwu.top/blogs/R-CNN%E3%80%81SPP-Net%E3%80%81Fast-R-CNN%E7%AD%89/</loc>
     <lastmod>2020-06-13</lastmod>
   </url>  <url>
     <loc>http://jgwu.top/blogs/numpy%E5%90%84%E7%A7%8D/</loc>
