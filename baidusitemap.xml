@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://jgwu.top/blogs/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</loc>
+    <lastmod>2020-10-06</lastmod>
+  </url>  <url>
     <loc>http://jgwu.top/blogs/%E4%BA%8C%E5%8F%89%E6%A0%91/</loc>
-    <lastmod>2020-10-04</lastmod>
+    <lastmod>2020-10-05</lastmod>
   </url>  <url>
     <loc>http://jgwu.top/blogs/LeetCode%E5%BE%81%E9%80%94/</loc>
     <lastmod>2020-10-03</lastmod>
@@ -24,9 +27,6 @@
   </url>  <url>
     <loc>http://jgwu.top/blogs/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95-R-CNN-Fast-R-CNN-Faster-R-CNN-YOLO-SSD/</loc>
     <lastmod>2020-08-14</lastmod>
-  </url>  <url>
-    <loc>http://jgwu.top/blogs/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</loc>
-    <lastmod>2020-08-13</lastmod>
   </url>  <url>
     <loc>http://jgwu.top/blogs/%E5%A5%BD%E5%A5%BD%E5%AD%A6%E4%B9%A0%EF%BC%8C%E6%89%8D%E8%83%BD%E5%A4%A9%E5%A4%A9%E5%90%91%E4%B8%8A/</loc>
     <lastmod>2020-07-23</lastmod>

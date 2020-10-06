@@ -146,7 +146,7 @@
 <meta property="og:image" content="http://jgwu.top/blogs/卷积神经网络/v2-4f4a0d1043be73c1bdb2eec3956e3471_720w.jpg">
 <meta property="og:image" content="http://jgwu.top/blogs/卷积神经网络/v2-6ef0e971cb56483f11a9e1d087a69ee1_720w.jpg">
 <meta property="og:image" content="http://jgwu.top/blogs/卷积神经网络/v2-80bd14eccd37f725b7740b6d67538e26_720w.jpg">
-<meta property="og:updated_time" content="2020-08-13T15:33:10.417Z">
+<meta property="og:updated_time" content="2020-10-06T12:49:30.729Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="卷积神经网络">
 <meta name="twitter:description" content="卷积神经网络，作为最热门的机器视觉模型之一，具有很强的识别能力，但其本身有很多细节需要掌握 当然，还是要感谢各位先贤能够想出这么多厉害的idea，同样感谢各位愿意分享自己见解，让我们更好理解到只是的传道者们，感谢Internet！">
@@ -472,7 +472,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  6.6k
+                  6.7k
                 </span>
               
 
@@ -602,7 +602,7 @@
 <h3 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h3><p>这个工作的出发点是因为传统的卷积网络是在一个固定的patch上面线性加权，所以作者认为它对于特征的提取能力不够强，因此作者在卷积之后接了MLP，然后再输出。</p>
 <p><img src="/blogs/卷积神经网络/v2-e1b93017db6248924829dfaf7994734a_720w.jpg" alt="img">两者的差别</p>
 <p>传统的卷积，就是直接加权求和，然后在relu就得到了一个值。传统的CNN求输出只是把卷积核对所有输入通道对应位置上的数字相加了，也就是说它是一个简单的线性求和，这是不是和我们的CNN所想要的不一样呢？于是goodFlow在13年做了一个工作，它引入了一个Maxout层，我个人的理解是类似于用来跨通道进行池化的，就是把几个通道对应位置上最大输出作为这几个通道的一个输出，而不再是简单的线性求和。这项工作的数学依据在于：任意的凸函数都可以由分段线性函数以任意精度拟合，所以最大池化层是一个能够拟合任意凸函数。</p>
-<p>NIN的作者就想，你只能拟合任意凸函数，那还是不行，我要搞一个能够拟合任意函数的层出来。径向基神经网络和MLP可以逼近任意函数，但是MLP与BP算法更相容，并且能够加深网络，更加符合设计特征重利用的思路，所以选择MLP，这不就不Maxout更加牛逼了吗？于是NIN的流程就很容易理解了：先卷积，卷积之后进行relu，之后再对这个结果连接一个MLP卷积层，以MLP卷积层的输出经过relu之后作为下一层的输入。这里的MLP卷积层的实现是通过两次1<em>1的卷积来实现的，224</em>224的图像经过一个卷积核为11，步长为4的卷积之后大小变为了55<em>55，一共96个通道。用1</em>1<em>96去卷积一下获得了55</em>55<em>96，relu激活一下，再用同样大小的去卷积，也是获得55</em>55<em>96的特征输出,在经过relu一下便是下一层的输入。1</em>1的卷积核设计是一个非常巧妙的设计思路，对后来的GoogleNet, MoblieNet这些网络结构都产生了影响。这篇文章里面还有一个创新点就是采用了平均池化作为最后一层的输出，提升了它的泛化性能，这里就不仔细去介绍了。最终NIN在减小了大量的参数前提下，比AlexNet的精度并没有下降太多。</p>
+<p>NIN的作者就想，你只能拟合任意凸函数，那还是不行，我要搞一个能够拟合任意函数的层出来。径向基神经网络和MLP可以逼近任意函数，但是MLP与BP算法更相容，并且能够加深网络，更加符合设计特征重利用的思路，所以选择MLP，这不就不Maxout更加牛逼了吗？于是NIN的流程就很容易理解了：先卷积，卷积之后进行relu，之后再对这个结果连接一个MLP卷积层，以MLP卷积层的输出经过relu之后作为下一层的输入。这里的MLP卷积层的实现是通过两次1x1的卷积来实现的，224x224的图像经过一个卷积核为1x1，步长为4的卷积之后大小变为了55x55，一共96个通道。用1x1x96去卷积一下获得了55x55x96，relu激活一下，再用同样大小的去卷积，也是获得55x55x96的特征输出,在经过relu一下便是下一层的输入。1*1的卷积核设计是一个非常巧妙的设计思路，对后来的GoogleNet, MoblieNet这些网络结构都产生了影响。这篇文章里面还有一个创新点就是采用了平均池化作为最后一层的输出，提升了它的泛化性能，这里就不仔细去介绍了。最终NIN在减小了大量的参数前提下，比AlexNet的精度并没有下降太多。</p>
 <p><img src="/blogs/卷积神经网络/v2-0d4eac46bcb2c364ff84dce37e6ad8da_720w.jpg" alt="img"></p>
 <h3 id="主要作用："><a href="#主要作用：" class="headerlink" title="主要作用："></a><strong>主要作用：</strong></h3><ol>
 <li><p><strong>升维或降维</strong></p>
@@ -674,6 +674,8 @@
 </ol>
 <p><img src="/blogs/卷积神经网络/v2-80bd14eccd37f725b7740b6d67538e26_720w.jpg" alt="img" style="zoom:67%;"></p>
 <h3 id="inceptionV4"><a href="#inceptionV4" class="headerlink" title="inceptionV4"></a>inceptionV4</h3><p>inceptionV4主要是借鉴了resNet残差网络的思想，可以看做是inceptionV3和resNet的结合。inceptionV4模型大小163M，错误率仅仅为3.08%。主要在ResNet网络中讲解</p>
+<h2 id="卷积的细节"><a href="#卷积的细节" class="headerlink" title="卷积的细节"></a>卷积的细节</h2><p><a href="https://zhuanlan.zhihu.com/p/29119239" target="_blank" rel="noopener">CNN中卷积层的计算细节</a>，包括输入输出的维度，卷积计算的过程，参数数量等</p>
+<h2 id="AlexNet的参数数量"><a href="#AlexNet的参数数量" class="headerlink" title="AlexNet的参数数量"></a>AlexNet的参数数量</h2><p><a href="https://vimsky.com/article/3664.html" target="_blank" rel="noopener">AlexNet中的参数数量</a></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2>
       
     </div>
@@ -902,7 +904,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#建议阅读"><span class="nav-number">1.</span> <span class="nav-text">建议阅读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LeNet5"><span class="nav-number">2.</span> <span class="nav-text">LeNet5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AlexNet"><span class="nav-number">3.</span> <span class="nav-text">AlexNet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VGG-16"><span class="nav-number">4.</span> <span class="nav-text">VGG-16</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ResNet"><span class="nav-number">5.</span> <span class="nav-text">ResNet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#推荐阅读"><span class="nav-number">5.1.</span> <span class="nav-text">推荐阅读</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DenseNet"><span class="nav-number">6.</span> <span class="nav-text">DenseNet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ResNeXt"><span class="nav-number">7.</span> <span class="nav-text">ResNeXt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1x1卷积"><span class="nav-number">8.</span> <span class="nav-text">1x1卷积</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#推荐阅读："><span class="nav-number">8.1.</span> <span class="nav-text">推荐阅读：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原理："><span class="nav-number">8.2.</span> <span class="nav-text">原理：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主要作用："><span class="nav-number">8.3.</span> <span class="nav-text">主要作用：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inception"><span class="nav-number">9.</span> <span class="nav-text">Inception</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#推荐阅读：-1"><span class="nav-number">9.1.</span> <span class="nav-text">推荐阅读：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Inception-v1"><span class="nav-number">9.2.</span> <span class="nav-text">Inception v1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inceptionV2"><span class="nav-number">9.3.</span> <span class="nav-text">inceptionV2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inceptionV3"><span class="nav-number">9.4.</span> <span class="nav-text">inceptionV3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inceptionV4"><span class="nav-number">9.5.</span> <span class="nav-text">inceptionV4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">10.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#建议阅读"><span class="nav-number">1.</span> <span class="nav-text">建议阅读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LeNet5"><span class="nav-number">2.</span> <span class="nav-text">LeNet5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AlexNet"><span class="nav-number">3.</span> <span class="nav-text">AlexNet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VGG-16"><span class="nav-number">4.</span> <span class="nav-text">VGG-16</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ResNet"><span class="nav-number">5.</span> <span class="nav-text">ResNet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#推荐阅读"><span class="nav-number">5.1.</span> <span class="nav-text">推荐阅读</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DenseNet"><span class="nav-number">6.</span> <span class="nav-text">DenseNet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ResNeXt"><span class="nav-number">7.</span> <span class="nav-text">ResNeXt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1x1卷积"><span class="nav-number">8.</span> <span class="nav-text">1x1卷积</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#推荐阅读："><span class="nav-number">8.1.</span> <span class="nav-text">推荐阅读：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原理："><span class="nav-number">8.2.</span> <span class="nav-text">原理：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主要作用："><span class="nav-number">8.3.</span> <span class="nav-text">主要作用：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inception"><span class="nav-number">9.</span> <span class="nav-text">Inception</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#推荐阅读：-1"><span class="nav-number">9.1.</span> <span class="nav-text">推荐阅读：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Inception-v1"><span class="nav-number">9.2.</span> <span class="nav-text">Inception v1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inceptionV2"><span class="nav-number">9.3.</span> <span class="nav-text">inceptionV2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inceptionV3"><span class="nav-number">9.4.</span> <span class="nav-text">inceptionV3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inceptionV4"><span class="nav-number">9.5.</span> <span class="nav-text">inceptionV4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卷积的细节"><span class="nav-number">10.</span> <span class="nav-text">卷积的细节</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AlexNet的参数数量"><span class="nav-number">11.</span> <span class="nav-text">AlexNet的参数数量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">12.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
@@ -947,7 +949,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共83k字</span>
+  <span class="post-count">博客全站共83.1k字</span>
 </div>
         
 <div class="busuanzi-count">
