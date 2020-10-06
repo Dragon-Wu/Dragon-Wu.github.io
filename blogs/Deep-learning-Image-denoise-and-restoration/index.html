@@ -121,7 +121,7 @@
 <meta property="og:description" content="结合深度学习的方法进行降噪">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://jgwu.top/blogs/Deep-learning-Image-denoise-and-restoration/image-20201007011530181.png">
-<meta property="og:updated_time" content="2020-10-06T17:27:32.443Z">
+<meta property="og:updated_time" content="2020-10-06T17:47:24.904Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Deep learning: Image denoise and restoration">
 <meta name="twitter:description" content="结合深度学习的方法进行降噪">
@@ -447,7 +447,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  667
+                  851
                 </span>
               
 
@@ -463,7 +463,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  3
                 </span>
               
             </div>
@@ -494,11 +494,14 @@
 <p>当训练样本很少时，他只能学到二者的转换，就像普通的自动编码器一样，但是如果样本数量足够多，由于噪声是不可测，从最小化Loss的角度，CNN可以学习到真实的纯净图像</p>
 <p>（CNN是不可能学习到某种噪声转换规律从而使得Loss最小化的，因为噪声始终是随机的）</p>
 <p>其核心思想来自于对损失函数的观察，而根据不同的噪声分布，需要选择不同的损失函数L0、L1、L2，以满足假设条件</p>
+<p><em>L</em>2最小化的一个看起来似乎微不足道的属性是，如果我们用一个期望与目标相匹配的随机数替换目标，那么估计值将保持不变。因此，如果输入条件目标分布p ( y ∣ x ) p(y|x)<em>p</em>(<em>y</em>∣<em>x</em>)被具有相同条件期望值的任意分布替换，则最佳网络参数θ \theta<em>θ</em>也保持不变。这意味着，可以在不改变网络训练结果的情况下，将神经网络的训练目标添加上均值为0的噪声。</p>
+<p>以此，证明了无需纯净图像的训练，也能得到一样优秀的参数</p>
 <p>效果拔群，甚至能用来去水印：<br><img src="/blogs/Deep-learning-Image-denoise-and-restoration/image-20201007011530181.png" alt="image-20201007011530181"></p>
-<p>有个老哥还尝试做了相关的小程序，如何完美去水印? - 张蛋蛋的回答 - 知乎 <a href="https://www.zhihu.com/question/333086833/answer/841650555" target="_blank" rel="noopener">https://www.zhihu.com/question/333086833/answer/841650555</a></p>
+<p>有个老哥还尝试做了相关的小程序，<a href="https://www.zhihu.com/question/333086833/answer/841650555" target="_blank" rel="noopener">如何完美去水印?</a> </p>
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://blog.csdn.net/zfqy2222/article/details/101616727?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-6.add_param_isCf&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-6.add_param_isCf" target="_blank" rel="noopener">传统神经网络方法去噪策略与新思路（Noise2noise）整理</a>，提纲挈领</p>
 <p><a href="https://zhuanlan.zhihu.com/p/39512000" target="_blank" rel="noopener">Noise2Noise：图像降噪，无需干净样本，原因非常简单</a>，评论也看看</p>
 <p><a href="https://blog.csdn.net/weixin_40300585/article/details/90946856" target="_blank" rel="noopener">深度学习算法-图像去噪Noise2noise</a>，详细的介绍和推导</p>
+<p><a href="https://blog.csdn.net/zbwgycm/article/details/81134631" target="_blank" rel="noopener">论文笔记：Noise2Noise: Learning Image Restoration without Clean Data</a>，详细的介绍和推导，对于训练过程讲的很到位</p>
 <p><a href="https://github.com/NVlabs/noise2noise" target="_blank" rel="noopener">Noise2Noise: Learning Image Restoration without Clean Data - <em>Official TensorFlow implementation of the ICML 2018 paper</em></a>，项目源码</p>
 <h2 id="Deep-Image-Prior"><a href="#Deep-Image-Prior" class="headerlink" title="Deep Image Prior"></a>Deep Image Prior</h2><p>留坑</p>
 <h3 id="参考-1"><a href="#参考-1" class="headerlink" title="参考"></a>参考</h3><p><a href="https://zhuanlan.zhihu.com/p/88242178" target="_blank" rel="noopener">Deep Image Prior : 一张图实现图像去噪、超分辨率和修补等任务</a></p>
@@ -771,7 +774,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共84.1k字</span>
+  <span class="post-count">博客全站共84.3k字</span>
 </div>
         
 <div class="busuanzi-count">
