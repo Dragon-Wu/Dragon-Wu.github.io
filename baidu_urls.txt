@@ -1,3 +1,4 @@
+http://jgwu.top/blogs/Deep-learning-Image-denoise-and-restoration/
 http://jgwu.top/blogs/图像降噪/
 http://jgwu.top/blogs/Windows下查看cuda与cuDNN的版本n-Tensorflow与Pytorch/
 http://jgwu.top/blogs/二叉树/
@@ -7,4 +8,3 @@ http://jgwu.top/blogs/Something-interesting-in-Cryo-EM/
 http://jgwu.top/blogs/目标检测方法-R-CNN-Fast-R-CNN-Faster-R-CNN-YOLO-SSD/
 http://jgwu.top/blogs/池化的作用/
 http://jgwu.top/blogs/无偏估计下的均值与方差/
-http://jgwu.top/blogs/Pytorch相关/
