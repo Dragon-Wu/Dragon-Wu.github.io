@@ -124,7 +124,7 @@
 <meta property="og:image" content="http://jgwu.top/blogs/深度学习-图像降噪-ML-Means和BM3D/cnoisy.jpg">
 <meta property="og:image" content="http://jgwu.top/blogs/深度学习-图像降噪-ML-Means和BM3D/denoised_bm3d.jpg">
 <meta property="og:image" content="http://jgwu.top/blogs/深度学习-图像降噪-ML-Means和BM3D/psnr.gif">
-<meta property="og:updated_time" content="2020-10-10T13:44:23.478Z">
+<meta property="og:updated_time" content="2020-10-10T14:24:27.497Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度学习-图像降噪-ML-Means和BM3D">
 <meta name="twitter:description" content="NL-Means和BM3D，是两种非常经典且一直被作为对比的图像降噪算法，还是蛮有意思的，看到网上好多都转载了这篇文章，确实写得很好，但是有的blog转载的不全，原文是作者的github blog，连上比较麻烦，并且以防之后没了，还是把这个好文存一下">
@@ -608,6 +608,7 @@ $$ <br>上式中，s 是图像像素最大值，对于8-bit的图像而言 s=255
 </div>
 <p>NL-Means和BM3D可以说是目前效果最好的去噪算法，其中BM3D甚至宣称它可以得到迄今为止最高的PSNR。从最终的结果也可以看出来，BM3D的效果确实要好于NL-Means，噪声更少，能够更好地恢复出图像的细节。在效果这一点上BM3D胜。无愧于State-of-the-art这一称号。当然，这里进行测试的样本比较少，可能还不足以完全说明问题。</p>
 <h2 id="最后说几句"><a href="#最后说几句" class="headerlink" title="最后说几句"></a>最后说几句</h2><p>这两者可以说是目前最有效的图像去噪算法了，但是都不可避免地要面对一个同问题：尽管计算机性能已经成百上千倍地提高，还是远不能满足很多算法的实时计算的需求，这很大程度上限制了这些算法的使用范围：用户无法处理一张照片需要等待长达几分钟的时间，因此，距离真正意义上的实用还是有一段距离。我们只能期待，要是有一天计算机性能不再是问题，又或者，大牛们能够研究出又快又好的算法吧。</p>
+<h2 id="BM3D程序"><a href="#BM3D程序" class="headerlink" title="BM3D程序"></a>BM3D程序</h2><p>感谢大佬写了Python版，还整理了其他版本，<a href="https://github.com/Ryanshuai/BM3D_py" target="_blank" rel="noopener">https://github.com/Ryanshuai/BM3D_py</a></p>
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] Buades A, Coll B, Morel J M. A non-local algorithm for image denoising[C]//Computer Vision and Pattern Recognition, 2005. CVPR 2005. IEEE Computer Society Conference on. IEEE, 2005, 2: 60-65.</p>
 <p>[2] Buades A, Coll B, Morel J M. Nonlocal image and movie denoising[J]. International journal of computer vision, 2008, 76(2): 123-139.</p>
 <p>[3] Antoni Buades, Bartomeu Coll, and Jean-Michel Morel, Non-Local Means Denoising, Image Processing On Line, 1 (2011). <a href="http://dx.doi.org/10.5201/ipol.2011.bcm_nlm" target="_blank" rel="noopener">http://dx.doi.org/10.5201/ipol.2011.bcm_nlm</a></p>
@@ -842,7 +843,7 @@ $$ <br>上式中，s 是图像像素最大值，对于8-bit的图像而言 s=255
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#噪声模型"><span class="nav-number">1.</span> <span class="nav-text">噪声模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NL-Means"><span class="nav-number">2.</span> <span class="nav-text">NL-Means</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法比较"><span class="nav-number">3.</span> <span class="nav-text">算法比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后说几句"><span class="nav-number">4.</span> <span class="nav-text">最后说几句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">5.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#噪声模型"><span class="nav-number">1.</span> <span class="nav-text">噪声模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NL-Means"><span class="nav-number">2.</span> <span class="nav-text">NL-Means</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法比较"><span class="nav-number">3.</span> <span class="nav-text">算法比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后说几句"><span class="nav-number">4.</span> <span class="nav-text">最后说几句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM3D程序"><span class="nav-number">5.</span> <span class="nav-text">BM3D程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">6.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
 
           </div>
@@ -887,7 +888,7 @@ $$ <br>上式中，s 是图像像素最大值，对于8-bit的图像而言 s=255
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共88.4k字</span>
+  <span class="post-count">博客全站共88.5k字</span>
 </div>
         
 <div class="busuanzi-count">
