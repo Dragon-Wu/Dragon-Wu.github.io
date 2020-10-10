@@ -1,4 +1,4 @@
-http://jgwu.top/blogs/深度学习-图像降噪-ML-Means和BM3D/
+http://jgwu.top/blogs/深度学习-图像降噪-NL-Means和BM3D/
 http://jgwu.top/blogs/深度学习-图像降噪-Noise2Noise/
 http://jgwu.top/blogs/深度学习-图像降噪/
 http://jgwu.top/blogs/图像降噪/
