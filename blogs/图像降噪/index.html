@@ -101,7 +101,7 @@
 
 
 
-  <meta name="keywords" content="Machine Learning,Computer Vision," />
+  <meta name="keywords" content="Machine Learning,Computer Vision,Image Denoise," />
 
 
 
@@ -113,14 +113,14 @@
 
 
 <meta name="description" content="老实讲，最近的心态不是特别好，有些焦虑和浮躁吧，但是怎么说呢，归根到底还是要慢慢努力，变强才是硬道理，机会你抓不住自然就会错过，但是只要我们一直努力，总还是能到下一个机会的。种一棵树，最好的是十年前，其次就是现在了，努力吧！ 以上都是个人的废话，还是好好讲降噪的事情吧，因为在做电镜图像的内容，而电镜图像最突出的问题就在于：为了避免高能电子束对样品的辐照损伤，只能采用低剂量的电子束进行拍摄，而由此导">
-<meta name="keywords" content="Machine Learning,Computer Vision">
+<meta name="keywords" content="Machine Learning,Computer Vision,Image Denoise">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图像降噪">
 <meta property="og:url" content="http://jgwu.top/blogs/图像降噪/index.html">
 <meta property="og:site_name" content="一个地方">
 <meta property="og:description" content="老实讲，最近的心态不是特别好，有些焦虑和浮躁吧，但是怎么说呢，归根到底还是要慢慢努力，变强才是硬道理，机会你抓不住自然就会错过，但是只要我们一直努力，总还是能到下一个机会的。种一棵树，最好的是十年前，其次就是现在了，努力吧！ 以上都是个人的废话，还是好好讲降噪的事情吧，因为在做电镜图像的内容，而电镜图像最突出的问题就在于：为了避免高能电子束对样品的辐照损伤，只能采用低剂量的电子束进行拍摄，而由此导">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-10-06T14:02:46.168Z">
+<meta property="og:updated_time" content="2020-10-10T09:13:58.521Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图像降噪">
 <meta name="twitter:description" content="老实讲，最近的心态不是特别好，有些焦虑和浮躁吧，但是怎么说呢，归根到底还是要慢慢努力，变强才是硬道理，机会你抓不住自然就会错过，但是只要我们一直努力，总还是能到下一个机会的。种一棵树，最好的是十年前，其次就是现在了，努力吧！ 以上都是个人的废话，还是好好讲降噪的事情吧，因为在做电镜图像的内容，而电镜图像最突出的问题就在于：为了避免高能电子束对样品的辐照损伤，只能采用低剂量的电子束进行拍摄，而由此导">
@@ -486,7 +486,7 @@
 <p>以上都是个人的废话，还是好好讲降噪的事情吧，因为在做电镜图像的内容，而电镜图像最突出的问题就在于：为了避免高能电子束对样品的辐照损伤，只能采用低剂量的电子束进行拍摄，而由此导致了极低的信噪比，而这极低的信噪比和目标的极高分辨率之间就是第一个矛盾，为此，可以通过大量的投影的进行复原，也就是单颗粒技术的核心思想。而如果我们能够进行高效的降噪，那么一切是不是就简单了很多呢？所以降噪还是蛮值得去探索的，这篇就是记录一些降噪有意思的内容和方向，因为是记录的个人思考过程，写的不是很专业，但是思路来源都记载了，推荐阅读原文。</p>
 <a id="more"></a>
 <h2 id="降噪问题"><a href="#降噪问题" class="headerlink" title="降噪问题"></a>降噪问题</h2><p>本质上来讲就是 y(t)=x(t)+e(y)，我们观测到的y，是真值x与噪声带来的e一起组成的，我们的目的就是如果从观测到的y中剥离e，从而恢复出x</p>
-<h2 id="高斯噪声"><a href="#高斯噪声" class="headerlink" title="高斯噪声"></a>高斯噪声</h2><p>为了去除噪声，我们需要尽可能地挖掘出x的一些信息，帮助我们去恢复它，如形态信息等约束，另一方面，我们则要去找到噪声的信息，比如噪声的模型与分析，比如噪声呈现某种分布。</p>
+<h2 id="噪声模型"><a href="#噪声模型" class="headerlink" title="噪声模型"></a>噪声模型</h2><h3 id="高斯噪声"><a href="#高斯噪声" class="headerlink" title="高斯噪声"></a>高斯噪声</h3><p>为了去除噪声，我们需要尽可能地挖掘出x的一些信息，帮助我们去恢复它，如形态信息等约束，另一方面，我们则要去找到噪声的信息，比如噪声的模型与分析，比如噪声呈现某种分布。</p>
 <p>在很多降噪的探索中，一般会假设噪声是呈高斯分布的，这个在冷冻电镜图像的研究过程中也是，一直以来都是以观察图像去拟合高斯分布以找到噪声的分布，而后期逐渐引入了与频率相关的噪声，从而更好地描述实际受到CTF调制影响的噪声</p>
 <p>高斯噪声，一般假设该噪声与x无关，也就是他是随机从高斯分布中采样的，那么为什么都采用高斯分布呢，有为什么是work的呢？</p>
 <p>其实我最早的浅显想法是比较符合实际的设想，比如噪声符合一个标准正态分布，就是有可能这个点比真值亮一点或者暗一点，而如果整体的拍摄环境比较亮，那就是分布的均值往正值移一些（μ变大），而如果随机亮暗的程度波动比较大，那就是分布的方差变大一些（σ变大），与图像本身的真值无关且完全随机；而且还有一个好处是，其模型参数就μ和σ，还是比较好去找的，所以其简单比较靠谱的特性得到了广泛青睐。</p>
@@ -564,7 +564,7 @@ s(x, y) &=\frac{\sigma_{x y}+c_{3}}{\sigma_{x} \sigma_{y}+c_{3}}
 <li>外部先验（External prior）：通过纯净图像去发掘图片的内在属性，这一类方法利用的外部图片来创造先验条件，然后用于约束需要预测的图片。最有代表性的工作，就是混合高斯模型（Gaussian Mixture Model）。严格来说，基于深度学习的算法也可以归于这个类。</li>
 <li>深度学习（Deep Learning）：上一方法的延伸，通过深度学习提取复杂特征的能力，更好地确定约束和提取</li>
 </ol>
-<h2 id="有意思的工作"><a href="#有意思的工作" class="headerlink" title="有意思的工作"></a>有意思的工作</h2><p>未完待续</p>
+<h2 id="深度学习降噪："><a href="#深度学习降噪：" class="headerlink" title="深度学习降噪："></a>深度学习降噪：</h2><h2 id="有意思的工作"><a href="#有意思的工作" class="headerlink" title="有意思的工作"></a>有意思的工作</h2><p>未完待续</p>
 
       
     </div>
@@ -585,6 +585,8 @@ s(x, y) &=\frac{\sigma_{x y}+c_{3}}{\sigma_{x} \sigma_{y}+c_{3}}
             <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
           
             <a href="/tags/Computer-Vision/" rel="tag"># Computer Vision</a>
+          
+            <a href="/tags/Image-Denoise/" rel="tag"># Image Denoise</a>
           
         </div>
       
@@ -626,8 +628,8 @@ s(x, y) &=\frac{\sigma_{x y}+c_{3}}{\sigma_{x} \sigma_{y}+c_{3}}
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/blogs/Deep-learning-Image-denoise-and-restoration/" rel="prev" title="Deep learning: Image denoise and restoration">
-                Deep learning: Image denoise and restoration <i class="fa fa-chevron-right"></i>
+              <a href="/blogs/深度学习-图像降噪/" rel="prev" title="深度学习-图像降噪">
+                深度学习-图像降噪 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -716,7 +718,7 @@ s(x, y) &=\frac{\sigma_{x y}+c_{3}}{\sigma_{x} \sigma_{y}+c_{3}}
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-count">63</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -738,7 +740,7 @@ s(x, y) &=\frac{\sigma_{x y}+c_{3}}{\sigma_{x} \sigma_{y}+c_{3}}
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -793,7 +795,7 @@ s(x, y) &=\frac{\sigma_{x y}+c_{3}}{\sigma_{x} \sigma_{y}+c_{3}}
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#降噪问题"><span class="nav-number">1.</span> <span class="nav-text">降噪问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高斯噪声"><span class="nav-number">2.</span> <span class="nav-text">高斯噪声</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图像质量评价指标"><span class="nav-number">3.</span> <span class="nav-text">图像质量评价指标</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MSE-均方误差"><span class="nav-number">3.1.</span> <span class="nav-text">MSE  均方误差</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PSNR-dB-峰值信噪比"><span class="nav-number">3.2.</span> <span class="nav-text">PSNR(dB)  峰值信噪比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSIM-Structural-SIMilarity-结构相似性"><span class="nav-number">3.3.</span> <span class="nav-text">SSIM (Structural SIMilarity) 结构相似性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#降噪方法"><span class="nav-number">4.</span> <span class="nav-text">降噪方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有意思的工作"><span class="nav-number">5.</span> <span class="nav-text">有意思的工作</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#降噪问题"><span class="nav-number">1.</span> <span class="nav-text">降噪问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#噪声模型"><span class="nav-number">2.</span> <span class="nav-text">噪声模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#高斯噪声"><span class="nav-number">2.1.</span> <span class="nav-text">高斯噪声</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图像质量评价指标"><span class="nav-number">3.</span> <span class="nav-text">图像质量评价指标</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MSE-均方误差"><span class="nav-number">3.1.</span> <span class="nav-text">MSE  均方误差</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PSNR-dB-峰值信噪比"><span class="nav-number">3.2.</span> <span class="nav-text">PSNR(dB)  峰值信噪比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSIM-Structural-SIMilarity-结构相似性"><span class="nav-number">3.3.</span> <span class="nav-text">SSIM (Structural SIMilarity) 结构相似性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#降噪方法"><span class="nav-number">4.</span> <span class="nav-text">降噪方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#深度学习降噪："><span class="nav-number">5.</span> <span class="nav-text">深度学习降噪：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有意思的工作"><span class="nav-number">6.</span> <span class="nav-text">有意思的工作</span></a></li></ol></div>
             
 
           </div>
@@ -838,7 +840,7 @@ s(x, y) &=\frac{\sigma_{x y}+c_{3}}{\sigma_{x} \sigma_{y}+c_{3}}
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共84.3k字</span>
+  <span class="post-count">博客全站共88.4k字</span>
 </div>
         
 <div class="busuanzi-count">

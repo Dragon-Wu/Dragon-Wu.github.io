@@ -2,16 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://jgwu.top/blogs/Deep-learning-Image-denoise-and-restoration/</loc>
+    <loc>http://jgwu.top/blogs/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E5%9B%BE%E5%83%8F%E9%99%8D%E5%99%AA-ML-Means%E5%92%8CBM3D/</loc>
     
-    <lastmod>2020-10-06T17:47:24.904Z</lastmod>
+    <lastmod>2020-10-10T13:44:23.478Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://jgwu.top/blogs/%E5%9B%BE%E5%83%8F%E9%99%8D%E5%99%AA/</loc>
     
-    <lastmod>2020-10-06T14:02:46.168Z</lastmod>
+    <lastmod>2020-10-10T09:13:58.521Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jgwu.top/blogs/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E5%9B%BE%E5%83%8F%E9%99%8D%E5%99%AA/</loc>
+    
+    <lastmod>2020-10-10T09:11:36.868Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jgwu.top/blogs/Save-some-code/</loc>
+    
+    <lastmod>2020-10-10T09:11:35.827Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jgwu.top/blogs/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E5%9B%BE%E5%83%8F%E9%99%8D%E5%99%AA-Noise2Noise/</loc>
+    
+    <lastmod>2020-10-10T09:11:34.759Z</lastmod>
     
   </url>
   
@@ -89,13 +110,6 @@
     <loc>http://jgwu.top/blogs/Laplacian-of-Gaussian-LOG-%E9%AB%98%E6%96%AF%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF%E7%AE%97%E5%AD%90/</loc>
     
     <lastmod>2020-07-23T12:08:30.217Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jgwu.top/blogs/Save-some-code/</loc>
-    
-    <lastmod>2020-07-23T12:07:53.977Z</lastmod>
     
   </url>
   
