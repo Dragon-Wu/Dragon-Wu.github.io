@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Few-shot Learning and Meta-Learning</title>
+      <link href="/blogs/Few-shot-Learning-and-Meta-Learning/"/>
+      <url>/blogs/Few-shot-Learning-and-Meta-Learning/</url>
+      
+        <content type="html"><![CDATA[<p>未来的方向？我觉得超酷，那就尝试着去学习学习吧！<br>（当然有些遗憾，写了很多感慨，但是干货主要还是他人的blog哈哈，先学习吧，希望今后自己能够follow到前沿领域，然后写出有价值的东西分享给大家 :）</p><a id="more"></a><p>当前深度学习已经在很多领域和任务上取得了很优异的成绩，前两天看到的，在某些领域，当前AI的“感知”能力甚至已经超过了人类，下一步的方向是让AI学会认知，即不仅仅是建立在大数据训练和概率模型上的识别、发现，而是能够获得认知的能力，觉得还蛮酷的。也确实如此，像是之前看《数学之美》，看到上个世纪人们执着于让AI像人们一样学会语法、理解语言，但是最后反而很难提升，因为太难了，语境变化太大，很难掌握详细而全面的规则，也由此陷入了一个困境，而后慢慢兴起了基于数据与数理统计的方法，才重新唤起了人们对NLP的信心，甚至：</p><blockquote><p>「每当我开除一个语言学家，语音识别系统就更准确了。」<br>Every time I fire a linguist, the performance of the speech recognizer goes up.<br>——现代语音识别和自然语言处理研究的先驱 Frederick Jelinek</p></blockquote><p>确实很有趣，如今的NLP更是如火如荼，但往往伴随着的也就是超大规模的数据集和超大规模的模型，也取得了非凡的成功，但是最终，人们应该还是希望能够让AI真正的学会学习，所以这个方向的研究很难，但也很酷，也是今后的趋势吧。</p><p>而在迈向之后的“认知”，我们可以有很多方式可以向其迈进，比如更少的样本、更健壮的模型，都是一个个慢慢前进的过程吧，像是如今的刘海屏、挖孔屏，都是我们走上真正全面屏的过渡而已（虽然我还是觉得这些好丑哈哈），其思想和技术积累是很有价值的。而Few-shot Learning and Meta-Learning，一方面是两条很酷的方向，个人很感兴趣，另一方面，是在做图像聚类，其实我觉得图像聚类问题很多时候可以和few-shot Learning共通？所以也是慢慢入坑了解一下</p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://blog.csdn.net/weixin_37589575/article/details/92801610" target="_blank" rel="noopener">Few-shot learning（少样本学习）和 Meta-learning（元学习）概述</a>，总结了一下Few-shot Learning的主要方法，其中就包括Meta Learning，总结蛮好的，起码帮助我建立了一个宏观认识吧</p><p><a href="https://blog.csdn.net/weixin_37589575/article/details/93969335" target="_blank" rel="noopener">MAML: Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks (模型无关的元学习用于快速适应深度网络)</a>，还是上述的作者，其深入介绍了一种新的元学习 (Meta-learning) 的算法，是一种与模型无关，但是能够很好地适用于few-shot任务的框架，看了看其思想很朴素，但是很有意思，好像也很work，建议辅助<a href="https://blog.csdn.net/qq_38900441/article/details/106985672" target="_blank" rel="noopener">论文阅读：Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks</a>食用更佳，图解还有分析更加详细，<a href="https://www.bilibili.com/video/av50817894?from=search&amp;seid=312494650966945945" target="_blank" rel="noopener">Meta Learning – MAML</a>还有李宏毅老师的课程~</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> CS </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Machine Learning </tag>
+            
+            <tag> Meta Learning </tag>
+            
+            <tag> Few-shot Learning </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>深度学习-图像降噪-NL-Means和BM3D</title>
       <link href="/blogs/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E5%9B%BE%E5%83%8F%E9%99%8D%E5%99%AA-NL-Means%E5%92%8CBM3D/"/>
       <url>/blogs/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E5%9B%BE%E5%83%8F%E9%99%8D%E5%99%AA-NL-Means%E5%92%8CBM3D/</url>
@@ -273,9 +302,9 @@
       
         <tags>
             
-            <tag> CNN </tag>
-            
             <tag> Computer Vision </tag>
+            
+            <tag> CNN </tag>
             
         </tags>
       
@@ -302,9 +331,9 @@
             
             <tag> Machine Learning </tag>
             
-            <tag> CNN </tag>
-            
             <tag> Computer Vision </tag>
+            
+            <tag> CNN </tag>
             
         </tags>
       
@@ -481,9 +510,9 @@
       
         <tags>
             
-            <tag> CNN </tag>
-            
             <tag> Computer Vision </tag>
+            
+            <tag> CNN </tag>
             
         </tags>
       
@@ -806,9 +835,9 @@
             
             <tag> Machine Learning </tag>
             
-            <tag> CNN </tag>
-            
             <tag> Computer Vision </tag>
+            
+            <tag> CNN </tag>
             
         </tags>
       
@@ -1624,22 +1653,22 @@
     
     
     <entry>
-      <title>categories</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>一个还理想着的理想主义者</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>喜欢的话就<strong>坚持</strong>吧</p><p>弱小的话就<strong>努力</strong>吧</p><p>种一棵树，最好是十年前，其次就是<strong>现在</strong>了</p><p>——————</p><p><strong>做点好事，做个好人</strong></p>]]></content>
       
     </entry>
     
     
     
     <entry>
-      <title>做点好事，做个好人</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
-        <content type="html"><![CDATA[<p>喜欢的话就<strong>坚持</strong>吧</p><p>弱小的话就<strong>努力</strong>吧</p><p>种一棵树，最好是十年前，其次就是<strong>现在</strong>了</p><p>——————</p><p><strong>一个还理想着的理想主义者啊</strong></p>]]></content>
+        <content type="html"><![CDATA[]]></content>
       
     </entry>
     

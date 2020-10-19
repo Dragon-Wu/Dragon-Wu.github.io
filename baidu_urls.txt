@@ -1,3 +1,4 @@
+http://jgwu.top/blogs/Few-shot-Learning-and-Meta-Learning/
 http://jgwu.top/blogs/深度学习-图像降噪-NL-Means和BM3D/
 http://jgwu.top/blogs/深度学习-图像降噪-Noise2Noise/
 http://jgwu.top/blogs/深度学习-图像降噪/
@@ -7,4 +8,3 @@ http://jgwu.top/blogs/二叉树/
 http://jgwu.top/blogs/Batch-Normalization/
 http://jgwu.top/blogs/LeetCode征途/
 http://jgwu.top/blogs/Something-interesting-in-Cryo-EM/
-http://jgwu.top/blogs/目标检测方法-R-CNN-Fast-R-CNN-Faster-R-CNN-YOLO-SSD/

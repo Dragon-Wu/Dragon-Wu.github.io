@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jgwu.top/"/>
-  <updated>2020-10-16T13:43:51.546Z</updated>
+  <updated>2020-10-19T08:38:20.445Z</updated>
   <id>http://jgwu.top/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Few-shot Learning and Meta-Learning</title>
+    <link href="http://jgwu.top/blogs/Few-shot-Learning-and-Meta-Learning/"/>
+    <id>http://jgwu.top/blogs/Few-shot-Learning-and-Meta-Learning/</id>
+    <published>2020-10-19T08:14:07.000Z</published>
+    <updated>2020-10-19T08:38:20.445Z</updated>
+    
+    <content type="html"><![CDATA[<p>未来的方向？我觉得超酷，那就尝试着去学习学习吧！<br>（当然有些遗憾，写了很多感慨，但是干货主要还是他人的blog哈哈，先学习吧，希望今后自己能够follow到前沿领域，然后写出有价值的东西分享给大家 :）</p><a id="more"></a><p>当前深度学习已经在很多领域和任务上取得了很优异的成绩，前两天看到的，在某些领域，当前AI的“感知”能力甚至已经超过了人类，下一步的方向是让AI学会认知，即不仅仅是建立在大数据训练和概率模型上的识别、发现，而是能够获得认知的能力，觉得还蛮酷的。也确实如此，像是之前看《数学之美》，看到上个世纪人们执着于让AI像人们一样学会语法、理解语言，但是最后反而很难提升，因为太难了，语境变化太大，很难掌握详细而全面的规则，也由此陷入了一个困境，而后慢慢兴起了基于数据与数理统计的方法，才重新唤起了人们对NLP的信心，甚至：</p><blockquote><p>「每当我开除一个语言学家，语音识别系统就更准确了。」<br>Every time I fire a linguist, the performance of the speech recognizer goes up.<br>——现代语音识别和自然语言处理研究的先驱 Frederick Jelinek</p></blockquote><p>确实很有趣，如今的NLP更是如火如荼，但往往伴随着的也就是超大规模的数据集和超大规模的模型，也取得了非凡的成功，但是最终，人们应该还是希望能够让AI真正的学会学习，所以这个方向的研究很难，但也很酷，也是今后的趋势吧。</p><p>而在迈向之后的“认知”，我们可以有很多方式可以向其迈进，比如更少的样本、更健壮的模型，都是一个个慢慢前进的过程吧，像是如今的刘海屏、挖孔屏，都是我们走上真正全面屏的过渡而已（虽然我还是觉得这些好丑哈哈），其思想和技术积累是很有价值的。而Few-shot Learning and Meta-Learning，一方面是两条很酷的方向，个人很感兴趣，另一方面，是在做图像聚类，其实我觉得图像聚类问题很多时候可以和few-shot Learning共通？所以也是慢慢入坑了解一下</p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://blog.csdn.net/weixin_37589575/article/details/92801610" target="_blank" rel="noopener">Few-shot learning（少样本学习）和 Meta-learning（元学习）概述</a>，总结了一下Few-shot Learning的主要方法，其中就包括Meta Learning，总结蛮好的，起码帮助我建立了一个宏观认识吧</p><p><a href="https://blog.csdn.net/weixin_37589575/article/details/93969335" target="_blank" rel="noopener">MAML: Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks (模型无关的元学习用于快速适应深度网络)</a>，还是上述的作者，其深入介绍了一种新的元学习 (Meta-learning) 的算法，是一种与模型无关，但是能够很好地适用于few-shot任务的框架，看了看其思想很朴素，但是很有意思，好像也很work，建议辅助<a href="https://blog.csdn.net/qq_38900441/article/details/106985672" target="_blank" rel="noopener">论文阅读：Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks</a>食用更佳，图解还有分析更加详细，<a href="https://www.bilibili.com/video/av50817894?from=search&amp;seid=312494650966945945" target="_blank" rel="noopener">Meta Learning – MAML</a>还有李宏毅老师的课程~</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;未来的方向？我觉得超酷，那就尝试着去学习学习吧！&lt;br&gt;（当然有些遗憾，写了很多感慨，但是干货主要还是他人的blog哈哈，先学习吧，希望今后自己能够follow到前沿领域，然后写出有价值的东西分享给大家 :）&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="CS" scheme="http://jgwu.top/categories/CS/"/>
+    
+    
+      <category term="Machine Learning" scheme="http://jgwu.top/tags/Machine-Learning/"/>
+    
+      <category term="Meta Learning" scheme="http://jgwu.top/tags/Meta-Learning/"/>
+    
+      <category term="Few-shot Learning" scheme="http://jgwu.top/tags/Few-shot-Learning/"/>
+    
+  </entry>
   
   <entry>
     <title>深度学习-图像降噪-NL-Means和BM3D</title>
@@ -274,9 +301,9 @@
       <category term="CS" scheme="http://jgwu.top/categories/CS/"/>
     
     
-      <category term="CNN" scheme="http://jgwu.top/tags/CNN/"/>
-    
       <category term="Computer Vision" scheme="http://jgwu.top/tags/Computer-Vision/"/>
+    
+      <category term="CNN" scheme="http://jgwu.top/tags/CNN/"/>
     
   </entry>
   
@@ -301,9 +328,9 @@
     
       <category term="Machine Learning" scheme="http://jgwu.top/tags/Machine-Learning/"/>
     
-      <category term="CNN" scheme="http://jgwu.top/tags/CNN/"/>
-    
       <category term="Computer Vision" scheme="http://jgwu.top/tags/Computer-Vision/"/>
+    
+      <category term="CNN" scheme="http://jgwu.top/tags/CNN/"/>
     
   </entry>
   
@@ -473,9 +500,9 @@
       <category term="CS" scheme="http://jgwu.top/categories/CS/"/>
     
     
-      <category term="CNN" scheme="http://jgwu.top/tags/CNN/"/>
-    
       <category term="Computer Vision" scheme="http://jgwu.top/tags/Computer-Vision/"/>
+    
+      <category term="CNN" scheme="http://jgwu.top/tags/CNN/"/>
     
   </entry>
   
@@ -501,30 +528,6 @@
       <category term="Machine Learning" scheme="http://jgwu.top/tags/Machine-Learning/"/>
     
       <category term="Cryo-EM" scheme="http://jgwu.top/tags/Cryo-EM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>菜-坑</title>
-    <link href="http://jgwu.top/blogs/%E8%8F%9C-%E5%9D%91/"/>
-    <id>http://jgwu.top/blogs/%E8%8F%9C-%E5%9D%91/</id>
-    <published>2020-03-29T11:13:14.000Z</published>
-    <updated>2020-06-13T06:10:14.499Z</updated>
-    
-    <content type="html"><![CDATA[<p>为什么被坑绊倒了，因为菜</p><p>所以想学，但是太菜了，精卫填海非一朝一夕</p><p>只好，自己挖坑立碑，留待有时间，有脑子的时候来</p><p>愚公移山 T T </p><a id="more"></a><h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p><a href="https://zhuanlan.zhihu.com/p/120215615" target="_blank" rel="noopener">首款 Jupyter 官方可视化 Debug 工具，JupyterLab 未来可默认支持 Debug</a></p><h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><p>数据结构（Python）：堆、树、图</p><p><a href="https://www.cnblogs.com/ECJTUACM-873284962/p/7637875.html" target="_blank" rel="noopener">从入门到精通之Boyer-Moore字符串搜索算法详解</a></p><p>素数筛法：<a href="http://sunshuyi.vip/2020/02/29/leetcode/leetcode-prime-number/#more" target="_blank" rel="noopener">leetcode实战—素数（埃拉托色尼筛选法包括证明、哈希、RSA）</a></p><p>排序：<a href="http://sunshuyi.vip/2020/03/26/leetcode/tim-sort/#more" target="_blank" rel="noopener">世界上最快的排序算法——Timsort</a> <a href="http://sunshuyi.vip/2020/03/15/leetcode/leetcode-sort/#more" target="_blank" rel="noopener">十二种排序</a></p><p>递增子序列：673 727</p><h2 id="Trick"><a href="#Trick" class="headerlink" title="Trick"></a>Trick</h2><p><a href="https://mp.weixin.qq.com/s?__biz=MjM5NzU0MzU0Nw==&amp;mid=2651384070&amp;idx=1&amp;sn=fc5fc1db1497118ae5a030731ed4d6f7&amp;chksm=bd2422128a53ab049b986f3f215fb78613c5aff2074d4dfc1e7eff286395125b857233aeb594&amp;scene=0&amp;xtrack=1&amp;key=7c963fd9cffd28ea07ca2592c9f0671edb20e4b58a4ed0be637ebdaf68673d0fdb63dfc70808b27e799f32ee5afec11df4cc635d722a1a76db5f53855c6dea12bf931a6815a86c1abb4242ed09cab350&amp;ascene=14&amp;uin=MjQ1NDMzMzQ4NA%3D%3D&amp;devicetype=Windows+10&amp;version=62080079&amp;lang=zh_CN&amp;exportkey=Aad4IMivqRoiP0mxI3X1Z3I%3D&amp;pass_ticket=twjWQyIhowYwH9XxmGVRL2ctmZU7pG9Auk%2FsS0SKZ%2BwqDMNBXUh%2BY4hGaLMPD2q7" target="_blank" rel="noopener">使用无损压缩减少NumPy的内存使用</a></p><p><a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017642838127488" target="_blank" rel="noopener">常用内建模块</a>：包括collections等</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;为什么被坑绊倒了，因为菜&lt;/p&gt;
-&lt;p&gt;所以想学，但是太菜了，精卫填海非一朝一夕&lt;/p&gt;
-&lt;p&gt;只好，自己挖坑立碑，留待有时间，有脑子的时候来&lt;/p&gt;
-&lt;p&gt;愚公移山 T T &lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="CS" scheme="http://jgwu.top/categories/CS/"/>
-    
     
   </entry>
   
