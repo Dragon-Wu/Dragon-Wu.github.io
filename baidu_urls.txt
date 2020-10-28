@@ -1,4 +1,4 @@
-http://jgwu.top/blogs/卷积网络可视化—-可解释/
+http://jgwu.top/blogs/卷积网络可视化-可解释/
 http://jgwu.top/blogs/Few-shot-Learning-and-Meta-Learning/
 http://jgwu.top/blogs/深度学习-图像降噪-NL-Means和BM3D/
 http://jgwu.top/blogs/深度学习-图像降噪-Noise2Noise/
