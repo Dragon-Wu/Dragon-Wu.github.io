@@ -1,3 +1,4 @@
+http://jgwu.top/blogs/NLP基础知知识-努力扫盲入门的我/
 http://jgwu.top/blogs/卷积网络可视化-可解释/
 http://jgwu.top/blogs/Few-shot-Learning-and-Meta-Learning/
 http://jgwu.top/blogs/深度学习-图像降噪-NL-Means和BM3D/
@@ -7,4 +8,3 @@ http://jgwu.top/blogs/图像降噪/
 http://jgwu.top/blogs/Windows下查看cuda与cuDNN的版本n-Tensorflow与Pytorch/
 http://jgwu.top/blogs/二叉树/
 http://jgwu.top/blogs/Batch-Normalization/
-http://jgwu.top/blogs/LeetCode征途/
