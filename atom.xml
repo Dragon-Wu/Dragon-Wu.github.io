@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jgwu.top/"/>
-  <updated>2020-11-06T12:33:05.903Z</updated>
+  <updated>2020-11-06T15:30:45.337Z</updated>
   <id>http://jgwu.top/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://jgwu.top/blogs/NLP%E5%9F%BA%E7%A1%80%E7%9F%A5%E7%9F%A5%E8%AF%86-%E5%8A%AA%E5%8A%9B%E6%89%AB%E7%9B%B2%E5%85%A5%E9%97%A8%E7%9A%84%E6%88%91/"/>
     <id>http://jgwu.top/blogs/NLP%E5%9F%BA%E7%A1%80%E7%9F%A5%E7%9F%A5%E8%AF%86-%E5%8A%AA%E5%8A%9B%E6%89%AB%E7%9B%B2%E5%85%A5%E9%97%A8%E7%9A%84%E6%88%91/</id>
     <published>2020-11-06T07:59:35.000Z</published>
-    <updated>2020-11-06T12:33:05.903Z</updated>
+    <updated>2020-11-06T15:30:45.337Z</updated>
     
-    <content type="html"><![CDATA[<p>也许今后有机会在NLP深入探索了，说实在的，对NLP唯一的接触还是大三做hadoop/spark的时候为了结合爬虫和词云，了解一些中文分词，像是结巴分词印象就还蛮深刻的。反正，先尝试了解了解吧，干就完了！</p><p>习惯了CV的东西，一下转到看NLP，不知道是不是心理因素，还是真的思路和focus的东西不一样，感觉好容易忘哦，还是写下blog简单记录下一些小知识点，免得看了就忘的蠢事</p><a id="more"></a><h2 id="文本表示模型"><a href="#文本表示模型" class="headerlink" title="文本表示模型"></a>文本表示模型</h2><h3 id="词袋模型"><a href="#词袋模型" class="headerlink" title="词袋模型"></a>词袋模型</h3><p>文本是一种非结构化数据，所以我们首先需要找到合适的方法表示文本数据，最基础的文本表示模型就是<strong>词袋</strong>模型，将每篇文章都看做是一袋子词，不care词在哪里出现、出现的顺序</p><p>具体而言，就是将整段文字以词为单位切开，从而每篇文章都能表示成一个长向量，向量的每个维度都代表一个单词，而该维的权重是这个词在文章中的重要程度，常用TF-IDF来计算：</p><p>TF-IDF(t,d)=TF(t,d) × IDF(t) </p><p>真中T F(t,d） 为单词t 在艾档d 中出现的频率， ID F( t） 是逆文挡频率，<br>用来衡量单词t 对表达语义所起的重要性，表示为</p><p>IDF(t) = log ( 文章总数 / (出现单词t的文章总数+1) )</p><p>直观的解释是如果一个单词在很多文章里都出现过， 那么可能是一个比较通用的词汇，比如the a an 这种冠词吧，对于区分某篇文章特殊语义的贡献较小。因此，对权重做一定惩罚。</p><h2 id="N-gram"><a href="#N-gram" class="headerlink" title="N-gram"></a>N-gram</h2><p>如果单纯看单词的出现，肯定还是很粗糙的，毕竟语言是流动的文字而非定格的塑像，所以可以在词袋模型的基础上，将连续出现的n个词组成的词组(N-gram)也作为一个单独的特征放到向量空间中，构成N-gram模型。</p><p><strong>另外，同一个词可能有多种词性变化却具有相似的含义。在实际应用中，一般会对单词进行词干抽取（ Word Stemming ）处理，即将不同词性的单词统一成为同一词干的形式。</strong></p><h3 id="主体模型"><a href="#主体模型" class="headerlink" title="主体模型"></a>主体模型</h3><h3 id="词嵌入和深度学习模型"><a href="#词嵌入和深度学习模型" class="headerlink" title="词嵌入和深度学习模型"></a>词嵌入和深度学习模型</h3><p>词嵌入是将词向量化的一种模型，核心思想：把每个词都映射到低维空间中（通常K=50~300），生成对应的K维稠密向量，而其中的每个维度可以看做是一个隐含的主题，只不过并不像主题模型中的主题那样直观。</p><p>每个词为K维向量，那么N个词的文章就是<em>NxK</em>的矩阵，而可以继续借助深度学习提取各个层次特征的能力，从这个矩阵中提取出更work的特征，这一点和CNN用于CV一样的，从简单的线条信息到组成具有意义的物体，深度学习也可以再NLP中通过CNN、LSTM抓取文本的特性，同时比起传统的全连接而言，参数跟少。</p>]]></content>
+    <content type="html"><![CDATA[<p>也许今后有机会在NLP深入探索了，说实在的，对NLP唯一的接触还是大三做hadoop/spark的时候为了结合爬虫和词云，了解一些中文分词，像是结巴分词印象就还蛮深刻的。反正，先尝试了解了解吧，干就完了！</p><p>习惯了CV的东西，一下转到看NLP，不知道是不是心理因素，还是真的思路和focus的东西不一样，感觉好容易忘哦，还是写下blog简单记录下一些小知识点，免得看了就忘的蠢事</p><a id="more"></a><h2 id="文本表示模型"><a href="#文本表示模型" class="headerlink" title="文本表示模型"></a>文本表示模型</h2><h3 id="词袋模型"><a href="#词袋模型" class="headerlink" title="词袋模型"></a>词袋模型</h3><p>文本是一种非结构化数据，所以我们首先需要找到合适的方法表示文本数据，最基础的文本表示模型就是<strong>词袋</strong>模型，将每篇文章都看做是一袋子词，不care词在哪里出现、出现的顺序</p><p>具体而言，就是将整段文字以词为单位切开，从而每篇文章都能表示成一个长向量，向量的每个维度都代表一个单词，而该维的权重是这个词在文章中的重要程度，常用TF-IDF来计算：</p><p>TF-IDF(t,d)=TF(t,d) × IDF(t) </p><p>真中T F(t,d） 为单词t 在艾档d 中出现的频率， ID F( t） 是逆文挡频率，<br>用来衡量单词t 对表达语义所起的重要性，表示为</p><p>IDF(t) = log ( 文章总数 / (出现单词t的文章总数+1) )</p><p>直观的解释是如果一个单词在很多文章里都出现过， 那么可能是一个比较通用的词汇，比如the a an 这种冠词吧，对于区分某篇文章特殊语义的贡献较小。因此，对权重做一定惩罚。</p><h3 id="N-gram"><a href="#N-gram" class="headerlink" title="N-gram"></a>N-gram</h3><p>如果单纯看单词的出现，肯定还是很粗糙的，毕竟语言是流动的文字而非定格的塑像，所以可以在词袋模型的基础上，将连续出现的n个词组成的词组(N-gram)也作为一个单独的特征放到向量空间中，构成N-gram模型。</p><p><strong>另外，同一个词可能有多种词性变化却具有相似的含义。在实际应用中，一般会对单词进行词干抽取（ Word Stemming ）处理，即将不同词性的单词统一成为同一词干的形式。</strong></p><h3 id="主题模型"><a href="#主题模型" class="headerlink" title="主题模型"></a>主题模型</h3><h3 id="词嵌入和深度学习模型"><a href="#词嵌入和深度学习模型" class="headerlink" title="词嵌入和深度学习模型"></a>词嵌入和深度学习模型</h3><p>词嵌入是将词向量化的一种模型，核心思想：把每个词都映射到低维空间中（通常K=50~300），生成对应的K维稠密向量，而其中的每个维度可以看做是一个隐含的主题，只不过并不像主题模型中的主题那样直观。</p><p>每个词为K维向量，那么N个词的文章就是<em>NxK</em>的矩阵，而可以继续借助深度学习提取各个层次特征的能力，从这个矩阵中提取出更work的特征，这一点和CNN用于CV一样的，从简单的线条信息到组成具有意义的物体，深度学习也可以再NLP中通过CNN、LSTM抓取文本的特性，同时比起传统的全连接而言，参数跟少。</p>]]></content>
     
     <summary type="html">
     
@@ -355,9 +355,9 @@
       <category term="CS" scheme="http://jgwu.top/categories/CS/"/>
     
     
-      <category term="Computer Vision" scheme="http://jgwu.top/tags/Computer-Vision/"/>
-    
       <category term="CNN" scheme="http://jgwu.top/tags/CNN/"/>
+    
+      <category term="Computer Vision" scheme="http://jgwu.top/tags/Computer-Vision/"/>
     
   </entry>
   
@@ -382,9 +382,9 @@
     
       <category term="Machine Learning" scheme="http://jgwu.top/tags/Machine-Learning/"/>
     
-      <category term="Computer Vision" scheme="http://jgwu.top/tags/Computer-Vision/"/>
-    
       <category term="CNN" scheme="http://jgwu.top/tags/CNN/"/>
+    
+      <category term="Computer Vision" scheme="http://jgwu.top/tags/Computer-Vision/"/>
     
   </entry>
   
