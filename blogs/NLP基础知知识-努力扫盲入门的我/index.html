@@ -123,7 +123,19 @@
 <meta property="og:image" content="http://jgwu.top/blogs/NLP基础知知识-努力扫盲入门的我/v2-a2322b24366a01db4e6013aa0a98b2a8_r.jpg">
 <meta property="og:image" content="http://jgwu.top/blogs/NLP基础知知识-努力扫盲入门的我/v2-d5204ac41c1c058d35d1dd8c2a8522b5_r.jpg">
 <meta property="og:image" content="http://jgwu.top/blogs/NLP基础知知识-努力扫盲入门的我/image-20201107012210151.png">
-<meta property="og:updated_time" content="2020-11-06T17:40:58.487Z">
+<meta property="og:image" content="http://jgwu.top/blogs/NLP基础知知识-努力扫盲入门的我/image-20201112202719526.png">
+<meta property="og:image" content="http://jgwu.top/blogs/NLP基础知知识-努力扫盲入门的我/image-20201112203044003.png">
+<meta property="og:image" content="http://jgwu.top/blogs/NLP基础知知识-努力扫盲入门的我/image-20201112203024882.png">
+<meta property="og:image" content="http://jgwu.top/blogs/NLP基础知知识-努力扫盲入门的我/v2-a5f8bc30bcc2d9eba7470810cb362850_r.jpg">
+<meta property="og:image" content="http://jgwu.top/blogs/NLP基础知知识-努力扫盲入门的我/v2-629abbab0d5cc871db396f17e9c58631_720w.jpg">
+<meta property="og:image" content="http://jgwu.top/blogs/NLP基础知知识-努力扫盲入门的我/v2-03aaa7754bb9992858a05bb9668631a9_720w.jpg">
+<meta property="og:image" content="http://jgwu.top/blogs/NLP基础知知识-努力扫盲入门的我/v2-77e8a977fc3d43bec8b05633dc52ff9f_720w.jpg">
+<meta property="og:image" content="http://jgwu.top/blogs/NLP基础知知识-努力扫盲入门的我/v2-e0fbb46d897400a384873fc100c442db_720w.jpg">
+<meta property="og:image" content="http://jgwu.top/blogs/NLP基础知知识-努力扫盲入门的我/v2-8da16d429d33b0f2705e47af98e66579_720w.jpg">
+<meta property="og:image" content="http://jgwu.top/blogs/NLP基础知知识-努力扫盲入门的我/v2-d266bf48a1d77e7e4db607978574c9fc_720w.jpg">
+<meta property="og:image" content="http://jgwu.top/blogs/NLP基础知知识-努力扫盲入门的我/v2-5561fa61321f31113043fb9711ee3263_720w.jpg">
+<meta property="og:image" content="http://jgwu.top/blogs/NLP基础知知识-努力扫盲入门的我/v2-50473aa7b1c20d680abf8ca36d82c9e4_720w.jpg">
+<meta property="og:updated_time" content="2020-11-12T13:43:12.551Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NLP基础知知识-努力扫盲入门的我">
 <meta name="twitter:description" content="也许今后有机会在NLP深入探索了，说实在的，对NLP唯一的接触还是大三做hadoop/spark的时候为了结合爬虫和词云，了解一些中文分词，像是结巴分词印象就还蛮深刻的。反正，先尝试了解了解吧，干就完了！ 习惯了CV的东西，一下转到看NLP，不知道是不是心理因素，还是真的思路和focus的东西不一样，感觉好容易忘哦，还是写下blog简单记录下一些小知识点，免得看了就忘的蠢事">
@@ -449,7 +461,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.4k
+                  2.5k
                 </span>
               
 
@@ -465,7 +477,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5
+                  9
                 </span>
               
             </div>
@@ -516,6 +528,53 @@
 <p><img src="/blogs/NLP基础知知识-努力扫盲入门的我/image-20201107012210151.png" alt="image-20201107012210151"></p>
 <p>如果不需要计算函数积分，只想从目标分布p(x)中采样出若干样本，则可以用重要性重采样（ Sampling-Importance Re-sampling , SIR ），先在参考分布q(x)中抽取N个样本{xi}，然后按照他们对应的重要性权重{w(xi)}对这些样本进行重新采样（这是个简单的针对有限离散分布的采样），最终得到的样本服从目标分布p(x）</p>
 <p>在实际应用中，如果是高维空间的随机向量， 拒绝采样和重要性重采样经常难以寻找合适的参考分布，采样效率低下（样本的接受慨率小或重要性权重低），此时可以考虑马尔可夫蒙特卡洛采样法，常见的有MH采样法和Gibbs采样法。</p>
+<h2 id="重要的模型"><a href="#重要的模型" class="headerlink" title="重要的模型"></a>重要的模型</h2><h3 id="word-embedding-word2vec"><a href="#word-embedding-word2vec" class="headerlink" title="word embedding / word2vec"></a>word embedding / word2vec</h3><p>[NLP] 秒懂词向量Word2vec的本质 - 穆文的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/26306795" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/26306795</a></p>
+<p>李宏毅老师的视频，李宏毅2020机器学习深度学习(完整版)国语-P22，<a href="https://www.bilibili.com/video/BV1JE411g7XF?p=22" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1JE411g7XF?p=22</a></p>
+<p>One-hot编码词后，输入，通过一层线性的hidden layer，通过softmax输出与类别同维度的结果，即属于相应词的概率</p>
+<p>如果有多个输入，注意hidden layer是共享权重的</p>
+<p><img src="/blogs/NLP基础知知识-努力扫盲入门的我/image-20201112202719526.png" alt="image-20201112202719526" style="zoom:50%;"></p>
+<p>训练的目的是，得到<strong>hidden layer的映射</strong>，就是该词汇新的向量表示，（其实感觉和自编码器很像对不对！</p>
+<p><img src="/blogs/NLP基础知知识-努力扫盲入门的我/image-20201112203044003.png" alt="image-20201112203044003" style="zoom:50%;"></p>
+<p><img src="/blogs/NLP基础知知识-努力扫盲入门的我/image-20201112203024882.png" alt="image-20201112203024882" style="zoom:50%;"></p>
+<p>CBOW（continuous bag of word），根据上下文猜中间词</p>
+<p>Skip-grams，通过中间词猜上下文</p>
+<h3 id="seq2seq"><a href="#seq2seq" class="headerlink" title="seq2seq"></a>seq2seq</h3><p>Conditional、Attention-based</p>
+<p>看这篇就够了，太强了<a href="https://zhuanlan.zhihu.com/p/28054589" target="_blank" rel="noopener">完全图解RNN、RNN变体、Seq2Seq、Attention机制 - 何之源的文章 - 知乎</a></p>
+<p>简单来说，普通的映射就是f(x)=y，但是为了在NLP里用到上下文的信息，需要带有结构的输入，就是RNN或LSTM，</p>
+<p>最经典的RNN就是，输入与输出N vs N的，引入隐状态h（hidden state），h可以对序列形的数据提取特征，接着再转换为输出。</p>
+<p>下图的意思就是通过h0和x1生成h1，在通过h1生成y1，接着再通过h1和x2生成h2，</p>
+<p><img src="/blogs/NLP基础知知识-努力扫盲入门的我/v2-a5f8bc30bcc2d9eba7470810cb362850_r.jpg" alt="img" style="zoom:50%;"></p>
+<p><img src="/blogs/NLP基础知知识-努力扫盲入门的我/v2-629abbab0d5cc871db396f17e9c58631_720w.jpg" alt="img"></p>
+<p>而Seq2seq，就是N vs M，这种结构又叫Encoder-Decoder模型，也可以称之为Seq2Seq模型。</p>
+<p>原始的N vs N RNN要求序列等长，然而我们遇到的大部分问题序列都是不等长的，如机器翻译中，源语言和目标语言的句子往往并没有相同的长度。<br> 为此，Encoder-Decoder结构先将输入数据编码成一个上下文向量c：</p>
+<p><img src="/blogs/NLP基础知知识-努力扫盲入门的我/v2-03aaa7754bb9992858a05bb9668631a9_720w.jpg" alt="img"></p>
+<p>得到c有多种方式，最简单的方法就是把Encoder的最后一个隐状态赋值给c，还可以对最后的隐状态做一个变换得到c，也可以对所有的隐状态做变换。<br> 拿到c之后，就用另一个RNN网络对其进行解码，这部分RNN网络被称为Decoder。具体做法就是将c当做之前的初始状态h0输入到Decoder中：  </p>
+<p><img src="/blogs/NLP基础知知识-努力扫盲入门的我/v2-77e8a977fc3d43bec8b05633dc52ff9f_720w.jpg" alt="img"></p>
+<p>还有一种做法是将c当做每一步的输入：</p>
+<p><img src="/blogs/NLP基础知知识-努力扫盲入门的我/v2-e0fbb46d897400a384873fc100c442db_720w.jpg" alt="img"></p>
+<p>由于这种Encoder-Decoder结构不限制输入和输出的序列长度，因此应用的范围非常广泛，比如：</p>
+<ul>
+<li>机器翻译。Encoder-Decoder的最经典应用，事实上这一结构就是在机器翻译领域最先提出的</li>
+<li>文本摘要。输入是一段文本序列，输出是这段文本序列的摘要序列。</li>
+<li>阅读理解。将输入的文章和问题分别编码，再对其进行解码得到问题的答案。</li>
+<li>语音识别。输入是语音信号序列，输出是文字序列。</li>
+<li>…………</li>
+</ul>
+<h3 id="Attention"><a href="#Attention" class="headerlink" title="Attention"></a>Attention</h3><p>在Encoder-Decoder结构中，Encoder把所有的输入序列都编码成一个统一的语义特征c再解码，<strong>因此， c中必须包含原始序列中的所有信息，它的长度就成了限制模型性能的瓶颈。</strong>如机器翻译问题，当要翻译的句子较长时，一个c可能存不下那么多信息，就会造成翻译精度的下降。</p>
+<p>Attention机制通过在每个时间输入不同的c来解决这个问题，下图是带有Attention机制的Decoder：</p>
+<p><img src="/blogs/NLP基础知知识-努力扫盲入门的我/v2-8da16d429d33b0f2705e47af98e66579_720w.jpg" alt="img"></p>
+<p>每一个c会自动去选取与当前所要输出的y最合适的上下文信息。具体来说，我们用aij衡量Encoder中第j阶段的hj和解码时第i阶段的相关性，最终Decoder中第i阶段的输入的上下文信息ci就来自于所有hj对aij的加权和。</p>
+<p>以机器翻译为例（将中文翻译成英文）：</p>
+<p><img src="/blogs/NLP基础知知识-努力扫盲入门的我/v2-d266bf48a1d77e7e4db607978574c9fc_720w.jpg" alt="img"></p>
+<p><img src="/blogs/NLP基础知知识-努力扫盲入门的我/v2-5561fa61321f31113043fb9711ee3263_720w.jpg" alt="img"></p>
+<p><img src="/blogs/NLP基础知知识-努力扫盲入门的我/v2-50473aa7b1c20d680abf8ca36d82c9e4_720w.jpg" alt="img"></p>
+<h3 id="Transformer"><a href="#Transformer" class="headerlink" title="Transformer"></a>Transformer</h3><p><a href="https://mp.weixin.qq.com/s?__biz=MzIyNjM2MzQyNg==&amp;mid=2247538397&amp;idx=1&amp;sn=0e534e86c3810f1bc8b72c862e0390a7&amp;chksm=e8738790df040e867e9b23bacd16fc2a539aa38da1e1a76e6cb8207fb67d2447f0f057a3962a&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">图解Transformer（完整版）！</a></p>
+<p> 详解Transformer （Attention Is All You Need） - 大师兄的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/48508221" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/48508221</a></p>
+<h3 id="BERT"><a href="#BERT" class="headerlink" title="BERT"></a>BERT</h3><p><a href="https://mp.weixin.qq.com/s?__biz=MzIyNjM2MzQyNg==&amp;mid=2247539158&amp;idx=1&amp;sn=84676ff1c01436501865637aeef03bf4&amp;chksm=e873889bdf04018da9e693c1798c7135256660380cceadcef12cd684c5630b94cf4d1a7edc31&amp;mpshare=1&amp;scene=1&amp;srcid=1101q26mdE0Cn4wfnhWzAU6X&amp;sharer_sharetime=1604232203091&amp;sharer_shareid=8724c7983f20914ec3c0c086bba89335&amp;key=ecc699d53cbe587935e1183b3f9ee8b881dfd79d9ffa484ae1aa0e3bacd06567f9aa652c18b91deeed70426ce4eae76e11fa14bbf798b8b4eaf47704032efcb6491c5883f6ad4c222b7a902b4def64d9600b78026be1d9b7a132a7d63992f477a436cbb470a048f1ccd65f0438651d8339648a20c2227c5108b0e4866e438a7f&amp;ascene=1&amp;uin=MjQ1NDMzMzQ4NA%3D%3D&amp;devicetype=Windows+10+x64&amp;version=6300002f&amp;lang=zh_CN&amp;exportkey=AR5O1JP5OsBNnreWr9MOxJ8%3D&amp;pass_ticket=ZLyD6gb3hrhf1yk60QAWyEkDqsBZGWC5n%2F%2FmNXnvhsXUndVtGwFAlaKdPE59IdA2&amp;wx_header=0" target="_blank" rel="noopener">NLP专栏｜图解 BERT 预训练模型！</a></p>
+<p><a href="https://blog.csdn.net/weixin_40746796/article/details/89951967" target="_blank" rel="noopener">图解BERT</a></p>
+<h3 id="GPT"><a href="#GPT" class="headerlink" title="GPT"></a>GPT</h3><p><a href="https://mp.weixin.qq.com/s?__biz=MzIyNjM2MzQyNg==&amp;mid=2247539832&amp;idx=1&amp;sn=907c887c260a110cf5f0375cde6e6f9b&amp;chksm=e8738d35df04042355802506243989770ebaa25ab4df3ff28e62d4ff2d862fda3b10c4a16968&amp;mpshare=1&amp;scene=1&amp;srcid=1109cpdflP0vDojrDWOODkkD&amp;sharer_sharetime=1604892631267&amp;sharer_shareid=fd7933897befbfa1718ff68f4bef0d08&amp;key=1b67b7e7bd4f27253ee8104a6c9522b2b604698012b5cda7ed531f33036895994a27974a7d898764053377180eab62322a9f86c768eae75fd08a098eb45bccbe8dd266f8b73f44876b162ddd65c8e617c6d8fbe8058716edd2936296e969d43b1c386ed8c509f93848cee123ca5ff51885225a76dda36aa1f8f9c4f34a52b76d&amp;ascene=1&amp;uin=MjQ1NDMzMzQ4NA%3D%3D&amp;devicetype=Windows+10+x64&amp;version=6300002f&amp;lang=zh_CN&amp;exportkey=AVfhxVPiolSU7lHIkrbSckg%3D&amp;pass_ticket=tQ0zBIccEADwpCBBOSNhdGpr7Y8Wr4Y3TIEWHNIckYgrzviBJniNLDLa1Kq9z%2B%2FB&amp;wx_header=0" target="_blank" rel="noopener">图解GPT-2（完整版）！</a></p>
+<h2 id="NER"><a href="#NER" class="headerlink" title="NER"></a>NER</h2><p>命名实体识别（Named Entity Recognition，简称NER），是信息提取、问答系统、句法分析、机器翻译等应用领域的重要基础工具，一般来说，命名实体识别的任务就是识别出待处理文本中三大类（实体类、时间类和数字类）、七小类（人名、机构名、地名、时间、日期、货币和百分比）命名实体。</p>
+<h2 id="好参考"><a href="#好参考" class="headerlink" title="好参考"></a>好参考</h2><p><a href="https://mp.weixin.qq.com/s?__biz=MzIyNjM2MzQyNg==&amp;mid=2247539237&amp;idx=1&amp;sn=e341bd325c4ca580c86b9a4fad93330a&amp;chksm=e8738b68df04027e0bfe8c1e1f1f65e5e356c3f6ea5d24fc4236dd1e46211390de15f17a5be0&amp;mpshare=1&amp;scene=1&amp;srcid=1102DNAywtvwx6QBYlHS8uxC&amp;sharer_sharetime=1604373553393&amp;sharer_shareid=8724c7983f20914ec3c0c086bba89335&amp;key=1fa15854e5017e78e762f638fe80eaf9e8a8f2e0d793e4d62a92f6fc88dcd34ead4487eed3a6efaf13fddf67a1c2590fc57153c12b5f27fc57992ff9bb03fd4cb944ba3ab67649518eeb77c2dc8654235fbe286bae41655ccc3918be111d6242ba495234b04e3e9012189ab838246a18e8f2cb6800c1dd2836ffc7e8e2ea123e&amp;ascene=1&amp;uin=MjQ1NDMzMzQ4NA%3D%3D&amp;devicetype=Windows+10+x64&amp;version=6300002f&amp;lang=zh_CN&amp;exportkey=AQWVnVBO%2FNoiY8OWDgzQrgE%3D&amp;pass_ticket=WvSD5P5RxQfpmJkDe5Mj7VyqlJx88Vk1Fvg9n9nNeZ0um8EmRRJXwkLF8LslbnHU&amp;wx_header=0" target="_blank" rel="noopener">图解 Attention（完整版）</a></p>
 
       
     </div>
@@ -742,7 +801,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#文本表示模型"><span class="nav-number">1.</span> <span class="nav-text">文本表示模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#词袋模型"><span class="nav-number">1.1.</span> <span class="nav-text">词袋模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#N-gram"><span class="nav-number">1.2.</span> <span class="nav-text">N-gram</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主题模型"><span class="nav-number">1.3.</span> <span class="nav-text">主题模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#词嵌入和深度学习模型"><span class="nav-number">1.4.</span> <span class="nav-text">词嵌入和深度学习模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#采样方法"><span class="nav-number">2.</span> <span class="nav-text">采样方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#拒绝采样"><span class="nav-number">2.1.</span> <span class="nav-text">拒绝采样</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重要性采样"><span class="nav-number">2.2.</span> <span class="nav-text">重要性采样</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#文本表示模型"><span class="nav-number">1.</span> <span class="nav-text">文本表示模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#词袋模型"><span class="nav-number">1.1.</span> <span class="nav-text">词袋模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#N-gram"><span class="nav-number">1.2.</span> <span class="nav-text">N-gram</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主题模型"><span class="nav-number">1.3.</span> <span class="nav-text">主题模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#词嵌入和深度学习模型"><span class="nav-number">1.4.</span> <span class="nav-text">词嵌入和深度学习模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#采样方法"><span class="nav-number">2.</span> <span class="nav-text">采样方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#拒绝采样"><span class="nav-number">2.1.</span> <span class="nav-text">拒绝采样</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重要性采样"><span class="nav-number">2.2.</span> <span class="nav-text">重要性采样</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重要的模型"><span class="nav-number">3.</span> <span class="nav-text">重要的模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#word-embedding-word2vec"><span class="nav-number">3.1.</span> <span class="nav-text">word embedding / word2vec</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#seq2seq"><span class="nav-number">3.2.</span> <span class="nav-text">seq2seq</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Attention"><span class="nav-number">3.3.</span> <span class="nav-text">Attention</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Transformer"><span class="nav-number">3.4.</span> <span class="nav-text">Transformer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BERT"><span class="nav-number">3.5.</span> <span class="nav-text">BERT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GPT"><span class="nav-number">3.6.</span> <span class="nav-text">GPT</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NER"><span class="nav-number">4.</span> <span class="nav-text">NER</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#好参考"><span class="nav-number">5.</span> <span class="nav-text">好参考</span></a></li></ol></div>
             
 
           </div>
@@ -787,7 +846,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共93.2k字</span>
+  <span class="post-count">博客全站共94.3k字</span>
 </div>
         
 <div class="busuanzi-count">

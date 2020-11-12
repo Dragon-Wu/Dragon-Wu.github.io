@@ -121,7 +121,7 @@
 <meta property="og:description" content="目标检测方法:R-CNN/Fast R-CNN/Faster R-CNN/YOLO/SSD">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://jgwu.top/blogs/目标检测方法-R-CNN-Fast-R-CNN-Faster-R-CNN-YOLO-SSD/v2-4b15828dfee19be726835b671748cc4d_r.jpg">
-<meta property="og:updated_time" content="2020-08-14T08:04:42.429Z">
+<meta property="og:updated_time" content="2020-11-07T15:49:07.943Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="目标检测方法:R-CNN&#x2F;Fast R-CNN&#x2F;Faster R-CNN&#x2F;YOLO&#x2F;SSD">
 <meta name="twitter:description" content="目标检测方法:R-CNN/Fast R-CNN/Faster R-CNN/YOLO/SSD">
@@ -494,7 +494,7 @@
 <p>一开始很不明白CNN和SVM的作用，后来明白，其实CNN只是用来提取特征的，真正做分类的是SVM</p>
 <p>那么为什么需要有需要SVM在CNN之后做分类呢？</p>
 <p>一方面，CNN训练需要大量的数据，所以在训练的时候，训练数据的IOU&gt;0.5就认为是正类，其他都是负类，包括瞎选的背景，所以训练数据较多；而SVM训练的时候，GT才是正类，而负类是IoU&lt;0.3，而中间的忽略</p>
-<p>第二，也因为训练样本的选择方式不同，其实作者也用过softmax在cnn最后，但是效果不好，他分析，CNN训练，负样本是随机选取的，而不是sVM中用于训练的hard negative，所以分类mAP下降（具体可以看<a href="https://zhuanlan.zhihu.com/p/80841970" target="_blank" rel="noopener">RCNN用SVM做分类而不用softmax</a>）</p>
+<p>第二，也因为训练样本的选择方式不同，其实作者也用过softmax在cnn最后，但是效果不好，他分析，CNN训练，负样本是随机选取的，而不是SVM中用于训练的hard negative，所以分类mAP下降（具体可以看<a href="https://zhuanlan.zhihu.com/p/80841970" target="_blank" rel="noopener">RCNN用SVM做分类而不用softmax</a>）</p>
 <p>那么，为什么SVM可以通过上述的选择方式提高性能呢？</p>
 <p>参考上面链接中<a href="https://www.zhihu.com/question/54117650/answer/259889216" target="_blank" rel="noopener">不可不疯癫的回答</a>，说的很好，因为SVM不容易受到非支持向量样本的影响，而平常的LR容易受到所有样本的影响，能够适应于这种难例挖掘的时间</p>
 <p>关于难负例挖掘问题，可以看<a href="https://zhuanlan.zhihu.com/p/78837273" target="_blank" rel="noopener">薰风AI知识点：Hard Negative Mining/OHEM 你真的知道二者的区别吗？</a></p>
@@ -779,7 +779,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共93.2k字</span>
+  <span class="post-count">博客全站共94.3k字</span>
 </div>
         
 <div class="busuanzi-count">
