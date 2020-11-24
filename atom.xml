@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jgwu.top/"/>
-  <updated>2020-11-15T21:15:44.480Z</updated>
+  <updated>2020-11-24T16:56:15.484Z</updated>
   <id>http://jgwu.top/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>各种Autoencoder自动编码器</title>
+    <link href="http://jgwu.top/blogs/%E5%90%84%E7%A7%8DAutoencoder%E8%87%AA%E5%8A%A8%E7%BC%96%E7%A0%81%E5%99%A8/"/>
+    <id>http://jgwu.top/blogs/%E5%90%84%E7%A7%8DAutoencoder%E8%87%AA%E5%8A%A8%E7%BC%96%E7%A0%81%E5%99%A8/</id>
+    <published>2020-11-24T13:10:08.000Z</published>
+    <updated>2020-11-24T16:56:15.484Z</updated>
+    
+    <content type="html"><![CDATA[<p>自动编码器及其各类改进还挺有意思的，可以用来降噪降维，挺具有潜力的，也看了蛮多内容了，稍微整理一个了解路径吧</p><a id="more"></a><h2 id="自动编码器及其各类改进模型"><a href="#自动编码器及其各类改进模型" class="headerlink" title="自动编码器及其各类改进模型"></a>自动编码器及其各类改进模型</h2><p>各种编码器的基本介绍，比较详细，代码是keras，未测试：</p><p><a href="https://blog.csdn.net/quiet_girl/article/details/84401029" target="_blank" rel="noopener">[自编码器：理论+代码]：自编码器、栈式自编码器、欠完备自编码器、稀疏自编码器、去噪自编码器、卷积自编码器</a></p><p>各种编码器的基本介绍及pytorch实现，代码测试可通：</p><p><a href="https://blog.csdn.net/h__ang/article/details/90720579" target="_blank" rel="noopener">PyTorch 学习笔记（九）：自动编码器（AutoEncoder）</a></p><h2 id="关于稀疏自动编码器-逐层预训练的讨论"><a href="#关于稀疏自动编码器-逐层预训练的讨论" class="headerlink" title="关于稀疏自动编码器/逐层预训练的讨论"></a>关于稀疏自动编码器/逐层预训练的讨论</h2><p>推荐：为什么稀疏自编码器很少见到多层的？ - 科言君的回答 - 知乎 <a href="https://www.zhihu.com/question/41490383/answer/103006793" target="_blank" rel="noopener">https://www.zhihu.com/question/41490383/answer/103006793</a></p><p><img src="/blogs/各种Autoencoder自动编码器/3960f0a6b6255739e88ba16bd2fa8537_r.jpg" alt="preview"></p><h3 id="中间层的维度"><a href="#中间层的维度" class="headerlink" title="中间层的维度"></a>中间层的维度</h3><p>为了尽量学到有意义的表达，我们会给隐层加入一定的约束。从数据维度来看，常见以下两种情况：</p><ul><li><p>n&gt;p，即隐层维度小于输入数据维度。也就是说从x→h的变换是一种降维的操作，网络试图以更小的维度去描述原始数据而尽量不损失数据信息。实际上，当每两层之间的变换均为线性，且监督训练的误差是二次型误差时，该网络等价于PCA！没反应过来的童鞋可以反思下PCA是在做什么事情。</p></li><li><p>n&lt;p，即隐层维度大于输入数据维度。这又有什么用呢？其实不好说，但比如我们同时约束h的表达尽量稀疏（有大量维度为0，未被激活），此时的编码器便是大名鼎鼎的“稀疏自编码器”。可为什么稀疏的表达就是好的？这就说来话长了，有人试图从人脑机理对比，即人类神经系统在某一刺激下，大部分神经元是被抑制的。个人觉得，从特征的角度来看更直观些，稀疏的表达意味着系统在尝试去特征选择，找出大量维度中真正重要的若干维。</p></li></ul><h3 id="栈式编码器（Stack-Autoencoder）"><a href="#栈式编码器（Stack-Autoencoder）" class="headerlink" title="栈式编码器（Stack Autoencoder）"></a>栈式编码器（Stack Autoencoder）</h3><p>有过深度学习基础的童鞋想必了解，深层网络的威力在于其能够逐层地学习原始数据的多种表达。每一层的都以底一层的表达为基础，但往往更抽象，更加适合复杂的分类等任务。</p><p>堆叠自编码器实际上就在做这样的事情，如前所述，单个自编码器通过虚构x→h→x的三层网络，能够学习出一种特征变化h=fθ(x)（这里用θ表示变换的参数，包括W,b和激活函数）。实际上，当训练结束后，输出层已经没什么意义了，我们一般将其去掉，即将自编码器表示为</p><p><img src="/blogs/各种Autoencoder自动编码器/bfafabd75f9e81ff2cfb7877c64f4b79_r.jpg" alt="preview"></p><p>之前之所以将自编码器模型表示为3层的神经网络，那是因为训练的需要，我们将原始数据作为假想的目标输出，以此构建监督误差来训练整个网络。等训练结束后，输出层就可以去掉了，我们关心的只是从x到h的变换。</p><p>接下来的思路就很自然了——我们已经得到特征表达h，那么我们可不可以将</p><p>h再当做原始信息，训练一个新的自编码器，得到新的特征表达呢？当然可以！这就是所谓的堆叠自编码器（Stacked Auto-Encoder, SAE）。Stacked就是逐层垒叠的意思，跟“栈”有点像。<a href="https://link.zhihu.com/?target=http%3A//deeplearning.stanford.edu/wiki/index.php/%E6%A0%88%E5%BC%8F%E8%87%AA%E7%BC%96%E7%A0%81%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">UFLDL</a>教程将其翻译为“栈式自编码”，anyway，不管怎么称呼，都是这个东东，别被花里胡哨的专业术语吓到就行。当把多个自编码器Stack起来之后，这个系统看起来就像这样：</p><p><img src="/blogs/各种Autoencoder自动编码器/9145742827001f35f4019afa06e106fe_r.jpg" alt="preview"></p><p>亦可赛艇！这个系统实际上已经有点深度学习的味道了，即learning multiple levels of representation and abstraction(Hinton, Bengio, LeCun, 2015)。需要注意的是，整个网络的训练不是一蹴而就的，而是逐层进行。按题主提到的结构n,m,k结构，实际上我们是先训练网络n→m→n，得到n→m的变换，然后再训练m→k→m，得到m→k的变换。最终堆叠成SAE，即为n→m→k的结果，整个过程就像一层层往上盖房子，这便是大名鼎鼎的layer-wise unsuperwised pre-training（逐层非监督预训练），正是导致深度学习（神经网络）在2006年第3次兴起的核心技术。</p><h3 id="逐层预训练："><a href="#逐层预训练：" class="headerlink" title="逐层预训练："></a>逐层预训练：</h3><p>题主提到，为什么训练稀疏自编码器为什么一般都是3层的结构，实际上这里的3层是指训练单个自编码器所假想的3层神经网络，这对任何基于神经网络的编码器都是如此。多层的稀疏自编码器自然是有的，只不过是通过layer-wise pre-training这种方式逐层垒叠起来的，而不是直接去训练一个5层或是更多层的网络。</p><p>为什么要这样？实际上，这正是在训练深层神经网络中遇到的问题。直接去训练一个深层的自编码器，其实本质上就是在做深度网络的训练，由于梯度扩散等问题，这样的网络往往根本无法训练。这倒不是因为会破坏稀疏性等原因，只要网络能够训练，对模型施加的约束总能得到相应的结果。</p><p>但为什么逐层预训练就可以使得深度网络的训练成为可能了呢？有不少文章也做过这方面的研究。一个直观的解释是，预训练好的网络在一定程度上拟合了训练数据的结构，这使得整个网络的初始值是在一个合适的状态，便于有监督阶段加快迭代收敛。</p><p>笔者曾经基于 MNIST数据集，尝试了一个9层的网络完成分类任务。当随机初始化时，误差传到底层几乎全为0，根本无法训练。但采用逐层预训练的方法，训练好每两层之间的自编码变换，将其参数作为系统初始值，然后网络在有监督阶段就能比较稳定的迭代了。</p><p>当然，有不少研究提出了很好的初始化策略，再加上现在常用的dropout、ReLU，直接去训练一个深层网络已经不是问题。这是否意味着这种逐层预训练的方式已经过时了呢？这里，我想采用下Bengio先生2015年的一段话作为回答：</p><blockquote><p>Stacks of unsupervised feature learning layers are STILL useful when you are in a regime with insufficient labeled examples, for transfer learning or domain adaptation. It is a regularizer. But when the number of labeled examples becomes large enough, the advantage of that regularizer becomes much less. I suspect however that this story is far from ended! There are other ways besides pre-training of combining supervised and unsupervised learning, and I believe that we still have a lot to improve in terms of our unsupervised learning algorithms.</p></blockquote><p>最后，多说一句，除了AE和SAE这种逐层预训练的方式外，还有另外一条类似的主线，即限制玻尔兹曼机（RBM）与深度信念网络（DBN）。这些模型在神经网络/深度学习框架中的位置，可以简要总结为下图。</p><h3 id="感知机、神经网络、自动编码器、受限玻尔兹曼机"><a href="#感知机、神经网络、自动编码器、受限玻尔兹曼机" class="headerlink" title="感知机、神经网络、自动编码器、受限玻尔兹曼机"></a>感知机、神经网络、自动编码器、受限玻尔兹曼机</h3><p>这张图很酷，算是厘清了感知机、神经网络、自动编码器、受限玻尔兹曼机啥的关系了。</p><p><img src="/blogs/各种Autoencoder自动编码器/463448b59c1f51d55648bb53067d714f_r.jpg" alt="preview" style="zoom:50%;"></p><p>订正：感谢＠<strong><a href="http://www.zhihu.com/people/zhang-xia-en" target="_blank" rel="noopener">Detective 夏恩</a>指正</strong>，RBM堆叠起来是Deep Boltzmann Machines, 再加一个分类器才是DBN，供阅读上图时参考。*</p><h2 id="变分编码器"><a href="#变分编码器" class="headerlink" title="变分编码器"></a>变分编码器</h2><p>基本介绍和代码：</p><p><a href="https://blog.csdn.net/h__ang/article/details/90720579" target="_blank" rel="noopener">PyTorch 学习笔记（九）：自动编码器（AutoEncoder）</a></p><p>详细推导：</p><p>强推，<a href="https://www.spaces.ac.cn/archives/5253" target="_blank" rel="noopener">变分自编码器（一）：原来是这么一回事</a>，以及他blog里继续的内容</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;自动编码器及其各类改进还挺有意思的，可以用来降噪降维，挺具有潜力的，也看了蛮多内容了，稍微整理一个了解路径吧&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="CS" scheme="http://jgwu.top/categories/CS/"/>
+    
+    
+      <category term="Machine Learning" scheme="http://jgwu.top/tags/Machine-Learning/"/>
+    
+      <category term="Computer Vision" scheme="http://jgwu.top/tags/Computer-Vision/"/>
+    
+      <category term="Image Denoise" scheme="http://jgwu.top/tags/Image-Denoise/"/>
+    
+      <category term="Deep Learning" scheme="http://jgwu.top/tags/Deep-Learning/"/>
+    
+      <category term="NLP" scheme="http://jgwu.top/tags/NLP/"/>
+    
+  </entry>
   
   <entry>
     <title>NLP基础知知识-努力扫盲入门的我</title>
@@ -355,9 +386,9 @@
       <category term="CS" scheme="http://jgwu.top/categories/CS/"/>
     
     
-      <category term="CNN" scheme="http://jgwu.top/tags/CNN/"/>
-    
       <category term="Computer Vision" scheme="http://jgwu.top/tags/Computer-Vision/"/>
+    
+      <category term="CNN" scheme="http://jgwu.top/tags/CNN/"/>
     
   </entry>
   
@@ -382,9 +413,9 @@
     
       <category term="Machine Learning" scheme="http://jgwu.top/tags/Machine-Learning/"/>
     
-      <category term="CNN" scheme="http://jgwu.top/tags/CNN/"/>
-    
       <category term="Computer Vision" scheme="http://jgwu.top/tags/Computer-Vision/"/>
+    
+      <category term="CNN" scheme="http://jgwu.top/tags/CNN/"/>
     
   </entry>
   
@@ -416,9 +447,9 @@
     <link href="http://jgwu.top/blogs/Pytorch%E7%9B%B8%E5%85%B3/"/>
     <id>http://jgwu.top/blogs/Pytorch%E7%9B%B8%E5%85%B3/</id>
     <published>2020-06-12T03:06:10.000Z</published>
-    <updated>2020-06-13T04:15:21.263Z</updated>
+    <updated>2020-11-24T16:54:23.608Z</updated>
     
-    <content type="html"><![CDATA[<p>之前用的都是TensorFlow，觉得TensorBoard比较酷，最近也学习学习Pytorch，记录一下相关的内容</p><a id="more"></a><h2 id="Transforms"><a href="#Transforms" class="headerlink" title="Transforms"></a>Transforms</h2><p>本文对transforms.py中的各个预处理方法进行介绍和总结。主要从官方文档中总结而来，官方文档只是将方法陈列，没有归纳总结，顺序很乱，这里总结一共有四大类，方便大家索引：</p><ol><li>裁剪——Crop 中心裁剪：transforms.CenterCrop 随机裁剪：transforms.RandomCrop 随机长宽比裁剪：transforms.RandomResizedCrop 上下左右中心裁剪：transforms.FiveCrop 上下左右中心裁剪后翻转，transforms.TenCrop</li><li>翻转和旋转——Flip and Rotation 依概率p水平翻转：transforms.RandomHorizontalFlip(p=0.5) 依概率p垂直翻转：transforms.RandomVerticalFlip(p=0.5) 随机旋转：transforms.RandomRotation</li><li>图像变换 resize：transforms.Resize 标准化：transforms.Normalize 转为tensor，并归一化至[0-1]：transforms.ToTensor 填充：transforms.Pad 修改亮度、对比度和饱和度：transforms.ColorJitter 转灰度图：transforms.Grayscale 线性变换：transforms.LinearTransformation() 仿射变换：transforms.RandomAffine 依概率p转为灰度图：transforms.RandomGrayscale 将数据转换为PILImage：transforms.ToPILImage transforms.Lambda：Apply a user-defined lambda as a transform.</li><li>对transforms操作，使数据增强更灵活 transforms.RandomChoice(transforms)， 从给定的一系列transforms中选一个进行操作 transforms.RandomApply(transforms, p=0.5)，给一个transform加上概率，依概率进行操作 transforms.RandomOrder，将transforms中的操作随机打乱</li></ol><p><a href="https://blog.csdn.net/qq_38410428/article/details/94719553" target="_blank" rel="noopener">PyTorch 学习笔记:transforms的二十二个方法（transforms用法非常详细）</a></p>]]></content>
+    <content type="html"><![CDATA[<p>之前用的都是TensorFlow，觉得TensorBoard比较酷，最近也学习学习Pytorch，记录一下相关的内容</p><a id="more"></a><h2 id="Transforms"><a href="#Transforms" class="headerlink" title="Transforms"></a>Transforms</h2><p>本文对transforms.py中的各个预处理方法进行介绍和总结。主要从官方文档中总结而来，官方文档只是将方法陈列，没有归纳总结，顺序很乱，这里总结一共有四大类，方便大家索引：</p><ol><li>裁剪——Crop 中心裁剪：transforms.CenterCrop 随机裁剪：transforms.RandomCrop 随机长宽比裁剪：transforms.RandomResizedCrop 上下左右中心裁剪：transforms.FiveCrop 上下左右中心裁剪后翻转，transforms.TenCrop</li><li>翻转和旋转——Flip and Rotation 依概率p水平翻转：transforms.RandomHorizontalFlip(p=0.5) 依概率p垂直翻转：transforms.RandomVerticalFlip(p=0.5) 随机旋转：transforms.RandomRotation</li><li>图像变换 resize：transforms.Resize 标准化：transforms.Normalize 转为tensor，并归一化至[0-1]：transforms.ToTensor 填充：transforms.Pad 修改亮度、对比度和饱和度：transforms.ColorJitter 转灰度图：transforms.Grayscale 线性变换：transforms.LinearTransformation() 仿射变换：transforms.RandomAffine 依概率p转为灰度图：transforms.RandomGrayscale 将数据转换为PILImage：transforms.ToPILImage transforms.Lambda：Apply a user-defined lambda as a transform.</li><li>对transforms操作，使数据增强更灵活 transforms.RandomChoice(transforms)， 从给定的一系列transforms中选一个进行操作 transforms.RandomApply(transforms, p=0.5)，给一个transform加上概率，依概率进行操作 transforms.RandomOrder，将transforms中的操作随机打乱</li></ol><p><a href="https://blog.csdn.net/qq_38410428/article/details/94719553" target="_blank" rel="noopener">PyTorch 学习笔记:transforms的二十二个方法（transforms用法非常详细）</a></p><h2 id="Tensor及其基本操作"><a href="#Tensor及其基本操作" class="headerlink" title="Tensor及其基本操作"></a>Tensor及其基本操作</h2><p>pytorch入坑一  | Tensor及其基本操作 - zcyanqiu的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/36233589" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/36233589</a></p><p><img src="/blogs/Pytorch相关/v2-ef4d55e72864bd645ec7112c642b68cf_r.jpg" alt="preview"></p>]]></content>
     
     <summary type="html">
     
@@ -510,27 +541,6 @@
     
     
       <category term="机器学习" scheme="http://jgwu.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>好好学习，才能天天向上</title>
-    <link href="http://jgwu.top/blogs/%E5%A5%BD%E5%A5%BD%E5%AD%A6%E4%B9%A0%EF%BC%8C%E6%89%8D%E8%83%BD%E5%A4%A9%E5%A4%A9%E5%90%91%E4%B8%8A/"/>
-    <id>http://jgwu.top/blogs/%E5%A5%BD%E5%A5%BD%E5%AD%A6%E4%B9%A0%EF%BC%8C%E6%89%8D%E8%83%BD%E5%A4%A9%E5%A4%A9%E5%90%91%E4%B8%8A/</id>
-    <published>2020-05-02T08:49:59.000Z</published>
-    <updated>2020-07-23T14:06:49.440Z</updated>
-    
-    <content type="html"><![CDATA[<p>emmm</p><a id="more"></a><h2 id="5-2"><a href="#5-2" class="headerlink" title="5.2"></a>5.2</h2><p>上午9.30醒，10.20才起床,11点到实验室，划水吃饭，两点钟开始工作</p><p>自动编码器</p><p><a href="https://www.cnblogs.com/neopenx/p/4370350.html" target="_blank" rel="noopener">降噪自动编码器（Denoising Autoencoder)</a></p><p><a href="https://blog.csdn.net/zbzcDZF/article/details/86570761" target="_blank" rel="noopener">堆叠降噪自动编码器 Stacked Denoising Auto Encoder（SDAE）</a></p><p>聚类算法</p><p><a href="https://www.biaodianfu.com/cluster-score.html" target="_blank" rel="noopener">聚类算法的评估指标</a></p><p><a href="https://zhuanlan.zhihu.com/p/46524857" target="_blank" rel="noopener">深度学习中的互信息：无监督提取特征</a></p><p>存疑：</p><p>DEC（Deep Embedding Networks）  </p><p><a href="https://blog.csdn.net/SCS199411/article/details/90759274" target="_blank" rel="noopener">Unsupervised Deep Embedding for Clustering Analysis论文介绍</a></p><h2 id="5-3"><a href="#5-3" class="headerlink" title="5.3"></a>5.3</h2><p>早上背单词，划水</p><p>下午修电脑，划水，编码了FFT的尝试</p><p>晚上修电脑，回去取衣服，划水，FFT编码</p><h2 id="5-26"><a href="#5-26" class="headerlink" title="5.26"></a>5.26</h2><p><strong>学习课程</strong></p><p>李宏毅老师的ML课程第一课：<a href="https://www.bilibili.com/video/BV1JE411g7XF?p=3" target="_blank" rel="noopener">regression</a> 第二课：<a href="https://www.bilibili.com/video/BV1JE411g7XF?p=4" target="_blank" rel="noopener">basic concept</a></p><p>作业hw1：<a href="https://docs.google.com/presentation/d/18MG1wSTTx8AentGnMfIRUp8ipo8bLpgAj16bJoqW-b0/edit#slide=id.g4cd6560e29_0_48" target="_blank" rel="noopener">silide</a>，<a href="https://www.bilibili.com/video/BV1gE411F7td?p=1" target="_blank" rel="noopener">video</a></p><p><strong>查看资料</strong></p><p><a href="https://colab.research.google.com/drive/131sSqmrmWXfjFZ3jWSELl8cm0Ox5ah3C?pli=1#scrollTo=p9FfatPz6MU3&amp;forceEdit=true&amp;sandboxMode=true" target="_blank" rel="noopener">Homework 1: Linear Regression</a></p><p><a href="https://blog.csdn.net/willduan1/article/details/78070086" target="_blank" rel="noopener">深度学习优化算法解析(Momentum, RMSProp, Adam)</a></p><h2 id="5-29"><a href="#5-29" class="headerlink" title="5.29"></a>5.29</h2><p>先验知识的加入一定好吗？生成模型与判别模型的思考</p><p>神经网络，也许就是一种找到合适Kernel能够做有效的feature transform，从而使得可判别</p><h2 id="5-30"><a href="#5-30" class="headerlink" title="5.30"></a>5.30</h2><p>深度学习，深比宽好，层次化的利用之前的feature，这种模组化的思维，需要更少的数据（数据在不同的模组重复利用）</p><h2 id="6-2"><a href="#6-2" class="headerlink" title="6.2"></a>6.2</h2><p>早上起太晚了，上午和下午主要在看Scheres的最大似然法，主要是07的两篇文章和2012年那篇贝叶斯框架，贝叶斯框架那篇认真拜读了一下，</p><p>整理了一下他的进化过程和最终形态，因为前期钻的比较深，所以还算是比较了解，挺爽的</p><p>晚上写了写numpy100题里的50-70,70以后的跳着做了</p><p>接下来看李宏毅老师的深度学习，然后补笔记，预计1点钟回去</p><h2 id="07-23"><a href="#07-23" class="headerlink" title="07.23"></a>07.23</h2><p>XMIPP可以得到三维结构的投影</p><p>两个数据集TPRV1和beta-galactosidase</p><p>EMAN2、IMOD好像可以用来转换图像格式</p><p>jpg是压缩的，PNG无损</p><p>Fiji可以打开mrc，也可以直接转成png，但是转过去只有8位，缩小了很多，不知道是不是有数据缺失</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;emmm&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="个人" scheme="http://jgwu.top/categories/%E4%B8%AA%E4%BA%BA/"/>
-    
     
   </entry>
   
