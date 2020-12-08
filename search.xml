@@ -1742,6 +1742,17 @@
     
     
     <entry>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>tags</title>
       <link href="/tags/index.html"/>
       <url>/tags/index.html</url>
@@ -1758,17 +1769,6 @@
       <url>/about/index.html</url>
       
         <content type="html"><![CDATA[<p>喜欢的话就<strong>坚持</strong>吧</p><p>弱小的话就<strong>努力</strong>吧</p><p>种一棵树，最好是十年前，其次就是<strong>现在</strong>了</p><p>——————</p><p><strong>做点好事，做个好人</strong></p>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>categories</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
