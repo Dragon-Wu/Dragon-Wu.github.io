@@ -1,3 +1,4 @@
+http://jgwu.top/blogs/炼丹学习手册/
 http://jgwu.top/blogs/各种Autoencoder自动编码器/
 http://jgwu.top/blogs/NLP基础知知识-努力扫盲入门的我/
 http://jgwu.top/blogs/卷积网络可视化-可解释/
@@ -7,4 +8,3 @@ http://jgwu.top/blogs/深度学习-图像降噪-Noise2Noise/
 http://jgwu.top/blogs/深度学习-图像降噪/
 http://jgwu.top/blogs/图像降噪/
 http://jgwu.top/blogs/Windows下查看cuda与cuDNN的版本n-Tensorflow与Pytorch/
-http://jgwu.top/blogs/二叉树/

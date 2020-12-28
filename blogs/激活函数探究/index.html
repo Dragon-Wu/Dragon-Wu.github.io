@@ -135,7 +135,7 @@
 <meta property="og:image" content="http://jgwu.top/blogs/激活函数探究/606386-20180712202915278-1408388561.png">
 <meta property="og:image" content="http://jgwu.top/blogs/激活函数探究/TIM截图20190716110013.png">
 <meta property="og:image" content="http://jgwu.top/blogs/激活函数探究/TIM截图20190716110241.png">
-<meta property="og:updated_time" content="2020-03-20T17:27:08.157Z">
+<meta property="og:updated_time" content="2020-12-28T08:40:48.830Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="激活函数探究">
 <meta name="twitter:description" content="在神经网络训练时，经常需要通过激活函数加入非线性因素，以此提高模型的泛化能力">
@@ -461,7 +461,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3.1k
+                  3k
                 </span>
               
 
@@ -504,8 +504,7 @@
 <p>下面解释上述公式中的softplus,Noisy ReLU.</p>
 <p><strong>softplus</strong>函数与ReLU函数接近,但比较平滑, 同ReLU一样是单边抑制,有宽广的接受域(0,+inf), 但是由于指数运算,对数运算计算量大的原因,而不太被人使用.并且从一些人的使用经验来看(Glorot et al.(2011a)),效果也并不比ReLU好.<br>softplus的导数恰好是sigmoid函数.<a href="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Rectifier_and_softplus_functions.svg/495px-Rectifier_and_softplus_functions.svg.png" target="_blank" rel="noopener">softplus 函数图像</a>:</p>
 <p><img src="/blogs/激活函数探究/606386-20180502160705206-923153087.png" alt="606386-20180502160705206-923153087"></p>
-<h3 id="Noisy-ReLU"><a href="#Noisy-ReLU" class="headerlink" title="Noisy ReLU)"></a><a href="https://en.wikipedia.org/wiki/Rectifier_(neural_networks" target="_blank" rel="noopener"><strong>Noisy ReLU</strong></a>)</h3><p>ReLU可以被扩展以包括高斯噪声(Gaussian noise):<br>f(x)=max(0,x+Y),Y∼N(0,σ(x))</p>
-<p>f(x)=max(0,x+Y),Y∼N(0,σ(x))<br>Noisy ReLU 在受限玻尔兹曼机解决计算机视觉任务中得到应用.</p>
+<h3 id="Noisy-ReLU"><a href="#Noisy-ReLU" class="headerlink" title="Noisy ReLU)"></a><a href="https://en.wikipedia.org/wiki/Rectifier_(neural_networks" target="_blank" rel="noopener"><strong>Noisy ReLU</strong></a>)</h3><p>ReLU可以被扩展以包括高斯噪声(Gaussian noise):<br>f(x)=max(0,x+Y),Y∼N(0,σ(x))<br>Noisy ReLU 在受限玻尔兹曼机解决计算机视觉任务中得到应用.</p>
 <h3 id="ReLU上界设置"><a href="#ReLU上界设置" class="headerlink" title="ReLU上界设置:"></a><strong>ReLU上界设置</strong>:</h3><p>ReLU相比sigmoid和tanh的一个缺点是没有对上界设限.在实际使用中,可以设置一个上限,如ReLU6经验函数: f(x)=min(6,max(0,x))f(x)=min(6,max(0,x)). 参考这个上限的来源论文: <a href="http://www.cs.utoronto.ca/~kriz/conv-cifar10-aug2010.pdf" target="_blank" rel="noopener">Convolutional Deep Belief Networks on CIFAR-10. A. Krizhevsky</a></p>
 <h3 id="ReLU的稀疏性："><a href="#ReLU的稀疏性：" class="headerlink" title="ReLU的稀疏性："></a><strong><a href="http://www.cnblogs.com/neopenx/p/4453161.html" target="_blank" rel="noopener">ReLU的稀疏性</a></strong>：</h3><blockquote>
 <p>当前，深度学习一个明确的目标是从数据变量中解离出关键因子。原始数据（以自然数据为主）中通常缠绕着高度密集的特征。然而，如果能够解开特征间缠绕的复杂关系，转换为稀疏特征，那么特征就有了鲁棒性（去掉了无关的噪声）。稀疏特征并不需要网络具有很强的处理线性不可分机制。那么在深度网络中，对非线性的依赖程度就可以缩一缩。一旦神经元与神经元之间改为线性激活，网络的<em>非线性部分</em>仅仅来自于神经元部分选择性激活。<br>对比大脑工作的95%稀疏性来看，现有的计算神经网络和生物神经网络还是有很大差距的。庆幸的是，ReLu只有负值才会被稀疏掉，即引入的稀疏性是可以训练调节的，是动态变化的。只要进行梯度训练，网络可以向误差减少的方向，自动调控稀疏比率，保证激活链上存在着合理数量的非零值。</p>
@@ -768,7 +767,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-count">68</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -790,7 +789,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -890,7 +889,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共96.6k字</span>
+  <span class="post-count">博客全站共98.7k字</span>
 </div>
         
 <div class="busuanzi-count">

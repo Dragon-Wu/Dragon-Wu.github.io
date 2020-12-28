@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://jgwu.top/blogs/%E7%82%BC%E4%B8%B9%E5%AD%A6%E4%B9%A0%E6%89%8B%E5%86%8C/</loc>
+    <lastmod>2020-12-28</lastmod>
+  </url>  <url>
+    <loc>http://jgwu.top/blogs/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E6%8E%A2%E7%A9%B6/</loc>
+    <lastmod>2020-12-28</lastmod>
+  </url>  <url>
+    <loc>http://jgwu.top/blogs/%E8%AE%AD%E7%BB%83%E9%9B%86-%E9%AA%8C%E8%AF%81%E6%9C%BA-%E6%B5%8B%E8%AF%95%E9%9B%86/</loc>
+    <lastmod>2020-12-28</lastmod>
+  </url>  <url>
+    <loc>http://jgwu.top/blogs/%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1%E3%80%81%E7%88%86%E7%82%B8%E4%B8%8E%E5%85%B6%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</loc>
+    <lastmod>2020-12-26</lastmod>
+  </url>  <url>
     <loc>http://jgwu.top/blogs/Clustering-Algorithm/</loc>
     <lastmod>2020-11-27</lastmod>
   </url>  <url>
@@ -115,9 +127,6 @@
     <loc>http://jgwu.top/blogs/%E6%97%A0%E5%81%8F%E4%BC%B0%E8%AE%A1%E4%B8%8B%E7%9A%84%E5%9D%87%E5%80%BC%E4%B8%8E%E6%96%B9%E5%B7%AE/</loc>
     <lastmod>2020-06-12</lastmod>
   </url>  <url>
-    <loc>http://jgwu.top/blogs/%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1%E3%80%81%E7%88%86%E7%82%B8%E4%B8%8E%E5%85%B6%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</loc>
-    <lastmod>2020-06-09</lastmod>
-  </url>  <url>
     <loc>http://jgwu.top/blogs/numpy%E4%B8%AD%E7%9A%84dot-matmul-multiply/</loc>
     <lastmod>2020-05-30</lastmod>
   </url>  <url>
@@ -135,9 +144,6 @@
   </url>  <url>
     <loc>http://jgwu.top/blogs/Python%E4%B8%AD%E7%9A%84%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D/</loc>
     <lastmod>2020-03-27</lastmod>
-  </url>  <url>
-    <loc>http://jgwu.top/blogs/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E6%8E%A2%E7%A9%B6/</loc>
-    <lastmod>2020-03-20</lastmod>
   </url>  <url>
     <loc>http://jgwu.top/blogs/Typora-hexo%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2020-03-20</lastmod>
@@ -162,9 +168,6 @@
   </url>  <url>
     <loc>http://jgwu.top/blogs/%E5%A4%9A%E5%85%83%E9%AB%98%E6%96%AF%E5%88%86%E5%B8%83/</loc>
     <lastmod>2020-03-20</lastmod>
-  </url>  <url>
-    <loc>http://jgwu.top/blogs/%E8%AE%AD%E7%BB%83%E9%9B%86-%E9%AA%8C%E8%AF%81%E6%9C%BA-%E6%B5%8B%E8%AF%95%E9%9B%86/</loc>
-    <lastmod>2020-01-07</lastmod>
   </url>  <url>
     <loc>http://jgwu.top/blogs/Python%E8%BF%AD%E4%BB%A3%E5%99%A8/</loc>
     <lastmod>2019-11-19</lastmod>
