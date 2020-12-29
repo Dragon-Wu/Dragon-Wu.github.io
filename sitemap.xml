@@ -2,16 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://jgwu.top/blogs/%E7%82%BC%E4%B8%B9%E5%AD%A6%E4%B9%A0%E6%89%8B%E5%86%8C/</loc>
+    <loc>http://jgwu.top/blogs/%E5%8D%B7%E7%A7%AF%E7%BD%91%E7%BB%9C%E5%8F%AF%E8%A7%86%E5%8C%96-%E5%8F%AF%E8%A7%A3%E9%87%8A/</loc>
     
-    <lastmod>2020-12-28T08:50:29.395Z</lastmod>
+    <lastmod>2020-12-29T13:56:00.821Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jgwu.top/blogs/Batch-Normalization/</loc>
+    
+    <lastmod>2020-12-29T13:37:03.069Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://jgwu.top/blogs/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E6%8E%A2%E7%A9%B6/</loc>
     
-    <lastmod>2020-12-28T08:40:48.830Z</lastmod>
+    <lastmod>2020-12-29T13:32:28.068Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jgwu.top/blogs/%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1%E3%80%81%E7%88%86%E7%82%B8%E4%B8%8E%E5%85%B6%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</loc>
+    
+    <lastmod>2020-12-29T13:22:45.245Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jgwu.top/blogs/%E7%82%BC%E4%B8%B9%E5%AD%A6%E4%B9%A0%E6%89%8B%E5%86%8C/</loc>
+    
+    <lastmod>2020-12-29T08:46:00.151Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jgwu.top/blogs/Python%E5%8A%A0%E9%80%9F-Numba-Cupy/</loc>
+    
+    <lastmod>2020-12-28T09:17:32.483Z</lastmod>
     
   </url>
   
@@ -19,13 +47,6 @@
     <loc>http://jgwu.top/blogs/%E8%AE%AD%E7%BB%83%E9%9B%86-%E9%AA%8C%E8%AF%81%E6%9C%BA-%E6%B5%8B%E8%AF%95%E9%9B%86/</loc>
     
     <lastmod>2020-12-28T06:55:01.015Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jgwu.top/blogs/%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1%E3%80%81%E7%88%86%E7%82%B8%E4%B8%8E%E5%85%B6%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</loc>
-    
-    <lastmod>2020-12-26T09:29:20.015Z</lastmod>
     
   </url>
   
@@ -75,13 +96,6 @@
     <loc>http://jgwu.top/blogs/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E5%9B%BE%E5%83%8F%E9%99%8D%E5%99%AA/</loc>
     
     <lastmod>2020-10-28T17:42:30.950Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jgwu.top/blogs/%E5%8D%B7%E7%A7%AF%E7%BD%91%E7%BB%9C%E5%8F%AF%E8%A7%86%E5%8C%96-%E5%8F%AF%E8%A7%A3%E9%87%8A/</loc>
-    
-    <lastmod>2020-10-28T02:56:13.026Z</lastmod>
     
   </url>
   
@@ -159,13 +173,6 @@
     <loc>http://jgwu.top/blogs/Bayesian-and-MLE-MAP/</loc>
     
     <lastmod>2020-09-30T03:27:00.122Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jgwu.top/blogs/Batch-Normalization/</loc>
-    
-    <lastmod>2020-09-30T03:26:16.057Z</lastmod>
     
   </url>
   
@@ -257,13 +264,6 @@
     <loc>http://jgwu.top/blogs/pandas%E5%90%84%E7%A7%8D/</loc>
     
     <lastmod>2020-06-13T04:17:12.013Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jgwu.top/blogs/Python%E5%8A%A0%E9%80%9F-Numba-Cupy/</loc>
-    
-    <lastmod>2020-06-13T04:16:46.900Z</lastmod>
     
   </url>
   

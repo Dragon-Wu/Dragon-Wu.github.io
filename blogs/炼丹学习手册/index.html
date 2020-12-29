@@ -121,7 +121,10 @@
 <meta property="og:description" content="看得再多，不如踏实干，而踏实码起代码，跑起模型，还是要做到心里有数，有的放矢 老说DL是炼丹，但是还是有一些需要注意的，其实以前看过好多相关的知识点了，但还是需要串起来、记下来好好思考 不全也不一定对，但是慢慢整理慢慢补吧~">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://jgwu.top/blogs/炼丹学习手册/v2-daf077823e7faa57c6f4014389fe12b9_720w.png">
-<meta property="og:updated_time" content="2020-12-28T08:50:29.395Z">
+<meta property="og:image" content="http://jgwu.top/blogs/炼丹学习手册/image-20201229163749572.png">
+<meta property="og:image" content="http://jgwu.top/blogs/炼丹学习手册/image-20201229163838159.png">
+<meta property="og:image" content="http://jgwu.top/blogs/炼丹学习手册/image-20201229151345242.png">
+<meta property="og:updated_time" content="2020-12-29T08:46:00.151Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="炼丹学习手册?">
 <meta name="twitter:description" content="看得再多，不如踏实干，而踏实码起代码，跑起模型，还是要做到心里有数，有的放矢 老说DL是炼丹，但是还是有一些需要注意的，其实以前看过好多相关的知识点了，但还是需要串起来、记下来好好思考 不全也不一定对，但是慢慢整理慢慢补吧~">
@@ -447,7 +450,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.9k
+                  4.2k
                 </span>
               
 
@@ -463,7 +466,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  7
+                  15
                 </span>
               
             </div>
@@ -517,13 +520,85 @@
 <p>K越大，每次投入的训练集的数据越多，模型的Bias越小。但是K越大，又意味着每一次选取的训练集之前的相关性越大（考虑最极端的例子，当k=N，也就是在LOOCV里，每次都训练数据几乎是一样的）。而这种大相关性会导致最终的test error具有更大的Variance。</p>
 <p>参考：<a href="https://mp.weixin.qq.com/s?__biz=MzIzODExMDE5MA==&amp;mid=400415610&amp;idx=1&amp;sn=381dd64fbdc7c130a6314fb65815d4e1#rd" target="_blank" rel="noopener">交叉验证（Cross Validation）简介</a>， <a href="https://zhuanlan.zhihu.com/p/24825503" target="_blank" rel="noopener">【机器学习】Cross-Validation（交叉验证）详解</a></p>
 <h3 id="通过Pytorch构建数据集"><a href="#通过Pytorch构建数据集" class="headerlink" title="通过Pytorch构建数据集"></a>通过Pytorch构建数据集</h3><p>留坑最近填：在pytorch中载入数据集并构建训练集、验证集</p>
-<h2 id="去芜存菁，万事俱备"><a href="#去芜存菁，万事俱备" class="headerlink" title="去芜存菁，万事俱备"></a>去芜存菁，万事俱备</h2><h3 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h3><p><strong>之前的博客：</strong><a href="https://jgwu.top/blogs/%E5%BD%92%E4%B8%80%E5%8C%96%E3%80%81%E6%A0%87%E5%87%86%E5%8C%96%E3%80%81%E4%B8%AD%E5%BF%83%E5%8C%96/">归一化、标准化、中心化</a></p>
-<h3 id="数据增强"><a href="#数据增强" class="headerlink" title="数据增强"></a>数据增强</h3><p>变换，CNN的平移不变性、旋转不变性</p>
+<h2 id="去芜存菁，万事俱备"><a href="#去芜存菁，万事俱备" class="headerlink" title="去芜存菁，万事俱备"></a>去芜存菁，万事俱备</h2><h3 id="数据预处理（Data-Preprocessing）"><a href="#数据预处理（Data-Preprocessing）" class="headerlink" title="数据预处理（Data Preprocessing）"></a>数据预处理（Data Preprocessing）</h3><p><strong>之前的博客：</strong><a href="https://jgwu.top/blogs/%E5%BD%92%E4%B8%80%E5%8C%96%E3%80%81%E6%A0%87%E5%87%86%E5%8C%96%E3%80%81%E4%B8%AD%E5%BF%83%E5%8C%96/">归一化、标准化、中心化</a></p>
+<h3 id="数据增强（Data-Augmentation）"><a href="#数据增强（Data-Augmentation）" class="headerlink" title="数据增强（Data Augmentation）"></a>数据增强（Data Augmentation）</h3><p>数据增强，通过让有限的数据产生更多的等价数据来人工扩展训练数据集的技术，是克服训练数据不足的有效手段。</p>
+<h4 id="计算机视觉"><a href="#计算机视觉" class="headerlink" title="计算机视觉"></a>计算机视觉</h4><p>CV的数据增强算法大致可以分为两类：第一类是基于基本图像处理技术的数据增强，第二个类别是基于深度学习的数据增强算法。</p>
+<p>下面先介绍基于基本图像处理技术的数据增强方法：</p>
+<h5 id="1、基本的图像处理（basic-image-manipulations）"><a href="#1、基本的图像处理（basic-image-manipulations）" class="headerlink" title="1、基本的图像处理（basic image manipulations）"></a>1、基本的图像处理（basic image manipulations）</h5><ul>
+<li><p><strong>几何变换</strong>（Geometric Transformations）：由于训练集与测试集合中可能存在潜在的位置偏差，使得模型在测试集中很难达到训练集中的效果，几何变换可以有效地克服训练数据中存在的位置偏差，而且易于实现，许多图像处理库都包含这个功能。<br>当然也需要注意几何变换后能否保留相应的标签信息，对于ImageNet中的猫狗识别没问题，但是MNIST中的6和9数字识别就有风险了</p>
+</li>
+<li><p><strong>翻转变换</strong>（Flipping）：通常是关于水平或者竖直的轴进行图像翻转操作，这种扩充是最容易实现的扩充，并且已经证明对ImageNet数据集有效。</p>
+</li>
+<li><p><strong>颜色变换</strong>（Color Space）：图片在输入计算机之前，通常会被编码为张量（高度×宽度×颜色通道），所以可以在色彩通道空间进行数据增强，比如将某种颜色通道关闭，或者改变亮度值。</p>
+</li>
+<li><p><strong>裁剪</strong>（Cropping）：如果输入数据集合的大小是变化的，裁剪可以作为数据预处理的一个手段，通过裁剪图像的中央色块，可以得到新的数据。在实际使用过程之中，这些数据增强算法不是只使用一种，而是使用一套数据增强策略，在AutoAugment这篇文章中，作者尝试让模型自动选择数据增强策略。</p>
+</li>
+<li><p><strong>旋转 | 反射变换</strong>（Rotation/Reflection）：选择一个角度，左右旋转图像，可以改变图像内容朝向。关于旋转角度需要慎重考虑，角度太大或者太小都不合适，适宜的角度是1度 到 20度。</p>
+</li>
+<li><p><strong>移动</strong>（Translation）：向左，向右，向上或向下移动图像可以避免数据中的位置偏差，比如在人脸识别数据集合中，如果所有图像都居中，使用这种数据增强方法可以避免可能出现的位置偏差导致的错误。</p>
+</li>
+<li><p><strong>噪声注入</strong>（Noise Injection）：从高斯分布中采样出的随机值矩阵加入到图像的RGB像素中，通过向图像添加噪点可以帮助CNN学习更强大的功能。</p>
+</li>
+<li><p><strong>颜色空间变换</strong>（color space transformation）：</p>
+<p><img src="/blogs/炼丹学习手册/image-20201229163749572.png" alt="image-20201229163749572" style="zoom:50%;"></p>
+<p><img src="/blogs/炼丹学习手册/image-20201229163838159.png" alt="image-20201229163838159" style="zoom: 50%;"></p>
+</li>
+<li><p><strong>缩放变换</strong>（Zoom）：图像按照一定的比例进行放大和缩小并不改变图像中的内容，可以增加模型的泛化性能。</p>
+</li>
+</ul>
+<h5 id="2、几何与光度转换（Geometric-versus-photometric-transformations）"><a href="#2、几何与光度转换（Geometric-versus-photometric-transformations）" class="headerlink" title="2、几何与光度转换（Geometric versus photometric transformations）"></a>2、几何与光度转换（Geometric versus photometric transformations）</h5><ul>
+<li><strong>内核过滤器</strong>（Kernel Filters）：内核滤镜是在图像处理中一种非常流行的技术，比如锐化和模糊。将特定功能的内核滤镜与图像进行卷积操作，就可以得到增强后的数据。直观上，数据增强生成的图像可能会使得模型面对这种类型的图像具有更高的鲁棒性。</li>
+<li><strong>混合图像</strong>（Mix）：通过平均图像像素值将图像混合在一起是一种非常违反直觉的数据增强方法。对于人来说，混合图像生成的数据似乎没有意义。虽然这种方法缺乏可解释性，但是作为一种简单有效的数据增强算法，有一系列的工作进行相关的研究。Inoue在图像每个像素点混合像素值来混合图像，Summers和Dinneen又尝试以非线性的方法来混合图像，Takahashi和Matsubara通过随机图像裁剪和拼接来混合图像，以及后来的mixup方法均取得了不错的成果。</li>
+<li><strong>随机擦除</strong>（Random Erasing）：随机擦除是Zhong等人开发的数据增强技术。他们受到Dropout机制的启发，随机选取图片中的一部分，将这部分图片删除，这项技术可以提高模型在图片被部分遮挡的情况下性能，除此之外还可以确保网络关注整个图像，而不只是其中的一部分。</li>
+</ul>
+<h5 id="3、基于深度学习（Based-on-Deep-Learning）："><a href="#3、基于深度学习（Based-on-Deep-Learning）：" class="headerlink" title="3、基于深度学习（Based on Deep Learning）："></a>3、基于深度学习（Based on Deep Learning）：</h5><ul>
+<li><strong>特征空间增强</strong>（Feature Space Augmentation）：神经网络可以将图像这种高维向量映射为低维向量，之前讨论的所有图像数据增强方法都应用于输入空间中的图像。现在可以在特征空间进行数据增强操作，例如：SMOTE算法，它是一种流行的增强方法，通过将k个最近的邻居合并以形成新实例来缓解类不平衡问题。</li>
+<li><strong>对抗生成</strong>（Adversarial Training）：对抗攻击表明，图像表示的健壮性远不及预期的健壮性，Moosavi-Dezfooli等人充分证明了这一点。对抗生成可以改善学习的决策边界中的薄弱环节，提高模型的鲁棒性。</li>
+<li><strong>基于GAN的数据增强</strong>（GAN-based Data Augmentation）：使用 GAN 生成模型来生成更多的数据，可用作解决类别不平衡问题的过采样技术。</li>
+<li><strong>神经风格转换</strong>（Neural Style Transfer）：通过神经网络风格迁移来生成不同风格的数据，防止模型过拟合。</li>
+<li><strong>元学习</strong>（Meta Learning）</li>
+</ul>
+<p>如果想要阅读更多的细节，请参考这篇文章：<a href="https://link.springer.com/article/10.1186/s40537-019-0197-0" target="_blank" rel="noopener">A survey on Image Data Augmentation for Deep Learning</a></p>
+<p><img src="/blogs/炼丹学习手册/image-20201229151345242.png" alt="image-20201229151345242" style="zoom:67%;"></p>
+<h4 id="自然语言处理"><a href="#自然语言处理" class="headerlink" title="自然语言处理"></a>自然语言处理</h4><p>在自然语言处理领域，被验证为有效的数据增强算法相对要少很多，下面我们介绍几种常见方法。</p>
+<ul>
+<li><p><strong>同义词词典</strong>（Thesaurus）：Zhang Xiang等人提出了Character-level Convolutional Networks for Text Classification，通过实验，他们发现可以将单词替换为它的同义词进行数据增强，这种同义词替换的方法可以在很短的时间内生成大量的数据。</p>
+</li>
+<li><p><strong>随机插入</strong>（Randomly Insert）：随机选择一个单词，选择它的一个同义词，插入原句子中的随机位置，举一个例子：“我爱中国” —&gt; “喜欢我爱中国”。</p>
+</li>
+<li><p><strong>随机交换</strong>（Randomly Swap）：随机选择一对单词，交换位置。</p>
+</li>
+<li><p><strong>随机删除</strong>（Randomly Delete）：随机删除句子中的单词。</p>
+</li>
+<li><p><strong>语法树结构替换</strong>：通过语法树结构，精准地替换单词。</p>
+</li>
+<li><p><strong>加噪</strong>（NoiseMix） (<a href="https://github.com/noisemix/noisemix)：类似于图像领域的加噪，NoiseMix提供9种单词级别和2种句子级别的扰动来生成更多的句子，例如：这是一本很棒的书，但是他们的运送太慢了。-&gt;这是本很棒的书，但是运送太慢了。" target="_blank" rel="noopener">https://github.com/noisemix/noisemix)：类似于图像领域的加噪，NoiseMix提供9种单词级别和2种句子级别的扰动来生成更多的句子，例如：这是一本很棒的书，但是他们的运送太慢了。-&gt;这是本很棒的书，但是运送太慢了。</a></p>
+</li>
+<li><p><strong>情境增强</strong>（Contextual Augmentation）：这种数据增强算法是用于文本分类任务的独立于域的数据扩充。通过用标签条件的双向语言模型预测的其他单词替换单词，可以增强监督数据集中的文本。</p>
+</li>
+<li><p><strong>生成对抗网络</strong>：利用生成对抗网络的方法来生成和原数据同分布的数据，来制造更多的数据。在自然语言处理领域，有很多关于生成对抗网络的工作：</p>
+</li>
+<li><ul>
+<li>Generating Text via Adversarial Training</li>
+<li>GANS for Sequences of Discrete Elements with the Gumbel-softmax Distribution</li>
+<li>SeqGAN: Sequence Generative Adversarial Nets with Policy Gradient</li>
+</ul>
+</li>
+<li><p><strong>回译技术</strong>（Back Translation）：回译技术是NLP在机器翻译中经常使用的一个数据增强的方法。其本质就是快速产生一些翻译结果达到增加数据的目的。回译的方法可以增加文本数据的多样性，相比替换词来说，有时可以改变句法结构等，并保留语义信息。但是，回译的方法产生的数据严重依赖于翻译的质量。</p>
+</li>
+<li><p><strong>扩句-缩句-句法</strong>：先将句子压缩，得到句子的缩写，然后再扩写，通过这种方法生成的句子和原句子具有相似的结构，但是可能会带来语义信息的损失。</p>
+</li>
+<li><p><strong>无监督数据扩增</strong>（Unsupervised Data Augmentation）：通常的数据增强算法都是为有监督任务服务，这个方法是针对无监督学习任务进行数据增强的算法，UDA方法生成无监督数据与原始无监督数据具备分布的一致性，而以前的方法通常只是应用高斯噪声和Dropout噪声（无法保证一致性）。(<a href="https://arxiv.org/abs/1904.12848" target="_blank" rel="noopener">https://arxiv.org/abs/1904.12848</a>)</p>
+</li>
+</ul>
+<p>还可以了解一下：<a href="https://jgwu.top/blogs/%E6%B1%A0%E5%8C%96%E7%9A%84%E4%BD%9C%E7%94%A8/">池化的作用</a>，CNN的平移不变性、旋转不变性</p>
+<p>主要参考自：<a href="https://mp.weixin.qq.com/s/W22QiscVQIpAH8vo--iHIw" target="_blank" rel="noopener">深度学习领域的数据增强</a></p>
 <h3 id="数据平衡"><a href="#数据平衡" class="headerlink" title="数据平衡"></a>数据平衡</h3><p><a href="https://blog.csdn.net/a358463121/article/details/52304670" target="_blank" rel="noopener">不平衡数据分类算法介绍与比较</a></p>
 <p><a href="https://blog.csdn.net/jiede1/article/details/70215477" target="_blank" rel="noopener">SMOTE算法(人工合成数据)</a></p>
 <h2 id="看料搭炉，拾柴点火"><a href="#看料搭炉，拾柴点火" class="headerlink" title="看料搭炉，拾柴点火"></a>看料搭炉，拾柴点火</h2><h3 id="模型选取"><a href="#模型选取" class="headerlink" title="模型选取"></a>模型选取</h3><p>问题特点，模型特点，大坑，慢填</p>
 <h3 id="网络搭建"><a href="#网络搭建" class="headerlink" title="网络搭建"></a>网络搭建</h3><p>超参数和常用方法的概念，最后一章是具体的结合分析</p>
 <p><strong>之前的博客：</strong><a href="https://jgwu.top/blogs/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E6%8E%A2%E7%A9%B6/">激活函数探究</a>，<a href="https://jgwu.top/blogs/Batch-Normalization/">Batch Normalization</a>，<a href="https://jgwu.top/blogs/%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1%E3%80%81%E7%88%86%E7%82%B8%E4%B8%8E%E5%85%B6%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">梯度消失、爆炸与其解决方案</a>，<a href="https://jgwu.top/blogs/%E6%B1%A0%E5%8C%96%E7%9A%84%E4%BD%9C%E7%94%A8/">池化的作用</a>，<a href="https://jgwu.top/blogs/%E6%AD%A3%E5%88%99%E5%8C%96%E4%BD%9C%E7%94%A8%E5%8F%8A%E5%85%B6%E6%8E%A8%E5%AF%BC/">正则化作用及其推导</a></p>
+<p><strong>参考：</strong><a href="https://mp.weixin.qq.com/s/8Sg9VBVTbN2bJyntQPQTyg" target="_blank" rel="noopener">一文详解神经网络与激活函数的基本原理</a></p>
 <h2 id="巧借东风，百炼成丹"><a href="#巧借东风，百炼成丹" class="headerlink" title="巧借东风，百炼成丹"></a>巧借东风，百炼成丹</h2><h3 id="训练技巧——快"><a href="#训练技巧——快" class="headerlink" title="训练技巧——快"></a>训练技巧——快</h3><p><a href="https://www.jgwu.top/blogs/Python%E5%8A%A0%E9%80%9F-Numba-Cupy/" target="_blank" rel="noopener">Python加速-Numba/Cupy</a></p>
 <h3 id="调参技巧——准"><a href="#调参技巧——准" class="headerlink" title="调参技巧——准"></a>调参技巧——准</h3><p>深度学习网络调参技巧 - 萧瑟的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/24720954" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/24720954</a></p>
 <p>贝叶斯优化: 一种更好的超参数调优方式 - tobe的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/29779000" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/29779000</a></p>
@@ -755,7 +830,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#欲炼灵丹，先备好料？"><span class="nav-number">1.</span> <span class="nav-text">欲炼灵丹，先备好料？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#构建数据集"><span class="nav-number">1.1.</span> <span class="nav-text">构建数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#训练集-验证集-测试集"><span class="nav-number">1.2.</span> <span class="nav-text">训练集/验证集/测试集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交叉检验"><span class="nav-number">1.3.</span> <span class="nav-text">交叉检验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过Pytorch构建数据集"><span class="nav-number">1.4.</span> <span class="nav-text">通过Pytorch构建数据集</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#去芜存菁，万事俱备"><span class="nav-number">2.</span> <span class="nav-text">去芜存菁，万事俱备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据预处理"><span class="nav-number">2.1.</span> <span class="nav-text">数据预处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据增强"><span class="nav-number">2.2.</span> <span class="nav-text">数据增强</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据平衡"><span class="nav-number">2.3.</span> <span class="nav-text">数据平衡</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#看料搭炉，拾柴点火"><span class="nav-number">3.</span> <span class="nav-text">看料搭炉，拾柴点火</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#模型选取"><span class="nav-number">3.1.</span> <span class="nav-text">模型选取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络搭建"><span class="nav-number">3.2.</span> <span class="nav-text">网络搭建</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#巧借东风，百炼成丹"><span class="nav-number">4.</span> <span class="nav-text">巧借东风，百炼成丹</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#训练技巧——快"><span class="nav-number">4.1.</span> <span class="nav-text">训练技巧——快</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调参技巧——准"><span class="nav-number">4.2.</span> <span class="nav-text">调参技巧——准</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#欲炼灵丹，先备好料？"><span class="nav-number">1.</span> <span class="nav-text">欲炼灵丹，先备好料？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#构建数据集"><span class="nav-number">1.1.</span> <span class="nav-text">构建数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#训练集-验证集-测试集"><span class="nav-number">1.2.</span> <span class="nav-text">训练集/验证集/测试集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交叉检验"><span class="nav-number">1.3.</span> <span class="nav-text">交叉检验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过Pytorch构建数据集"><span class="nav-number">1.4.</span> <span class="nav-text">通过Pytorch构建数据集</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#去芜存菁，万事俱备"><span class="nav-number">2.</span> <span class="nav-text">去芜存菁，万事俱备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据预处理（Data-Preprocessing）"><span class="nav-number">2.1.</span> <span class="nav-text">数据预处理（Data Preprocessing）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据增强（Data-Augmentation）"><span class="nav-number">2.2.</span> <span class="nav-text">数据增强（Data Augmentation）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机视觉"><span class="nav-number">2.2.1.</span> <span class="nav-text">计算机视觉</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、基本的图像处理（basic-image-manipulations）"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">1、基本的图像处理（basic image manipulations）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、几何与光度转换（Geometric-versus-photometric-transformations）"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">2、几何与光度转换（Geometric versus photometric transformations）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、基于深度学习（Based-on-Deep-Learning）："><span class="nav-number">2.2.1.3.</span> <span class="nav-text">3、基于深度学习（Based on Deep Learning）：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自然语言处理"><span class="nav-number">2.2.2.</span> <span class="nav-text">自然语言处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据平衡"><span class="nav-number">2.3.</span> <span class="nav-text">数据平衡</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#看料搭炉，拾柴点火"><span class="nav-number">3.</span> <span class="nav-text">看料搭炉，拾柴点火</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#模型选取"><span class="nav-number">3.1.</span> <span class="nav-text">模型选取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络搭建"><span class="nav-number">3.2.</span> <span class="nav-text">网络搭建</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#巧借东风，百炼成丹"><span class="nav-number">4.</span> <span class="nav-text">巧借东风，百炼成丹</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#训练技巧——快"><span class="nav-number">4.1.</span> <span class="nav-text">训练技巧——快</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调参技巧——准"><span class="nav-number">4.2.</span> <span class="nav-text">调参技巧——准</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -800,7 +875,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共98.7k字</span>
+  <span class="post-count">博客全站共101.3k字</span>
 </div>
         
 <div class="busuanzi-count">

@@ -112,20 +112,23 @@
 
 
 
-<meta name="description" content="太常见了，但是一直以为就是类似normalize，仔细查了下，感觉还是蛮有意思的，看了一些材料，做一个记录，感谢愿意分享的大佬们 Batch Normalization，BM，是神经网络训练中非常有用的神器，不仅能够减少对调参的依赖，加速训练，同时有很多改进如LN、WN等，很有意思，详情如下">
+<meta name="description" content="太常见了，但是一直以为就是类似normalize，仔细查了下，感觉还是蛮有意思的，看了一些材料，做一个记录，感谢愿意分享的大佬们 Batch Normalization是神经网络训练中非常有用的神器，不仅能够减少对调参的依赖，加速训练，同时有很多改进如LN、WN等，很有意思，详情如下">
 <meta name="keywords" content="Machine Learning,Trick">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Batch Normalization">
 <meta property="og:url" content="http://jgwu.top/blogs/Batch-Normalization/index.html">
 <meta property="og:site_name" content="一个地方">
-<meta property="og:description" content="太常见了，但是一直以为就是类似normalize，仔细查了下，感觉还是蛮有意思的，看了一些材料，做一个记录，感谢愿意分享的大佬们 Batch Normalization，BM，是神经网络训练中非常有用的神器，不仅能够减少对调参的依赖，加速训练，同时有很多改进如LN、WN等，很有意思，详情如下">
+<meta property="og:description" content="太常见了，但是一直以为就是类似normalize，仔细查了下，感觉还是蛮有意思的，看了一些材料，做一个记录，感谢愿意分享的大佬们 Batch Normalization是神经网络训练中非常有用的神器，不仅能够减少对调参的依赖，加速训练，同时有很多改进如LN、WN等，很有意思，详情如下">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://jgwu.top/blogs/Batch-Normalization/equation">
+<meta property="og:image" content="http://jgwu.top/blogs/Batch-Normalization/equation">
+<meta property="og:image" content="http://jgwu.top/blogs/Batch-Normalization/equation">
 <meta property="og:image" content="http://jgwu.top/blogs/Batch-Normalization/image-20200610001944538.png">
-<meta property="og:updated_time" content="2020-09-30T03:26:16.057Z">
+<meta property="og:updated_time" content="2020-12-29T13:37:03.069Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Batch Normalization">
-<meta name="twitter:description" content="太常见了，但是一直以为就是类似normalize，仔细查了下，感觉还是蛮有意思的，看了一些材料，做一个记录，感谢愿意分享的大佬们 Batch Normalization，BM，是神经网络训练中非常有用的神器，不仅能够减少对调参的依赖，加速训练，同时有很多改进如LN、WN等，很有意思，详情如下">
-<meta name="twitter:image" content="http://jgwu.top/blogs/Batch-Normalization/image-20200610001944538.png">
+<meta name="twitter:description" content="太常见了，但是一直以为就是类似normalize，仔细查了下，感觉还是蛮有意思的，看了一些材料，做一个记录，感谢愿意分享的大佬们 Batch Normalization是神经网络训练中非常有用的神器，不仅能够减少对调参的依赖，加速训练，同时有很多改进如LN、WN等，很有意思，详情如下">
+<meta name="twitter:image" content="http://jgwu.top/blogs/Batch-Normalization/equation">
 
 
 
@@ -447,7 +450,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.1k
+                  1.3k
                 </span>
               
 
@@ -463,7 +466,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  4
                 </span>
               
             </div>
@@ -485,7 +488,7 @@
 
       
         <p>太常见了，但是一直以为就是类似normalize，仔细查了下，感觉还是蛮有意思的，看了一些材料，做一个记录，感谢愿意分享的大佬们</p>
-<p>Batch Normalization，BM，是神经网络训练中非常有用的神器，不仅能够减少对调参的依赖，加速训练，同时有很多改进如LN、WN等，很有意思，详情如下</p>
+<p>Batch Normalization是神经网络训练中非常有用的神器，不仅能够减少对调参的依赖，加速训练，同时有很多改进如LN、WN等，很有意思，详情如下</p>
 <a id="more"></a>
 <p>Batch Normalization，BN，顾名思义，其实就是”批规范化”，batch好理解，就是mini-batch训练的那个batch，通过少量样本来训练，精华在于normalization，而这里的Normalization其实和数据预处理时的Normalization一个意思，不过结合上具体的训练过程就很有意思了</p>
 <h2 id="Why-we-need-BN？"><a href="#Why-we-need-BN？" class="headerlink" title="Why we need BN？"></a>Why we need BN？</h2><h3 id="数据的独立同分布"><a href="#数据的独立同分布" class="headerlink" title="数据的独立同分布"></a>数据的独立同分布</h3><p>independent and identically distributed，简称为 <em>i.i.d.</em> 是我们在做ML时最开心的了，这也是朴素贝叶斯为什么叫朴素贝叶斯的原因，因为i.i.d可以简化常规机器学习模型的训练、提升机器学习模型的预测能力，是一个共识。</p>
@@ -504,6 +507,9 @@
 <h3 id="深度学习中的-Internal-Covariate-Shift"><a href="#深度学习中的-Internal-Covariate-Shift" class="headerlink" title="深度学习中的 Internal Covariate Shift"></a>深度学习中的 Internal Covariate Shift</h3><p>那么为什么深度学习会这么困难的，为啥咱们调参小心翼翼呢？</p>
 <p>因为深度学习的层次通常比较多，而参数不断更新的时候，越高层的参数越容易因底层参数的调整而波动，不断去适应，所以我们需要非常谨慎地去设定参数，</p>
 <p>Google 将这一现象总结为 Internal Covariate Shift，简称 ICS. 什么是 ICS 呢？<a href="https://www.zhihu.com/people/b716bc76c2990cd06dae2f9c1f984e6d" target="_blank" rel="noopener">@魏秀参</a> 在<a href="https://www.zhihu.com/question/38102762/answer/85238569" target="_blank" rel="noopener">一个回答</a>中做出了一个很好的解释</p>
+<blockquote>
+<p>大家都知道在统计机器学习中的一个经典假设是“源空间（source domain）和目标空间（target domain）的数据分布（distribution）是一致的”。如果不一致，那么就出现了新的机器学习问题，如 transfer learning / domain adaptation 等。而 covariate shift 就是分布不一致假设之下的一个分支问题，它是指源空间和目标空间的条件概率是一致的，但是其边缘概率不同，即：对所有<img src="/blogs/Batch-Normalization/equation" alt="[公式]">,<img src="/blogs/Batch-Normalization/equation" alt="[公式]">但是<img src="/blogs/Batch-Normalization/equation" alt="[公式]">大家细想便会发现，的确，对于神经网络的各层输出，由于它们经过了层内操作作用，其分布显然与各层对应的输入信号分布不同，而且差异会随着网络深度增大而增大，可是它们所能“指示”的样本标记（label）仍然是不变的，这便符合了covariate shift的定义。由于是对层间信号的分析，也即是“internal”的来由。</p>
+</blockquote>
 <h3 id="ICS导致的问题"><a href="#ICS导致的问题" class="headerlink" title="ICS导致的问题"></a>ICS导致的问题</h3><p>简而言之，每个神经元的输入数据不再是“独立同分布”。</p>
 <p>其一，上层参数需要不断适应新的输入数据分布，降低学习速度。</p>
 <p>其二，下层输入的变化可能趋向于变大或者变小，导致上层落入饱和区，使得学习过早停止。</p>
@@ -789,7 +795,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共98.7k字</span>
+  <span class="post-count">博客全站共101.3k字</span>
 </div>
         
 <div class="busuanzi-count">

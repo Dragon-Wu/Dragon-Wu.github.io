@@ -124,7 +124,7 @@
 <meta property="og:image" content="http://jgwu.top/blogs/Python加速-Numba-Cupy/640-1585480056992.png">
 <meta property="og:image" content="http://jgwu.top/blogs/Python加速-Numba-Cupy/640.webp">
 <meta property="og:image" content="http://jgwu.top/blogs/Python加速-Numba-Cupy/640-1585482483520.webp">
-<meta property="og:updated_time" content="2020-06-13T04:16:46.900Z">
+<meta property="og:updated_time" content="2020-12-28T09:17:32.483Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python加速-Numba&#x2F;Cupy">
 <meta name="twitter:description" content="记得一开始学习Python的时候就有人说它比较慢，虽然至今我还没感受到慢（主要还是因为自己菜，写的程序不够。。 但是今天刷LeetCode的时候看到有人提到用numba进行加速，就还蛮好奇的，想起之前有收藏了几篇关于Python加速的文章，今天就稍微了解一下~当然，只是一些我目前了解到的知识，自娱自乐吧">
@@ -503,10 +503,10 @@
 <p><img src="/blogs/Python加速-Numba-Cupy/640.png" alt="img"></p>
 <p>CuPy 安装之后，用户可以像导入 Numpy 一样导入 CuPy：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cupy <span class="keyword">as</span> cp</span><br><span class="line"><span class="keyword">import</span> time</span><br></pre></td></tr></table></figure>
-<p>在接下来的编码中，Numpy 和 CuPy 之间的切换就像用 CuPy 的 cp 替换 Numpy 的 np 一样简单。如下代码为 Numpy 和 CuPy 创建了一个具有 10 亿 1』s 的 3D 数组。为了测量创建数组的速度，用户可以使用 Python 的原生 time 库：</p>
+<p>在接下来的编码中，Numpy 和 CuPy 之间的切换就像用 CuPy 的 cp 替换 Numpy 的 np 一样简单。如下代码为 Numpy 和 CuPy 创建了一个具有 10 亿参数 的 3D 数组。为了测量创建数组的速度，用户可以使用 Python 的原生 time 库：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### Numpy and CPU</span></span><br><span class="line">s = time.time()</span><br><span class="line">*x_cpu = np.ones((<span class="number">1000</span>,<span class="number">1000</span>,<span class="number">1000</span>))*</span><br><span class="line">e = time.time()</span><br><span class="line">print(e - s)<span class="comment">### CuPy and GPU</span></span><br><span class="line">s = time.time()</span><br><span class="line">*x_gpu = cp.ones((<span class="number">1000</span>,<span class="number">1000</span>,<span class="number">1000</span>))*</span><br><span class="line">e = time.time()</span><br><span class="line">print(e - s)</span><br></pre></td></tr></table></figure>
 <p>这很简单！</p>
-<p>令人难以置信的是，即使以上只是创建了一个数组，CuPy 的速度依然快得多。Numpy 创建一个具有 10 亿 1』s 的数组用了 1.68 秒，而 CuPy 仅用了 0.16 秒，实现了 10.5 倍的加速。</p>
+<p>令人难以置信的是，即使以上只是创建了一个数组，CuPy 的速度依然快得多。Numpy 创建一个具有 10 亿 参数的数组用了 1.68 秒，而 CuPy 仅用了 0.16 秒，实现了 10.5 倍的加速。</p>
 <p>但 CuPy 能做到的还不止于此。</p>
 <p>比如在数组中做一些数学运算。这次将整个数组乘以 5，并再次检查 Numpy 和 CuPy 的速度。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### Numpy and CPU</span></span><br><span class="line">s = time.time()</span><br><span class="line">*x_cpu *= <span class="number">5</span>*</span><br><span class="line">e = time.time()</span><br><span class="line">print(e - s)<span class="comment">### CuPy and GPU</span></span><br><span class="line">s = time.time()</span><br><span class="line">*x_gpu *= <span class="number">5</span>*</span><br><span class="line">e = time.time()</span><br><span class="line">print(e - s)</span><br></pre></td></tr></table></figure>
@@ -526,7 +526,7 @@
 <h3 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h3><p><em>原文链接：**<a href="https://towardsdatascience.com/heres-how-to-use-cupy-to-make-numpy-700x-faster-4b920dda1f56" target="_blank" rel="noopener">https://towardsdatascience.com/heres-how-to-use-cupy-to-make-numpy-700x-faster-4b920dda1f56</a></em></p>
 <p>中文翻译 ：<a href="https://mp.weixin.qq.com/s?__biz=MzA4MjEyNTA5Mw==&amp;mid=2652570650&amp;idx=2&amp;sn=a4186d66f441d419a43317e47eefbee3&amp;chksm=84652c50b312a546ea11843c6efe454c51475dc49895a58db1238f9421d721ca7e6c145807ba&amp;scene=126&amp;sessionid=1582684997&amp;key=7910bee926869443713e36e2bd94012e63eeb4c150aab7293c5855ccc05462827888e17f0d6b39468daa29bcad1ce50061191c957ac51c09d4d061b154294b8348f72d88b63674d8d7e9a225102cd08e&amp;ascene=14&amp;uin=MjQ1NDMzMzQ4NA%3D%3D&amp;devicetype=Windows+10&amp;version=62080079&amp;lang=zh_CN&amp;exportkey=ARH%2B3FjknVDPcHko28gBd8c%3D&amp;pass_ticket=twjWQyIhowYwH9XxmGVRL2ctmZU7pG9Auk%2FsS0SKZ%2BwqDMNBXUh%2BY4hGaLMPD2q7" target="_blank" rel="noopener">这一招将 Numpy 加速 700 倍！！！</a></p>
 <h2 id="Numba"><a href="#Numba" class="headerlink" title="Numba"></a>Numba</h2><p>硬的整完，制定还有软的</p>
-<p>其实我记得很早在接触Python的时候，听有人讲python慢的时候，还听说了python是<strong>C</strong>写的，其实还<strong>真的是</strong>，这涉及到<strong>解释器</strong>的问题，可以参考博客：Python解释器</p>
+<p>其实我记得很早在接触Python的时候，听有人讲python慢的时候，还听说了python是<strong>C</strong>写的，其实还<strong>真的是</strong>，这涉及到<strong>解释器</strong>的问题，可以参考博客：<a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1016966024263840" target="_blank" rel="noopener">Python解释器</a></p>
 <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>Numba是python的即时（Just-In-Time，JIT）解释器，即当我们调用python函数时，我们的全部或者部分代码就会被转换成“即时”执行的机器码，将以我们的本地机器码速度运行，</p>
 <p>它由 Anaconda 公司赞助，并得到了许多其他组织的支持。</p>
 <p>在 Numba 的帮助下，您可以加速所有计算负载比较大的 python 函数（例如循环）。它还支持 numpy 库！所以，您也可以在您的计算中使用 numpy，并加快整体计算，因为 python 中的循环非常慢。 您还可以使用 python 标准库中的 math 库的许多函数，如 <code>sqrt</code> 等。有关所有兼容函数的完整列表，请查看<a href="http://numba.pydata.org/numba-doc/0.17.0/reference/pysupported.html" target="_blank" rel="noopener">此处</a>。</p>
@@ -882,7 +882,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共98.7k字</span>
+  <span class="post-count">博客全站共101.3k字</span>
 </div>
         
 <div class="busuanzi-count">

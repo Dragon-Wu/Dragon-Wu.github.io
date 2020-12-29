@@ -135,7 +135,7 @@
 <meta property="og:image" content="http://jgwu.top/blogs/激活函数探究/606386-20180712202915278-1408388561.png">
 <meta property="og:image" content="http://jgwu.top/blogs/激活函数探究/TIM截图20190716110013.png">
 <meta property="og:image" content="http://jgwu.top/blogs/激活函数探究/TIM截图20190716110241.png">
-<meta property="og:updated_time" content="2020-12-28T08:40:48.830Z">
+<meta property="og:updated_time" content="2020-12-29T13:32:28.068Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="激活函数探究">
 <meta name="twitter:description" content="在神经网络训练时，经常需要通过激活函数加入非线性因素，以此提高模型的泛化能力">
@@ -511,11 +511,11 @@
 </blockquote>
 <h3 id="ReLU-缺点："><a href="#ReLU-缺点：" class="headerlink" title="ReLU 缺点："></a>ReLU 缺点：</h3><p>坏死: ReLU 强制的稀疏处理会减少模型的有效容量（即特征屏蔽太多，导致模型无法学习到有效特征）。由于ReLU在x &lt; 0时梯度为0，这样就导致负的梯度在这个ReLU被置零，而且这个神经元有可能再也不会被任何数据激活，称为神经元“坏死”。</p>
 <p>无负值: ReLU和sigmoid的一个相同点是结果是正值，没有负值.</p>
-<h2 id="ReLU变种"><a href="#ReLU变种" class="headerlink" title="ReLU变种"></a>ReLU变种</h2><h3 id="Leaky-ReLU"><a href="#Leaky-ReLU" class="headerlink" title="Leaky ReLU"></a>Leaky ReLU</h3><p>当x&lt;0x&lt;0时,f(x)=αxf(x)=αx,其中αα非常小,这样可以避免在x&lt;0x&lt;0时,不能够学习的情况：</p>
+<h2 id="ReLU变种"><a href="#ReLU变种" class="headerlink" title="ReLU变种"></a>ReLU变种</h2><h3 id="Leaky-ReLU"><a href="#Leaky-ReLU" class="headerlink" title="Leaky ReLU"></a>Leaky ReLU</h3><p>当x&lt;0时,f(x)=αx,其中α非常小,这样可以避免在x&lt;0时,不能够学习的情况：</p>
 <p>f(x)=max(αx,x)</p>
 <p>称为Parametric Rectifier(PReLU),将 α 作为可学习的参数.</p>
 <p>当 α 从高斯分布中随机产生时称为Random Rectifier（<strong>RReLU</strong>）。</p>
-<p>当固定为α=0.01α=0.01时,是<strong>Leaky ReLU</strong>。</p>
+<p>当固定为α=0.01时,是<strong>Leaky ReLU</strong>。</p>
 <p>优点:</p>
 <ul>
 <li>不会过拟合(saturate)</li>
@@ -524,7 +524,7 @@
 </ul>
 <h3 id="指数线性单元ELU"><a href="#指数线性单元ELU" class="headerlink" title="指数线性单元ELU"></a>指数线性单元ELU</h3><p><img src="/blogs/激活函数探究/TIM截图20190716105232.png" alt="TIM截图20190716105232"></p>
 <p>exponential linear unit， 该激活函数由Djork等人提出,被证实有较高的噪声鲁棒性,同时能够使得使得神经元<br>的平均激活均值趋近为 0,同时对噪声更具有鲁棒性。由于需要计算指数,计算量较大。<br><strong>ReLU family:</strong><br><img src="/blogs/激活函数探究/606386-20171102101255873-2095075312.png" alt="606386-20171102101255873-2095075312"></p>
-<p>Leaky ReLU αα是固定的;PReLU的αα不是固定的,通过训练得到;RReLU的αα是从一个高斯分布中随机产生,并且在测试时为固定值，与Noisy ReLU类似（但是区间正好相反）。</p>
+<p>Leaky ReLU α是固定的，PReLU的α不是固定的,通过训练得到，RReLU的α是从一个高斯分布中随机产生，并且在测试时为固定值，与Noisy ReLU类似（但是区间正好相反）。</p>
 <p><strong>ReLU系列对比：</strong></p>
 <p><img src="/blogs/激活函数探究/606386-20171102101447857-1756364198.png" alt="606386-20171102101447857-1756364198"></p>
 <h3 id="SELU"><a href="#SELU" class="headerlink" title="SELU"></a>SELU</h3><p>论文: 自归一化神经网络(<a href="https://arxiv.org/abs/1706.02515" target="_blank" rel="noopener">Self-Normalizing Neural Networks</a>)中提出只需要把激活函数换成SELU就能使得输入在经过一定层数之后变成固定的分布. 参考<a href="https://www.zhihu.com/question/60910412" target="_blank" rel="noopener">对这篇论文的讨论</a>.</p>
@@ -543,7 +543,7 @@
 <p>Maxout可以看做是在深度学习网络中加入一层激活函数层,包含一个参数k.这一层相比ReLU,sigmoid等,其特殊之处在于增加了k个神经元,然后输出激活值最大的值.</p>
 <p><img src="/blogs/激活函数探究/TIM截图20190716105608.png" alt="TIM截图20190716105608"></p>
 <p>以如下最简单的多层感知器(MLP)为例:</p>
-<p><img src="/blogs/激活函数探究/606386-20171009171758918-776097243.jpg" alt="606386-20171009171758918-776097243"></p>
+<p><img src="/blogs/激活函数探究/606386-20171009171758918-776097243.jpg" alt="606386-20171009171758918-776097243" style="zoom: 67%;"></p>
 <p>假设网络第i层有2个神经元x1、x2，第i+1层的神经元个数为1个.原本只有一层参数,将ReLU或sigmoid等激活函数替换掉,引入Maxout,将变成两层参数,参数个数增为k倍.</p>
 <p><strong>优点：</strong></p>
 <ul>
@@ -581,9 +581,7 @@
 </ol>
 <p>下面说明一下为什么有组合特征的作用.</p>
 <p>一般函数都可以通过泰勒展开式来近似计算, 如sigmoid激活函数中的指数项可以通过如下的泰勒展开来近似计算:</p>
-<p>其中有平方项,立方项及更更高项, 而 </p>
-<p>z=wx+bz=wx+b</p>
-<p>, 因此可以看作是输入特征 x 的组合. 以前需要由领域专家知识进行特征组合,现在激活函数能起到一种类似特征组合的作用. (思想来源: 微博@算法组)</p>
+<p>其中有平方项,立方项及更更高项, 而 z=wx+bz=wx+b, 因此可以看作是输入特征 x 的组合. 以前需要由领域专家知识进行特征组合,现在激活函数能起到一种类似特征组合的作用. (思想来源: 微博@算法组)</p>
 <p><img src="/blogs/激活函数探究/TIM截图20190716110241.png" alt="TIM截图20190716110241"></p>
 <p><strong>为什么ReLU,Maxout等能够提供网络的非线性建模能力？</strong>它们看起来是分段线性函数，然而并不满足完整的线性要求：加法f(x+y)=f(x)+f(y)和乘法f(ax)=a×f(x)或者写作f(αx1+βx2)=αf(x1)+βf(x2)。非线性意味着得到的输出不可能由输入的线性组合重新得到（重现）。假如网络中不使用非线性激活函数，那么这个网络可以被一个单层感知器代替得到相同的输出，因为线性层加起来后还是线性的，可以被另一个线性函数替代。</p>
 <p>著作权归作者所有。商业转载请联系作者获得授权,非商业转载请注明出处。</p>
@@ -889,7 +887,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共98.7k字</span>
+  <span class="post-count">博客全站共101.3k字</span>
 </div>
         
 <div class="busuanzi-count">
