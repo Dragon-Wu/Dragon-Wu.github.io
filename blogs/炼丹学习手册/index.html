@@ -124,7 +124,7 @@
 <meta property="og:image" content="http://jgwu.top/blogs/炼丹学习手册/image-20201229163749572.png">
 <meta property="og:image" content="http://jgwu.top/blogs/炼丹学习手册/image-20201229163838159.png">
 <meta property="og:image" content="http://jgwu.top/blogs/炼丹学习手册/image-20201229151345242.png">
-<meta property="og:updated_time" content="2020-12-29T14:12:34.636Z">
+<meta property="og:updated_time" content="2021-01-27T18:10:11.381Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="炼丹学习手册?">
 <meta name="twitter:description" content="看得再多，不如踏实干，而踏实码起代码，跑起模型，还是要做到心里有数，有的放矢 老说DL是炼丹，但是还是有一些需要注意的，其实以前看过好多相关的知识点了，但还是需要串起来、记下来好好思考 不全也不一定对，但是慢慢整理慢慢补吧~">
@@ -466,7 +466,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  14
+                  15
                 </span>
               
             </div>
@@ -520,6 +520,8 @@
 <p>K越大，每次投入的训练集的数据越多，模型的Bias越小。但是K越大，又意味着每一次选取的训练集之前的相关性越大（考虑最极端的例子，当k=N，也就是在LOOCV里，每次都训练数据几乎是一样的）。而这种大相关性会导致最终的test error具有更大的Variance。</p>
 <p>参考：<a href="https://mp.weixin.qq.com/s?__biz=MzIzODExMDE5MA==&amp;mid=400415610&amp;idx=1&amp;sn=381dd64fbdc7c130a6314fb65815d4e1#rd" target="_blank" rel="noopener">交叉验证（Cross Validation）简介</a>， <a href="https://zhuanlan.zhihu.com/p/24825503" target="_blank" rel="noopener">【机器学习】Cross-Validation（交叉验证）详解</a></p>
 <h3 id="通过Pytorch构建数据集"><a href="#通过Pytorch构建数据集" class="headerlink" title="通过Pytorch构建数据集"></a>通过Pytorch构建数据集</h3><p>留坑最近填：在pytorch中载入数据集并构建训练集、验证集</p>
+<p>tranform介绍：<a href="https://blog.csdn.net/weixin_38533896/article/details/86028509" target="_blank" rel="noopener">Pytorch：transforms的二十二个方法</a></p>
+<p><a href="https://www.cnblogs.com/SakuraYuki/p/13375895.html" target="_blank" rel="noopener">Pytorch：transforms二十二种数据预处理方法及自定义transforms方法</a></p>
 <h2 id="去芜存菁，万事俱备"><a href="#去芜存菁，万事俱备" class="headerlink" title="去芜存菁，万事俱备"></a>去芜存菁，万事俱备</h2><h3 id="数据预处理（Data-Preprocessing）"><a href="#数据预处理（Data-Preprocessing）" class="headerlink" title="数据预处理（Data Preprocessing）"></a>数据预处理（Data Preprocessing）</h3><p><strong>之前的博客：</strong><a href="https://jgwu.top/blogs/%E5%BD%92%E4%B8%80%E5%8C%96%E3%80%81%E6%A0%87%E5%87%86%E5%8C%96%E3%80%81%E4%B8%AD%E5%BF%83%E5%8C%96/">归一化、标准化、中心化</a></p>
 <h3 id="数据增强（Data-Augmentation）"><a href="#数据增强（Data-Augmentation）" class="headerlink" title="数据增强（Data Augmentation）"></a>数据增强（Data Augmentation）</h3><p>数据增强，通过让有限的数据产生更多的等价数据来人工扩展训练数据集的技术，是克服训练数据不足的有效手段。</p>
 <h4 id="计算机视觉"><a href="#计算机视觉" class="headerlink" title="计算机视觉"></a>计算机视觉</h4><p>CV的数据增强算法大致可以分为两类：第一类是基于基本图像处理技术的数据增强，第二个类别是基于深度学习的数据增强算法。</p>
@@ -599,6 +601,7 @@
 <h3 id="网络搭建"><a href="#网络搭建" class="headerlink" title="网络搭建"></a>网络搭建</h3><p>超参数和常用方法的概念，最后一章是具体的结合分析</p>
 <p><strong>之前的博客：</strong><a href="https://jgwu.top/blogs/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E6%8E%A2%E7%A9%B6/">激活函数探究</a>，<a href="https://jgwu.top/blogs/Batch-Normalization/">Batch Normalization</a>，<a href="https://jgwu.top/blogs/%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1%E3%80%81%E7%88%86%E7%82%B8%E4%B8%8E%E5%85%B6%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">梯度消失、爆炸与其解决方案</a>，<a href="https://jgwu.top/blogs/%E6%B1%A0%E5%8C%96%E7%9A%84%E4%BD%9C%E7%94%A8/">池化的作用</a>，<a href="https://jgwu.top/blogs/%E6%AD%A3%E5%88%99%E5%8C%96%E4%BD%9C%E7%94%A8%E5%8F%8A%E5%85%B6%E6%8E%A8%E5%AF%BC/">正则化作用及其推导</a></p>
 <p><strong>参考：</strong><a href="https://mp.weixin.qq.com/s/8Sg9VBVTbN2bJyntQPQTyg" target="_blank" rel="noopener">一文详解神经网络与激活函数的基本原理</a></p>
+<p><a href="https://blog.csdn.net/u011995719/article/details/89486359" target="_blank" rel="noopener">PyTorch 学习笔记（八）：PyTorch的六个学习率调整方法</a></p>
 <h2 id="巧借东风，百炼成丹"><a href="#巧借东风，百炼成丹" class="headerlink" title="巧借东风，百炼成丹"></a>巧借东风，百炼成丹</h2><h3 id="训练技巧——快"><a href="#训练技巧——快" class="headerlink" title="训练技巧——快"></a>训练技巧——快</h3><p><a href="https://www.jgwu.top/blogs/Python%E5%8A%A0%E9%80%9F-Numba-Cupy/" target="_blank" rel="noopener">Python加速-Numba/Cupy</a></p>
 <h3 id="调参技巧——准"><a href="#调参技巧——准" class="headerlink" title="调参技巧——准"></a>调参技巧——准</h3><p>深度学习网络调参技巧 - 萧瑟的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/24720954" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/24720954</a></p>
 <p>贝叶斯优化: 一种更好的超参数调优方式 - tobe的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/29779000" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/29779000</a></p>
@@ -666,6 +669,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blogs/频域图像与CNN/" rel="prev" title="频域图像与CNN">
+                频域图像与CNN <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -753,7 +760,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">68</span>
+                  <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -775,7 +782,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -850,7 +857,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-snowflake-o"></i>
   </span>
@@ -875,7 +882,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共101.3k字</span>
+  <span class="post-count">博客全站共101.5k字</span>
 </div>
         
 <div class="busuanzi-count">
