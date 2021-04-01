@@ -1,8 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://jgwu.top/blogs/Something-NLP/</loc>
+    <lastmod>2021-03-27</lastmod>
+  </url>  <url>
+    <loc>http://jgwu.top/blogs/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E6%8E%A2%E7%A9%B6/</loc>
+    <lastmod>2021-02-15</lastmod>
+  </url>  <url>
+    <loc>http://jgwu.top/blogs/%E5%9B%BE%E5%83%8F%E9%99%8D%E5%99%AA/</loc>
+    <lastmod>2021-02-08</lastmod>
+  </url>  <url>
+    <loc>http://jgwu.top/blogs/%E6%B7%B1%E5%BA%A6%E8%81%9A%E7%B1%BB-Deep-for-Clustering/</loc>
+    <lastmod>2021-02-07</lastmod>
+  </url>  <url>
+    <loc>http://jgwu.top/blogs/Clustering-Algorithm/</loc>
+    <lastmod>2021-02-07</lastmod>
+  </url>  <url>
+    <loc>http://jgwu.top/blogs/EM%E7%AE%97%E6%B3%95%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90%E4%B8%8E%E5%85%B6%E5%9C%A8%E5%8D%95%E9%A2%97%E7%B2%92%E5%86%B7%E5%86%BB%E7%94%B5%E9%95%9C%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/</loc>
+    <lastmod>2021-02-05</lastmod>
+  </url>  <url>
     <loc>http://jgwu.top/blogs/%E9%A2%91%E5%9F%9F%E5%9B%BE%E5%83%8F%E4%B8%8ECNN/</loc>
-    <lastmod>2021-02-03</lastmod>
+    <lastmod>2021-02-05</lastmod>
   </url>  <url>
     <loc>http://jgwu.top/blogs/%E7%82%BC%E4%B8%B9%E5%AD%A6%E4%B9%A0%E6%89%8B%E5%86%8C/</loc>
     <lastmod>2021-01-27</lastmod>
@@ -19,9 +37,6 @@
     <loc>http://jgwu.top/blogs/Batch-Normalization/</loc>
     <lastmod>2020-12-29</lastmod>
   </url>  <url>
-    <loc>http://jgwu.top/blogs/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E6%8E%A2%E7%A9%B6/</loc>
-    <lastmod>2020-12-29</lastmod>
-  </url>  <url>
     <loc>http://jgwu.top/blogs/%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1%E3%80%81%E7%88%86%E7%82%B8%E4%B8%8E%E5%85%B6%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</loc>
     <lastmod>2020-12-29</lastmod>
   </url>  <url>
@@ -30,9 +45,6 @@
   </url>  <url>
     <loc>http://jgwu.top/blogs/%E8%AE%AD%E7%BB%83%E9%9B%86-%E9%AA%8C%E8%AF%81%E6%9C%BA-%E6%B5%8B%E8%AF%95%E9%9B%86/</loc>
     <lastmod>2020-12-28</lastmod>
-  </url>  <url>
-    <loc>http://jgwu.top/blogs/Clustering-Algorithm/</loc>
-    <lastmod>2020-11-27</lastmod>
   </url>  <url>
     <loc>http://jgwu.top/blogs/%E5%90%84%E7%A7%8DAutoencoder%E8%87%AA%E5%8A%A8%E7%BC%96%E7%A0%81%E5%99%A8/</loc>
     <lastmod>2020-11-25</lastmod>
@@ -54,9 +66,6 @@
   </url>  <url>
     <loc>http://jgwu.top/blogs/Few-shot-Learning-and-Meta-Learning/</loc>
     <lastmod>2020-10-21</lastmod>
-  </url>  <url>
-    <loc>http://jgwu.top/blogs/%E5%9B%BE%E5%83%8F%E9%99%8D%E5%99%AA/</loc>
-    <lastmod>2020-10-20</lastmod>
   </url>  <url>
     <loc>http://jgwu.top/blogs/hello-world/</loc>
     <lastmod>2020-10-13</lastmod>
@@ -113,9 +122,6 @@
     <lastmod>2020-06-13</lastmod>
   </url>  <url>
     <loc>http://jgwu.top/blogs/pandas%E5%90%84%E7%A7%8D/</loc>
-    <lastmod>2020-06-13</lastmod>
-  </url>  <url>
-    <loc>http://jgwu.top/blogs/EM%E7%AE%97%E6%B3%95%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90%E4%B8%8E%E5%85%B6%E5%9C%A8%E5%8D%95%E9%A2%97%E7%B2%92%E5%86%B7%E5%86%BB%E7%94%B5%E9%95%9C%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/</loc>
     <lastmod>2020-06-13</lastmod>
   </url>  <url>
     <loc>http://jgwu.top/blogs/%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B%E7%9B%B8%E5%85%B3/</loc>
