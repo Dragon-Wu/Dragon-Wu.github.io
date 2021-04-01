@@ -124,7 +124,8 @@
 <meta property="og:image" content="http://jgwu.top/blogs/炼丹学习手册/image-20201229163749572.png">
 <meta property="og:image" content="http://jgwu.top/blogs/炼丹学习手册/image-20201229163838159.png">
 <meta property="og:image" content="http://jgwu.top/blogs/炼丹学习手册/image-20201229151345242.png">
-<meta property="og:updated_time" content="2021-01-27T18:10:11.381Z">
+<meta property="og:image" content="http://jgwu.top/blogs/炼丹学习手册/image-20210401201531629.png">
+<meta property="og:updated_time" content="2021-04-01T12:46:17.592Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="炼丹学习手册?">
 <meta name="twitter:description" content="看得再多，不如踏实干，而踏实码起代码，跑起模型，还是要做到心里有数，有的放矢 老说DL是炼丹，但是还是有一些需要注意的，其实以前看过好多相关的知识点了，但还是需要串起来、记下来好好思考 不全也不一定对，但是慢慢整理慢慢补吧~">
@@ -450,7 +451,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  4.2k
+                  4.4k
                 </span>
               
 
@@ -607,6 +608,14 @@
 <p>贝叶斯优化: 一种更好的超参数调优方式 - tobe的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/29779000" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/29779000</a></p>
 <p>深度学习网络训练技巧汇总 - 萧瑟的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/20767428" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/20767428</a></p>
 <p>深度学习网络调试技巧 - 萧瑟的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/20792837" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/20792837</a></p>
+<h4 id="优化函数"><a href="#优化函数" class="headerlink" title="优化函数"></a>优化函数</h4><p>最常用的：Adam和SGD-M</p>
+<p>经典的三个博客：</p>
+<p>一个框架看懂优化算法之异同 SGD/AdaGrad/Adam - Juliuszh的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/32230623" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/32230623</a></p>
+<p>Adam那么棒，为什么还对SGD念念不忘 (2)—— Adam的两宗罪 - Juliuszh的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/32262540" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/32262540</a></p>
+<p>Adam那么棒，为什么还对SGD念念不忘 (3)—— 优化算法的选择与使用策略 - Juliuszh的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/32338983" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/32338983</a></p>
+<p>李宏毅老师的PPT <a href="https://www.bilibili.com/video/BV1JE411g7XF?p=8" target="_blank" rel="noopener">Optimization of DNN</a></p>
+<p><img src="/blogs/炼丹学习手册/image-20210401201531629.png" alt="image-20210401201531629"></p>
+<p>都9102年了，别再用Adam + L2 regularization了 - paperplanet的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/63982470" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/63982470</a><br>（“所以应该先Adam with weight decay=0，然后sgd with l2 regularization，赞”—— <a href="https://www.zhihu.com/people/wang-frey" target="_blank" rel="noopener">frey Wang</a>）</p>
 
       
     </div>
@@ -837,7 +846,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#欲炼灵丹，先备好料？"><span class="nav-number">1.</span> <span class="nav-text">欲炼灵丹，先备好料？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#构建数据集"><span class="nav-number">1.1.</span> <span class="nav-text">构建数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#训练集-验证集-测试集"><span class="nav-number">1.2.</span> <span class="nav-text">训练集/验证集/测试集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交叉检验"><span class="nav-number">1.3.</span> <span class="nav-text">交叉检验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过Pytorch构建数据集"><span class="nav-number">1.4.</span> <span class="nav-text">通过Pytorch构建数据集</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#去芜存菁，万事俱备"><span class="nav-number">2.</span> <span class="nav-text">去芜存菁，万事俱备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据预处理（Data-Preprocessing）"><span class="nav-number">2.1.</span> <span class="nav-text">数据预处理（Data Preprocessing）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据增强（Data-Augmentation）"><span class="nav-number">2.2.</span> <span class="nav-text">数据增强（Data Augmentation）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机视觉"><span class="nav-number">2.2.1.</span> <span class="nav-text">计算机视觉</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本的图像处理（basic-image-manipulations）"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">基本的图像处理（basic image manipulations）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#几何与光度转换（Geometric-versus-photometric-transformations）"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">几何与光度转换（Geometric versus photometric transformations）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#基于深度学习（Based-on-Deep-Learning）："><span class="nav-number">2.2.1.3.</span> <span class="nav-text">基于深度学习（Based on Deep Learning）：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自然语言处理"><span class="nav-number">2.2.2.</span> <span class="nav-text">自然语言处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据平衡"><span class="nav-number">2.3.</span> <span class="nav-text">数据平衡</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#看料搭炉，拾柴点火"><span class="nav-number">3.</span> <span class="nav-text">看料搭炉，拾柴点火</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#模型选取"><span class="nav-number">3.1.</span> <span class="nav-text">模型选取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络搭建"><span class="nav-number">3.2.</span> <span class="nav-text">网络搭建</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#巧借东风，百炼成丹"><span class="nav-number">4.</span> <span class="nav-text">巧借东风，百炼成丹</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#训练技巧——快"><span class="nav-number">4.1.</span> <span class="nav-text">训练技巧——快</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调参技巧——准"><span class="nav-number">4.2.</span> <span class="nav-text">调参技巧——准</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#欲炼灵丹，先备好料？"><span class="nav-number">1.</span> <span class="nav-text">欲炼灵丹，先备好料？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#构建数据集"><span class="nav-number">1.1.</span> <span class="nav-text">构建数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#训练集-验证集-测试集"><span class="nav-number">1.2.</span> <span class="nav-text">训练集/验证集/测试集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交叉检验"><span class="nav-number">1.3.</span> <span class="nav-text">交叉检验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过Pytorch构建数据集"><span class="nav-number">1.4.</span> <span class="nav-text">通过Pytorch构建数据集</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#去芜存菁，万事俱备"><span class="nav-number">2.</span> <span class="nav-text">去芜存菁，万事俱备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据预处理（Data-Preprocessing）"><span class="nav-number">2.1.</span> <span class="nav-text">数据预处理（Data Preprocessing）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据增强（Data-Augmentation）"><span class="nav-number">2.2.</span> <span class="nav-text">数据增强（Data Augmentation）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机视觉"><span class="nav-number">2.2.1.</span> <span class="nav-text">计算机视觉</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本的图像处理（basic-image-manipulations）"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">基本的图像处理（basic image manipulations）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#几何与光度转换（Geometric-versus-photometric-transformations）"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">几何与光度转换（Geometric versus photometric transformations）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#基于深度学习（Based-on-Deep-Learning）："><span class="nav-number">2.2.1.3.</span> <span class="nav-text">基于深度学习（Based on Deep Learning）：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自然语言处理"><span class="nav-number">2.2.2.</span> <span class="nav-text">自然语言处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据平衡"><span class="nav-number">2.3.</span> <span class="nav-text">数据平衡</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#看料搭炉，拾柴点火"><span class="nav-number">3.</span> <span class="nav-text">看料搭炉，拾柴点火</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#模型选取"><span class="nav-number">3.1.</span> <span class="nav-text">模型选取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络搭建"><span class="nav-number">3.2.</span> <span class="nav-text">网络搭建</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#巧借东风，百炼成丹"><span class="nav-number">4.</span> <span class="nav-text">巧借东风，百炼成丹</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#训练技巧——快"><span class="nav-number">4.1.</span> <span class="nav-text">训练技巧——快</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调参技巧——准"><span class="nav-number">4.2.</span> <span class="nav-text">调参技巧——准</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优化函数"><span class="nav-number">4.2.1.</span> <span class="nav-text">优化函数</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -882,7 +891,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共106k字</span>
+  <span class="post-count">博客全站共106.1k字</span>
 </div>
         
 <div class="busuanzi-count">
