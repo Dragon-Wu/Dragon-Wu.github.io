@@ -1,3 +1,4 @@
+http://jgwu.top/blogs/Latiice-LSTM及其所需知识/
 http://jgwu.top/blogs/Something-NLP/
 http://jgwu.top/blogs/深度聚类-Deep-for-Clustering/
 http://jgwu.top/blogs/频域图像与CNN/
@@ -7,4 +8,3 @@ http://jgwu.top/blogs/NLP基础知知识-努力扫盲入门的我/
 http://jgwu.top/blogs/卷积网络可视化-可解释/
 http://jgwu.top/blogs/Few-shot-Learning-and-Meta-Learning/
 http://jgwu.top/blogs/深度学习-图像降噪-NL-Means和BM3D/
-http://jgwu.top/blogs/深度学习-图像降噪-Noise2Noise/

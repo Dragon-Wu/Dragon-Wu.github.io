@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Latiice-LSTM及其所需知识</title>
+      <link href="/blogs/Latiice-LSTM%E5%8F%8A%E5%85%B6%E6%89%80%E9%9C%80%E7%9F%A5%E8%AF%86/"/>
+      <url>/blogs/Latiice-LSTM%E5%8F%8A%E5%85%B6%E6%89%80%E9%9C%80%E7%9F%A5%E8%AF%86/</url>
+      
+        <content type="html"><![CDATA[<p>踏实学习，一步一步看懂</p><a id="more"></a><h2 id="模型相关"><a href="#模型相关" class="headerlink" title="模型相关"></a>模型相关</h2><p>首先需要了解基础的模型，在了解为什么Lattice+LSTM能够解决NER的问题</p><p>主要通过知乎一些blog和李宏毅老师的ML课程视频了解，尤其感谢李宏毅老师，其课程内容高效且有趣，PPT更是准备的十分用心，里面的示例图非常易懂！</p><h3 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h3><h4 id="模型特性"><a href="#模型特性" class="headerlink" title="模型特性"></a>模型特性</h4><p>RNN（Recurrent Neural Network），顾名思义，是循环/递归神经网络，其与常规NN模型的差别在于，数据在模型中传递时，其得到的输出不仅仅由当前的输入决定，该数据之前的数据也会对其有影响，也就是不仅利用到当前数据的信息，也能够利用到与时序相关的前序输入的信息，这样能够解决什么问题呢？</p><p>比如slot filling（语义槽填充）问题，同样的词语在不同语境下的含义是不同的，比如一个地点hangzhou，他的前面是 arrive 还是 leave 才决定了他是destination还是place of departure</p><p>所以RNN在需要利用时序信息、上下文信息的场景中十分适用，也就在NLP领域大放异彩</p><h4 id="具体实现和原理"><a href="#具体实现和原理" class="headerlink" title="具体实现和原理"></a>具体实现和原理</h4><p>下方左图是传统的NN，右图则是RNN的基本示意图，即通过存储上一次输入的相关信息（专门存储的记忆，并非一定与输出相同），来一起决定此次输入的输出</p><p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502143458976.png" alt="image-20210502143458976"><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502143539876.png" alt="image-20210502143539876" style="zoom: 80%;"></p><h5 id="具体示例"><a href="#具体示例" class="headerlink" title="具体示例"></a>具体示例</h5><p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502143734859.png" alt="image-20210502143734859" style="zoom:67%;"></p><p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502143747398.png" alt="image-20210502143747398" style="zoom:67%;"></p><p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502143759507.png" alt="image-20210502143759507" style="zoom:67%;"></p><p>从而使得同一个词语的上文不同，其得到的结果也不同</p><p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502143908159.png" alt="image-20210502143908159"></p><h4 id="改进形态"><a href="#改进形态" class="headerlink" title="改进形态"></a>改进形态</h4><h5 id="Deep-RNN"><a href="#Deep-RNN" class="headerlink" title="Deep RNN"></a>Deep RNN</h5><p>多个Hidden layer，每个hidden  layer都存下相应的memory用于后续数据的传递</p><p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502144102056.png" alt="image-20210502144102056" style="zoom:67%;"></p><h5 id="Elman-Network-amp-Jordan-Network"><a href="#Elman-Network-amp-Jordan-Network" class="headerlink" title="Elman Network &amp; Jordan Network"></a>Elman Network &amp; Jordan Network</h5><p>Elman Network就是我们上述的基本模型，将hidden layer的数据进行传递，也存在Jordan Network是将上次数据的输出存下，JN可能会有更好的performance，因为hidden layer学习的feature可能不好解释和传递，因为不知道学到的是啥，但是JN学到的就是我们的target，便于理解</p><p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502144222518.png" alt="image-20210502144222518" style="zoom:67%;"></p><h5 id="Bidirectional-RNN"><a href="#Bidirectional-RNN" class="headerlink" title="Bidirectional RNN"></a>Bidirectional RNN</h5><p>利用上、下文，将上文和下文得到的y，在进行组合学习</p><p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502144501369.png" alt="image-20210502144501369" style="zoom:67%;"></p><h3 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h3><h4 id="模型特性-1"><a href="#模型特性-1" class="headerlink" title="模型特性"></a>模型特性</h4><p>LSTM（Long short-term memory，LSTM）则是更特殊和robust的RNN，他不仅仅是利用到前序输入留下的memory，他同时还会有个多个门对整个过程进行处理，选择是否忘记memory、是否使用memory，所以他会将一个输入变成4个输入（x、input gate、forget gate、output gate），自己去学习如何使用memory</p><p>与RNN的结构差异</p><h4 id="具体实现和原理-1"><a href="#具体实现和原理-1" class="headerlink" title="具体实现和原理"></a>具体实现和原理</h4><h5 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h5><p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502144638665.png" alt="image-20210502144638665"></p><h5 id="模型传输过程"><a href="#模型传输过程" class="headerlink" title="模型传输过程"></a>模型传输过程</h5><p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502145308717.png" alt="image-20210502145308717"></p><p><strong>输入Z</strong>，然后先得到Z,Zi,Zo,Zf，总共4个输入，然后了解各个门的状态，然后输入Z经过g(Z)后与input gate的结果multiply，所以<strong>input gate决定是否这次要传入新的输入</strong>，然后C’就上一次存在memory的值，他乘上f(Zf)，也就是<strong>forget gate决定是否要将存在memory里面的值忘掉</strong>，然后再加上前面input gate和输入multiply的结果，得到了接下来要存在memory里的C‘，最后是通过output gate进行最后的activate然后输出，所以<strong>output gate决定是否输出此次的结果</strong><br>（与直觉和名字相反，forget gate打开的时候，代表C通过该门，也就是记住上一次的memory，关闭的时候，则忘记上一次的memory）<br>通常使用sigmoid函数，使其在0-1之间，0代表打开，1代表关上</p><p>传递过程的逻辑简化如下：</p><p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502151436746.png" alt="image-20210502151436746" style="zoom: 80%;"></p><p>那么LSTM的传递过程则如下图</p><p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502151635053.png" alt="image-20210502151635053"></p><p>但是真正的LSTM会如下图，会将上一步的output gate之前的h也作为输入，还有peephole将memory的值作为了输入：</p><p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502151914291.png" alt="image-20210502151914291"></p><p>所以其实输入只有一个，但是要变成4个，所以会有四倍的参数，如：</p><p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502150806552.png" alt="image-20210502150806552" style="zoom:50%;"><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502150818496.png" alt="image-20210502150818496" style="zoom: 67%;"></p><h5 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h5><p>图比较多，可以直接看李宏毅老师的PPT，一步步手推LSTM的样例，太强了！</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><h4 id="模型关系"><a href="#模型关系" class="headerlink" title="模型关系"></a>模型关系</h4><p>LSTM是RNN的升级版，多了很多的gate对输入、memory、输出都进行了控制，从而能够记忆需要长时间记忆的、忘记不重要的信息，做到Long的short-term，所以现在各个框架里的RNN基础块就是LSTM，纯正的RNN一般叫simpleRNN，但是LSTM也存在问题，比如他的参数比较多，所以还要GRU作为改进的方式，少了1/3的参数</p><p>GRU输入输出的结构与普通的RNN相似，其中的内部思想与LSTM相似；与LSTM相比，GRU内部少了一个”门控“，参数比LSTM少，但是却也能够达到与LSTM相当的功能。考虑到硬件的<strong>计算能力</strong>和<strong>时间成本</strong>，因而很多时候我们也就会选择更加”实用“的GRU啦。</p><p>GRU可以一定程度上解决LSTM的overfitting，简单来说，GRU的思路就是“旧的不去，新的不来”，他会把input gate和forget gate联动，如果input打开，那么forget打开，忘掉原来的memory</p><p>具体可以参考：</p><p>人人都能看懂的LSTM - 陈诚的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/32085405" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/32085405</a></p><p>人人都能看懂的GRU - 陈诚的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/32481747" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/32481747</a></p><h4 id="训练特点"><a href="#训练特点" class="headerlink" title="训练特点"></a>训练特点</h4><h5 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h5><p>RNN也是通过BP进行训练，Backpropagation through time (BPTT)，但是他会存在一个问题，就是梯度的变化很随机，可能是陡坡也可能是平原</p><p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502152711489.png" alt="image-20210502152711489" style="zoom:50%;"><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502152721145.png" alt="image-20210502152721145" style="zoom:67%;"></p><h5 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h5><p>梯度裁剪（clipping），当gradient大于某个threshold的时候，就截止，like  gradient &lt;= 15</p><h5 id="为什么呢"><a href="#为什么呢" class="headerlink" title="为什么呢"></a>为什么呢</h5><p>为什么RNN很容易出现gradient vanish or gradient exploration，因为RNN此类模型中，会被前述的内容反复影响</p><p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502153455034.png" alt="image-20210502153455034"></p><p>（一般RNN都用sigmoid，而非RELU）</p><p>但是LSTM不会有这个问题？LSTM可以handle前述RNN存在的gradient vanish问题，但是还可能会有较大的梯度，所以一般采取small learning rate</p><p>因为他的此次输入和memory之间是add，not multiply</p><p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502153917874.png" alt="image-20210502153917874"></p><p>An idea from Hinton‘s paper: 用identit matrix+ReLU训练RNN可以超过LSTM</p><h4 id="Deep-VS-Structured-Leanring"><a href="#Deep-VS-Structured-Leanring" class="headerlink" title="Deep VS Structured Leanring"></a>Deep VS Structured Leanring</h4><p>Structured Leanring可以更加轻易地增加一下显性的规则或者约束，Deep可以有更灵活和更优的性能</p><p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502154907620.png" alt="image-20210502154907620"></p><p>结合二者</p><p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502154950577.png" alt="image-20210502154950577"></p><p>先通过LSTM等Deep model进行feature embedding，在通过structured learning进行学习</p><h2 id="NER相关"><a href="#NER相关" class="headerlink" title="NER相关"></a>NER相关</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> CS </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Machine Learning </tag>
+            
+            <tag> Deep Learning </tag>
+            
+            <tag> NLP </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Something-NLP</title>
       <link href="/blogs/Something-NLP/"/>
       <url>/blogs/Something-NLP/</url>
@@ -1864,22 +1893,22 @@
     
     
     <entry>
-      <title>categories</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>一个还理想着的理想主义者</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>喜欢的话就<strong>坚持</strong>吧</p><p>弱小的话就<strong>努力</strong>吧</p><p>种一棵树，最好是十年前，其次就是<strong>现在</strong>了</p><p>——————</p><p><strong>做点好事，做个好人</strong></p>]]></content>
       
     </entry>
     
     
     
     <entry>
-      <title>一个还理想着的理想主义者</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
-        <content type="html"><![CDATA[<p>喜欢的话就<strong>坚持</strong>吧</p><p>弱小的话就<strong>努力</strong>吧</p><p>种一棵树，最好是十年前，其次就是<strong>现在</strong>了</p><p>——————</p><p><strong>做点好事，做个好人</strong></p>]]></content>
+        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
