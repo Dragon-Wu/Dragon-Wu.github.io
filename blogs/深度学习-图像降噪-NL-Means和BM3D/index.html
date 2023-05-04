@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+<script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("https://dragon-wu.github.io/");
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "e3b38aa8"
+    });
+  daovoice('update');
+  </script>
+
+
+
+  <meta name="msvalidate.01" content="b8759997e06919ab4d5bc4180303f7b7.jgwu.top">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/myblue.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/myblue.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/myblue.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/myblue.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Machine Learning,Computer Vision,Image Denoise,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="NL-Means和BM3D，是两种非常经典且一直被作为对比的传统图像降噪算法，还是蛮有意思的，看到网上好多都转载了这篇文章，确实写得很好，但是有的blog转载的不全，原文是作者的github blog，连上比较麻烦，并且以防之后没了，还是把这个好文存一下">
+<meta name="keywords" content="Machine Learning,Computer Vision,Image Denoise">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度学习-图像降噪-NL-Means和BM3D">
+<meta property="og:url" content="http://jgwu.top/blogs/深度学习-图像降噪-NL-Means和BM3D/index.html">
+<meta property="og:site_name" content="一个地方">
+<meta property="og:description" content="NL-Means和BM3D，是两种非常经典且一直被作为对比的传统图像降噪算法，还是蛮有意思的，看到网上好多都转载了这篇文章，确实写得很好，但是有的blog转载的不全，原文是作者的github blog，连上比较麻烦，并且以防之后没了，还是把这个好文存一下">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://jgwu.top/blogs/深度学习-图像降噪-NL-Means和BM3D/image-20201013194340986.png">
+<meta property="og:image" content="http://jgwu.top/blogs/深度学习-图像降噪-NL-Means和BM3D/nlmlena.jpg">
+<meta property="og:image" content="http://jgwu.top/blogs/深度学习-图像降噪-NL-Means和BM3D/nlm1.jpg">
+<meta property="og:image" content="http://jgwu.top/blogs/深度学习-图像降噪-NL-Means和BM3D/cinput.jpg">
+<meta property="og:image" content="http://jgwu.top/blogs/深度学习-图像降噪-NL-Means和BM3D/cnoisy.jpg">
+<meta property="og:image" content="http://jgwu.top/blogs/深度学习-图像降噪-NL-Means和BM3D/coutput.jpg">
+<meta property="og:image" content="http://jgwu.top/blogs/深度学习-图像降噪-NL-Means和BM3D/bm3dscheme.jpg">
+<meta property="og:image" content="http://jgwu.top/blogs/深度学习-图像降噪-NL-Means和BM3D/patch.jpg">
+<meta property="og:image" content="http://jgwu.top/blogs/深度学习-图像降噪-NL-Means和BM3D/cinput.jpg">
+<meta property="og:image" content="http://jgwu.top/blogs/深度学习-图像降噪-NL-Means和BM3D/cnoisy.jpg">
+<meta property="og:image" content="http://jgwu.top/blogs/深度学习-图像降噪-NL-Means和BM3D/denoised_bm3d.jpg">
+<meta property="og:image" content="http://jgwu.top/blogs/深度学习-图像降噪-NL-Means和BM3D/psnr.gif">
+<meta property="og:updated_time" content="2020-10-28T17:42:39.873Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深度学习-图像降噪-NL-Means和BM3D">
+<meta name="twitter:description" content="NL-Means和BM3D，是两种非常经典且一直被作为对比的传统图像降噪算法，还是蛮有意思的，看到网上好多都转载了这篇文章，确实写得很好，但是有的blog转载的不全，原文是作者的github blog，连上比较麻烦，并且以防之后没了，还是把这个好文存一下">
+<meta name="twitter:image" content="http://jgwu.top/blogs/深度学习-图像降噪-NL-Means和BM3D/image-20201013194340986.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://jgwu.top/blogs/深度学习-图像降噪-NL-Means和BM3D/">
+
+
+
+
+
+  <title>深度学习-图像降噪-NL-Means和BM3D | 一个地方</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?08bb4fc5c3d2998285280a0eabfdca3b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<link rel="alternate" href="/atom.xml" title="一个地方" type="application/atom+xml">
+</head>
+
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一个地方</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Wu's Blog</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jgwu.top/blogs/深度学习-图像降噪-NL-Means和BM3D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiageng Wu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/myshow.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个地方">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">深度学习-图像降噪-NL-Means和BM3D</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-10T21:03:16+08:00">
+                2020-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/" itemprop="url" rel="index">
+                    <span itemprop="name">CS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/blogs/深度学习-图像降噪-NL-Means和BM3D/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/blogs/深度学习-图像降噪-NL-Means和BM3D/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>  阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  14
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>NL-Means和BM3D，是两种非常经典且一直被作为对比的传统图像降噪算法，还是蛮有意思的，看到网上好多都转载了这篇文章，确实写得很好，但是有的blog转载的不全，原文是作者的github blog，连上比较麻烦，并且以防之后没了，还是把这个好文存一下</p>
+<a id="more"></a>
+<p>原文地址：<a href="http://wenhuix.github.io/research/denoise.html" target="_blank" rel="noopener">图像去噪算法：NL-Means和BM3D</a></p>
+<p>图像去噪是非常基础也是非常必要的研究，去噪常常在更高级的图像处理之前进行，是图像处理的基础。可惜的是，目前去噪算法并没有很好的解决方案，实际应用中，更多的是在效果和运算复杂度之间求得一个平衡，再一次验证了我老师的一句话：</p>
+<ul>
+<li>所有的工程问题最后都是最优化问题</li>
+</ul>
+<p>好了，废话不多说，来看看效果比较好的去噪算法吧。</p>
+<h2 id="噪声模型"><a href="#噪声模型" class="headerlink" title="噪声模型"></a>噪声模型</h2><p>图像中噪声的来源有许多种，这些噪声来源于图像采集、传输、压缩等各个方面。噪声的种类也各不相同，比如椒盐噪声，高斯噪声等，针对不同的噪声有不同的处理算法。</p>
+<p>对于输入的带有噪声的图像v(x)，其加性噪声可以用一个方程来表示：</p>
+<script type="math/tex; mode=display">
+v(x) = u(x) + \eta (x),\quad x \in \Omega</script><p>其中u(x)是原来没有噪声的图像。x是像素集合，η(x)是加项噪声项，代表噪声带来的影响。Ω是像素的集合，也就是整幅图像。从这个公式可以看出，噪声是直接叠加在原始图像上的，这个噪声可以是椒盐噪声、高斯噪声。理论上来说，如果能够精确地获得噪声，用输入图像减去噪声就可以恢复出原始图像。但现实往往很骨感，除非明确地知道噪声生成的方式，否则噪声很难单独求出来。</p>
+<p>工程上，图像中的噪声常常用高斯噪声N(μ,σ2)来近似表示，其中μ=0，σ2是噪声的方差，σ2越大，噪声越大。一个有效的去除高斯噪声的方式是图像求平均，对N幅相同的图像求平均的结果将使得高斯噪声的方差降低到原来的N分之一，现在效果比较好的去噪算法都是基于这一思想来进行算法设计。</p>
+<h2 id="NL-Means"><a href="#NL-Means" class="headerlink" title="NL-Means"></a>NL-Means</h2><p>NL-Means的全称是：Non-Local Means，直译过来是非局部平均，在2005年由Baudes提出，该算法使用自然图像中普遍存在的冗余信息来去噪声。与常用的双线性滤波、中值滤波等利用图像局部信息来滤波不同的是，它利用了整幅图像来进行去噪，以图像块为单位在图像中寻找相似区域，再对这些区域求平均，能够比较好地去掉图像中存在的高斯噪声。NL-Means的滤波过程可以用下面公式来表示：</p>
+<script type="math/tex; mode=display">
+\tilde u(x) = \sum\limits_{y \in {\Omega _x}} {w(x,y)v(y)}</script><p>在这个公式中，w(x,y)是一个权重，表示在原始图像v中，像素 x 和像素 y 的相似度。这个权重要大于0，同时，权重的和为1，用公式表示是这样：</p>
+<script type="math/tex; mode=display">
+w(x,y) > 0\quad and\quad \sum\limits_{y \in {\Omega _x}} {w(x,y) = 1}, \quad \forall x \in \Omega ,y \in {\Omega _x}</script><p>Ωx是像素 x 的邻域。这个公式可以这样理解：对于图像中的每一个像素 x ，去噪之后的结果等于它邻域中像素 y 的加权和，加权的权重等于 x 和 y 的相似度。这个邻域也称为搜索区域，搜索区域越大，找到相似像素的机会也越大，但同时计算量也是成指数上升。在提出这个算法的文献中，这个区域是整幅图像！导致的结果是处理一幅512x512大小的图像，最少也得几分钟。</p>
+<p>衡量像素相似度的方法有很多，最常用的是根据两个像素的亮度值的差的平方来估计。但因为有噪声的存在，单独的一个像素并不可靠。对此解决方法是，考虑它们的邻域，只有邻域相似度高才能说这两个像素的相似度高。衡量两个图像块的相似度最常用的方法是计算他们之间的欧氏距离：</p>
+<p><img src="/blogs/深度学习-图像降噪-NL-Means和BM3D/image-20201013194340986.png" alt="image-20201013194340986"></p>
+<p>其中： n(x) 是一个归一化的因子，是所有权重的和，对每个权重除以该因子后，使得权重满足和为1的条件。 h&gt;0 是滤波系数，控制指数函数的衰减从而改变欧氏距离的权重。 V(x) 和 代表了像素 x 和像素 y 的邻域，这个邻域常称为块(Patch)邻域。块邻域一般要小于搜索区域。</p>
+<p>是两个邻域的高斯加权欧式距离。其中 a&gt;0a&gt;0 是高斯核的标准差。在求欧式距离的时候，不同位置的像素的权重是不一样的，距离块的中心越近，权重越大，距离中心越远，权重越小，权重服从高斯分布。实际计算中考虑到计算量的问题，常常采用均匀分布的权重。</p>
+<p>讲了这么多，是时候用图来说明问题了：</p>
+<p><img src="/blogs/深度学习-图像降噪-NL-Means和BM3D/nlmlena.jpg" alt="nlmlena"></p>
+<p>如上图所示，p为去噪的点，因为q1和q2的邻域与p相似，所以权重w(p,q1)w(p,q1)和w(p,q2)w(p,q2)比较大，而邻域相差比较大的点q3的权重值w(p,q3)w(p,q3)很小。如果用一幅图把所有点的权重表示出来，那就得到下面这些权重图：</p>
+<p><img src="/blogs/深度学习-图像降噪-NL-Means和BM3D/nlm1.jpg" alt="nlm1"></p>
+<p>这6组图像中，左边是原图，中心的白色色块代表了像素 x 块邻域，右边是计算出来的权重 w(x,y)图，权重范围从0（黑色）到1（白色）。这个块邻域在整幅图像中移动，计算图像中其他区域跟这个块的相似度，相似度越高，得到的权重越大。最后将这些相似的像素值根据归一化之后的权重加权求和，得到的就是去噪之后的图像了。</p>
+<p>这个算法参数的选择也有讲究，一般而言，考虑到算法复杂度，搜索区域大概取21x21，相似度比较的块的可以取7x7。实际中，常常需要根据噪声来选取合适的参数。当高斯噪声的标准差 σ 越大时，为了使算法鲁棒性更好，需要增大块区域，块区域增加同样也需要增加搜索区域。同时，滤波系数 h 与 σ 正相关：h=kσ，当块变大时，kk 需要适当减小。</p>
+<p>NL-Means算法的复杂度跟图像的大小、颜色通道数、相似块的大小和搜索框的大小密切相关，设图像的大小为N××N，颜色通道数为Nc，块的大小为k×k，搜索框的大小为n×n，那么算法复杂度为: O( N^2 x Nc x k^2 x n^2 )</p>
+<p>对512×512的彩色图像而言，设置k=7，n=21，OpenCV在使用了多线程的情况下，处理一幅图像所需要的时间需要几十秒。虽然有人不断基于这个算法进行改进、提速，但离实时处理还是比较远。</p>
+<p>最后来看一下这个算法的去噪效果[3]：</p>
+<p><img src="/blogs/深度学习-图像降噪-NL-Means和BM3D/cinput.jpg" alt="img" style="zoom:67%;"><img src="/blogs/深度学习-图像降噪-NL-Means和BM3D/cnoisy.jpg" alt="img" style="zoom:67%;"><img src="/blogs/深度学习-图像降噪-NL-Means和BM3D/coutput.jpg" alt="img" style="zoom:67%;"><br>                           <strong>原始图像                                                               噪声图像                                                                 恢复图像</strong></p>
+<h2 id="BM3D"><a href="#BM3D" class="headerlink" title="BM3D"></a>BM3D</h2><p>BM3D（Block-matching and 3D filtering，3维块匹配滤波）可以说是当前效果最好的算法之一。</p>
+<p>该算法的思想跟NL-Means有点类似，也是在图像中寻找相似块的方法进行滤波，但是相对于NL-Means要复杂得多，理解了NL-Means有助于理解BM3D算法。BM3D算法总共有两大步骤，分为基础估计（Step1）和最终估计（Step2）：</p>
+<p><img src="/blogs/深度学习-图像降噪-NL-Means和BM3D/bm3dscheme.jpg" alt="bm3dscheme"></p>
+<p>在这两大步中，分别又有三小步：相似块分组（Grouping），协同滤波（Collaborative Filtering）和聚合（Aggregation）。上面的算法流程图已经比较好地将这一过程表示出来了，只需要稍加解释。</p>
+<h3 id="Step1-基础估计"><a href="#Step1-基础估计" class="headerlink" title="Step1 基础估计"></a>Step1 基础估计</h3><p>（1）Grouping：有了NL-Means的基础，寻找相似块的过程很容易理解。首先在噪声图像中选择一些k×kk×k 大小的参照块（考虑到算法复杂度，不用每个像素点都选参照块，通常隔3个像素为一个不长选取，复杂度降到1/9），在参照块的周围适当大小（n×nn×n）的区域内进行搜索，寻找若干个差异度最小的块，并把这些块整合成一个3维的矩阵，整合的顺序对结果影响不大。同时，参照块自身也要整合进3维矩阵，且差异度为0。寻找相似块这一过程可以用一个公式来表示：</p>
+<script type="math/tex; mode=display">
+G(P) = \{ Q:d(P,Q) \le {\tau ^{step1}}\} .</script><p>d(P,Q)代表两个块之间的欧式距离。最终整合相似块获得的矩阵就是流程图Step1中左下角的蓝色R矩阵。</p>
+<p><img src="/blogs/深度学习-图像降噪-NL-Means和BM3D/patch.jpg" alt="img" style="zoom:150%;"></p>
+<p>(2) Collaborative Filtering：形成若干个三维的矩阵之后，首先将每个三维矩阵中的二维的块（即噪声图中的某个块）进行二维变换，可采用小波变换或DCT变换等，通常采用小波BIOR1.5。二维变换结束后，在矩阵的第三个维度进行一维变换，通常为阿达马变换（Hadamard Transform）。变换完成后对三维矩阵进行硬阈值处理，将小于阈值的系数置0，然后通过在第三维的一维反变换和二维反变换得到处理后的图像块。这一过程同样可以用一个公式来表达：</p>
+<script type="math/tex; mode=display">
+Q(P) = T_{3Dhard}^{ - 1}(\gamma (T_{3Dhard}(Q(P)))).</script><p>在这个公式中，二维变换和一维变换用一个T3Dhard来表示。γ是一个阈值操作：</p>
+<script type="math/tex; mode=display">
+\gamma (x) = \left\{ {\matrix{
+                    {0\quad if{\kern 1pt} \left| x \right| \le {\lambda _{3D}}\sigma }  \cr 
+                    {x\quad \quad \; otherwise}  \cr } } \right. .</script><p>σ是噪声的标准差，代表噪声的强度。</p>
+<p>(3) Aggregation：此时，每个二维块都是对去噪图像的估计。这一步分别将这些块融合到原来的位置，每个像素的灰度值通过每个对应位置的块的值加权平均，权重取决于置0的个数和噪声强度。</p>
+<h3 id="step2-最终估计"><a href="#step2-最终估计" class="headerlink" title="step2 最终估计"></a>step2 最终估计</h3><p>(1) Grouping：第二步中的聚合过程与第一步类似，不同的是，这次将会得到两个三维数组：噪声图形成的三维矩阵Qbasic(P)和基础估计结果的三维矩阵Q(P)</p>
+<p>(2) Collaborative Filtering：两个三维矩阵都进行二维和一维变换，这里的二维变换通常采用DCT变换以得到更好的效果。用维纳滤波（Wiener Filtering）将噪声图形成的三维矩阵进行系数放缩，该系数通过基础估计的三维矩阵的值以及噪声强度得出。这一过程同样可以用一个公式来表达：</p>
+<p>$$ 
+Q(P) = T_{3Dwein}^{ - 1}(w_p \cdot {T_{3Dwein}}(Q(P))).
+$$ <br>在这个公式中，二维变换和一维变换用一个T3Dwein来表示。wp是一个维纳滤波的系数：</p>
+<p>$$ 
+{w_p}(\xi ) = {{{{\left| {\tau _{3D}^{wien}({Q^{basic}}(P))(\xi )} \right|}^2}} \over {{{\left| {\tau _{3D}^{wien}({Q^{basic}}(P))(\xi )} \right|}^2} + {\sigma ^2}}}
+$$ <br>σ是噪声的标准差，代表噪声的强度。</p>
+<p>(3) Aggregation：与第一步中一样，这里也是将这些块融合到原来的位置，只是此时加权的权重取决于维纳滤波的系数和噪声强度。</p>
+<p>经过最终估计之后，BM3D算法已经将原图的噪声显著地去除。可以来看一组结果：</p>
+<p><img src="/blogs/深度学习-图像降噪-NL-Means和BM3D/cinput.jpg" alt="img" style="zoom:67%;"><img src="/blogs/深度学习-图像降噪-NL-Means和BM3D/cnoisy.jpg" alt="img" style="zoom:67%;"><img src="/blogs/深度学习-图像降噪-NL-Means和BM3D/denoised_bm3d.jpg" alt="img" style="zoom:67%;"></p>
+<p>该算法的主要运算量还是在相似块的搜索与匹配上，在与NL-Means同样大小的相似块和搜索区域的情况下，BM3D的算法复杂度是要高于NL-Means的，应该大概在NL-Means的3倍左右。梦想着实时处理的同学可以死心了。</p>
+<h2 id="算法比较"><a href="#算法比较" class="headerlink" title="算法比较"></a>算法比较</h2><p>要比较算法效果，必然离不开评价体系。由于人带有主观因素，每个人的评价可能都不一样，因此有必要用几种客观的评价方法来对结果进行评价。目前，用得比较多的评价方式是<strong>MSE</strong>(Mean-Squared Error，均方误差)和<strong>PSNR</strong>(Peak Signal-to-Noise Ratio，峰值信噪比)。</p>
+<p>两幅M×NM×N大小的图像u(x,y)和v(x,y)的MSE计算公式如下：</p>
+<p>$$ 
+{e_{MSE}} = {1 \over {MN}}\sum\limits_{n = 1}^N {\sum\limits_{m = 1}^M {{{[u(n,m) - v(n,m)]}^2}} } .
+$$ <br>在这个公式里没有表现出像素值范围对结果的影响，同样的均方误差8-bit的图像和12-bit的图像显然没有可比性。因此，又引入了峰值信噪比：</p>
+<p>$$ 
+PSNR =  - 10{\log _{10}}{{{e_{MSE}}} \over {{s^2}}}.
+$$ <br>上式中，s 是图像像素最大值，对于8-bit的图像而言 s=255，PSNR的单位是分贝(dB)。 通常 PSNR 值越高表示品质越好，一般而言，当 PSNR<30db 时，代表以人的肉眼看起来是不能容忍的范围。因此大部分psnr值都要>30dB。但PSNR高，并不代表图像质量一定好，有时候还是必须要靠人的肉眼去辅助判断图像的质量才较为正确。</30db></p>
+<p><img src="/blogs/深度学习-图像降噪-NL-Means和BM3D/psnr.gif" alt="img"><br>                                                                                  <strong>不同PSNR对应的视觉效果</strong></p>
+<p>我对上面两种方法获得的结果针对原图计算了PSNR，结果如下：</p>
+<p>两个算法的PSNR比较</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">NL-MEANS</th>
+<th style="text-align:center">BM3D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">PSNR</td>
+<td style="text-align:center">32.0913</td>
+<td style="text-align:center">33.6711</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>NL-Means和BM3D可以说是目前效果最好的去噪算法，其中BM3D甚至宣称它可以得到迄今为止最高的PSNR。从最终的结果也可以看出来，BM3D的效果确实要好于NL-Means，噪声更少，能够更好地恢复出图像的细节。在效果这一点上BM3D胜。无愧于State-of-the-art这一称号。当然，这里进行测试的样本比较少，可能还不足以完全说明问题。</p>
+<h2 id="最后说几句"><a href="#最后说几句" class="headerlink" title="最后说几句"></a>最后说几句</h2><p>这两者可以说是目前最有效的图像去噪算法了，但是都不可避免地要面对一个同问题：尽管计算机性能已经成百上千倍地提高，还是远不能满足很多算法的实时计算的需求，这很大程度上限制了这些算法的使用范围：用户无法处理一张照片需要等待长达几分钟的时间，因此，距离真正意义上的实用还是有一段距离。我们只能期待，要是有一天计算机性能不再是问题，又或者，大牛们能够研究出又快又好的算法吧。</p>
+<h2 id="BM3D程序"><a href="#BM3D程序" class="headerlink" title="BM3D程序"></a>BM3D程序</h2><p>感谢大佬写了Python版，还整理了其他版本，<a href="https://github.com/Ryanshuai/BM3D_py" target="_blank" rel="noopener">https://github.com/Ryanshuai/BM3D_py</a></p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] Buades A, Coll B, Morel J M. A non-local algorithm for image denoising[C]//Computer Vision and Pattern Recognition, 2005. CVPR 2005. IEEE Computer Society Conference on. IEEE, 2005, 2: 60-65.</p>
+<p>[2] Buades A, Coll B, Morel J M. Nonlocal image and movie denoising[J]. International journal of computer vision, 2008, 76(2): 123-139.</p>
+<p>[3] Antoni Buades, Bartomeu Coll, and Jean-Michel Morel, Non-Local Means Denoising, Image Processing On Line, 1 (2011). <a href="http://dx.doi.org/10.5201/ipol.2011.bcm_nlm" target="_blank" rel="noopener">http://dx.doi.org/10.5201/ipol.2011.bcm_nlm</a></p>
+<p>[4] Jacques Froment, Parameter-Free Fast Pixelwise Non-Local Means Denoising, Image Processing On Line, 4 (2014), pp. 300–326. <a href="http://dx.doi.org/10.5201/ipol.2014.120" target="_blank" rel="noopener">http://dx.doi.org/10.5201/ipol.2014.120</a></p>
+<p>[5] Dabov K, Foi A, Katkovnik V, et al. Image denoising by sparse 3-D transform-domain collaborative filtering[J]. Image Processing, IEEE Transactions on, 2007, 16(8): 2080-2095.</p>
+<p>[6] <a href="http://www.cs.tut.fi/~foi/GCF-BM3D/" target="_blank" rel="noopener">http://www.cs.tut.fi/~foi/GCF-BM3D/</a></p>
+<p>[7] Marc Lebrun, An Analysis and Implementation of the BM3D Image Denoising Method, Image Processing On Line, 2 (2012), pp. 175–213. <a href="http://dx.doi.org/10.5201/ipol.2012.l-bm3d" target="_blank" rel="noopener">http://dx.doi.org/10.5201/ipol.2012.l-bm3d</a></p>
+<p>[8] <a href="http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/VELDHUIZEN/node18.html" target="_blank" rel="noopener">Measures of image quality</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+          
+            <a href="/tags/Computer-Vision/" rel="tag"># Computer Vision</a>
+          
+            <a href="/tags/Image-Denoise/" rel="tag"># Image Denoise</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blogs/深度学习-图像降噪-Noise2Noise/" rel="next" title="深度学习-图像降噪-Noise2Noise">
+                <i class="fa fa-chevron-left"></i> 深度学习-图像降噪-Noise2Noise
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blogs/Few-shot-Learning-and-Meta-Learning/" rel="prev" title="Few-shot Learning and Meta-Learning">
+                Few-shot Learning and Meta-Learning <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/myshow.jpg" alt="Jiageng Wu">
+            
+              <p class="site-author-name" itemprop="name">Jiageng Wu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+          
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=28578763&auto=1&height=66"></iframe>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">86</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Dragon-Wu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wujg1995@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.cnblogs.com/Dragon5/" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#噪声模型"><span class="nav-number">1.</span> <span class="nav-text">噪声模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NL-Means"><span class="nav-number">2.</span> <span class="nav-text">NL-Means</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM3D"><span class="nav-number">3.</span> <span class="nav-text">BM3D</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Step1-基础估计"><span class="nav-number">3.1.</span> <span class="nav-text">Step1 基础估计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step2-最终估计"><span class="nav-number">3.2.</span> <span class="nav-text">step2 最终估计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法比较"><span class="nav-number">4.</span> <span class="nav-text">算法比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后说几句"><span class="nav-number">5.</span> <span class="nav-text">最后说几句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM3D程序"><span class="nav-number">6.</span> <span class="nav-text">BM3D程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">7.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiageng Wu</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+-->
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共127.6k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail',];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'EFyLhOmCcSb9ran5dwR9SJv1-gzGzoHsz',
+        appKey: 'YVWtqErBb4qla50r8QFJ9NMV',
+        placeholder: 'Just go go',
+        avatar:'robohash',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 24053,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

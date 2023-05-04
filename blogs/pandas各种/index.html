@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+<script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("https://dragon-wu.github.io/");
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "e3b38aa8"
+    });
+  daovoice('update');
+  </script>
+
+
+
+  <meta name="msvalidate.01" content="b8759997e06919ab4d5bc4180303f7b7.jgwu.top">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/myblue.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/myblue.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/myblue.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/myblue.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Machine Learning,Library of ML,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="关于常用的pandas库的部分说明">
+<meta name="keywords" content="Machine Learning,Library of ML">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pandas各种">
+<meta property="og:url" content="http://jgwu.top/blogs/pandas各种/index.html">
+<meta property="og:site_name" content="一个地方">
+<meta property="og:description" content="关于常用的pandas库的部分说明">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://jgwu.top/blogs/pandas各种/TIM截图20190116203449.png">
+<meta property="og:image" content="http://jgwu.top/blogs/pandas各种/TIM截图20190116203539.png">
+<meta property="og:image" content="http://jgwu.top/blogs/pandas各种/image-20210920151447036.png">
+<meta property="og:image" content="http://jgwu.top/blogs/pandas各种/1292198-20190910144351891-1893398292.png">
+<meta property="og:image" content="http://jgwu.top/blogs/pandas各种/1292198-20190910145157603-1420511623.png">
+<meta property="og:image" content="http://jgwu.top/blogs/pandas各种/v2-8eb9d966c911eb5cc7666e711168f22a_720w.jpg">
+<meta property="og:updated_time" content="2022-03-06T14:08:59.678Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="pandas各种">
+<meta name="twitter:description" content="关于常用的pandas库的部分说明">
+<meta name="twitter:image" content="http://jgwu.top/blogs/pandas各种/TIM截图20190116203449.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://jgwu.top/blogs/pandas各种/">
+
+
+
+
+
+  <title>pandas各种 | 一个地方</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?08bb4fc5c3d2998285280a0eabfdca3b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<link rel="alternate" href="/atom.xml" title="一个地方" type="application/atom+xml">
+</head>
+
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一个地方</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Wu's Blog</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jgwu.top/blogs/pandas各种/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiageng Wu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/myshow.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个地方">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">pandas各种</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-16T20:32:22+08:00">
+                2019-01-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/" itemprop="url" rel="index">
+                    <span itemprop="name">CS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/blogs/pandas各种/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/blogs/pandas各种/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>  阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>关于常用的pandas库的部分说明</p>
+<a id="more"></a>
+<h3 id="iloc和loc"><a href="#iloc和loc" class="headerlink" title="iloc和loc"></a>iloc和loc</h3><p>.iloc：根据标签的所在位置，从0开始计数，选取列；[index1,index2]，前者是列，后者是行的范围</p>
+<p>loc：根据DataFrame的具体标签选取列</p>
+<p><img src="/blogs/pandas各种/TIM截图20190116203449.png" alt="TIM截图20190116203449"></p>
+<p><img src="/blogs/pandas各种/TIM截图20190116203539.png" alt="TIM截图20190116203539"></p>
+<h3 id="读取excel"><a href="#读取excel" class="headerlink" title="读取excel"></a>读取excel</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pd.read_excel(io, sheet_name=<span class="number">0</span>, header=<span class="number">0</span>, names=<span class="literal">None</span>, index_col=<span class="literal">None</span>, </span><br><span class="line">              usecols=<span class="literal">None</span>, squeeze=<span class="literal">False</span>,dtype=<span class="literal">None</span>, engine=<span class="literal">None</span>, </span><br><span class="line">              converters=<span class="literal">None</span>, true_values=<span class="literal">None</span>, false_values=<span class="literal">None</span>, </span><br><span class="line">              skiprows=<span class="literal">None</span>, nrows=<span class="literal">None</span>, na_values=<span class="literal">None</span>, parse_dates=<span class="literal">False</span>, </span><br><span class="line">              date_parser=<span class="literal">None</span>, thousands=<span class="literal">None</span>, comment=<span class="literal">None</span>, skipfooter=<span class="number">0</span>, </span><br><span class="line">              convert_float=<span class="literal">True</span>, **kwds)</span><br></pre></td></tr></table></figure>
+<p><a href="https://blog.csdn.net/weixin_38546295/article/details/83537558" target="_blank" rel="noopener">https://blog.csdn.net/weixin_38546295/article/details/83537558</a></p>
+<h3 id="Dataframes合并"><a href="#Dataframes合并" class="headerlink" title="Dataframes合并"></a>Dataframes合并</h3><p><a href="https://www.cnblogs.com/guxh/p/9451532.html" target="_blank" rel="noopener">pandas dataframe的合并（append, merge, concat）</a></p>
+<h3 id="DataFrame结构——行列索引-DataFrame-1-：DataFrame结构的详细介绍"><a href="#DataFrame结构——行列索引-DataFrame-1-：DataFrame结构的详细介绍" class="headerlink" title="DataFrame结构——行列索引 DataFrame(1)：DataFrame结构的详细介绍"></a>DataFrame结构——行列索引 <a href="https://www.cnblogs.com/math98/p/13591298.html" target="_blank" rel="noopener">DataFrame(1)：DataFrame结构的详细介绍</a></h3><p><a href="https://blog.csdn.net/weixin_34675395/article/details/112223861" target="_blank" rel="noopener">pandas中如何选取某几列_【python】pandas中 loc &amp; iloc用法及区别</a></p>
+<h3 id="pandas取dataframe特定行-列"><a href="#pandas取dataframe特定行-列" class="headerlink" title="pandas取dataframe特定行/列"></a><a href="https://www.cnblogs.com/nxf-rabbit75/p/10105271.html" target="_blank" rel="noopener">pandas取dataframe特定行/列</a></h3><h3 id="pandas-数据的合并与拼接"><a href="#pandas-数据的合并与拼接" class="headerlink" title="pandas-数据的合并与拼接"></a><a href="https://www.cnblogs.com/keye/p/10791705.html" target="_blank" rel="noopener">pandas-数据的合并与拼接</a></h3><h3 id="pandas-apply"><a href="#pandas-apply" class="headerlink" title="pandas apply"></a><strong>pandas apply</strong></h3><p><a href="https://blog.csdn.net/stone0823/article/details/100008619" target="_blank" rel="noopener">https://blog.csdn.net/stone0823/article/details/100008619</a></p>
+<h3 id="Index"><a href="#Index" class="headerlink" title="Index"></a>Index</h3><p>如何在pandas中使用set_index( )与reset_index( )设置索引 - 侦探L的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/110819220" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/110819220</a></p>
+<h3 id="Groupby"><a href="#Groupby" class="headerlink" title="Groupby"></a>Groupby</h3><p>Pandas教程 | 超好用的Groupby用法详解 - 易执的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/101284491" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/101284491</a></p>
+<h3 id="数据集划分——交叉验证迭代器"><a href="#数据集划分——交叉验证迭代器" class="headerlink" title="数据集划分——交叉验证迭代器"></a>数据集划分——交叉验证迭代器</h3><p>3.1.2. 交叉验证迭代器 <a href="https://sklearn.apachecn.org/docs/master/30.html" target="_blank" rel="noopener">https://sklearn.apachecn.org/docs/master/30.html</a> </p>
+<p>ShuffleSplit，随机划分，参数包括划分的次数，以及训练集、测试集的比例参数</p>
+<p>KFold，分为n折，K-1折训练，1折测试</p>
+<p>StratifiedKFold，分层KFold，保证各类的比例</p>
+<p>RepeatedStratifiedKFold，重复多次StratifiedKFold</p>
+<p>Scikit-learn的K-fold交叉验证类ShuffleSplit、GroupShuffleSplit用法介绍 <a href="https://blog.csdn.net/hurry0808/article/details/80797969" target="_blank" rel="noopener">https://blog.csdn.net/hurry0808/article/details/80797969</a> </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> ShuffleSplit</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>n_samples = iris.data.shape[<span class="number">0</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>cv = ShuffleSplit(n_splits=<span class="number">5</span>, test_size=<span class="number">0.3</span>, random_state=<span class="number">0</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>cross_val_score(clf, iris.data, iris.target, cv=cv)  </span><br><span class="line">array([<span class="number">0.977</span>..., <span class="number">0.977</span>..., <span class="number">1.</span>  ..., <span class="number">0.955</span>..., <span class="number">1.</span>        ])</span><br></pre></td></tr></table></figure>
+<h3 id="计算交叉验证的指标"><a href="#计算交叉验证的指标" class="headerlink" title="计算交叉验证的指标"></a>计算交叉验证的指标</h3><h5 id="cross-val-score"><a href="#cross-val-score" class="headerlink" title="cross_val_score"></a>cross_val_score</h5><p>使用交叉验证最简单的方法是在估计器和数据集上调用 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_score.html#sklearn.model_selection.cross_val_score" target="_blank" rel="noopener"><code>cross_val_score</code></a> 辅助函数。</p>
+<p>下面的示例展示了如何通过分割数据，拟合模型和计算连续 5 次的分数（每次不同分割）来估计 linear kernel 支持向量机在 iris 数据集上的精度:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>clf = svm.SVC(kernel=<span class="string">'linear'</span>, C=<span class="number">1</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>scores = cross_val_score(clf, iris.data, iris.target, cv=<span class="number">5</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>scores                                              </span><br><span class="line">array([<span class="number">0.96</span>..., <span class="number">1.</span>  ..., <span class="number">0.96</span>..., <span class="number">0.96</span>..., <span class="number">1.</span>        ])Copy</span><br></pre></td></tr></table></figure>
+<p>评分估计的平均得分和 95% 置信区间由此给出:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">"Accuracy: %0.2f (+/- %0.2f)"</span> % (scores.mean(), scores.std() * <span class="number">2</span>))</span><br><span class="line">Accuracy: <span class="number">0.98</span> (+/- <span class="number">0.03</span>)Copy</span><br></pre></td></tr></table></figure>
+<p>默认情况下，每个 CV 迭代计算的分数是估计器的 <code>score</code> 方法。可以通过使用 scoring 参数来改变计算方式如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn <span class="keyword">import</span> metrics</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>scores = cross_val_score(</span><br><span class="line"><span class="meta">... </span>    clf, iris.data, iris.target, cv=<span class="number">5</span>, scoring=<span class="string">'f1_macro'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>scores                                              </span><br><span class="line">array([<span class="number">0.96</span>..., <span class="number">1.</span>  ..., <span class="number">0.96</span>..., <span class="number">0.96</span>..., <span class="number">1.</span>        ])Copy</span><br></pre></td></tr></table></figure>
+<p>详情请参阅 <a href="https://sklearn.apachecn.org/docs/master/33" target="_blank" rel="noopener">scoring 参数: 定义模型评估规则</a> 。 在 Iris 数据集的情形下，样本在各个目标类别之间是平衡的，因此准确度和 F1-score 几乎相等。</p>
+<p>当 <code>cv</code> 参数是一个整数时， <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_score.html#sklearn.model_selection.cross_val_score" target="_blank" rel="noopener"><code>cross_val_score</code></a> 默认使用 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html#sklearn.model_selection.KFold" target="_blank" rel="noopener"><code>KFold</code></a> 或 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.StratifiedKFold.html#sklearn.model_selection.StratifiedKFold" target="_blank" rel="noopener"><code>StratifiedKFold</code></a> 策略，后者会在估计器派生自 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.base.ClassifierMixin.html#sklearn.base.ClassifierMixin" target="_blank" rel="noopener"><code>ClassifierMixin</code></a> 时使用。</p>
+<p>也可以通过传入一个交叉验证迭代器来使用其他交叉验证策略，比如:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> ShuffleSplit</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>n_samples = iris.data.shape[<span class="number">0</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>cv = ShuffleSplit(n_splits=<span class="number">5</span>, test_size=<span class="number">0.3</span>, random_state=<span class="number">0</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>cross_val_score(clf, iris.data, iris.target, cv=cv)  </span><br><span class="line">array([<span class="number">0.977</span>..., <span class="number">0.977</span>..., <span class="number">1.</span>  ..., <span class="number">0.955</span>..., <span class="number">1.</span>        ])Copy</span><br></pre></td></tr></table></figure>
+<p>另外一种可选方案是使用一个可迭代生成器作为索引数组产生(train, test) 划分，比如:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">custom_cv_2folds</span><span class="params">(X)</span>:</span></span><br><span class="line"><span class="meta">... </span>    n = X.shape[<span class="number">0</span>]</span><br><span class="line"><span class="meta">... </span>    i = <span class="number">1</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">while</span> i &lt;= <span class="number">2</span>:</span><br><span class="line"><span class="meta">... </span>        idx = np.arange(n * (i - <span class="number">1</span>) / <span class="number">2</span>, n * i / <span class="number">2</span>, dtype=int)</span><br><span class="line"><span class="meta">... </span>        <span class="keyword">yield</span> idx, idx</span><br><span class="line"><span class="meta">... </span>        i += <span class="number">1</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>custom_cv = custom_cv_2folds(iris.data)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>cross_val_score(clf, iris.data, iris.target, cv=custom_cv)</span><br><span class="line">array([<span class="number">1.</span>        , <span class="number">0.973</span>...])Copy</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>保留数据的数据转换</strong></p>
+<p>正如在训练集中保留的数据上测试一个 predictor （预测器）是很重要的一样，预处理（如标准化，特征选择等）和类似的 <a href="https://sklearn.apachecn.org/docs/data_transforms.html#data-transforms" target="_blank" rel="noopener">data transformations</a> 也应该从训练集中学习，并应用于预测数据以进行预测:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt; &gt;&gt; <span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</span><br><span class="line">&gt; &gt;&gt; X_train, X_test, y_train, y_test = train_test_split(</span><br><span class="line">&gt; ...     iris.data, iris.target, test_size=<span class="number">0.4</span>, random_state=<span class="number">0</span>)</span><br><span class="line">&gt; &gt;&gt; scaler = preprocessing.StandardScaler().fit(X_train)</span><br><span class="line">&gt; &gt;&gt; X_train_transformed = scaler.transform(X_train)</span><br><span class="line">&gt; &gt;&gt; clf = svm.SVC(C=<span class="number">1</span>).fit(X_train_transformed, y_train)</span><br><span class="line">&gt; &gt;&gt; X_test_transformed = scaler.transform(X_test)</span><br><span class="line">&gt; &gt;&gt; clf.score(X_test_transformed, y_test)  </span><br><span class="line">&gt; <span class="number">0.9333</span>...Copy</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p><a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" target="_blank" rel="noopener"><code>Pipeline</code></a> 可以更容易地组合估计器，在交叉验证下使用如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; &gt;&gt; <span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> make_pipeline</span><br><span class="line">&gt; &gt;&gt; clf = make_pipeline(preprocessing.StandardScaler(), svm.SVC(C=<span class="number">1</span>))</span><br><span class="line">&gt; &gt;&gt; cross_val_score(clf, iris.data, iris.target, cv=cv)</span><br><span class="line">&gt; ...                                                 </span><br><span class="line">&gt; array([ <span class="number">0.97</span>...,  <span class="number">0.93</span>...,  <span class="number">0.95</span>...])Copy</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>可以参阅 <a href="https://sklearn.apachecn.org/docs/master/doc/36" target="_blank" rel="noopener">Pipeline（管道）和 FeatureUnion（特征联合）: 合并的评估器</a>.</p>
+</blockquote>
+<h5 id="cross-validate-函数和多度量评估"><a href="#cross-validate-函数和多度量评估" class="headerlink" title="cross_validate 函数和多度量评估"></a>cross_validate 函数和多度量评估</h5><p><code>cross_validate</code> 函数与 <code>cross_val_score</code> 在下面的两个方面有些不同 -</p>
+<ul>
+<li>它允许指定多个指标进行评估.</li>
+<li>除了测试得分之外，它还会返回一个包含训练得分，拟合次数， score-times （得分次数）的一个字典。 It returns a dict containing training scores, fit-times and score-times in addition to the test score.</li>
+</ul>
+<p>对于单个度量评估，其中 scoring 参数是一个字符串，可以调用或 None ， keys 将是 - <code>[&#39;test_score&#39;, &#39;fit_time&#39;, &#39;score_time&#39;]</code></p>
+<p>而对于多度量评估，返回值是一个带有以下的 keys 的字典 - <code>[&#39;test_&lt;scorer1_name&gt;&#39;, &#39;test_&lt;scorer2_name&gt;&#39;, &#39;test_&lt;scorer...&gt;&#39;, &#39;fit_time&#39;, &#39;score_time&#39;]</code></p>
+<p><code>return_train_score</code> 默认设置为 <code>True</code> 。 它增加了所有 scorers(得分器) 的训练得分 keys 。如果不需要训练 scores ，则应将其明确设置为 <code>False</code> 。</p>
+<p>你还可以通过设置<code>return_estimator=True</code>来保留在所有训练集上拟合好的估计器。</p>
+<p>可以将多个测度指标指定为list，tuple或者是预定义评分器(predefined scorer)的名字的集合</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_validate</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> recall_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>scoring = [<span class="string">'precision_macro'</span>, <span class="string">'recall_macro'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>clf = svm.SVC(kernel=<span class="string">'linear'</span>, C=<span class="number">1</span>, random_state=<span class="number">0</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>scores = cross_validate(clf, iris.data, iris.target, scoring=scoring,</span><br><span class="line"><span class="meta">... </span>                        cv=<span class="number">5</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sorted(scores.keys())</span><br><span class="line">[<span class="string">'fit_time'</span>, <span class="string">'score_time'</span>, <span class="string">'test_precision_macro'</span>, <span class="string">'test_recall_macro'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>scores[<span class="string">'test_recall_macro'</span>]                       </span><br><span class="line">array([<span class="number">0.96</span>..., <span class="number">1.</span>  ..., <span class="number">0.96</span>..., <span class="number">0.96</span>..., <span class="number">1.</span>        ])Copy</span><br></pre></td></tr></table></figure>
+<p>或作为一个字典 mapping 得分器名称预定义或自定义的得分函数:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics.scorer <span class="keyword">import</span> make_scorer</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>scoring = &#123;<span class="string">'prec_macro'</span>: <span class="string">'precision_macro'</span>,</span><br><span class="line"><span class="meta">... </span>           <span class="string">'rec_macro'</span>: make_scorer(recall_score, average=<span class="string">'macro'</span>)&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>scores = cross_validate(clf, iris.data, iris.target, scoring=scoring,</span><br><span class="line"><span class="meta">... </span>                        cv=<span class="number">5</span>, return_train_score=<span class="literal">True</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sorted(scores.keys())                 </span><br><span class="line">[<span class="string">'fit_time'</span>, <span class="string">'score_time'</span>, <span class="string">'test_prec_macro'</span>, <span class="string">'test_rec_macro'</span>,</span><br><span class="line"> <span class="string">'train_prec_macro'</span>, <span class="string">'train_rec_macro'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>scores[<span class="string">'train_rec_macro'</span>]                         </span><br><span class="line">array([<span class="number">0.97</span>..., <span class="number">0.97</span>..., <span class="number">0.99</span>..., <span class="number">0.98</span>..., <span class="number">0.98</span>...])Copy</span><br></pre></td></tr></table></figure>
+<p>这里是一个使用单一指标的 <code>cross_validate</code> 的示例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>scores = cross_validate(clf, iris.data, iris.target,</span><br><span class="line"><span class="meta">... </span>                        scoring=<span class="string">'precision_macro'</span>, cv=<span class="number">5</span>,</span><br><span class="line"><span class="meta">... </span>                        return_estimator=<span class="literal">True</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sorted(scores.keys())</span><br><span class="line">[<span class="string">'estimator'</span>, <span class="string">'fit_time'</span>, <span class="string">'score_time'</span>, <span class="string">'test_score'</span>]</span><br></pre></td></tr></table></figure>
+<h3 id="GridSearchCV"><a href="#GridSearchCV" class="headerlink" title="GridSearchCV"></a>GridSearchCV</h3><p>官方手册 <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV" target="_blank" rel="noopener">https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV</a></p>
+<p>cross_validate和GridSearchCV  <a href="https://blog.csdn.net/weixin_41712499/article/details/82882542" target="_blank" rel="noopener">https://blog.csdn.net/weixin_41712499/article/details/82882542</a></p>
+<p><a href="https://blog.csdn.net/weixin_41988628/article/details/83098130" target="_blank" rel="noopener">机器学习（四）——模型调参利器 gridSearchCV（网格搜索）</a></p>
+<h3 id="Scorings性能指标评价"><a href="#Scorings性能指标评价" class="headerlink" title="Scorings性能指标评价"></a>Scorings性能指标评价</h3><p>官方手册：<a href="https://scikit-learn.org/stable/modules/model_evaluation.html#scoring-parameter" target="_blank" rel="noopener">https://scikit-learn.org/stable/modules/model_evaluation.html#scoring-parameter</a></p>
+<p>3.3.1预定义的Scorings，3.3.2计算的函数</p>
+<p><img src="/blogs/pandas各种/image-20210920151447036.png" alt="image-20210920151447036"></p>
+<h4 id="各类性能指标详解"><a href="#各类性能指标详解" class="headerlink" title="各类性能指标详解"></a>各类性能指标详解</h4><h4 id="基础指标"><a href="#基础指标" class="headerlink" title="基础指标"></a>基础指标</h4><p>正确率accuracy，tp+tn / all</p>
+<p>​    balanced_accuracy，（recall+sensitivity）/ 2 ，详见</p>
+<p>​    <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html#sklearn.metrics.balanced_accuracy_score" target="_blank" rel="noopener">sklearn.metrics.balanced_accuracy_score</a>，以及，<a href="https://blog.csdn.net/shiyuzuxiaqianli/article/details/99706843" target="_blank" rel="noopener">评价指标 balanced accuracy</a></p>
+<p>差准率precision，tp / tp+fp</p>
+<p>​    平均精确度average_precision_score，绘制PR曲线（precision-recall），计算不同的precision取均值，还有mAP，多分类时各个类最后的平均AP</p>
+<p>召回率recall，敏感性sensitivity，查全率，tp / tp+fn</p>
+<p>特异性specify，tn / tn+fp</p>
+<h4 id="F1"><a href="#F1" class="headerlink" title="F1"></a>F1</h4><p>f1，2xPxR / P+R，关于F1的各类变种，可见：</p>
+<p>思想和实例：<a href="https://blog.csdn.net/pengouin/article/details/110878216" target="_blank" rel="noopener">多类别分类中Micro-averaging与Macro-averaging的区别</a></p>
+<p>具体的实例：<a href="https://www.cnblogs.com/nana-zhang/p/11496496.html" target="_blank" rel="noopener">多分类的评价指标PRF（Macro-F1/MicroF1/weighted）详解</a></p>
+<p>以F1为例，但是precision之类的也存在，如</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> precision_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_true = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_pred = [<span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>precision_score(y_true, y_pred, average=<span class="string">'macro'</span>)</span><br><span class="line"><span class="number">0.22</span>...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>precision_score(y_true, y_pred, average=<span class="string">'micro'</span>)</span><br><span class="line"><span class="number">0.33</span>...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>precision_score(y_true, y_pred, average=<span class="string">'weighted'</span>)</span><br><span class="line"><span class="number">0.22</span>...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>precision_score(y_true, y_pred, average=<span class="literal">None</span>)</span><br><span class="line">array([<span class="number">0.66</span>..., <span class="number">0.</span>        , <span class="number">0.</span>        ])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_pred = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>precision_score(y_true, y_pred, average=<span class="literal">None</span>)</span><br><span class="line">array([<span class="number">0.33</span>..., <span class="number">0.</span>        , <span class="number">0.</span>        ])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>precision_score(y_true, y_pred, average=<span class="literal">None</span>, zero_division=<span class="number">1</span>)</span><br><span class="line">array([<span class="number">0.33</span>..., <span class="number">1.</span>        , <span class="number">1.</span>        ])</span><br></pre></td></tr></table></figure>
+<h5 id="f1-micro，微平均，micro-average"><a href="#f1-micro，微平均，micro-average" class="headerlink" title="f1_micro，微平均，micro-average"></a>f1_micro，微平均，micro-average</h5><p> “Micro”是通过先计算总体的TP, FP和FN的数量，然后计算PRF。即先将多个混淆矩阵的TP,FP,TN,FN对应的位置求平均，然后按照PRF值公式及逆行计算</p>
+<p><img src="/blogs/pandas各种/1292198-20190910144351891-1893398292.png" alt="img"></p>
+<p>计算所有类别的汇总混淆矩阵，计算相应指标</p>
+<h5 id="f1-macro，宏平均，macro-average"><a href="#f1-macro，宏平均，macro-average" class="headerlink" title="f1_macro，宏平均，macro-average"></a>f1_macro，宏平均，macro-average</h5><p> “Macro”是分别计算每个类别的PRF，然后分别求平均得到PRF。即对多个混淆矩阵求PRF，然后求PRF的算术平均。公式如下：</p>
+<p><img src="/blogs/pandas各种/1292198-20190910145157603-1420511623.png" alt="img"></p>
+<p>计算每一个类别相应的混淆矩阵后，计算相应指标，再取平均</p>
+<h5 id="f1-weighted"><a href="#f1-weighted" class="headerlink" title="f1_weighted"></a>f1_weighted</h5><p>计算每一个类别相应的混淆矩阵后，计算相应指标，再以类别比重加权求平均</p>
+<h5 id="f1-sampled"><a href="#f1-sampled" class="headerlink" title="f1_sampled"></a>f1_sampled</h5><p>当样本不均衡时，比如本文举出的样本，中间的0占80%，1和-1各占10%，每个类数量差距很大，我们可以选择加入sample_weight来调整我们的样本。</p>
+<p>首先我们使用sklearn里的compute_sample_weight函数来计算sample_weight：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sw = compute_sample_weight(class_weight=&apos;balanced&apos;,y=y_true)</span><br></pre></td></tr></table></figure>
+<p>sw是一个和y<em>true的shape相同的数据，每一个数代表该样本所在的sample_weight。</em>它的具体计算方法是总样本数/（类数<em>每个类的个数），比如一个值为-1的样本，它的sample_weight就是300 / (3 </em> 30)。</p>
+<p>使用sample_weight计算出的混淆矩阵如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; cm =confusion_matrix(y_true, y_pred, sample_weight=sw)</span><br><span class="line">&gt;&gt;&gt; cm</span><br><span class="line">array([[33.33333333, 33.33333333, 33.33333333],</span><br><span class="line">       [16.66666667, 66.66666667, 16.66666667],</span><br><span class="line">       [16.66666667, 16.66666667, 66.66666667]])</span><br></pre></td></tr></table></figure>
+<p>由该混淆矩阵可以得到TP、FN、FP:</p>
+<p><img src="/blogs/pandas各种/v2-8eb9d966c911eb5cc7666e711168f22a_720w.jpg" alt="img"></p>
+<p>（详解sklearn的多分类模型评价指标 - 侯处然的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/59862986" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/59862986</a> ）</p>
+<h3 id="时间序列数据"><a href="#时间序列数据" class="headerlink" title="时间序列数据"></a>时间序列数据</h3><p>判断时间间隔</p>
+<p><a href="https://blog.csdn.net/fangbbbbbb/article/details/100535401" target="_blank" rel="noopener">在pandas里pd.Timedelta的简单介绍及使用方法</a></p>
+<p>获取相应的年、月、日</p>
+<p><a href="https://www.jb51.net/article/206016.htm" target="_blank" rel="noopener">pandas 按日期范围筛选数据的实现</a></p>
+<p>Python3 pandas库(25) 时间日期高效操作 .dt. - 曹骥的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/31490318" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/31490318</a></p>
+<h3 id="分箱-pd-cut"><a href="#分箱-pd-cut" class="headerlink" title="分箱 pd.cut"></a>分箱 pd.cut</h3><p>数据分箱之pd.cut() - 敲来敲去的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/143589729" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/143589729</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+          
+            <a href="/tags/Library-of-ML/" rel="tag"># Library of ML</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blogs/归一化、标准化、中心化/" rel="next" title="归一化、标准化、中心化">
+                <i class="fa fa-chevron-left"></i> 归一化、标准化、中心化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blogs/sklearn各种/" rel="prev" title="sklearn各种">
+                sklearn各种 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/myshow.jpg" alt="Jiageng Wu">
+            
+              <p class="site-author-name" itemprop="name">Jiageng Wu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+          
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=28578763&auto=1&height=66"></iframe>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">86</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Dragon-Wu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wujg1995@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.cnblogs.com/Dragon5/" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#iloc和loc"><span class="nav-number">1.</span> <span class="nav-text">iloc和loc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读取excel"><span class="nav-number">2.</span> <span class="nav-text">读取excel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dataframes合并"><span class="nav-number">3.</span> <span class="nav-text">Dataframes合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DataFrame结构——行列索引-DataFrame-1-：DataFrame结构的详细介绍"><span class="nav-number">4.</span> <span class="nav-text">DataFrame结构——行列索引 DataFrame(1)：DataFrame结构的详细介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pandas取dataframe特定行-列"><span class="nav-number">5.</span> <span class="nav-text">pandas取dataframe特定行/列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pandas-数据的合并与拼接"><span class="nav-number">6.</span> <span class="nav-text">pandas-数据的合并与拼接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pandas-apply"><span class="nav-number">7.</span> <span class="nav-text">pandas apply</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Index"><span class="nav-number">8.</span> <span class="nav-text">Index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Groupby"><span class="nav-number">9.</span> <span class="nav-text">Groupby</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据集划分——交叉验证迭代器"><span class="nav-number">10.</span> <span class="nav-text">数据集划分——交叉验证迭代器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算交叉验证的指标"><span class="nav-number">11.</span> <span class="nav-text">计算交叉验证的指标</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#cross-val-score"><span class="nav-number">11.0.1.</span> <span class="nav-text">cross_val_score</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#cross-validate-函数和多度量评估"><span class="nav-number">11.0.2.</span> <span class="nav-text">cross_validate 函数和多度量评估</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#GridSearchCV"><span class="nav-number">12.</span> <span class="nav-text">GridSearchCV</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scorings性能指标评价"><span class="nav-number">13.</span> <span class="nav-text">Scorings性能指标评价</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#各类性能指标详解"><span class="nav-number">13.1.</span> <span class="nav-text">各类性能指标详解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基础指标"><span class="nav-number">13.2.</span> <span class="nav-text">基础指标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#F1"><span class="nav-number">13.3.</span> <span class="nav-text">F1</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#f1-micro，微平均，micro-average"><span class="nav-number">13.3.1.</span> <span class="nav-text">f1_micro，微平均，micro-average</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#f1-macro，宏平均，macro-average"><span class="nav-number">13.3.2.</span> <span class="nav-text">f1_macro，宏平均，macro-average</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#f1-weighted"><span class="nav-number">13.3.3.</span> <span class="nav-text">f1_weighted</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#f1-sampled"><span class="nav-number">13.3.4.</span> <span class="nav-text">f1_sampled</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时间序列数据"><span class="nav-number">14.</span> <span class="nav-text">时间序列数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分箱-pd-cut"><span class="nav-number">15.</span> <span class="nav-text">分箱 pd.cut</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiageng Wu</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+-->
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共127.6k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail',];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'EFyLhOmCcSb9ran5dwR9SJv1-gzGzoHsz',
+        appKey: 'YVWtqErBb4qla50r8QFJ9NMV',
+        placeholder: 'Just go go',
+        avatar:'robohash',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 24053,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

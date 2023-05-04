@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+<script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("https://dragon-wu.github.io/");
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "e3b38aa8"
+    });
+  daovoice('update');
+  </script>
+
+
+
+  <meta name="msvalidate.01" content="b8759997e06919ab4d5bc4180303f7b7.jgwu.top">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/myblue.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/myblue.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/myblue.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/myblue.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Machine Learning,Statistics,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="处理数据时，有时候需要观察数据分布，比如检验数据的正态性">
+<meta name="keywords" content="Machine Learning,Statistics">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何检验数据的正态性——-Check the normality of data">
+<meta property="og:url" content="http://jgwu.top/blogs/如何检验数据的正态性——-Check-the-normality-of-data/index.html">
+<meta property="og:site_name" content="一个地方">
+<meta property="og:description" content="处理数据时，有时候需要观察数据分布，比如检验数据的正态性">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://jgwu.top/blogs/如何检验数据的正态性——-Check-the-normality-of-data/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAxOTkzNTY=,size_16,color_FFFFFF,t_70.png">
+<meta property="og:image" content="http://jgwu.top/blogs/如何检验数据的正态性——-Check-the-normality-of-data/faedab64034f78f0a3eb3ceb76310a55b2191cc1.png">
+<meta property="og:image" content="http://jgwu.top/blogs/如何检验数据的正态性——-Check-the-normality-of-data/1719714-20191013214048185-1444993105.png">
+<meta property="og:image" content="http://jgwu.top/blogs/如何检验数据的正态性——-Check-the-normality-of-data/b151f8198618367ab0efdec521738bd4b31ce540.png">
+<meta property="og:image" content="http://jgwu.top/blogs/如何检验数据的正态性——-Check-the-normality-of-data/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAxOTkzNTY=,size_16,color_FFFFFF,t_70.png">
+<meta property="og:updated_time" content="2021-11-14T16:29:09.215Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何检验数据的正态性——-Check the normality of data">
+<meta name="twitter:description" content="处理数据时，有时候需要观察数据分布，比如检验数据的正态性">
+<meta name="twitter:image" content="http://jgwu.top/blogs/如何检验数据的正态性——-Check-the-normality-of-data/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAxOTkzNTY=,size_16,color_FFFFFF,t_70.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://jgwu.top/blogs/如何检验数据的正态性——-Check-the-normality-of-data/">
+
+
+
+
+
+  <title>如何检验数据的正态性——-Check the normality of data | 一个地方</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?08bb4fc5c3d2998285280a0eabfdca3b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<link rel="alternate" href="/atom.xml" title="一个地方" type="application/atom+xml">
+</head>
+
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一个地方</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Wu's Blog</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jgwu.top/blogs/如何检验数据的正态性——-Check-the-normality-of-data/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiageng Wu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/myshow.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个地方">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">如何检验数据的正态性——-Check the normality of data</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-11-14T23:57:21+08:00">
+                2021-11-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/" itemprop="url" rel="index">
+                    <span itemprop="name">CS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/blogs/如何检验数据的正态性——-Check-the-normality-of-data/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/blogs/如何检验数据的正态性——-Check-the-normality-of-data/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>  阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>处理数据时，有时候需要观察数据分布，比如检验数据的正态性</p>
+<a id="more"></a>
+<h3 id="图示法"><a href="#图示法" class="headerlink" title="图示法"></a>图示法</h3><h4 id="直方图"><a href="#直方图" class="headerlink" title="直方图"></a>直方图</h4><p>绘制数据直方图，直接观察趋势</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">s = pd.DataFrame(np.random.randn(<span class="number">1000</span>)+<span class="number">10</span>,columns = [<span class="string">'value'</span>])</span><br><span class="line">print(s.head())</span><br><span class="line"><span class="comment"># 创建随机数据</span></span><br><span class="line"></span><br><span class="line">fig = plt.figure(figsize = (<span class="number">10</span>,<span class="number">6</span>))</span><br><span class="line">ax1 = fig.add_subplot(<span class="number">2</span>,<span class="number">1</span>,<span class="number">1</span>)  <span class="comment"># 创建子图1</span></span><br><span class="line">ax1.scatter(s.index, s.values)</span><br><span class="line">plt.grid()</span><br><span class="line"><span class="comment"># 绘制数据分布图</span></span><br><span class="line"></span><br><span class="line">ax2 = fig.add_subplot(<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>)  <span class="comment"># 创建子图2</span></span><br><span class="line">s.hist(bins=<span class="number">30</span>,alpha = <span class="number">0.5</span>,ax = ax2)</span><br><span class="line">s.plot(kind = <span class="string">'kde'</span>, secondary_y=<span class="literal">True</span>,ax = ax2)</span><br><span class="line">plt.grid()</span><br><span class="line"><span class="comment"># 绘制直方图</span></span><br><span class="line"><span class="comment"># 呈现较明显的正态分布</span></span><br></pre></td></tr></table></figure>
+<p><img src="/blogs/如何检验数据的正态性——-Check-the-normality-of-data/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAxOTkzNTY=,size_16,color_FFFFFF,t_70.png" alt="img"></p>
+<h4 id="P-P图法"><a href="#P-P图法" class="headerlink" title="P-P图法"></a>P-P图法</h4><p>proportion-proportion plots</p>
+<p>以样本的累计频率（百分比）作为横坐标，以按照正态分布计算的相应累计频率为纵坐标，把样本值表现为直角坐标系中的散点，把样本值表现为直角坐标系中的散点</p>
+<p>如果资料服从正态分布，那样本点应该围绕着第一象限的对角线分布</p>
+<p><img src="/blogs/如何检验数据的正态性——-Check-the-normality-of-data/faedab64034f78f0a3eb3ceb76310a55b2191cc1.png" alt="img"></p>
+<p><img src="/blogs/如何检验数据的正态性——-Check-the-normality-of-data/1719714-20191013214048185-1444993105.png" alt="img"></p>
+<h4 id="Q-Q图"><a href="#Q-Q图" class="headerlink" title="Q-Q图"></a>Q-Q图</h4><p>quantile-quantile plots</p>
+<p>以样本的分位数（Px）作为横坐标，以按照正态分布计算的相应分位数作为纵坐标，把样本值表现为直角坐标系中的散点</p>
+<p>如果资料服从正态分布，那样本点应该围绕着第一象限的对角线分布</p>
+<p><img src="/blogs/如何检验数据的正态性——-Check-the-normality-of-data/b151f8198618367ab0efdec521738bd4b31ce540.png" alt="img"></p>
+<h3 id="统计检验法"><a href="#统计检验法" class="headerlink" title="统计检验法"></a>统计检验法</h3><h4 id="简单用法："><a href="#简单用法：" class="headerlink" title="简单用法："></a>简单用法：</h4><p>后面讲述具体，先来看看简单示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> stats</span><br><span class="line"> </span><br><span class="line">a = np.random.normal(<span class="number">0</span>,<span class="number">1</span>,<span class="number">50</span>)</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="string">'''输出结果中第一个为统计量，第二个为P值（统计量越接近1越表明数据和正态分布拟合的好，</span></span><br><span class="line"><span class="string">P值大于指定的显著性水平，接受原假设，认为样本来自服从正态分布的总体）'''</span></span><br><span class="line">print(stats.shapiro(a)) </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="string">'''输出结果中第一个为统计量，第二个为P值（注：统计量越接近0就越表明数据和标准正态分布拟合的越好，</span></span><br><span class="line"><span class="string">如果P值大于显著性水平，通常是0.05，接受原假设，则判断样本的总体服从正态分布）'''</span></span><br><span class="line">print(stats.kstest(a, <span class="string">'norm'</span>))  </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="string">'''输出结果中第一个为统计量，第二个为P值（注：p值大于显著性水平0.05，认为样本数据符合正态分布）'''</span></span><br><span class="line">print(stats.normaltest(a))</span><br></pre></td></tr></table></figure>
+<h4 id="W检验-Shapiro-检验-Shapiro-Wilk检验"><a href="#W检验-Shapiro-检验-Shapiro-Wilk检验" class="headerlink" title="W检验 / Shapiro 检验 /  Shapiro-Wilk检验"></a>W检验 / Shapiro 检验 /  Shapiro-Wilk检验</h4><p>专门用于检验正态分布，</p>
+<p>官方手册：scipy.stat.shapiro <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.shapiro.html" target="_blank" rel="noopener">https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.shapiro.html</a></p>
+<p>原假设：样本数据符合正态分布</p>
+<p>注意：shapiro是用来检验小样本数据 (For N &gt; 5000 the W test statistic is accurate but the p-value may not be.)</p>
+<p>scipy.stats.shapiro(x, a=None, reta=False)</p>
+<p>一般我们只用 x 参数就行，x 即待检验的数据</p>
+<h4 id="K-S检验"><a href="#K-S检验" class="headerlink" title="K-S检验"></a>K-S检验</h4><p>方法：scipy.stats.kstest (rvs, cdf, args = ( ), N = 20, alternative =’two-sided’, mode =’auto’)</p>
+<p>官方文档：scipy.stats.kstest <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.kstest.html" target="_blank" rel="noopener">https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.kstest.html</a></p>
+<p><strong>原理：</strong><a href="https://www.cnblogs.com/arkenstone/p/5496761.html" target="_blank" rel="noopener">KS-检验（Kolmogorov-Smirnov test） — 检验数据是否符合某种分布</a></p>
+<p>kstest 是一个很强大的检验模块，除了正态性检验，还能检验 scipy.stats 中的其他数据分布类型，仅适用于连续分布的检验，</p>
+<p>原假设：数据符合正态分布</p>
+<p>对于正态性检验，我们只需要手动设置三个参数即可：</p>
+<p>rvs：待检验的一组一维数据</p>
+<p>cdf：检验方法，例如’norm’，’expon’，’rayleigh’，’gamma’，这里我们设置为’norm’，即正态性检验</p>
+<p>alternative：默认为双尾检验，可以设置为’less’或’greater’作单尾检验</p>
+<p>model: auto(默认)，选取其中一个</p>
+<p>​            ‘approx’，使用检验统计量的精确分布的近视值，</p>
+<p>​            ‘asymp’：使用检验统计量的渐进分布</p>
+<p><img src="/blogs/如何检验数据的正态性——-Check-the-normality-of-data/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAxOTkzNTY=,size_16,color_FFFFFF,t_70.png" alt="img"></p>
+<h5 id="检验指定的数列是否服从正态分布"><a href="#检验指定的数列是否服从正态分布" class="headerlink" title="检验指定的数列是否服从正态分布"></a>检验指定的数列是否服从正态分布</h5><p>借助假设检验的思想，利用K-S检验可以对数列的性质进行检验，看代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy.stats <span class="keyword">import</span> kstest</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"> </span><br><span class="line">x = np.random.normal(<span class="number">0</span>,<span class="number">1</span>,<span class="number">1000</span>)</span><br><span class="line">test_stat = kstest(x, <span class="string">'norm'</span>)</span><br><span class="line"><span class="comment">#&gt;&gt;&gt; test_stat</span></span><br><span class="line"><span class="comment">#(0.021080234718821145, 0.76584491300591395)</span></span><br></pre></td></tr></table></figure>
+<p>首先生成1000个服从N(0,1)标准正态分布的随机数，在使用k-s检验该数据是否服从正态分布，提出假设：x从正态分布。</p>
+<p>最终返回的结果，p-value=0.76584491300591395，比指定的显著水平（假设为5%）大，则我们不能拒绝假设：x服从正态分布。</p>
+<p>这并不是说x服从正态分布一定是正确的，而是说没有充分的证据证明x不服从正态分布。因此我们的假设被接受，认为x服从正态分布。</p>
+<p>如果p-value小于我们指定的显著性水平，则我们可以肯定的拒绝提出的假设，认为x肯定不服从正态分布，这个拒绝是绝对正确的。</p>
+<h5 id="检验指定的两个数列是否服从相同分布"><a href="#检验指定的两个数列是否服从相同分布" class="headerlink" title="检验指定的两个数列是否服从相同分布"></a>检验指定的两个数列是否服从相同分布</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy.stats <span class="keyword">import</span> ks_2samp</span><br><span class="line">beta=np.random.beta(<span class="number">7</span>,<span class="number">5</span>,<span class="number">1000</span>)</span><br><span class="line">norm=np.random.normal(<span class="number">0</span>,<span class="number">1</span>,<span class="number">1000</span>)</span><br><span class="line">ks_2samp(beta,norm)</span><br><span class="line"><span class="comment">#&gt;&gt;&gt;(0.60099999999999998, 4.7405805465370525e-159)</span></span><br></pre></td></tr></table></figure>
+<p>我们先分别使用beta分布和normal分布产生两个样本大小为1000的数列，使用ks_2samp检验两个数列是否来自同一个样本，提出假设：beta和norm服从相同的分布。</p>
+<p>最终返回的结果，p-value=4.7405805465370525e-159，比指定的显著水平（假设为5%）小，则我们完全可以拒绝假设：beta和norm不服从同一分布。</p>
+<h4 id="Anderson-Darling-test"><a href="#Anderson-Darling-test" class="headerlink" title="Anderson-Darling test"></a>Anderson-Darling test</h4><p>方法：scipy.stats.anderson (x, dist =’norm’ )</p>
+<p>该方法是由 scipy.stats.kstest 改进而来的，可以做正态分布、指数分布、Logistic 分布、Gumbel 分布等多种分布检验。默认参数为 norm，即正态性检验。</p>
+<p>官方文档：<a href="https://link.zhihu.com/?target=https%3A//docs.scipy.org/doc/scipy/reference/generated/scipy.stats.anderson.html" target="_blank" rel="noopener">SciPy v1.1.0 Reference Guide</a></p>
+<p>参数：x - 待检验数据；dist - 设置需要检验的分布类型</p>
+<p>返回：statistic - 统计数；critical_values - 评判值；significance_level - 显著性水平</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#生成标准正态随机数</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">np.random.seed(<span class="number">0</span>)</span><br><span class="line">data_norm = np.random.normal(<span class="number">0</span>,<span class="number">1</span>,<span class="number">100</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">##用Anderson-Darling检验生成的数组是否服从正态分布</span></span><br><span class="line"><span class="keyword">import</span> scipy.stats <span class="keyword">as</span> stats</span><br><span class="line">stats.anderson(data_norm, dist=<span class="string">'norm'</span>)</span><br><span class="line"></span><br><span class="line"><span class="string">'''输出AndersonResult(statistic=0.18097695613924714, </span></span><br><span class="line"><span class="string">                      critical_values=array([ 0.555,  0.632,  0.759,  0.885,  1.053]), </span></span><br><span class="line"><span class="string">                      significance_level=array([ 15. ,  10. ,   5. ,   2.5,   1. ]))</span></span><br><span class="line"><span class="string">如果输出的统计量值statistic &lt; critical_values，则表示在相应的significance_level下，</span></span><br><span class="line"><span class="string">接受原假设，认为样本数据来自给定的正态分布。'''</span></span><br><span class="line">stats.anderson(data_norm, dist=<span class="string">'expon'</span>)</span><br><span class="line"></span><br><span class="line"><span class="string">'''输出AndersonResult(statistic=inf, </span></span><br><span class="line"><span class="string">                      critical_values=array([ 0.917,  1.072,  1.333,  1.596,  1.945]), </span></span><br><span class="line"><span class="string">                      significance_level=array([ 15. ,  10. ,   5. ,   2.5,   1. ]))</span></span><br><span class="line"><span class="string">拒绝原假设，认为生成的正态分布样本数据不来自指数分布。'''</span></span><br><span class="line"><span class="comment"># 原文链接：https://blog.csdn.net/qq_20207459/article/details/102863982</span></span><br></pre></td></tr></table></figure>
+<h4 id="矩法-S-K检验"><a href="#矩法-S-K检验" class="headerlink" title="矩法 / S-K检验"></a>矩法 / S-K检验</h4><p>Skewness 偏度，kurtosis峰度</p>
+<p>对分布的峰度与偏度进行检验</p>
+<p>官方手册：scipy.stats.normaltest <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.normaltest.html" target="_blank" rel="noopener">https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.normaltest.html</a></p>
+<p>normaltest 也是专门做正态性检验的模块，原理是基于数据的skewness和kurtosis</p>
+<p>scipy.stats.normaltest(a, axis=0, nan_policy=’propagate’)</p>
+<p>a：待检验的数据</p>
+<p>axis：默认为0，表示在0轴上检验，即对数据的每一行做正态性检验，我们可以设置为 axis=None 来对整个数据做检验</p>
+<p>nan_policy：当输入的数据中有空值时的处理办法。默认为 ‘propagate’，返回空值；设置为 ‘raise’ 时，抛出错误；设置为 ‘omit’ 时，在计算中忽略空值。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://blog.csdn.net/weixin_42059534/article/details/101703027" target="_blank" rel="noopener">python使用scipy.stats数据（正态）分布检验方法</a></p>
+<p><a href="https://blog.csdn.net/u010199356/article/details/87873596" target="_blank" rel="noopener">数据分析之正态分布检验及python实现</a></p>
+<p><a href="https://www.cnblogs.com/yuanjingnan/p/11668547.html" target="_blank" rel="noopener">PP图|QQ图|正态性检验|K-S检验|S-W检验|</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+          
+            <a href="/tags/Statistics/" rel="tag"># Statistics</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blogs/PR曲线为什么计算AP而非AUC-The-AP-of-PR-curve/" rel="next" title="PR曲线为什么计算AP而非AUC-The AP of PR curve">
+                <i class="fa fa-chevron-left"></i> PR曲线为什么计算AP而非AUC-The AP of PR curve
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blogs/ROC和PR的联系和选择-The-relationship-between-ROC-and-PR-curve/" rel="prev" title="ROC和PR的联系和选择-The relationship between ROC and PR curve">
+                ROC和PR的联系和选择-The relationship between ROC and PR curve <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/myshow.jpg" alt="Jiageng Wu">
+            
+              <p class="site-author-name" itemprop="name">Jiageng Wu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+          
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=28578763&auto=1&height=66"></iframe>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">86</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Dragon-Wu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wujg1995@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.cnblogs.com/Dragon5/" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#图示法"><span class="nav-number">1.</span> <span class="nav-text">图示法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#直方图"><span class="nav-number">1.1.</span> <span class="nav-text">直方图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#P-P图法"><span class="nav-number">1.2.</span> <span class="nav-text">P-P图法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Q-Q图"><span class="nav-number">1.3.</span> <span class="nav-text">Q-Q图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#统计检验法"><span class="nav-number">2.</span> <span class="nav-text">统计检验法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简单用法："><span class="nav-number">2.1.</span> <span class="nav-text">简单用法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#W检验-Shapiro-检验-Shapiro-Wilk检验"><span class="nav-number">2.2.</span> <span class="nav-text">W检验 / Shapiro 检验 /  Shapiro-Wilk检验</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K-S检验"><span class="nav-number">2.3.</span> <span class="nav-text">K-S检验</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#检验指定的数列是否服从正态分布"><span class="nav-number">2.3.1.</span> <span class="nav-text">检验指定的数列是否服从正态分布</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#检验指定的两个数列是否服从相同分布"><span class="nav-number">2.3.2.</span> <span class="nav-text">检验指定的两个数列是否服从相同分布</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Anderson-Darling-test"><span class="nav-number">2.4.</span> <span class="nav-text">Anderson-Darling test</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#矩法-S-K检验"><span class="nav-number">2.5.</span> <span class="nav-text">矩法 / S-K检验</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiageng Wu</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+-->
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共127.6k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail',];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'EFyLhOmCcSb9ran5dwR9SJv1-gzGzoHsz',
+        appKey: 'YVWtqErBb4qla50r8QFJ9NMV',
+        placeholder: 'Just go go',
+        avatar:'robohash',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 24053,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

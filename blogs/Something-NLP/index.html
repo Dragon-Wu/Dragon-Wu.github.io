@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+<script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("https://dragon-wu.github.io/");
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "e3b38aa8"
+    });
+  daovoice('update');
+  </script>
+
+
+
+  <meta name="msvalidate.01" content="b8759997e06919ab4d5bc4180303f7b7.jgwu.top">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/myblue.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/myblue.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/myblue.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/myblue.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Machine Learning,Deep Learning,NLP,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Something interesting about NLP when I tried to know it.  「每当我开除一个语言学家，语音识别系统就更准确了」Every time I fire a linguist, the performance of the speech recognizer goes up. —— IBM 的语音识别专家 Frederick Jelinek">
+<meta name="keywords" content="Machine Learning,Deep Learning,NLP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Something-NLP">
+<meta property="og:url" content="http://jgwu.top/blogs/Something-NLP/index.html">
+<meta property="og:site_name" content="一个地方">
+<meta property="og:description" content="Something interesting about NLP when I tried to know it.  「每当我开除一个语言学家，语音识别系统就更准确了」Every time I fire a linguist, the performance of the speech recognizer goes up. —— IBM 的语音识别专家 Frederick Jelinek">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://jgwu.top/blogs/Something-NLP/v2-c99b8b4ffc6bbea88f051f5860d200a9_r.jpg">
+<meta property="og:image" content="http://jgwu.top/blogs/Something-NLP/v2-807199dde25c6cb90051cf3cd2cdea97_r.jpg">
+<meta property="og:updated_time" content="2021-03-27T07:41:36.507Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Something-NLP">
+<meta name="twitter:description" content="Something interesting about NLP when I tried to know it.  「每当我开除一个语言学家，语音识别系统就更准确了」Every time I fire a linguist, the performance of the speech recognizer goes up. —— IBM 的语音识别专家 Frederick Jelinek">
+<meta name="twitter:image" content="http://jgwu.top/blogs/Something-NLP/v2-c99b8b4ffc6bbea88f051f5860d200a9_r.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://jgwu.top/blogs/Something-NLP/">
+
+
+
+
+
+  <title>Something-NLP | 一个地方</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?08bb4fc5c3d2998285280a0eabfdca3b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<link rel="alternate" href="/atom.xml" title="一个地方" type="application/atom+xml">
+</head>
+
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一个地方</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Wu's Blog</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jgwu.top/blogs/Something-NLP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiageng Wu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/myshow.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个地方">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Something-NLP</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-27T15:09:15+08:00">
+                2021-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/" itemprop="url" rel="index">
+                    <span itemprop="name">CS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/blogs/Something-NLP/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/blogs/Something-NLP/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>  阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.9k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  13
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Something interesting about NLP when I tried to know it.</p>
+<blockquote>
+<p>「每当我开除一个语言学家，语音识别系统就更准确了」<br>Every time I fire a linguist, the performance of the speech recognizer goes up.</p>
+<p>—— IBM 的语音识别专家 <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Frederick_Jelinek" target="_blank" rel="noopener">Frederick Jelinek</a></p>
+</blockquote>
+<a id="more"></a>
+<h2 id="NLP-and-CV"><a href="#NLP-and-CV" class="headerlink" title="NLP and  CV"></a>NLP and  CV</h2><p>当时看《数学之美》的时候，就觉得很有趣，AI发展经历了好几个阶段，不同的主义和方法各领风骚数年，而NLP的发展也很有趣，前言提到的就是早期人们希望通过符号主义的方式去对需要处理的进行严密的定义和推理，但事实上，语言本身已是复杂世界的高级抽象，其规则本就由于人类思维的跳脱而无法一以贯之，所以尽管早期融入人类专家知识的专家系统和逻辑推理系统被期于解决感知、理解等问题，但伴随着数据的复杂性上升，该方法无以为继，基于统计学习理论的方法开始称霸领域，也就出现了上面前言中的调侃。其实看到书里提到当前看似非常intelligence的NLP处理，其实都是基于统计理论的时候，还是蛮震惊的，但却又不出乎意料之外，因为从感知到<strong>认知</strong>，我们还是有很长的距离的，也因此，目前CV领域看来频频爆发，而NLP却离我们心目中所期待的还有很长距离。</p>
+<p>看来一些博客，其实还是有些思考的，包括结合自己做图像的经验，其实目前的DL模型，说白了，也是以力破巧的一个体现，通过大量神经元和隐含层的堆叠，理论上，其可以拟合任何的函数，也就能完成各项任务，而其也能从数据中抽象出人类无法直接定义的高级特征，从而在各个任务上取得了非常优异的成绩，但目前也仅仅是如此，能够通过上述的方法<strong>感知到数据中有什么</strong>，但是他们仍无法去<strong>理解数据和认知</strong>，而NLP恰恰需要的是更深层次的<strong>认知和基于认知的推理</strong>，当然还有很多其他原因，比如NLP数据的复杂性（不统一、分词等）。</p>
+<p>以下内容主要来自：为什么相比于计算机视觉(cv)，自然语言处理(nlp)领域的发展要缓慢？ -  <a href="https://www.zhihu.com/question/295962495/answer/542111222" target="_blank" rel="noopener">saizheng的回答</a> - 知乎 </p>
+<h3 id="从二者的任务和目标来看，二者的发展差异"><a href="#从二者的任务和目标来看，二者的发展差异" class="headerlink" title="从二者的任务和目标来看，二者的发展差异"></a>从二者的任务和目标来看，二者的发展差异</h3><p><strong>1) 过去几年CV领域爆点，与NLP领域的主攻问题相比，是不同的智能认知阶段;</strong></p>
+<p><strong>2) 而过去几年促使整个AI领域迈了一大步的深度神经网络技术，更适用于先前CV领域的认知阶段和问题范式。</strong></p>
+<p>具体来说，如果我们回顾过去几年这视觉(CV)，甚至是语音识别(speech)领域的主要突破进展和成功应用，会发现它们都集中在对<strong><em>自然连续信号\</em></strong>进行<strong>底层感知(perception)的阶段：</strong>比如CV中的分类，分割，跟踪，以及典型的语音识别任务（可粗略类比于CV中的分类+分割问题）等对底层自然信号进行初步加工的问题。这类问题的本质是<strong>简单的统计特征发现</strong>和<strong>函数拟合。</strong>例如对于自然图像分类问题，深度神经网络这类统计模型作为universal approximator已然强大, 加上诸如“convolutional”等可以捕捉自然图像低频、局部相似性等统计特征的inductive bias被直接融入到模型构建中，配以大量数据，使得这类拟合问题得到很好的解决。而伴随着模型训练得到的一个副产品就是很多答主提到的多层级的feature representation (特征表达)，这些特征表达实际上是convolutional这种结构先验在数据空间的外化。总而言之，现有算法在这种本质是拟合的感知问题上已经达到了一个不错的的水平，而与此相关的工业应用自然也层出不穷。然而，对于视觉内容(包括静态图像，视频)进行高层抽象逻辑、语义理解（比如空间逻辑，时间逻辑，因果关联推理等）的研究还有很大的空间可以提升。</p>
+<p>另一方面，自然语言处理(NLP)的研究更注重感知之后的<strong>认知／理解阶段(understanding/ comprehension)</strong>。自然语言本身是人类对世界各种具象以及抽象事物以及他们之间的联系和变化的一套完整的符号化描述，它是简化了底层物理感知的世界模型。从这个意义上讲，自然语言的描述空间实际上上已经大大超过了图像这种具象信号。<strong>这意味着NLP处理的输入是离散的抽象符号，它直接跳过了感知的过程，而直接关注以现实世界为依托的各种抽象概念，语义和逻辑推理。诚</strong>如各高票答案指出的，领域发展之初存在一些低处果实，这类果实大都基于浅层统计语义，或者可以直接被简化为跟CV感知问题一样的函数拟合，比如早期的信息检索(比如典型的tf-idf方法)，文档／垃圾邮件分类，词性标注，甚至是机器翻译。实际上这些技术已经成为了一大批耳熟能详的科技公司的核心技术。然而，当这些低处果实被摘完了，新的研究则需要关注高层语义、记忆、知识抽象以及逻辑推理等等，这些问题解决不了，我们是无法构建出一套更成熟的“问答系统”、“对话系统”这种“类图灵测试”的AI系统的，而这样的系统恰恰是公众心目中认为的NLP技术大规模应用的表现。</p>
+<p>与一些答主对统计学习／深度学习在NLP复杂问题上的乐观不同，我个人认为，<strong>这类问题的解决方法或许已经超出了现有深度学习或者更一般的统计机器学习技术的能力边界，换句话说，NLP中有一些核心问题是统计学习里的特征发现＋拟合解决不了的</strong>。最简单的一个例子就是，统计学习模型在语言的组合性（compositionality）上到目前几乎是一无是处。此时此刻，NLP跟CV面临的挑战是共通的。</p>
+<p>总而言之，从认知阶段的角度解读，不是CV领先于NLP，相反，恰恰是因为之前的CV技术搞不定感知，CV是“落后”于NLP所关心的认知范式的。当CV跨过感知的门槛之后，CV和NLP问题殊途同归，两者未来面临的挑战其实是一回事，就是理解这个世界背后的逻辑，它具体可以反映在对常识(common sense)的理解，如何进行因果推断(causal inference)，对抽象概念的理解等等。目前相关的研究包括 language grounding 以及符号主义同连接主义的融合等，这些内容又可以写一个大综述了，吾辈任重而道远。</p>
+<h3 id="结合AI发展历史和二者依仗方法来看"><a href="#结合AI发展历史和二者依仗方法来看" class="headerlink" title="结合AI发展历史和二者依仗方法来看"></a>结合AI发展历史和二者依仗方法来看</h3><p>自1956年达特茅斯会议开始，人工智能经历了<strong>符号主义（symbolicism），连接主义(又作：联结主义，connectionism) 以及后来统计学派</strong>的加入等多方的起起伏伏，他们实际上对“下游”的CV和NLP技术的发展变迁产生了重要影响。</p>
+<p><strong>早期（60年代到80年代）符合主义学派称霸，连接主义在夹缝中生存。下游反应则是CV领域进展缓慢，以专家系统为代表的NLP技术开始起步。</strong></p>
+<p>在这个时期，人工智能学者开始分化出两个学派即<strong>符号主义</strong>学派和<strong>连接主义</strong>学派的雏形。</p>
+<p>符号学派的学者笃信思维的可计算性和强逻辑性，由此衍生出了一批跟逻辑推理、编程语言范式相关的人工智能方法。其主要特征是<strong>认为智能认知过程是可以做精确描述并实施逻辑演算或数学计算的，希望通过预先融入人类专家知识的专家系统和逻辑推理系统来解决感知、理解等问题。</strong>而这种思路反映在CV领域便是，早期专家认为通过对各种物体形状、颜色等物理和几何属性进行精确定义并设计一套严格的计算方法，就可以解决计算视觉的各种问题。历史已经证明这种方式是行不通的，<strong>但在这一时期，CV领域发展出了一套基本的关于几何视觉的计算理论。</strong>另一方面，因为NLP的研究对象是抽象符号，而且NLP问题本身内嵌了很多逻辑、推理等内容，使得在这一时期符号学派在NLP技术的推动上起到了很大作用，其中包括各种基于规则和专家知识的分词，词性标注，语法解析等系统，和一些基于规则和逻辑的问答，对话系统等，<strong>同时在这一时期已经逐渐出现了使用统计学来进行自然语言处理的思想。</strong></p>
+<p>而此时处于少数的连接学派学者，则试图摆脱先验知识和专家约束，希望通过连接模型例如单层的感知器（即perceptron，神经网络的前身)来自动学习数据中的模式。然而，由于这一学派在当时缺乏严格数学理论的支撑，同时其单层结构并不有效，且限于当时的数据收集和计算条件，并不能发挥连接主义的真正功效。更令人遗憾的是，曾经的连接主义者Minksy转投符号主义怀抱，除了为符号主义学派贡献了Frame theory 这一日后成为重要编程范式的理论之外，同时因为批评perceptron的局限性，直接导致了连接主义甚至是AI在70年代后期的寒冬。</p>
+<p><strong>中期（90年代到00年代）统计学习理论称霸，符号主义遇冷，连接主义短暂复兴之后继续低头做人。下游反应则是CV领域开始抬头，NLP领域继续平稳发展。</strong></p>
+<p>随着计算技术和互联网的发展，大量的数据逐渐让符号主义学派的专家系统捉襟见肘，在这一时期大家逐渐认识到传统专家系统存在的灵活性和鲁棒性问题，以及从大量数据中进行专家知识获取的高昂成本和不可扩展性。而同一时期，统计机器学习理论逐渐成为主流，主要包括以vapnik的SVM和Valiant的PAC为代表的统计频率学派，和以概率图模型为代表的贝叶斯学派，以及其他相关的统计分析方法。<strong>统计学习派的元初思想其实与连接学派契合，都是抛弃靠专家人工定义知识和逻辑，通过从数据的分布本身挖掘隐藏模式和规律。这大大加强了相应系统的灵活性，稳定性和可扩展性。</strong>然而跟当时的连接学派不同，统计学习学派有坚实的数学理论作为后盾，同时其方法在中小型规模的数据上表现十分稳定，且可以给出模型能力的下界以及置信区间，<strong>这直接将当时如同江湖术士的连接主义学派摁在地上摩擦。</strong></p>
+<p>与此同时，在CV领域发展出了一系列完整的图像处理和特征提取算法，包括早期的基于signal processing的图像信号处理理论，及后来更偏重视觉本身的边缘(如canny)、角点(如Harris)、直线(如Hough)等检测手段以及后来著名的SIFT、HoG等复杂特征算法。这些特征提取算法的共同点就是借用了人类视觉计算专家的直觉和天才设计。通过将图像进行一些列的信号处理以及进行特征提取并结合同时期的的各种统计学习模型，直接造成了对“早期希望精确规则来计算视觉问题”的降维打击，第一次在视觉识别的任务上达到了可以忍受的精度，<strong>也使人们逐渐认识到诸如视觉的这类感知型问题必须通过从数据中自动学习才能被有效解决。</strong>由于统计学习理论是搞ML的人的事，此时期的CV研究者热衷于设计各种特征提取器，以至于在那一时期的很多论文都遵从“XYZ特征提取子＋SVM，识别率提升1%”的套路模式。这一时期，跟CV相关的优化理论也在蓬勃发展，一个著名例子就是图像的<strong>稀疏表达和优化(sparse representation/optimization)</strong>。</p>
+<p>而在NLP领域，人们逐渐将各种统计理论与相关的NLP技术进行融合，发展出了一套完整的基于统计学习的分词，词性标注，解析，翻译，文档分类等技术，以及基于统计理论的语言模型(language model)等。同时期相关的技术还包括了各类信息检索技术，推荐引擎技术，以及基于统计学习的问答系统和对话系统。这些技术相比早期最大的不同是通过统计学习补获了真实数据分布的部分内在模式，像CV领域一样，使很多浅层的蕴含在数据中统计语义得以挖掘，提升了纯粹基于专家规则的系统的灵活性，稳定性和可扩展性。<strong>然而由于语言本身的抽象和概括特征，一些深层次的语义信息的发现仍然需要人类专家的介入，</strong>一个直接的例子就是在语义解析(semantic parsing)中我们需要大量的专家对语义要素的标注。</p>
+<p><strong>当前（10年代至今）连接主义逆袭，传统统计学习失宠，符号主义在角落里舔伤口等待重出江湖。下游反应则是CV领域大爆发，NLP领域继续平稳发展。</strong></p>
+<h2 id="NLP-vs-NLU-vs-NLG"><a href="#NLP-vs-NLU-vs-NLG" class="headerlink" title="NLP vs. NLU vs. NLG"></a>NLP vs. NLU vs. NLG</h2><p>尽管人们可能会遇到令人生畏的技术术语，但NLP，NLG和NLU似乎是用于解释简单过程的复杂缩略词。</p>
+<p>1、NLP是指计算机读取并将输入文本转换为结构化数据；</p>
+<p>2、NLU意味着理解计算机捕获的文本/统计数据；</p>
+<p>3、NLG是指计算机将结构化数据转换为文本并以人类语言编写信息；</p>
+<p><img src="/blogs/Something-NLP/v2-c99b8b4ffc6bbea88f051f5860d200a9_r.jpg" alt="preview"></p>
+<p>NLG在自然语言处理领域中是否还有需要？ -  <a href="https://www.zhihu.com/question/52908831/answer/647758962" target="_blank" rel="noopener">阿里云云栖号的回答</a> - 知乎 </p>
+<p><img src="/blogs/Something-NLP/v2-807199dde25c6cb90051cf3cd2cdea97_r.jpg" alt="preview" style="zoom: 50%;"></p>
+<p>NLG在自然语言处理领域中是否还有需要？ - <a href="https://www.zhihu.com/question/52908831/answer/132605091" target="_blank" rel="noopener">zibuyu9的回答</a> - 知乎 </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+          
+            <a href="/tags/Deep-Learning/" rel="tag"># Deep Learning</a>
+          
+            <a href="/tags/NLP/" rel="tag"># NLP</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blogs/深度聚类-Deep-for-Clustering/" rel="next" title="深度聚类-Deep-for-Clustering">
+                <i class="fa fa-chevron-left"></i> 深度聚类-Deep-for-Clustering
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blogs/Latiice-LSTM及其所需知识/" rel="prev" title="Latiice-LSTM及其所需知识">
+                Latiice-LSTM及其所需知识 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/myshow.jpg" alt="Jiageng Wu">
+            
+              <p class="site-author-name" itemprop="name">Jiageng Wu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+          
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=28578763&auto=1&height=66"></iframe>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">86</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Dragon-Wu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wujg1995@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.cnblogs.com/Dragon5/" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#NLP-and-CV"><span class="nav-number">1.</span> <span class="nav-text">NLP and  CV</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#从二者的任务和目标来看，二者的发展差异"><span class="nav-number">1.1.</span> <span class="nav-text">从二者的任务和目标来看，二者的发展差异</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结合AI发展历史和二者依仗方法来看"><span class="nav-number">1.2.</span> <span class="nav-text">结合AI发展历史和二者依仗方法来看</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NLP-vs-NLU-vs-NLG"><span class="nav-number">2.</span> <span class="nav-text">NLP vs. NLU vs. NLG</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiageng Wu</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+-->
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共127.6k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail',];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'EFyLhOmCcSb9ran5dwR9SJv1-gzGzoHsz',
+        appKey: 'YVWtqErBb4qla50r8QFJ9NMV',
+        placeholder: 'Just go go',
+        avatar:'robohash',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 24053,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

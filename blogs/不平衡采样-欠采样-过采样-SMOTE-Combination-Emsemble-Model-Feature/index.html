@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+<script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("https://dragon-wu.github.io/");
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "e3b38aa8"
+    });
+  daovoice('update');
+  </script>
+
+
+
+  <meta name="msvalidate.01" content="b8759997e06919ab4d5bc4180303f7b7.jgwu.top">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/myblue.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/myblue.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/myblue.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/myblue.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Machine Learning,Ensemble Learning,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="不平衡采样 各种不平衡采样，欠采样、过采样、SMOTE均衡采样、组合采样、集成采样、模型选择和特征选择 Various Sampling methods, Under Sampling, Over Sampling, SMOTE balanced sampling, Combination Sampling, Ensemble Sampling, Model Selection, and Feat">
+<meta name="keywords" content="Machine Learning,Ensemble Learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature">
+<meta property="og:url" content="http://jgwu.top/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/index.html">
+<meta property="og:site_name" content="一个地方">
+<meta property="og:description" content="不平衡采样 各种不平衡采样，欠采样、过采样、SMOTE均衡采样、组合采样、集成采样、模型选择和特征选择 Various Sampling methods, Under Sampling, Over Sampling, SMOTE balanced sampling, Combination Sampling, Ensemble Sampling, Model Selection, and Feat">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://jgwu.top/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/ea8eab3bf82e083fecc77e4110fb03322aabdfbb.svg">
+<meta property="og:image" content="http://jgwu.top/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/c291c39375eec8dbd9df5c7a77dfc3f720e67450.svg">
+<meta property="og:image" content="http://jgwu.top/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/af8cae27cbce4d779c6fd83f408d0115b6312d73.svg">
+<meta property="og:image" content="http://jgwu.top/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/sphx_glr_plot_illustration_nearmiss_001.png">
+<meta property="og:image" content="http://jgwu.top/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/sphx_glr_plot_illustration_nearmiss_002.png">
+<meta property="og:image" content="http://jgwu.top/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/sphx_glr_plot_illustration_nearmiss_003.png">
+<meta property="og:image" content="http://jgwu.top/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/888f7c323ac0341871e867220ae2d76467d74d6e-16369076008802.svg">
+<meta property="og:image" content="http://jgwu.top/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/1b5e577d6216dca3af7d87aa122a0b9b360d6cb3-16369076008801.svg">
+<meta property="og:image" content="http://jgwu.top/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/8d051150f8669295ecdbe92367941012175a824d-16369076008803.svg">
+<meta property="og:image" content="http://jgwu.top/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/f0bdfd2907e6c82b6d597672489e0ca6d9d49882.svg">
+<meta property="og:image" content="http://jgwu.top/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/42dc0b82a24bfb8685340959db72b2afceea6d3d.svg">
+<meta property="og:image" content="http://jgwu.top/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/sphx_glr_plot_illustration_tomek_links_001.png">
+<meta property="og:image" content="http://jgwu.top/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/sphx_glr_plot_illustration_tomek_links_002.png">
+<meta property="og:image" content="http://jgwu.top/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/image-20211029202105468.png">
+<meta property="og:image" content="http://jgwu.top/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/image-20211029210142803.png">
+<meta property="og:image" content="http://jgwu.top/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTA2NTQyOTk=,size_16,color_FFFFFF,t_70#pic_center.png">
+<meta property="og:image" content="http://jgwu.top/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/image-20211029210202402.png">
+<meta property="og:image" content="http://jgwu.top/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/image-20211029202613762.png">
+<meta property="og:image" content="http://jgwu.top/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/image-20211029210218017.png">
+<meta property="og:updated_time" content="2022-05-11T06:24:37.525Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature">
+<meta name="twitter:description" content="不平衡采样 各种不平衡采样，欠采样、过采样、SMOTE均衡采样、组合采样、集成采样、模型选择和特征选择 Various Sampling methods, Under Sampling, Over Sampling, SMOTE balanced sampling, Combination Sampling, Ensemble Sampling, Model Selection, and Feat">
+<meta name="twitter:image" content="http://jgwu.top/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/ea8eab3bf82e083fecc77e4110fb03322aabdfbb.svg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://jgwu.top/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/">
+
+
+
+
+
+  <title>不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature | 一个地方</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?08bb4fc5c3d2998285280a0eabfdca3b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<link rel="alternate" href="/atom.xml" title="一个地方" type="application/atom+xml">
+</head>
+
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一个地方</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Wu's Blog</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jgwu.top/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiageng Wu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/myshow.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个地方">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-11-15T00:18:04+08:00">
+                2021-11-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/" itemprop="url" rel="index">
+                    <span itemprop="name">CS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>  阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  20
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>不平衡采样</p>
+<p>各种不平衡采样，欠采样、过采样、SMOTE均衡采样、组合采样、集成采样、模型选择和特征选择</p>
+<p>Various Sampling methods, Under Sampling, Over Sampling, SMOTE balanced sampling, Combination Sampling, Ensemble Sampling, Model Selection, and Feature Selection</p>
+<a id="more"></a>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考:"></a>参考:</h3><p><a href="https://blog.csdn.net/qq_31813549/article/details/79964973" target="_blank" rel="noopener">数据不平衡imblearn算法汇总</a></p>
+<h3 id="欠采样"><a href="#欠采样" class="headerlink" title="欠采样"></a>欠采样</h3><h5 id="随机欠采样"><a href="#随机欠采样" class="headerlink" title="随机欠采样"></a>随机欠采样</h5><p>class imblearn.under_sampling.RandomUnderSampler(*, sampling_strategy=’auto’, random_state=None, replacement=False</p>
+<p>下面的example是最简单的欠采样，当然还有很多种欠采样，可以参考：<a href="https://imbalanced-learn.org/stable/references/under_sampling.html" target="_blank" rel="noopener">Under-sampling methods</a>，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> make_classification</span><br><span class="line"></span><br><span class="line">X, y = make_classification(n_classes=<span class="number">2</span>, class_sep=<span class="number">2</span>,</span><br><span class="line">                           weights=[<span class="number">0.1</span>, <span class="number">0.9</span>], n_informative=<span class="number">2</span>, n_redundant=<span class="number">0</span>, flip_y=<span class="number">0</span>,</span><br><span class="line">                           n_features=<span class="number">2</span>, n_clusters_per_class=<span class="number">1</span>, n_samples=<span class="number">100</span>,random_state=<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> imblearn.over_sampling <span class="keyword">import</span> RandomUnderSampler</span><br><span class="line">rus = RandomUnderSampler(random_state=<span class="number">0</span>)</span><br><span class="line">X_resampled, y_resampled = ros.fit_resample(X, y)</span><br><span class="line">print(Counter(y_resampled))</span><br><span class="line">print(Counter(y))</span><br></pre></td></tr></table></figure>
+<h5 id="聚类采样"><a href="#聚类采样" class="headerlink" title="聚类采样"></a>聚类采样</h5><p>基本用法</p>
+<p>class imblearn.under_sampling.ClusterCentroids(*, sampling_strategy=’auto’, random_state=None, estimator=None, voting=’auto’, n_jobs=’deprecated’)[source]</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> imblearn.under_sampling <span class="keyword">import</span> ClusterCentroids</span><br><span class="line">cc = ClusterCentroids(random_state=<span class="number">0</span>)</span><br><span class="line">X_resampled, y_resampled = cc.fit_resample(X, y)</span><br><span class="line">print(sorted(Counter(y_resampled).items()))</span><br></pre></td></tr></table></figure>
+<p>主要参数：sampling_strategy=’auto’, random_state=None, estimator=None, voting=’auto’</p>
+<p>sampling_strategy是比例：</p>
+<p><strong>sampling_strategy</strong>float, str, dict, callable, default=’auto’</p>
+<p>Sampling information to sample the data set.</p>
+<ul>
+<li>When <code>float</code>, it corresponds to the desired ratio of the number of samples in the minority class over the number of samples in the majority class after resampling. Therefore, the ratio is expressed as <img src="/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/ea8eab3bf82e083fecc77e4110fb03322aabdfbb.svg" alt="\alpha_{us} = N_{m} / N_{rM}"> where <img src="/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/c291c39375eec8dbd9df5c7a77dfc3f720e67450.svg" alt="N_{m}"> is the number of samples in the minority class and <img src="/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/af8cae27cbce4d779c6fd83f408d0115b6312d73.svg" alt="N_{rM}"> is the number of samples in the majority class after resampling.</li>
+</ul>
+<p><strong>estimator</strong>estimator object, default=None</p>
+<p>Pass a <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans" target="_blank" rel="noopener"><code>KMeans</code></a> estimator. By default, it will be a default <a href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans" target="_blank" rel="noopener"><code>KMeans</code></a> estimator.</p>
+<p><strong>voting</strong>{“hard”, “soft”, “auto”}, default=’auto’</p>
+<p>Voting strategy to generate the new samples:</p>
+<ul>
+<li>If <code>&#39;hard&#39;</code>, the nearest-neighbors of the centroids found using the clustering algorithm will be used.</li>
+<li>If <code>&#39;soft&#39;</code>, the centroids found by the clustering algorithm will be used.</li>
+<li>If <code>&#39;auto&#39;</code>, if the input is sparse, it will default on <code>&#39;hard&#39;</code> otherwise, <code>&#39;soft&#39;</code> will be used.</li>
+</ul>
+<h5 id="NearMiss"><a href="#NearMiss" class="headerlink" title="NearMiss"></a>NearMiss</h5><p>class imblearn.under_sampling.NearMiss(*, sampling_strategy=’auto’, version=1, n_neighbors=3, n_neighbors_ver3=3, n_jobs=None)</p>
+<p>基本用法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> imblearn.under_sampling <span class="keyword">import</span> NearMiss </span><br><span class="line">X, y = make_classification(n_classes=<span class="number">2</span>, class_sep=<span class="number">2</span>,</span><br><span class="line">weights=[<span class="number">0.1</span>, <span class="number">0.9</span>], n_informative=<span class="number">3</span>, n_redundant=<span class="number">1</span>, flip_y=<span class="number">0</span>,</span><br><span class="line">n_features=<span class="number">20</span>, n_clusters_per_class=<span class="number">1</span>, n_samples=<span class="number">1000</span>, random_state=<span class="number">10</span>)</span><br><span class="line">print(<span class="string">'Original dataset shape %s'</span> % Counter(y))</span><br><span class="line"></span><br><span class="line">nm = NearMiss()</span><br><span class="line">X_res, y_res = nm.fit_resample(X, y)</span><br><span class="line">print(<span class="string">'Resampled dataset shape %s'</span> % Counter(y_res))</span><br></pre></td></tr></table></figure>
+<p>关键参数：<em>version=1</em>,<em>n_neighbors=3</em>, <em>n_neighbors_ver3=3</em></p>
+<p><strong>version</strong>: int, default=1</p>
+<p>Version of the NearMiss to use. Possible values are 1, 2 or 3.</p>
+<p><strong>n_neighbors</strong>:int or estimator object, default=3</p>
+<p>If <code>int</code>, size of the neighbourhood to consider to compute the average distance to the minority point samples. If object, an estimator that inherits from <code>KNeighborsMixin</code> that will be used to find the k_neighbors. By default, it will be a 3-NN.</p>
+<p><strong>n_neighbors_ver3</strong>: int or estimator object, default=3</p>
+<p>If <code>int</code>, NearMiss-3 algorithm start by a phase of re-sampling. This parameter correspond to the number of neighbours selected create the subset in which the selection will be performed. If object, an estimator that inherits from <code>KNeighborsMixin</code> that will be used to find the k_neighbors. By default, it will be a 3-NN.</p>
+<p>其中，关于NearMiss的版本，<a href="https://imbalanced-learn.org/stable/auto_examples/under-sampling/plot_illustration_nearmiss.html#sphx-glr-auto-examples-under-sampling-plot-illustration-nearmiss-py" target="_blank" rel="noopener">官方介绍</a>，简单解释</p>
+<ol>
+<li><p>NearMiss-1<br>选择到最近的三个少数类样本平均距离最小的那些多数类样本</p>
+</li>
+<li><p>NearMiss-2<br>选择到最远的三个少数类样本平均距离最小的那些多数类样本</p>
+</li>
+<li><p>NearMiss-3<br>为每个少数类样本选择给定数目的最近多数类样本，目的是保证每个少数类样本都被一些多数类样本包围</p>
+</li>
+</ol>
+<p><img src="/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/sphx_glr_plot_illustration_nearmiss_001.png" alt="img" style="zoom: 45%;"><img src="/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/sphx_glr_plot_illustration_nearmiss_002.png" alt="img" style="zoom: 45%;"><img src="/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/sphx_glr_plot_illustration_nearmiss_003.png" alt="img" style="zoom:45%;"></p>
+<p><strong>Note</strong>：实验结果表明一般<strong>NearMiss-2</strong> 方法的不均衡分类性能最优</p>
+<h5 id="TomekLinks"><a href="#TomekLinks" class="headerlink" title="TomekLinks"></a>TomekLinks</h5><p>class imblearn.under_sampling.TomekLinks(*, sampling_strategy=’auto’, n_jobs=None)</p>
+<p><strong>基本用法</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tl = TomekLinks()</span><br><span class="line">X_res, y_res = tl.fit_resample(X, y)</span><br><span class="line">print(<span class="string">'Resampled dataset shape %s'</span> % Counter(y_res))</span><br></pre></td></tr></table></figure>
+<p><a href="https://imbalanced-learn.org/stable/references/generated/imblearn.under_sampling.TomekLinks.html#imblearn.under_sampling.TomekLinks" target="_blank" rel="noopener"><code>TomekLinks</code></a> detects the so-called Tomek’s links [<a href="https://imbalanced-learn.org/stable/zzz_references.html#id16" target="_blank" rel="noopener">Tom76b</a>]. A Tomek’s link between two samples of different class <img src="/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/888f7c323ac0341871e867220ae2d76467d74d6e-16369076008802.svg" alt="x"> and <img src="/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/1b5e577d6216dca3af7d87aa122a0b9b360d6cb3-16369076008801.svg" alt="y"> is defined such that for any sample <img src="/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/8d051150f8669295ecdbe92367941012175a824d-16369076008803.svg" alt="z">:</p>
+<p><img src="/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/f0bdfd2907e6c82b6d597672489e0ca6d9d49882.svg" alt="d(x,y) &lt; d(x, z) \text{ and } d(x, y) &lt; d(y, z)"></p>
+<p>where <img src="/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/42dc0b82a24bfb8685340959db72b2afceea6d3d.svg" alt="d(.)"> is the distance between the two samples. In some other words, a Tomek’s link exist if the two samples are the nearest neighbors of each other. In the figure below, a Tomek’s link is illustrated by highlighting the samples of interest in green.is the distance between the two samples. In some other words, a Tomek’s link exist if the two samples are the nearest neighbors of each other. In the figure below, a Tomek’s link is illustrated by highlighting the samples of interest in green.</p>
+<p><img src="/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/sphx_glr_plot_illustration_tomek_links_001.png" alt="_images/sphx_glr_plot_illustration_tomek_links_001.png" style="zoom:50%;"></p>
+<p><strong>关键参数：</strong></p>
+<p><strong>sampling_strategy</strong>: str, list or callable</p>
+<p>Sampling information to sample the data set.</p>
+<ul>
+<li><p>When <code>str</code>, specify the class targeted by the resampling. Note the the number of samples will not be equal in each. Possible choices are:</p>
+<blockquote>
+<p><code>&#39;majority&#39;</code>: resample only the majority class;</p>
+<p><code>&#39;not minority&#39;</code>: resample all classes but the minority class;</p>
+<p><code>&#39;not majority&#39;</code>: resample all classes but the majority class;</p>
+<p><code>&#39;all&#39;</code>: resample all classes;</p>
+<p><code>&#39;auto&#39;</code>: equivalent to <code>&#39;not minority&#39;</code>.</p>
+</blockquote>
+</li>
+<li><p>When <code>list</code>, the list contains the classes targeted by the resampling.</p>
+</li>
+<li><p>When callable, function taking <code>y</code> and returns a <code>dict</code>. The keys correspond to the targeted classes. The values correspond to the desired number of samples for each class.</p>
+</li>
+</ul>
+<p>The parameter <code>sampling_strategy</code> control which sample of the link will be removed. For instance, the default (i.e., <code>sampling_strategy=&#39;auto&#39;</code>) will remove the sample from the majority class. Both samples from the majority and minority class can be removed by setting <code>sampling_strategy</code> to <code>&#39;all&#39;</code>. The figure illustrates this behaviour.</p>
+<p><img src="/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/sphx_glr_plot_illustration_tomek_links_002.png" alt="_images/sphx_glr_plot_illustration_tomek_links_002.png" style="zoom: 50%;"></p>
+<h5 id="EditedNearestNeighbours"><a href="#EditedNearestNeighbours" class="headerlink" title="EditedNearestNeighbours"></a>EditedNearestNeighbours</h5><p>因为随机欠抽样方法未考虑样本的分布情况，采样具有很大的随机性，可能会删除重要的多数类样本信息。针对以上的不足，Wilson 等人提出了一种最近邻规则(edited nearest neighbor: ENN)。</p>
+<p>基本思想：删除那些类别与其最近的三个近邻样本中的两个或两个以上的样本类别不同的样本<br>缺点：因为大多数的多数类样本的样本附近都是多数类，所以该方法所能删除的多数类样本十分有限。</p>
+<p><strong>基本用法</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> imblearn.under_sampling <span class="keyword">import</span> EditedNearestNeighbours </span><br><span class="line">enn = EditedNearestNeighbours()</span><br><span class="line">X_res, y_res = enn.fit_resample(X, y)</span><br><span class="line">print(<span class="string">'Resampled dataset shape %s'</span> % Counter(y_res))</span><br></pre></td></tr></table></figure>
+<p><strong>关键参数：</strong></p>
+<p><strong>*n_neighbors</strong>=3*</p>
+<p><strong>kind_sel</strong>{‘all’, ‘mode’}, default=’all’</p>
+<p>Strategy to use in order to exclude samples.</p>
+<ul>
+<li>If <code>&#39;all&#39;</code>, all neighbours will have to agree with the samples of interest to not be excluded. / 所有的邻居都要同类</li>
+<li>If <code>&#39;mode&#39;</code>, the majority vote of the neighbours will be used in order to exclude a sample. / 邻居中同类占多数</li>
+</ul>
+<p>The strategy <code>&quot;all&quot;</code> will be less conservative than <code>&#39;mode&#39;</code>. Thus, more samples will be removed when <code>kind_sel=&quot;all&quot;</code> generally.</p>
+<h5 id="RepeatedEditedNearestNeighbours"><a href="#RepeatedEditedNearestNeighbours" class="headerlink" title="RepeatedEditedNearestNeighbours"></a>RepeatedEditedNearestNeighbours</h5><p><a href="https://imbalanced-learn.org/stable/references/generated/imblearn.under_sampling.RepeatedEditedNearestNeighbours.html#imblearn.under_sampling.RepeatedEditedNearestNeighbours" target="_blank" rel="noopener"><code>RepeatedEditedNearestNeighbours</code></a> extends <a href="https://imbalanced-learn.org/stable/references/generated/imblearn.under_sampling.EditedNearestNeighbours.html#imblearn.under_sampling.EditedNearestNeighbours" target="_blank" rel="noopener"><code>EditedNearestNeighbours</code></a> by repeating the algorithm multiple times [<a href="https://imbalanced-learn.org/stable/zzz_references.html#id18" target="_blank" rel="noopener">Tom76a</a>]. Generally, repeating the algorithm will delete more data:</p>
+<p><strong>关键参数</strong>： <em>max_iter=100</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> imblearn.under_sampling <span class="keyword">import</span> RepeatedEditedNearestNeighbours</span><br><span class="line">renn = RepeatedEditedNearestNeighbours()</span><br><span class="line">X_resampled, y_resampled = renn.fit_resample(X, y)</span><br><span class="line">print(sorted(Counter(y_resampled).items()))</span><br><span class="line">[(<span class="number">0</span>, <span class="number">64</span>), (<span class="number">1</span>, <span class="number">208</span>), (<span class="number">2</span>, <span class="number">4551</span>)]</span><br></pre></td></tr></table></figure>
+<h5 id="ALLKNN"><a href="#ALLKNN" class="headerlink" title="ALLKNN"></a>ALLKNN</h5><p>This method will apply ENN several time and will vary the number of nearest neighbours.</p>
+<p><a href="https://imbalanced-learn.org/stable/references/generated/imblearn.under_sampling.AllKNN.html#imblearn.under_sampling.AllKNN" target="_blank" rel="noopener"><code>AllKNN</code></a> differs from the previous <a href="https://imbalanced-learn.org/stable/references/generated/imblearn.under_sampling.RepeatedEditedNearestNeighbours.html#imblearn.under_sampling.RepeatedEditedNearestNeighbours" target="_blank" rel="noopener"><code>RepeatedEditedNearestNeighbours</code></a> since the number of neighbors of the internal nearest neighbors algorithm is increased at each iteration [<a href="https://imbalanced-learn.org/stable/zzz_references.html#id18" target="_blank" rel="noopener">Tom76a</a>]</p>
+<h5 id="CondensedNearestNeighbour"><a href="#CondensedNearestNeighbour" class="headerlink" title="CondensedNearestNeighbour"></a>CondensedNearestNeighbour</h5><p>使用1近邻的方法来进行迭代, 来判断一个样本是应该保留还是剔除, 具体的实现步骤如下:</p>
+<ol>
+<li>集合C: 所有的少数类样本;</li>
+<li>选择一个多数类样本(需要下采样)加入集合C, 其他的这类样本放入集合S;</li>
+<li>使用集合S训练一个1-NN的分类器, 对集合S中的样本进行分类;</li>
+<li>将集合S中错分的样本加入集合C;</li>
+<li>重复上述过程, 直到没有样本再加入到集合C.</li>
+</ol>
+<h5 id="NeighbourhoodCleaningRule"><a href="#NeighbourhoodCleaningRule" class="headerlink" title="NeighbourhoodCleaningRule"></a>NeighbourhoodCleaningRule</h5><p><strong>基本用法</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> make_classification</span><br><span class="line"><span class="keyword">from</span> imblearn.under_sampling <span class="keyword">import</span> NeighbourhoodCleaningRule </span><br><span class="line">X, y = make_classification(n_classes=<span class="number">2</span>, class_sep=<span class="number">2</span>,</span><br><span class="line">weights=[<span class="number">0.1</span>, <span class="number">0.9</span>], n_informative=<span class="number">3</span>, n_redundant=<span class="number">1</span>, flip_y=<span class="number">0</span>,</span><br><span class="line">n_features=<span class="number">20</span>, n_clusters_per_class=<span class="number">1</span>, n_samples=<span class="number">1000</span>, random_state=<span class="number">10</span>)</span><br><span class="line">print(<span class="string">'Original dataset shape %s'</span> % Counter(y))</span><br><span class="line">Original dataset shape Counter(&#123;<span class="number">1</span>: <span class="number">900</span>, <span class="number">0</span>: <span class="number">100</span>&#125;)</span><br><span class="line">ncr = NeighbourhoodCleaningRule()</span><br><span class="line">X_res, y_res = ncr.fit_resample(X, y)</span><br><span class="line">print(<span class="string">'Resampled dataset shape %s'</span> % Counter(y_res))</span><br><span class="line">Resampled dataset shape Counter(&#123;<span class="number">1</span>: <span class="number">877</span>, <span class="number">0</span>: <span class="number">100</span>&#125;)</span><br></pre></td></tr></table></figure>
+<h5 id="InstanceHardnessThreshold"><a href="#InstanceHardnessThreshold" class="headerlink" title="InstanceHardnessThreshold"></a>InstanceHardnessThreshold</h5><p><strong>基本用法：</strong></p>
+<p><a href="https://imbalanced-learn.org/stable/references/generated/imblearn.under_sampling.InstanceHardnessThreshold.html#imblearn.under_sampling.InstanceHardnessThreshold" target="_blank" rel="noopener"><code>InstanceHardnessThreshold</code></a> is a specific algorithm in which a classifier is trained on the data and the samples with lower probabilities are removed [<a href="https://imbalanced-learn.org/stable/zzz_references.html#id21" target="_blank" rel="noopener">SMGC14</a>]. The class can be used as:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> imblearn.under_sampling <span class="keyword">import</span> InstanceHardnessThreshold</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>iht = InstanceHardnessThreshold(random_state=<span class="number">0</span>,</span><br><span class="line"><span class="meta">... </span>                                estimator=LogisticRegression(</span><br><span class="line"><span class="meta">... </span>                                    solver=<span class="string">'lbfgs'</span>, multi_class=<span class="string">'auto'</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>X_resampled, y_resampled = iht.fit_resample(X, y)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(sorted(Counter(y_resampled).items()))</span><br><span class="line">[(<span class="number">0</span>, <span class="number">64</span>), (<span class="number">1</span>, <span class="number">64</span>), (<span class="number">2</span>, <span class="number">64</span>)]</span><br></pre></td></tr></table></figure>
+<p>This class has 2 important parameters. <code>estimator</code> will accept any scikit-learn classifier which has a method <code>predict_proba</code>. The classifier training is performed using a cross-validation and the parameter <code>cv</code> can set the number of folds to use.</p>
+<p><strong>关键参数：</strong></p>
+<p><strong>estimator</strong>: estimator object, default=None</p>
+<p>Classifier to be used to estimate instance hardness of the samples. By default a <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" target="_blank" rel="noopener"><code>RandomForestClassifier</code></a> will be used. If <code>str</code>, the choices using a string are the following: <code>&#39;knn&#39;</code>, <code>&#39;decision-tree&#39;</code>, <code>&#39;random-forest&#39;</code>, <code>&#39;adaboost&#39;</code>, <code>&#39;gradient-boosting&#39;</code> and <code>&#39;linear-svm&#39;</code>. If object, an estimator inherited from <a href="https://scikit-learn.org/stable/modules/generated/sklearn.base.ClassifierMixin.html#sklearn.base.ClassifierMixin" target="_blank" rel="noopener"><code>ClassifierMixin</code></a> and having an attribute <code>predict_proba</code>.</p>
+<p><strong>cv</strong>: int, default=5</p>
+<p>Number of folds to be used when estimating samples’ instance hardness.</p>
+<p><strong>难例阈值的确定</strong></p>
+<h3 id="过采样"><a href="#过采样" class="headerlink" title="过采样"></a>过采样</h3><p>class imblearn.over_sampling.RandomOverSampler(*, sampling_strategy=’auto’, random_state=None, shrinkage=None)[source]¶</p>
+<p>下面的example是最简单的过采样，当然还有很多种欠采样，可以参考：<a href="https://imbalanced-learn.org/stable/references/under_sampling.html" target="_blank" rel="noopener">Under-sampling methods</a>，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> imblearn.over_sampling <span class="keyword">import</span> RandomOverSampler</span><br><span class="line">ros = RandomOverSampler(random_state=<span class="number">0</span>)</span><br><span class="line">X_resampled, y_resampled = ros.fit_resample(X, y)</span><br><span class="line">print(Counter(y_resampled))</span><br><span class="line">print(Counter(y))</span><br></pre></td></tr></table></figure>
+<h3 id="SMOTE"><a href="#SMOTE" class="headerlink" title="SMOTE"></a>SMOTE</h3><p>官方文档： <a href="https://imbalanced-learn.org/stable/references/generated/imblearn.over_sampling.SMOTE.html" target="_blank" rel="noopener">SMOTE</a></p>
+<h5 id="Naive-SMOTE"><a href="#Naive-SMOTE" class="headerlink" title="Naive SMOTE"></a>Naive SMOTE</h5><p>class imblearn.over_sampling.SMOTE(*, sampling_strategy=’auto’, random_state=None, k_neighbors=5, n_jobs=None)</p>
+<p>论文地址：<a href="http://xueshu.baidu.com/usercenter/paper/show?paperid=28300870422e64fd0ac338860cd0010a&amp;site=xueshu_se" target="_blank" rel="noopener">http://xueshu.baidu.com/usercenter/paper/show?paperid=28300870422e64fd0ac338860cd0010a&amp;site=xueshu_se</a></p>
+<p>SMOTE（Synthetic Minority Oversampling Technique）合成少数类过采样技术，是在随机采样的基础上改进的一种过采样算法。</p>
+<p>  首先，从少数类样本中选取一个样本xi。其次，按采样倍率N，从xi的K近邻中随机选择N个样本xzi。最后，依次在xzi和xi之间随机合成新样本，合成公式如下：</p>
+<p><img src="/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/image-20211029202105468.png" alt="image-20211029202105468"></p>
+<p>SMOTE实现简单，但其弊端也很明显，由于SMOTE对所有少数类样本一视同仁，并未考虑近邻样本的类别信息，往往出现样本混叠现象，导致分类效果不佳。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> make_classification</span><br><span class="line"><span class="keyword">from</span> imblearn.over_sampling <span class="keyword">import</span> SMOTE</span><br><span class="line">X, y = make_classification(n_classes=<span class="number">2</span>, class_sep=<span class="number">2</span>,</span><br><span class="line">                           weights=[<span class="number">0.1</span>, <span class="number">0.9</span>], n_informative=<span class="number">2</span>, n_redundant=<span class="number">0</span>, flip_y=<span class="number">0</span>,</span><br><span class="line">                           n_features=<span class="number">2</span>, n_clusters_per_class=<span class="number">1</span>, n_samples=<span class="number">100</span>,random_state=<span class="number">10</span>)</span><br><span class="line">print(<span class="string">'Original dataset shape %s'</span> % Counter(y))</span><br><span class="line"></span><br><span class="line">sm = SMOTE(random_state=<span class="number">42</span>)</span><br><span class="line">X_res, y_res = sm.fit_resample(X, y)</span><br><span class="line">print(<span class="string">'Resampled dataset shape %s'</span> % Counter(y_res))</span><br></pre></td></tr></table></figure>
+<p><strong>SMOTE采样前后对比</strong></p>
+<p><img src="/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/image-20211029210142803.png" alt="image-20211029210142803"></p>
+<h5 id="Borderline-SMOTE"><a href="#Borderline-SMOTE" class="headerlink" title="Borderline SMOTE"></a>Borderline SMOTE</h5><p>论文地址：<a href="http://xueshu.baidu.com/usercenter/paper/show?paperid=f95a4bd0843c4c6389cc878bc1d525a2&amp;site=xueshu_se" target="_blank" rel="noopener">http://xueshu.baidu.com/usercenter/paper/show?paperid=f95a4bd0843c4c6389cc878bc1d525a2&amp;site=xueshu_se</a><br>Borderline SMOTE是在SMOTE基础上改进的过采样算法，该算法仅使用边界上的少数类样本来合成新样本，从而改善样本的类别分布。<br>Borderline SMOTE采样过程是将少数类样本分为3类，分别为Safe、Danger和Noise，具体说明如下。最后，仅对表为Danger的少数类样本过采样。<br>Safe，样本周围一半以上均为少数类样本，如图中点A<br>Danger：样本周围一半以上均为多数类样本，视为在边界上的样本，如图中点B<br>Noise：样本周围均为多数类样本，视为噪音，如图中点C</p>
+<p><img src="/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTA2NTQyOTk=,size_16,color_FFFFFF,t_70#pic_center.png" alt="watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTA2NTQyOTk=,size_16,color_FFFFFF,t_70#pic_center"></p>
+<p>Borderline-SMOTE又可分为Borderline-SMOTE1和Borderline-SMOTE2，Borderline-SMOTE1在对Danger点生成新样本时，在K近邻随机选择少数类样本（与SMOTE相同），Borderline-SMOTE2则是在k近邻中的任意一个样本(不关注样本类别)</p>
+<p><strong>Borderline-SMOTE Python使用</strong></p>
+<p>class imblearn.over_sampling.BorderlineSMOTE(*, sampling_strategy=’auto’, random_state=None, k_neighbors=5, n_jobs=None, m_neighbors=10, kind=’borderline-1’) <a href="https://github.com/scikit-learn-contrib/imbalanced-learn/blob/dfc44e2/imblearn/over_sampling/_smote/filter.py#L33" target="_blank" rel="noopener">[source]</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> make_classification</span><br><span class="line"><span class="keyword">from</span> imblearn.over_sampling <span class="keyword">import</span> BorderlineSMOTE</span><br><span class="line">X, y = make_classification(n_classes=<span class="number">2</span>, class_sep=<span class="number">2</span>,</span><br><span class="line">                           weights=[<span class="number">0.1</span>, <span class="number">0.9</span>], n_informative=<span class="number">2</span>, n_redundant=<span class="number">0</span>, flip_y=<span class="number">0</span>,</span><br><span class="line">                           n_features=<span class="number">2</span>, n_clusters_per_class=<span class="number">1</span>, n_samples=<span class="number">100</span>, random_state=<span class="number">9</span>)</span><br><span class="line">print(<span class="string">'Original dataset shape %s'</span> % Counter(y))</span><br><span class="line">sm = BorderlineSMOTE(random_state=<span class="number">42</span>,kind=<span class="string">"borderline-1"</span>)</span><br><span class="line">X_res, y_res = sm.fit_resample(X, y)</span><br><span class="line">print(<span class="string">'Resampled dataset shape %s'</span> % Counter(y_res))</span><br></pre></td></tr></table></figure>
+<p><img src="/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/image-20211029210202402.png" alt="image-20211029210202402"></p>
+<h5 id="ADASYN"><a href="#ADASYN" class="headerlink" title="ADASYN"></a>ADASYN</h5><p>论文地址：<a href="http://xueshu.baidu.com/usercenter/paper/show?paperid=13cbcaf6a33e0e3df06c0c0c421209d0&amp;site=xueshu_se" target="_blank" rel="noopener">http://xueshu.baidu.com/usercenter/paper/show?paperid=13cbcaf6a33e0e3df06c0c0c421209d0&amp;site=xueshu_se</a><br>  ADASYN （adaptive synthetic sampling）自适应合成抽样，与Borderline SMOTE相似，对不同的少数类样本赋予不同的权重，从而生成不同数量的样本。具体流程如下：</p>
+<p><img src="/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/image-20211029202613762.png" alt="image-20211029202613762" style="zoom: 67%;"></p>
+<p><strong>ADASYN Python使用</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> make_classification</span><br><span class="line"><span class="keyword">from</span> imblearn.over_sampling <span class="keyword">import</span> ADASYN</span><br><span class="line">X, y = make_classification(n_classes=<span class="number">2</span>, class_sep=<span class="number">2</span>,</span><br><span class="line">                           weights=[<span class="number">0.1</span>, <span class="number">0.9</span>], n_informative=<span class="number">3</span>, n_redundant=<span class="number">1</span>, flip_y=<span class="number">0</span>,</span><br><span class="line">                           n_features=<span class="number">20</span>, n_clusters_per_class=<span class="number">1</span>, n_samples=<span class="number">1000</span>,</span><br><span class="line">                           random_state=<span class="number">10</span>)</span><br><span class="line">print(<span class="string">'Original dataset shape %s'</span> % Counter(y))</span><br><span class="line">ada = ADASYN(random_state=<span class="number">42</span>)</span><br><span class="line">X_res, y_res = ada.fit_resample(X, y)</span><br><span class="line">print(<span class="string">'Resampled dataset shape %s'</span> % Counter(y_res))</span><br></pre></td></tr></table></figure>
+<p><strong>ADASYN 采样前后对比</strong></p>
+<p><img src="/blogs/不平衡采样-欠采样-过采样-SMOTE-Combination-Emsemble-Model-Feature/image-20211029210218017.png" alt="image-20211029210218017"></p>
+<h5 id="SMOTENC"><a href="#SMOTENC" class="headerlink" title="SMOTENC"></a>SMOTENC</h5><p>class imblearn.over_sampling.SMOTENC(categorical_features, *, sampling_strategy=’auto’, random_state=None, k_neighbors=5, n_jobs=None)</p>
+<p>因为SMOTE算法和ADASY算法在上采样的时候用到了距离,因此当x x<em>x</em>为异构数据,即含有离散变量(例如0代表男,1代表女),此时无法直接对离散变量使用欧氏距离。因此有了变体SMOTENC,其在处理离散数据时,采用<strong>K近邻样本中出现频率最高的离散数据</strong>作为新的样本的值。但是要提前告知离散数据出现的维度位置。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> imblearn.over_sampling <span class="keyword">import</span> BorderlineSMOTE</span><br><span class="line"><span class="comment">#当处理mixed data时,以上除了RandomOverSampler都不行(因为用到了距离),但是一下算法可以——SMORENC</span></span><br><span class="line"><span class="keyword">from</span> imblearn.over_sampling <span class="keyword">import</span> SMOTENC </span><br><span class="line"><span class="comment">#例如我们的数据的第一个(0)和最后一个数据(3)为categorical features(离散数据)</span></span><br><span class="line">smote_nc = SMOTENC(categorical_features=[<span class="number">0</span>,<span class="number">2</span>], random_state=<span class="number">0</span>)</span><br><span class="line">X_resampled, y_resampled = smote_nc.fit_resample(X,y)</span><br></pre></td></tr></table></figure>
+<p>此外，还有专门针对全部都是categorical features的<a href="https://imbalanced-learn.org/stable/references/generated/imblearn.over_sampling.SMOTEN.html#imblearn.over_sampling.SMOTEN" target="_blank" rel="noopener"><code>SMOTEN</code></a>：Over-sample using the SMOTE variant specifically for categorical features only.</p>
+<h5 id="SVMSMOTE"><a href="#SVMSMOTE" class="headerlink" title="SVMSMOTE"></a>SVMSMOTE</h5><p>class imblearn.over_sampling.SVMSMOTE(*, sampling_strategy=’auto’, random_state=None, k_neighbors=5, n_jobs=None, m_neighbors=10, svm_estimator=None, out_step=0.5)</p>
+<p>使用SVM分类器找到支持向量,在生成的时候会考虑它们. SVM的C参数决定了选择支持向量的多少</p>
+<p>Variant of SMOTE algorithm which use an SVM algorithm to detect sample to use for generating new synthetic samples as proposed in <a href="https://imbalanced-learn.org/stable/references/generated/imblearn.over_sampling.SVMSMOTE.html#r88acb9955f91-2" target="_blank" rel="noopener">[2]</a>.</p>
+<p>Read more in the <a href="https://imbalanced-learn.org/stable/over_sampling.html#smote-adasyn" target="_blank" rel="noopener">User Guide</a>.</p>
+<h5 id="KMeansSMOTE"><a href="#KMeansSMOTE" class="headerlink" title="KMeansSMOTE"></a>KMeansSMOTE</h5><p>class imblearn.over_sampling.KMeansSMOTE(*, sampling_strategy=’auto’, random_state=None, k_neighbors=2, n_jobs=None, kmeans_estimator=None, cluster_balance_threshold=’auto’, density_exponent=’auto’)</p>
+<p>Apply a KMeans clustering before to over-sample using SMOTE.</p>
+<p>This is an implementation of the algorithm described in <a href="https://imbalanced-learn.org/stable/references/generated/imblearn.over_sampling.KMeansSMOTE.html#rea5937a049dc-1" target="_blank" rel="noopener">[1]</a>.</p>
+<p>Read more in the <a href="https://imbalanced-learn.org/stable/over_sampling.html#smote-adasyn" target="_blank" rel="noopener">User Guide</a>.</p>
+<h3 id="Combination-of-over-and-under-sampling"><a href="#Combination-of-over-and-under-sampling" class="headerlink" title="Combination of over- and under-sampling"></a>Combination of over- and under-sampling</h3><p>We previously presented <a href="https://imbalanced-learn.org/stable/references/generated/imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE" target="_blank" rel="noopener"><code>SMOTE</code></a> and showed that this method can generate noisy samples by interpolating new points between marginal outliers and inliers. This issue can be solved by cleaning the space resulting from over-sampling.</p>
+<p>In this regard, Tomek’s link and edited nearest-neighbours are the two cleaning methods that have been added to the pipeline after applying SMOTE over-sampling to obtain a cleaner space. The two ready-to use classes imbalanced-learn implements for combining over- and undersampling methods are: (i) <a href="https://imbalanced-learn.org/stable/references/generated/imblearn.combine.SMOTETomek.html#imblearn.combine.SMOTETomek" target="_blank" rel="noopener"><code>SMOTETomek</code></a> [<a href="https://imbalanced-learn.org/stable/zzz_references.html#id3" target="_blank" rel="noopener">BPM04</a>] and (ii) <a href="https://imbalanced-learn.org/stable/references/generated/imblearn.combine.SMOTEENN.html#imblearn.combine.SMOTEENN" target="_blank" rel="noopener"><code>SMOTEENN</code></a> [<a href="https://imbalanced-learn.org/stable/zzz_references.html#id4" target="_blank" rel="noopener">BBM03</a>].</p>
+<p><strong>基本用法</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> make_classification</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>X, y = make_classification(n_samples=<span class="number">5000</span>, n_features=<span class="number">2</span>, n_informative=<span class="number">2</span>,</span><br><span class="line"><span class="meta">... </span>                           n_redundant=<span class="number">0</span>, n_repeated=<span class="number">0</span>, n_classes=<span class="number">3</span>,</span><br><span class="line"><span class="meta">... </span>                           n_clusters_per_class=<span class="number">1</span>,</span><br><span class="line"><span class="meta">... </span>                           weights=[<span class="number">0.01</span>, <span class="number">0.05</span>, <span class="number">0.94</span>],</span><br><span class="line"><span class="meta">... </span>                           class_sep=<span class="number">0.8</span>, random_state=<span class="number">0</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(sorted(Counter(y).items()))</span><br><span class="line">[(<span class="number">0</span>, <span class="number">64</span>), (<span class="number">1</span>, <span class="number">262</span>), (<span class="number">2</span>, <span class="number">4674</span>)]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> imblearn.combine <span class="keyword">import</span> SMOTEENN</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>smote_enn = SMOTEENN(random_state=<span class="number">0</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>X_resampled, y_resampled = smote_enn.fit_resample(X, y)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(sorted(Counter(y_resampled).items()))</span><br><span class="line">[(<span class="number">0</span>, <span class="number">4060</span>), (<span class="number">1</span>, <span class="number">4381</span>), (<span class="number">2</span>, <span class="number">3502</span>)]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> imblearn.combine <span class="keyword">import</span> SMOTETomek</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>smote_tomek = SMOTETomek(random_state=<span class="number">0</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>X_resampled, y_resampled = smote_tomek.fit_resample(X, y)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(sorted(Counter(y_resampled).items()))</span><br><span class="line">[(<span class="number">0</span>, <span class="number">4499</span>), (<span class="number">1</span>, <span class="number">4566</span>), (<span class="number">2</span>, <span class="number">4413</span>)]</span><br></pre></td></tr></table></figure>
+<p>关键参数：</p>
+<p><strong>smote</strong>: sampler object, default=None</p>
+<p>The <a href="https://imbalanced-learn.org/stable/references/generated/imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE" target="_blank" rel="noopener"><code>SMOTE</code></a> object to use. If not given, a <a href="https://imbalanced-learn.org/stable/references/generated/imblearn.over_sampling.SMOTE.html#imblearn.over_sampling.SMOTE" target="_blank" rel="noopener"><code>SMOTE</code></a> object with default parameters will be given.</p>
+<p><strong>enn</strong>: sampler object, default=None</p>
+<p>The <a href="https://imbalanced-learn.org/stable/references/generated/imblearn.under_sampling.EditedNearestNeighbours.html#imblearn.under_sampling.EditedNearestNeighbours" target="_blank" rel="noopener"><code>EditedNearestNeighbours</code></a> object to use. If not given, a <a href="https://imbalanced-learn.org/stable/references/generated/imblearn.under_sampling.EditedNearestNeighbours.html#imblearn.under_sampling.EditedNearestNeighbours" target="_blank" rel="noopener"><code>EditedNearestNeighbours</code></a> object with sampling strategy=’all’ will be given.</p>
+<p><strong>tomek</strong>: sampler object, default=None</p>
+<p>The <a href="https://imbalanced-learn.org/stable/references/generated/imblearn.under_sampling.TomekLinks.html#imblearn.under_sampling.TomekLinks" target="_blank" rel="noopener"><code>TomekLinks</code></a> object to use. If not given, a <a href="https://imbalanced-learn.org/stable/references/generated/imblearn.under_sampling.TomekLinks.html#imblearn.under_sampling.TomekLinks" target="_blank" rel="noopener"><code>TomekLinks</code></a> object with sampling strategy=’all’ will be given.</p>
+<h3 id="Ensemble-resampling"><a href="#Ensemble-resampling" class="headerlink" title="Ensemble resampling"></a>Ensemble resampling</h3><h4 id="BalancedBaggingClassifier"><a href="#BalancedBaggingClassifier" class="headerlink" title="BalancedBaggingClassifier"></a>BalancedBaggingClassifier</h4><p>In ensemble classifiers, bagging methods build several estimators on different randomly selected subset of data. In scikit-learn, this classifier is named <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.BaggingClassifier.html#sklearn.ensemble.BaggingClassifier" target="_blank" rel="noopener"><code>BaggingClassifier</code></a>. However, this classifier does not allow to balance each subset of data. Therefore, when training on imbalanced data set, this classifier will favor the majority classes:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> make_classification</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>X, y = make_classification(n_samples=<span class="number">10000</span>, n_features=<span class="number">2</span>, n_informative=<span class="number">2</span>,</span><br><span class="line"><span class="meta">... </span>                           n_redundant=<span class="number">0</span>, n_repeated=<span class="number">0</span>, n_classes=<span class="number">3</span>,</span><br><span class="line"><span class="meta">... </span>                           n_clusters_per_class=<span class="number">1</span>,</span><br><span class="line"><span class="meta">... </span>                           weights=[<span class="number">0.01</span>, <span class="number">0.05</span>, <span class="number">0.94</span>], class_sep=<span class="number">0.8</span>,</span><br><span class="line"><span class="meta">... </span>                           random_state=<span class="number">0</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> balanced_accuracy_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> BaggingClassifier</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=<span class="number">0</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>bc = BaggingClassifier(base_estimator=DecisionTreeClassifier(),</span><br><span class="line"><span class="meta">... </span>                       random_state=<span class="number">0</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>bc.fit(X_train, y_train) </span><br><span class="line">BaggingClassifier(...)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_pred = bc.predict(X_test)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>balanced_accuracy_score(y_test, y_pred)  </span><br><span class="line"><span class="number">0.77</span>...</span><br></pre></td></tr></table></figure>
+<p>In <a href="https://imbalanced-learn.org/stable/references/generated/imblearn.ensemble.BalancedBaggingClassifier.html#imblearn.ensemble.BalancedBaggingClassifier" target="_blank" rel="noopener"><code>BalancedBaggingClassifier</code></a>, each bootstrap sample will be further resampled to achieve the <code>sampling_strategy</code> desired. Therefore, <a href="https://imbalanced-learn.org/stable/references/generated/imblearn.ensemble.BalancedBaggingClassifier.html#imblearn.ensemble.BalancedBaggingClassifier" target="_blank" rel="noopener"><code>BalancedBaggingClassifier</code></a> takes the same parameters than the scikit-learn <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.BaggingClassifier.html#sklearn.ensemble.BaggingClassifier" target="_blank" rel="noopener"><code>BaggingClassifier</code></a>. In addition, the sampling is controlled by the parameter <code>sampler</code> or the two parameters <code>sampling_strategy</code> and <code>replacement</code>, if one wants to use the <a href="https://imbalanced-learn.org/stable/references/generated/imblearn.under_sampling.RandomUnderSampler.html#imblearn.under_sampling.RandomUnderSampler" target="_blank" rel="noopener"><code>RandomUnderSampler</code></a>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> imblearn.ensemble <span class="keyword">import</span> BalancedBaggingClassifier</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>bbc = BalancedBaggingClassifier(base_estimator=DecisionTreeClassifier(),</span><br><span class="line"><span class="meta">... </span>                                sampling_strategy=<span class="string">'auto'</span>,</span><br><span class="line"><span class="meta">... </span>                                replacement=<span class="literal">False</span>,</span><br><span class="line"><span class="meta">... </span>                                random_state=<span class="number">0</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>bbc.fit(X_train, y_train) </span><br><span class="line">BalancedBaggingClassifier(...)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_pred = bbc.predict(X_test)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>balanced_accuracy_score(y_test, y_pred)  </span><br><span class="line"><span class="number">0.8</span>...</span><br></pre></td></tr></table></figure>
+<p>Changing the <code>sampler</code> will give rise to different known implementation [<a href="https://imbalanced-learn.org/stable/zzz_references.html#id28" target="_blank" rel="noopener">MO97</a>], [<a href="https://imbalanced-learn.org/stable/zzz_references.html#id27" target="_blank" rel="noopener">HKT09</a>], [<a href="https://imbalanced-learn.org/stable/zzz_references.html#id26" target="_blank" rel="noopener">WY09</a>]. You can refer to the following example shows in practice these different methods: <a href="https://imbalanced-learn.org/stable/auto_examples/ensemble/plot_bagging_classifier.html#sphx-glr-auto-examples-ensemble-plot-bagging-classifier-py" target="_blank" rel="noopener">Bagging classifiers using sampler</a></p>
+<h4 id="BalancedRandomForestClassifier"><a href="#BalancedRandomForestClassifier" class="headerlink" title="BalancedRandomForestClassifier"></a>BalancedRandomForestClassifier</h4><p><a href="https://imbalanced-learn.org/stable/references/generated/imblearn.ensemble.BalancedRandomForestClassifier.html#imblearn.ensemble.BalancedRandomForestClassifier" target="_blank" rel="noopener"><code>BalancedRandomForestClassifier</code></a> is another ensemble method in which each tree of the forest will be provided a balanced bootstrap sample [<a href="https://imbalanced-learn.org/stable/zzz_references.html#id5" target="_blank" rel="noopener">CLB+04</a>]. This class provides all functionality of the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" target="_blank" rel="noopener"><code>RandomForestClassifier</code></a>:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;</span>&gt; from imblearn.ensemble import BalancedRandomForestClassifier</span><br><span class="line"><span class="meta">&gt;&gt;</span>&gt; brf = BalancedRandomForestClassifier(n_estimators=<span class="number">100</span>, random_state=<span class="number">0</span>)</span><br><span class="line"><span class="meta">&gt;&gt;</span>&gt; brf.fit(X_train, y_train) </span><br><span class="line">BalancedRandomForestClassifier(...)</span><br><span class="line"><span class="meta">&gt;&gt;</span>&gt; y_pred = brf.predict(X_test)</span><br><span class="line"><span class="meta">&gt;&gt;</span>&gt; balanced_accuracy_score(y_test, y_pred)  </span><br><span class="line"><span class="number">0</span>.<span class="number">8</span>...</span><br></pre></td></tr></table></figure>
+<h4 id="RUSBoostClassifier"><a href="#RUSBoostClassifier" class="headerlink" title="RUSBoostClassifier"></a>RUSBoostClassifier</h4><p>Several methods taking advantage of boosting have been designed.</p>
+<p><a href="https://imbalanced-learn.org/stable/references/generated/imblearn.ensemble.RUSBoostClassifier.html#imblearn.ensemble.RUSBoostClassifier" target="_blank" rel="noopener"><code>RUSBoostClassifier</code></a> randomly under-sample the dataset before to perform a boosting iteration [<a href="https://imbalanced-learn.org/stable/zzz_references.html#id7" target="_blank" rel="noopener">SKVHN09</a>]:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> imblearn.ensemble <span class="keyword">import</span> RUSBoostClassifier</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>rusboost = RUSBoostClassifier(n_estimators=<span class="number">200</span>, algorithm=<span class="string">'SAMME.R'</span>,</span><br><span class="line"><span class="meta">... </span>                              random_state=<span class="number">0</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>rusboost.fit(X_train, y_train)  </span><br><span class="line">RUSBoostClassifier(...)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_pred = rusboost.predict(X_test)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>balanced_accuracy_score(y_test, y_pred)  </span><br><span class="line"><span class="number">0.</span>..</span><br></pre></td></tr></table></figure>
+<h4 id="Bagging-AdaBoostClassifier"><a href="#Bagging-AdaBoostClassifier" class="headerlink" title="Bagging - AdaBoostClassifier"></a>Bagging - AdaBoostClassifier</h4><p>A specific method which uses <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html#sklearn.ensemble.AdaBoostClassifier" target="_blank" rel="noopener"><code>AdaBoostClassifier</code></a> as learners in the bagging classifier is called “EasyEnsemble”. </p>
+<p>The <a href="https://imbalanced-learn.org/stable/references/generated/imblearn.ensemble.EasyEnsembleClassifier.html#imblearn.ensemble.EasyEnsembleClassifier" target="_blank" rel="noopener"><code>EasyEnsembleClassifier</code></a> allows to <strong>bag AdaBoost learners which are trained on balanced bootstrap samples</strong> [<a href="https://imbalanced-learn.org/stable/zzz_references.html#id6" target="_blank" rel="noopener">LWZ08</a>]. Similarly to the <a href="https://imbalanced-learn.org/stable/references/generated/imblearn.ensemble.BalancedBaggingClassifier.html#imblearn.ensemble.BalancedBaggingClassifier" target="_blank" rel="noopener"><code>BalancedBaggingClassifier</code></a> API, one can construct the ensemble as:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> imblearn.ensemble <span class="keyword">import</span> EasyEnsembleClassifier</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>eec = EasyEnsembleClassifier(random_state=<span class="number">0</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>eec.fit(X_train, y_train) </span><br><span class="line">EasyEnsembleClassifier(...)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_pred = eec.predict(X_test)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>balanced_accuracy_score(y_test, y_pred)  </span><br><span class="line"><span class="number">0.6</span>...</span><br></pre></td></tr></table></figure>
+<h2 id="Model-selection"><a href="#Model-selection" class="headerlink" title="Model selection"></a>Model selection</h2><p>偷懒一下…</p>
+<h2 id="Feature-selection"><a href="#Feature-selection" class="headerlink" title="Feature selection"></a>Feature selection</h2><p>偷懒两下…</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+          
+            <a href="/tags/Ensemble-Learning/" rel="tag"># Ensemble Learning</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blogs/集成学习Sklearn-Mlxtend-The-basic-ensemble-classifiers-of-Sklearn-and-Mlxtend/" rel="next" title="集成学习Sklearn-Mlxtend-The-basic-ensemble-classifiers-of-Sklearn-and-Mlxtend">
+                <i class="fa fa-chevron-left"></i> 集成学习Sklearn-Mlxtend-The-basic-ensemble-classifiers-of-Sklearn-and-Mlxtend
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blogs/医学统计学的图表-Chart-of-medical-statistics/" rel="prev" title="医学统计学的图表-Chart of medical statistics">
+                医学统计学的图表-Chart of medical statistics <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/myshow.jpg" alt="Jiageng Wu">
+            
+              <p class="site-author-name" itemprop="name">Jiageng Wu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+          
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=28578763&auto=1&height=66"></iframe>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">86</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Dragon-Wu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wujg1995@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.cnblogs.com/Dragon5/" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">1.</span> <span class="nav-text">参考:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#欠采样"><span class="nav-number">2.</span> <span class="nav-text">欠采样</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#随机欠采样"><span class="nav-number">2.0.1.</span> <span class="nav-text">随机欠采样</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#聚类采样"><span class="nav-number">2.0.2.</span> <span class="nav-text">聚类采样</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#NearMiss"><span class="nav-number">2.0.3.</span> <span class="nav-text">NearMiss</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TomekLinks"><span class="nav-number">2.0.4.</span> <span class="nav-text">TomekLinks</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#EditedNearestNeighbours"><span class="nav-number">2.0.5.</span> <span class="nav-text">EditedNearestNeighbours</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#RepeatedEditedNearestNeighbours"><span class="nav-number">2.0.6.</span> <span class="nav-text">RepeatedEditedNearestNeighbours</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ALLKNN"><span class="nav-number">2.0.7.</span> <span class="nav-text">ALLKNN</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CondensedNearestNeighbour"><span class="nav-number">2.0.8.</span> <span class="nav-text">CondensedNearestNeighbour</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#NeighbourhoodCleaningRule"><span class="nav-number">2.0.9.</span> <span class="nav-text">NeighbourhoodCleaningRule</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#InstanceHardnessThreshold"><span class="nav-number">2.0.10.</span> <span class="nav-text">InstanceHardnessThreshold</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#过采样"><span class="nav-number">3.</span> <span class="nav-text">过采样</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SMOTE"><span class="nav-number">4.</span> <span class="nav-text">SMOTE</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Naive-SMOTE"><span class="nav-number">4.0.1.</span> <span class="nav-text">Naive SMOTE</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Borderline-SMOTE"><span class="nav-number">4.0.2.</span> <span class="nav-text">Borderline SMOTE</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ADASYN"><span class="nav-number">4.0.3.</span> <span class="nav-text">ADASYN</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SMOTENC"><span class="nav-number">4.0.4.</span> <span class="nav-text">SMOTENC</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SVMSMOTE"><span class="nav-number">4.0.5.</span> <span class="nav-text">SVMSMOTE</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#KMeansSMOTE"><span class="nav-number">4.0.6.</span> <span class="nav-text">KMeansSMOTE</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Combination-of-over-and-under-sampling"><span class="nav-number">5.</span> <span class="nav-text">Combination of over- and under-sampling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ensemble-resampling"><span class="nav-number">6.</span> <span class="nav-text">Ensemble resampling</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#BalancedBaggingClassifier"><span class="nav-number">6.1.</span> <span class="nav-text">BalancedBaggingClassifier</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BalancedRandomForestClassifier"><span class="nav-number">6.2.</span> <span class="nav-text">BalancedRandomForestClassifier</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RUSBoostClassifier"><span class="nav-number">6.3.</span> <span class="nav-text">RUSBoostClassifier</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bagging-AdaBoostClassifier"><span class="nav-number">6.4.</span> <span class="nav-text">Bagging - AdaBoostClassifier</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Model-selection"><span class="nav-number"></span> <span class="nav-text">Model selection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Feature-selection"><span class="nav-number"></span> <span class="nav-text">Feature selection</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiageng Wu</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+-->
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共127.6k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail',];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'EFyLhOmCcSb9ran5dwR9SJv1-gzGzoHsz',
+        appKey: 'YVWtqErBb4qla50r8QFJ9NMV',
+        placeholder: 'Just go go',
+        avatar:'robohash',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 24053,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

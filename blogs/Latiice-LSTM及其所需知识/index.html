@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+<script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("https://dragon-wu.github.io/");
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "e3b38aa8"
+    });
+  daovoice('update');
+  </script>
+
+
+
+  <meta name="msvalidate.01" content="b8759997e06919ab4d5bc4180303f7b7.jgwu.top">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/myblue.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/myblue.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/myblue.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/myblue.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Machine Learning,Deep Learning,NLP,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="踏实学习，一步一步看懂">
+<meta name="keywords" content="Machine Learning,Deep Learning,NLP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Latiice-LSTM及其所需知识">
+<meta property="og:url" content="http://jgwu.top/blogs/Latiice-LSTM及其所需知识/index.html">
+<meta property="og:site_name" content="一个地方">
+<meta property="og:description" content="踏实学习，一步一步看懂">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://jgwu.top/blogs/Latiice-LSTM及其所需知识/image-20210502143458976.png">
+<meta property="og:image" content="http://jgwu.top/blogs/Latiice-LSTM及其所需知识/image-20210502143539876.png">
+<meta property="og:image" content="http://jgwu.top/blogs/Latiice-LSTM及其所需知识/image-20210502143734859.png">
+<meta property="og:image" content="http://jgwu.top/blogs/Latiice-LSTM及其所需知识/image-20210502143747398.png">
+<meta property="og:image" content="http://jgwu.top/blogs/Latiice-LSTM及其所需知识/image-20210502143759507.png">
+<meta property="og:image" content="http://jgwu.top/blogs/Latiice-LSTM及其所需知识/image-20210502143908159.png">
+<meta property="og:image" content="http://jgwu.top/blogs/Latiice-LSTM及其所需知识/image-20210502144102056.png">
+<meta property="og:image" content="http://jgwu.top/blogs/Latiice-LSTM及其所需知识/image-20210502144222518.png">
+<meta property="og:image" content="http://jgwu.top/blogs/Latiice-LSTM及其所需知识/image-20210502144501369.png">
+<meta property="og:image" content="http://jgwu.top/blogs/Latiice-LSTM及其所需知识/image-20210502144638665.png">
+<meta property="og:image" content="http://jgwu.top/blogs/Latiice-LSTM及其所需知识/image-20210502145308717.png">
+<meta property="og:image" content="http://jgwu.top/blogs/Latiice-LSTM及其所需知识/image-20210502151436746.png">
+<meta property="og:image" content="http://jgwu.top/blogs/Latiice-LSTM及其所需知识/image-20210502151635053.png">
+<meta property="og:image" content="http://jgwu.top/blogs/Latiice-LSTM及其所需知识/image-20210502151914291.png">
+<meta property="og:image" content="http://jgwu.top/blogs/Latiice-LSTM及其所需知识/image-20210502150806552.png">
+<meta property="og:image" content="http://jgwu.top/blogs/Latiice-LSTM及其所需知识/image-20210502150818496.png">
+<meta property="og:image" content="http://jgwu.top/blogs/Latiice-LSTM及其所需知识/image-20210502152711489.png">
+<meta property="og:image" content="http://jgwu.top/blogs/Latiice-LSTM及其所需知识/image-20210502152721145.png">
+<meta property="og:image" content="http://jgwu.top/blogs/Latiice-LSTM及其所需知识/image-20210502153455034.png">
+<meta property="og:image" content="http://jgwu.top/blogs/Latiice-LSTM及其所需知识/image-20210502153917874.png">
+<meta property="og:image" content="http://jgwu.top/blogs/Latiice-LSTM及其所需知识/image-20210502154907620.png">
+<meta property="og:image" content="http://jgwu.top/blogs/Latiice-LSTM及其所需知识/image-20210502154950577.png">
+<meta property="og:image" content="http://jgwu.top/blogs/Latiice-LSTM及其所需知识/640">
+<meta property="og:image" content="http://jgwu.top/blogs/Latiice-LSTM及其所需知识/640">
+<meta property="og:image" content="http://jgwu.top/blogs/Latiice-LSTM及其所需知识/image-20210521135935901.png">
+<meta property="og:updated_time" content="2023-05-04T04:40:11.566Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Latiice-LSTM及其所需知识">
+<meta name="twitter:description" content="踏实学习，一步一步看懂">
+<meta name="twitter:image" content="http://jgwu.top/blogs/Latiice-LSTM及其所需知识/image-20210502143458976.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://jgwu.top/blogs/Latiice-LSTM及其所需知识/">
+
+
+
+
+
+  <title>Latiice-LSTM及其所需知识 | 一个地方</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?08bb4fc5c3d2998285280a0eabfdca3b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<link rel="alternate" href="/atom.xml" title="一个地方" type="application/atom+xml">
+</head>
+
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一个地方</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Wu's Blog</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://jgwu.top/blogs/Latiice-LSTM及其所需知识/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jiageng Wu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/myshow.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个地方">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Latiice-LSTM及其所需知识</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-27T11:19:20+08:00">
+                2021-04-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/" itemprop="url" rel="index">
+                    <span itemprop="name">CS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/blogs/Latiice-LSTM及其所需知识/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/blogs/Latiice-LSTM及其所需知识/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>  阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>踏实学习，一步一步看懂</p>
+<a id="more"></a>
+<h2 id="模型相关"><a href="#模型相关" class="headerlink" title="模型相关"></a>模型相关</h2><p>首先需要了解基础的模型，在了解为什么Lattice+LSTM能够解决NER的问题</p>
+<p>主要通过知乎一些blog和李宏毅老师的ML课程视频了解，尤其感谢李宏毅老师，其课程内容高效且有趣，PPT更是准备的十分用心，里面的示例图非常易懂！</p>
+<h3 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h3><h4 id="模型特性"><a href="#模型特性" class="headerlink" title="模型特性"></a>模型特性</h4><p>RNN（Recurrent Neural Network），顾名思义，是循环/递归神经网络，其与常规NN模型的差别在于，数据在模型中传递时，其得到的输出不仅仅由当前的输入决定，该数据之前的数据也会对其有影响，也就是不仅利用到当前数据的信息，也能够利用到与时序相关的前序输入的信息，这样能够解决什么问题呢？</p>
+<p>比如slot filling（语义槽填充）问题，同样的词语在不同语境下的含义是不同的，比如一个地点hangzhou，他的前面是 arrive 还是 leave 才决定了他是destination还是place of departure</p>
+<p>所以RNN在需要利用时序信息、上下文信息的场景中十分适用，也就在NLP领域大放异彩</p>
+<h4 id="具体实现和原理"><a href="#具体实现和原理" class="headerlink" title="具体实现和原理"></a>具体实现和原理</h4><p>下方左图是传统的NN，右图则是RNN的基本示意图，即通过存储上一次输入的相关信息（专门存储的记忆，并非一定与输出相同），来一起决定此次输入的输出</p>
+<p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502143458976.png" alt="image-20210502143458976"><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502143539876.png" alt="image-20210502143539876" style="zoom: 80%;"></p>
+<h5 id="具体示例"><a href="#具体示例" class="headerlink" title="具体示例"></a>具体示例</h5><p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502143734859.png" alt="image-20210502143734859" style="zoom:67%;"></p>
+<p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502143747398.png" alt="image-20210502143747398" style="zoom:67%;"></p>
+<p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502143759507.png" alt="image-20210502143759507" style="zoom:67%;"></p>
+<p>从而使得同一个词语的上文不同，其得到的结果也不同</p>
+<p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502143908159.png" alt="image-20210502143908159"></p>
+<h4 id="改进形态"><a href="#改进形态" class="headerlink" title="改进形态"></a>改进形态</h4><h5 id="Deep-RNN"><a href="#Deep-RNN" class="headerlink" title="Deep RNN"></a>Deep RNN</h5><p>多个Hidden layer，每个hidden  layer都存下相应的memory用于后续数据的传递</p>
+<p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502144102056.png" alt="image-20210502144102056" style="zoom:67%;"></p>
+<h5 id="Elman-Network-amp-Jordan-Network"><a href="#Elman-Network-amp-Jordan-Network" class="headerlink" title="Elman Network &amp; Jordan Network"></a>Elman Network &amp; Jordan Network</h5><p>Elman Network就是我们上述的基本模型，将hidden layer的数据进行传递，也存在Jordan Network是将上次数据的输出存下，JN可能会有更好的performance，因为hidden layer学习的feature可能不好解释和传递，因为不知道学到的是啥，但是JN学到的就是我们的target，便于理解</p>
+<p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502144222518.png" alt="image-20210502144222518" style="zoom:67%;"></p>
+<h5 id="Bidirectional-RNN"><a href="#Bidirectional-RNN" class="headerlink" title="Bidirectional RNN"></a>Bidirectional RNN</h5><p>利用上、下文，将上文和下文得到的y，在进行组合学习</p>
+<p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502144501369.png" alt="image-20210502144501369" style="zoom:67%;"></p>
+<h3 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h3><h4 id="模型特性-1"><a href="#模型特性-1" class="headerlink" title="模型特性"></a>模型特性</h4><p>LSTM（Long short-term memory，LSTM）则是更特殊和robust的RNN，他不仅仅是利用到前序输入留下的memory，他同时还会有个多个门对整个过程进行处理，选择是否忘记memory、是否使用memory，所以他会将一个输入变成4个输入（x、input gate、forget gate、output gate），自己去学习如何使用memory</p>
+<p>与RNN的结构差异</p>
+<h4 id="具体实现和原理-1"><a href="#具体实现和原理-1" class="headerlink" title="具体实现和原理"></a>具体实现和原理</h4><h5 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h5><p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502144638665.png" alt="image-20210502144638665"></p>
+<h5 id="模型传输过程"><a href="#模型传输过程" class="headerlink" title="模型传输过程"></a>模型传输过程</h5><p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502145308717.png" alt="image-20210502145308717"></p>
+<p><strong>输入Z</strong>，然后先得到Z,Zi,Zo,Zf，总共4个输入，然后了解各个门的状态，然后输入Z经过g(Z)后与input gate的结果multiply，所以<strong>input gate决定是否这次要传入新的输入</strong>，然后C’就上一次存在memory的值，他乘上f(Zf)，也就是<strong>forget gate决定是否要将存在memory里面的值忘掉</strong>，然后再加上前面input gate和输入multiply的结果，得到了接下来要存在memory里的C‘，最后是通过output gate进行最后的activate然后输出，所以<strong>output gate决定是否输出此次的结果</strong><br>（与直觉和名字相反，forget gate打开的时候，代表C通过该门，也就是记住上一次的memory，关闭的时候，则忘记上一次的memory）<br>通常使用sigmoid函数，使其在0-1之间，0代表打开，1代表关上</p>
+<p>传递过程的逻辑简化如下：</p>
+<p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502151436746.png" alt="image-20210502151436746" style="zoom: 80%;"></p>
+<p>那么LSTM的传递过程则如下图</p>
+<p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502151635053.png" alt="image-20210502151635053"></p>
+<p>但是真正的LSTM会如下图，会将上一步的output gate之前的h也作为输入，还有peephole将memory的值作为了输入：</p>
+<p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502151914291.png" alt="image-20210502151914291"></p>
+<p>所以其实输入只有一个，但是要变成4个，所以会有四倍的参数，如：</p>
+<p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502150806552.png" alt="image-20210502150806552" style="zoom:50%;"><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502150818496.png" alt="image-20210502150818496" style="zoom: 67%;"></p>
+<h5 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h5><p>图比较多，可以直接看李宏毅老师的PPT，一步步手推LSTM的样例，太强了！</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><h4 id="模型关系"><a href="#模型关系" class="headerlink" title="模型关系"></a>模型关系</h4><p>LSTM是RNN的升级版，多了很多的gate对输入、memory、输出都进行了控制，从而能够记忆需要长时间记忆的、忘记不重要的信息，做到Long的short-term，所以现在各个框架里的RNN基础块就是LSTM，纯正的RNN一般叫simpleRNN，但是LSTM也存在问题，比如他的参数比较多，所以还要GRU作为改进的方式，少了1/3的参数</p>
+<p>GRU输入输出的结构与普通的RNN相似，其中的内部思想与LSTM相似；与LSTM相比，GRU内部少了一个”门控“，参数比LSTM少，但是却也能够达到与LSTM相当的功能。考虑到硬件的<strong>计算能力</strong>和<strong>时间成本</strong>，因而很多时候我们也就会选择更加”实用“的GRU啦。</p>
+<p>GRU可以一定程度上解决LSTM的overfitting，简单来说，GRU的思路就是“旧的不去，新的不来”，他会把input gate和forget gate联动，如果input打开，那么forget打开，忘掉原来的memory</p>
+<p>具体可以参考：</p>
+<p>人人都能看懂的LSTM - 陈诚的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/32085405" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/32085405</a></p>
+<p>人人都能看懂的GRU - 陈诚的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/32481747" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/32481747</a></p>
+<h4 id="训练特点"><a href="#训练特点" class="headerlink" title="训练特点"></a>训练特点</h4><h5 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h5><p>RNN也是通过BP进行训练，Backpropagation through time (BPTT)，但是他会存在一个问题，就是梯度的变化很随机，可能是陡坡也可能是平原</p>
+<p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502152711489.png" alt="image-20210502152711489" style="zoom:50%;"><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502152721145.png" alt="image-20210502152721145" style="zoom:67%;"></p>
+<h5 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h5><p>梯度裁剪（clipping），当gradient大于某个threshold的时候，就截止，like  gradient &lt;= 15</p>
+<h5 id="为什么呢"><a href="#为什么呢" class="headerlink" title="为什么呢"></a>为什么呢</h5><p>为什么RNN很容易出现gradient vanish or gradient exploration，因为RNN此类模型中，会被前述的内容反复影响</p>
+<p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502153455034.png" alt="image-20210502153455034"></p>
+<p>（一般RNN都用sigmoid，而非RELU）</p>
+<p>但是LSTM不会有这个问题？LSTM可以handle前述RNN存在的gradient vanish问题，但是还可能会有较大的梯度，所以一般采取small learning rate</p>
+<p>因为他的此次输入和memory之间是add，not multiply</p>
+<p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502153917874.png" alt="image-20210502153917874"></p>
+<p>An idea from Hinton‘s paper: 用identit matrix+ReLU训练RNN可以超过LSTM</p>
+<h4 id="Deep-VS-Structured-Leanring"><a href="#Deep-VS-Structured-Leanring" class="headerlink" title="Deep VS Structured Leanring"></a>Deep VS Structured Leanring</h4><p>Structured Leanring可以更加轻易地增加一下显性的规则或者约束，Deep可以有更灵活和更优的性能</p>
+<p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502154907620.png" alt="image-20210502154907620"></p>
+<p>结合二者</p>
+<p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210502154950577.png" alt="image-20210502154950577"></p>
+<p>先通过LSTM等Deep model进行feature embedding，在通过structured learning进行学习</p>
+<h3 id="注意力机制-Attention-Transformer"><a href="#注意力机制-Attention-Transformer" class="headerlink" title="注意力机制/Attention/Transformer"></a>注意力机制/Attention/Transformer</h3><p>推荐阅读：</p>
+<p>深度学习中的注意力模型（2017版） - 张俊林的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/37601161" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/37601161</a></p>
+<p>一文看懂 Attention（本质原理+3大优点+5大类型） - 赵强的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/91839581" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/91839581</a></p>
+<p>详解Transformer （Attention Is All You Need） - 大师兄的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/48508221" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/48508221</a></p>
+<p>Attention机制详解（二）——Self-Attention与Transformer - 川陀学者的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/47282410" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/47282410</a></p>
+<p>从Word Embedding到Bert模型—自然语言处理中的预训练技术发展史 - 张俊林的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/49271699" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/49271699</a></p>
+<h2 id="NER相关"><a href="#NER相关" class="headerlink" title="NER相关"></a>NER相关</h2><h3 id="NER问题"><a href="#NER问题" class="headerlink" title="NER问题"></a>NER问题</h3><p>推荐阅读：</p>
+<p><a href="https://mp.weixin.qq.com/s/EW8ChJe7Co9kmjL0syyybQ" target="_blank" rel="noopener">流水的NLP铁打的NER：命名实体识别实践与探索</a></p>
+<h3 id="常用模型"><a href="#常用模型" class="headerlink" title="常用模型"></a>常用模型</h3><h5 id="Baseline："><a href="#Baseline：" class="headerlink" title="Baseline："></a><strong>Baseline：</strong></h5><p><strong>NLP实战-中文命名实体识别 - MaggicQ的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/61227299" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/61227299</a></strong> ：</p>
+<p>通过<strong>pytorch</strong>作为主要工具实现不同的模型（包括<strong>HMM</strong>，<strong>CRF</strong>，<strong>Bi-LSTM</strong>，<strong>Bi-LSTM+CRF</strong>）来解决中文命名实体识别问题，文章不会涉及过多的数学推导，但会从直观上简单解释模型的原理</p>
+<p>对应的代码库：<a href="https://github.com/luopeixiang/named_entity_recognition" target="_blank" rel="noopener">https://github.com/luopeixiang/named_entity_recognition</a> 上面的介绍只是部分，更全的代码和完整的工程（包括数据集的导入、处理到最后的评测）在github的仓库上</p>
+<h5 id="HMM解码所用的viterbi："><a href="#HMM解码所用的viterbi：" class="headerlink" title="HMM解码所用的viterbi："></a><strong>HMM解码所用的viterbi</strong>：</h5><p>如何简单地理解维特比算法（viterbi算法）？ - 石溪的回答 - 知乎 <a href="https://www.zhihu.com/question/294202922/answer/1631974168" target="_blank" rel="noopener">https://www.zhihu.com/question/294202922/answer/1631974168</a></p>
+<h5 id="CRF："><a href="#CRF：" class="headerlink" title="CRF："></a><strong>CRF：</strong></h5><p>如何轻松愉快地理解条件随机场（CRF）？ - 忆臻的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/104562658" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/104562658</a></p>
+<p>通俗易懂！BiLSTM上的CRF，用命名实体识别任务来解释CRF（一） - 忆臻的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/119254570" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/119254570</a></p>
+<h5 id="BiLSTM-CRF"><a href="#BiLSTM-CRF" class="headerlink" title="BiLSTM+CRF"></a>BiLSTM+CRF</h5><h6 id="模型相关资料"><a href="#模型相关资料" class="headerlink" title="模型相关资料"></a>模型相关资料</h6><p>基本模型：HMM CRF BiLSTM BiLSTM+CRF NLP实战-中文命名实体识别 - MaggicQ的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/61227299" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/61227299</a></p>
+<p>维特比算法：如何简单地理解维特比算法（viterbi算法）？ - 石溪的回答 - 知乎 <a href="https://www.zhihu.com/question/294202922/answer/1631974168" target="_blank" rel="noopener">https://www.zhihu.com/question/294202922/answer/1631974168</a></p>
+<p>损失函数：通俗易懂！BiLSTM上的CRF，用命名实体识别任务来解释CRF（一） - 忆臻的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/119254570" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/119254570</a></p>
+<p>LSTM+CRF 解析（原理篇） - visionshao的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/97829287" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/97829287</a></p>
+<h6 id="代码相关资料"><a href="#代码相关资料" class="headerlink" title="代码相关资料"></a>代码相关资料</h6><p>pytorch tutorial  <a href="https://pytorch.org/tutorials/beginner/nlp/advanced_tutorial.html#bi-lstm-conditional-random-field-discussion" target="_blank" rel="noopener">https://pytorch.org/tutorials/beginner/nlp/advanced_tutorial.html#bi-lstm-conditional-random-field-discussion</a></p>
+<p>pytorch中LSTM的输入输出格式 <a href="https://www.cnblogs.com/picassooo/p/13470992.html" target="_blank" rel="noopener">https://www.cnblogs.com/picassooo/p/13470992.html</a></p>
+<p>pack_padded_sequence 和 pad_packed_sequence <a href="https://zhuanlan.zhihu.com/p/342685890" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/342685890</a></p>
+<p>LSTM为什么需要后接CRF呢？</p>
+<p>因为LSTM只能学到输入数据（特征）的上下文关系，但是并没有利用到label的上下关系</p>
+<p>（如何理解LSTM后接CRF？ - RandomWalk的回答 - 知乎 <a href="https://www.zhihu.com/question/62399257/answer/325334144）" target="_blank" rel="noopener">https://www.zhihu.com/question/62399257/answer/325334144）</a></p>
+<p><strong>具体来说</strong></p>
+<p>首先我们要知道为什么使用LSTM+CRF，序列标注问题本质上是分类问题，因为其具有序列特征，所以LSTM就很合适进行序列标注，确实，我们可以直接利用LSTM进行序列标注。但是这样的做法有一个问题：<strong>每个时刻的输出没有考虑上一时刻的输出。</strong>我们在利用LSTM进行序列建模的时候只考虑了输入序列的信息，即单词信息，但是没有考虑标签信息，即输出标签信息。这样会导致一个问题，以“我 喜欢 跑步”为例，LSTM输出“喜欢”的标签是“动词”，而“跑步”的标签可能也是“动词”。但是实际上，“名词”标签更为合适，因为“跑步”这里是一项运动。也就是“动词”+“名词”这个规则并没有被LSTM模型捕捉到。也就是说这样使用LSTM<strong>无法对标签转移关系进行建模</strong>。而标签转移关系对序列标注任务来说是很重要的，所以就在LSTM的基础上引入一个<strong>标签转移矩阵</strong>对标签转移关系进行建模。这就和CRF很像了。我们知道，<strong>CRF有两类特征函数，一类是针对观测序列与状态的对应关系（如“我”一般是“名词”），一类是针对状态间关系（如“动词”后一般跟“名词”）。在LSTM+CRF模型中，前一类特征函数的输出由LSTM的输出替代，后一类特征函数就变成了标签转移矩阵</strong>。</p>
+<p>(LSTM+CRF 解析（原理篇） - visionshao的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/97829287" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/97829287</a>)</p>
+<h3 id="中文NER"><a href="#中文NER" class="headerlink" title="中文NER"></a>中文NER</h3><p>推荐阅读：</p>
+<p><a href="https://mp.weixin.qq.com/s/XNGBLfganmT15L_Wdd7Kog" target="_blank" rel="noopener">中文NER的正确打开方式: 词汇增强方法总结 (从Lattice LSTM到FLAT)</a></p>
+<p><a href="https://blog.csdn.net/eagleuniversityeye/article/details/107762321" target="_blank" rel="noopener">NER中的词汇增强方法(LatticeLSTM、CGN、FLAT、Simple-Lexicon)</a></p>
+<p>为什么中文的NER要单独拿出来说呢？因为与英文中单词是固定的，而我们中文的实体词汇是通过“字”组成的，那么在处理时，英文只需要直接根据单词进行处理，而中文如果仅通过字符进行处理，基于字符的NER没有利用词汇信息，而词汇边界对于实体边界通常起着至关重要的作用</p>
+<p>但是如果先通过分词再进行NER，那么后续的NER就很依赖前面分词的结果，而往往中文句子的分词很难，比如“南京市长江大桥”、“小龙女说我也想过过过儿过过的生活”、“一把把把把住了*</p>
+<p>所以要想通过词汇增强的方式增强中文NER问题，需要下一些功夫，也就引出了本文的重点Lattice-LSTM</p>
+<h2 id="Lattice-LSTM"><a href="#Lattice-LSTM" class="headerlink" title="Lattice-LSTM"></a>Lattice-LSTM</h2><p>本文是基于词汇增强方法的中文NER的开篇之作，提出了一种Lattice LSTM以融合词汇信息。</p>
+<p>具体地，当我们通过词汇信息（词典）匹配一个句子时，可以获得一个类似Lattice的结构。</p>
+<p><img src="/blogs/Latiice-LSTM及其所需知识/640" alt="图片"></p>
+<p>Lattice是一个有向无环图，词汇的开始和结束字符决定了其位置。Lattice LSTM结构则融合了词汇信息到原生的LSTM中：</p>
+<p><img src="/blogs/Latiice-LSTM及其所需知识/640" alt="图片"></p>
+<p>如上图所示，Lattice LSTM引入了一个word cell结构，对于当前的字符，融合以该字符结束的所有word信息，如对于「店」融合了「人和药店」和「药店」的信息。对于每一个字符，Lattice LSTM采取注意力机制去融合个数可变的word cell单元，其主要的数学形式化表达为：</p>
+<p><img src="/blogs/Latiice-LSTM及其所需知识/image-20210521135935901.png" alt="image-20210521135935901"></p>
+<p>本文不再堆砌繁杂的数学公式，具体看参考原论文。需要指出的是，当前字符有词汇融入时，则采取上述公式进行计算；如当前字符没有词汇时，则采取原生的LSTM进行计算。当有词汇信息时，Lattice LSTM并没有利用前一时刻的记忆向量 ，即不保留对词汇信息的持续记忆。</p>
+<p>Lattice LSTM 的提出，将词汇信息引入，有效提升了NER性能；但其也存在一些缺点：</p>
+<ol>
+<li><strong>「计算性能低下，不能batch并行化」</strong>。究其原因主要是每个字符之间的增加word cell（看作节点）数目不一致；</li>
+<li><strong>「信息损失」</strong>：1）每个字符只能获取以它为结尾的词汇信息，对于其之前的词汇信息也没有持续记忆。如对于「药」，并无法获得‘inside’的「人和药店」信息。2）由于RNN特性，采取BiLSTM时其前向和后向的词汇信息不能共享。</li>
+<li><strong>「可迁移性差」</strong>：只适配于LSTM，不具备向其他网络迁移的特性。</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+          
+            <a href="/tags/Deep-Learning/" rel="tag"># Deep Learning</a>
+          
+            <a href="/tags/NLP/" rel="tag"># NLP</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blogs/Something-NLP/" rel="next" title="Something-NLP">
+                <i class="fa fa-chevron-left"></i> Something-NLP
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blogs/PR曲线为什么计算AP而非AUC-The-AP-of-PR-curve/" rel="prev" title="PR曲线为什么计算AP而非AUC-The AP of PR curve">
+                PR曲线为什么计算AP而非AUC-The AP of PR curve <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/myshow.jpg" alt="Jiageng Wu">
+            
+              <p class="site-author-name" itemprop="name">Jiageng Wu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+          
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=28578763&auto=1&height=66"></iframe>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">86</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Dragon-Wu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wujg1995@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.cnblogs.com/Dragon5/" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#模型相关"><span class="nav-number">1.</span> <span class="nav-text">模型相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RNN"><span class="nav-number">1.1.</span> <span class="nav-text">RNN</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#模型特性"><span class="nav-number">1.1.1.</span> <span class="nav-text">模型特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#具体实现和原理"><span class="nav-number">1.1.2.</span> <span class="nav-text">具体实现和原理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#具体示例"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">具体示例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#改进形态"><span class="nav-number">1.1.3.</span> <span class="nav-text">改进形态</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Deep-RNN"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">Deep RNN</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Elman-Network-amp-Jordan-Network"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">Elman Network &amp; Jordan Network</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Bidirectional-RNN"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">Bidirectional RNN</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LSTM"><span class="nav-number">1.2.</span> <span class="nav-text">LSTM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#模型特性-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">模型特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#具体实现和原理-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">具体实现和原理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本结构"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">基本结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#模型传输过程"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">模型传输过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#案例"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">案例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.3.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#模型关系"><span class="nav-number">1.3.1.</span> <span class="nav-text">模型关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#训练特点"><span class="nav-number">1.3.2.</span> <span class="nav-text">训练特点</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#问题"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解决方案"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">解决方案</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么呢"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">为什么呢</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Deep-VS-Structured-Leanring"><span class="nav-number">1.3.3.</span> <span class="nav-text">Deep VS Structured Leanring</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意力机制-Attention-Transformer"><span class="nav-number">1.4.</span> <span class="nav-text">注意力机制/Attention/Transformer</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NER相关"><span class="nav-number">2.</span> <span class="nav-text">NER相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#NER问题"><span class="nav-number">2.1.</span> <span class="nav-text">NER问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用模型"><span class="nav-number">2.2.</span> <span class="nav-text">常用模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Baseline："><span class="nav-number">2.2.0.1.</span> <span class="nav-text">Baseline：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HMM解码所用的viterbi："><span class="nav-number">2.2.0.2.</span> <span class="nav-text">HMM解码所用的viterbi：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CRF："><span class="nav-number">2.2.0.3.</span> <span class="nav-text">CRF：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#BiLSTM-CRF"><span class="nav-number">2.2.0.4.</span> <span class="nav-text">BiLSTM+CRF</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#模型相关资料"><span class="nav-number">2.2.0.4.1.</span> <span class="nav-text">模型相关资料</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#代码相关资料"><span class="nav-number">2.2.0.4.2.</span> <span class="nav-text">代码相关资料</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中文NER"><span class="nav-number">2.3.</span> <span class="nav-text">中文NER</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#Lattice-LSTM"><span class="nav-number">3.</span> <span class="nav-text">Lattice-LSTM</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiageng Wu</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+-->
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共127.6k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail',];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'EFyLhOmCcSb9ran5dwR9SJv1-gzGzoHsz',
+        appKey: 'YVWtqErBb4qla50r8QFJ9NMV',
+        placeholder: 'Just go go',
+        avatar:'robohash',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 24053,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
