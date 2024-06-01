@@ -1,53 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Gephi</title>
-    <url>/blogs/Gephi%E7%9B%B8%E5%85%B3/</url>
-    <content><![CDATA[<p>Gephi相关</p>
-<span id="more"></span>
-
-<p>先挖坑</p>
-]]></content>
-      <categories>
-        <category>software</category>
-      </categories>
-      <tags>
-        <tag>software</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>医学统计学的图表-Chart of medical statistics</title>
-    <url>/blogs/%E5%8C%BB%E5%AD%A6%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%9A%84%E5%9B%BE%E8%A1%A8-Chart-of-medical-statistics/</url>
-    <content><![CDATA[<p>一些常用的医学统计学图表</p>
-<span id="more"></span>
-
-<h2 id="森林图"><a href="#森林图" class="headerlink" title="森林图"></a>森林图</h2><p>森林图(forest plot)怎么看？ - 钟多少玲的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/268431281">https://zhuanlan.zhihu.com/p/268431281</a></p>
-<p><a href="https://mp.weixin.qq.com/s?__biz=MzI2OTQyMzc5MA==&mid=2247490396&idx=1&sn=b415ea07c997858b5791f08a6e6bb35b&chksm=eae1de9ddd96578bb77a8b15b13c80e377e9483292ec12a248624d9bb2cf2ec291e8cd19bdd7&scene=21#wechat_redirect">一文带你玩转森林图！</a></p>
-<h2 id="RR-OR-HR"><a href="#RR-OR-HR" class="headerlink" title="RR&#x2F;OR&#x2F;HR"></a>RR&#x2F;OR&#x2F;HR</h2><p>RR：相对风险比</p>
-<p>OR：比值比</p>
-<p>HR：风险比</p>
-<p>一篇非常好的文章：<a href="https://blog.csdn.net/weixin_41858481/article/details/95773773">医学统计学中RR、OR和HR三个关于比值的概念</a></p>
-<h2 id="Nomogram"><a href="#Nomogram" class="headerlink" title="Nomogram"></a>Nomogram</h2><p>手把手教你用R画列线图(Nomogram)及解读结果 - 医小咖的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/85790353">https://zhuanlan.zhihu.com/p/85790353</a> </p>
-<p><img src="/%E5%8C%BB%E5%AD%A6%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%9A%84%E5%9B%BE%E8%A1%A8-Chart-of-medical-statistics/image-20211109021327963.png" alt="image-20211109021327963"></p>
-<img src="医学统计学的图表-Chart-of-medical-statistics/image-20211109021307670.png" alt="image-20211109021307670" style="zoom:150%;" />
-
-<h2 id="小提琴图-Violin-Plot"><a href="#小提琴图-Violin-Plot" class="headerlink" title="小提琴图&#x2F;Violin Plot"></a>小提琴图&#x2F;Violin Plot</h2><p><img src="/%E5%8C%BB%E5%AD%A6%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%9A%84%E5%9B%BE%E8%A1%A8-Chart-of-medical-statistics/%E5%B0%8F%E6%8F%90%E7%90%B4%E5%9B%BE.svg" alt="小提琴图"></p>
-<img src="医学统计学的图表-Chart-of-medical-statistics/小提琴图-16331701683732.svg" alt="小提琴图" style="zoom:50%;" />
-
-<p>小提琴图 (Violin Plot) 用于显示数据分布及其<a href="https://zh.wikipedia.org/wiki/%E6%A9%9F%E7%8E%87%E5%AF%86%E5%BA%A6%E5%87%BD%E6%95%B8">概率密度</a>。</p>
-<p>这种图表结合了<a href="https://datavizcatalogue.com/ZH/%E6%96%B9%E6%B3%95/%E7%AE%B1%E5%BD%A2%E5%9B%BE.html">箱形图</a>和<a href="https://datavizcatalogue.com/ZH/%E6%96%B9%E6%B3%95/%E5%AF%86%E5%BA%A6%E5%9B%BE.html">密度图</a>的特征，主要用来显示数据的<a href="https://en.wikipedia.org/wiki/Shape_of_the_distribution">分布形状</a>。中间的黑色粗条表示四分位数范围，从其延伸的幼细黑线代表 95% 置信区间，而白点则为中位数。</p>
-<p>箱形图在数据显示方面受到限制，简单的设计往往隐藏了有关数据分布的重要细节。例如使用箱形图时，我们不能了解数据分布是<a href="https://en.wikipedia.org/wiki/Multimodal_distribution">双模还是多模</a>。虽然小提琴图可以显示更多详情，但它们也可能包含较多干扰信息。</p>
-]]></content>
-      <categories>
-        <category>CS</category>
-      </categories>
-      <tags>
-        <tag>Machine Learning</tag>
-        <tag>Statistics</tag>
-        <tag>Medicine</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hello World</title>
     <url>/blogs/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -75,45 +28,50 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello, world. Hello, friends</title>
-    <url>/about/index.html</url>
-    <content><![CDATA[<p>Hello,</p>
-<p>I am a PhD candidate at Zhejiang University, and my advisors are <a href="https://www.hsph.harvard.edu/profile/changzheng-yuan/">Prof.Changzheng Yuan</a> and <a href="https://connects.catalyst.harvard.edu/Profiles/display/Person/176151">Prof. Jie Yang</a>. My major is Public health and Preventive medicine, and my research interests mainly focus on healthcare data analysis. Actually, I am a newbie in this area, but fortunately, my advisors and teammates are very nice! </p>
-<p>Previously, I received an M.S. degree in translational medicine at the School of Public Health, Xiamen University. During my master’s period, I mainly focused on cryo-EM image processing. </p>
-<p>In the future, I hope to do some interesting, meaningful, and useful work in medicine and make a small contribution to human health!</p>
-<p>I like badminton and billiards, and I also like Dota2, although I have not played it for a long time…</p>
-<p>If you see here, you are probably interesting and free, and such people usually have more luck :) I also wish you happy and healthy every day!</p>
-<p>Everything is going well.  </p>
-<p>Best regards!</p>
-<p>Jiageng Wu</p>
-<img src="index/wu-blue-16376766198601.png" alt="wu-blue" style="zoom:50%;" />
+    <title>医学统计学的图表-Chart of medical statistics</title>
+    <url>/blogs/%E5%8C%BB%E5%AD%A6%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%9A%84%E5%9B%BE%E8%A1%A8-Chart-of-medical-statistics/</url>
+    <content><![CDATA[<p>一些常用的医学统计学图表</p>
+<span id="more"></span>
 
+<h2 id="森林图"><a href="#森林图" class="headerlink" title="森林图"></a>森林图</h2><p>森林图(forest plot)怎么看？ - 钟多少玲的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/268431281">https://zhuanlan.zhihu.com/p/268431281</a></p>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzI2OTQyMzc5MA==&mid=2247490396&idx=1&sn=b415ea07c997858b5791f08a6e6bb35b&chksm=eae1de9ddd96578bb77a8b15b13c80e377e9483292ec12a248624d9bb2cf2ec291e8cd19bdd7&scene=21#wechat_redirect">一文带你玩转森林图！</a></p>
+<h2 id="RR-OR-HR"><a href="#RR-OR-HR" class="headerlink" title="RR&#x2F;OR&#x2F;HR"></a>RR&#x2F;OR&#x2F;HR</h2><p>RR：相对风险比</p>
+<p>OR：比值比</p>
+<p>HR：风险比</p>
+<p>一篇非常好的文章：<a href="https://blog.csdn.net/weixin_41858481/article/details/95773773">医学统计学中RR、OR和HR三个关于比值的概念</a></p>
+<h2 id="Nomogram"><a href="#Nomogram" class="headerlink" title="Nomogram"></a>Nomogram</h2><p>手把手教你用R画列线图(Nomogram)及解读结果 - 医小咖的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/85790353">https://zhuanlan.zhihu.com/p/85790353</a> </p>
+<img src="/blogs/%E5%8C%BB%E5%AD%A6%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%9A%84%E5%9B%BE%E8%A1%A8-Chart-of-medical-statistics/image-20211109021327963.png" class="" title="image-20211109021327963">
 
+<img src="/blogs/医学统计学的图表-Chart-of-medical-statistics/image-20211109021307670.png"  alt="image-20211109021307670" style="zoom:150%;" />
 
-<p>Email: <a href="mailto:&#x77;&#117;&#x6a;&#103;&#x31;&#57;&#57;&#53;&#x40;&#49;&#54;&#51;&#x2e;&#x63;&#x6f;&#x6d;">&#x77;&#117;&#x6a;&#103;&#x31;&#57;&#57;&#53;&#x40;&#49;&#54;&#51;&#x2e;&#x63;&#x6f;&#x6d;</a></p>
-<hr>
-<p><strong>Publications</strong> </p>
-<p><strong>2024</strong></p>
-<p>[1] <strong>Jiageng Wu</strong>, Xian Wu, Zhaopeng Qiu, Minghui Li, Shixu Lin, Yingying Zhang, Jie Yang, “Large language models leverage external knowledge to extend clinical insight beyond language boundaries” <em>Journal of the American Medical Informatics Association</em> (2024): ocae079.</p>
-<p><strong>2023</strong></p>
-<p>[1] <strong>Jiageng, Wu</strong>, Lumin Wang, Yining Hua, Minghui Li, Li Zhou, David W. Bates, and Jie Yang. “Trend and Co-occurrence Network of COVID-19 Symptoms From Large-Scale Social Media Data: Infoveillance Study.” <em>Journal of Medical Internet Research</em> 25 (2023): e45419.</p>
-<p>[2] <strong>Jiageng Wu</strong>, Xian Wu, Yining Hua, Shixu Lin, Yefeng Zheng, and Jie Yang. 2023. Exploring Social Media for Early Detection of Depression in COVID-19 Patients. In Proceedings of the ACM Web Conference 2023 (WWW ’23), May 1–5, 2023, Austin, TX, USA. ACM, New York, NY, USA, 10 pages.</p>
-<p><strong>2022</strong></p>
-<p>[1] Zhou, Peilin, Zeqiang Wang, Dading Chong, Zhijiang Guo, Yining Hua, Zichang Su, Zhiyang Teng, <strong>Jiageng Wu</strong>, and Jie Yang. “METS-CoV: A Dataset of Medical Entity and Targeted Sentiment on COVID-19 Related Tweets.” NIPS 2022. </p>
-<p><strong>System Demo</strong> </p>
-<p>Network Analysis of COVID-19 Symptoms: <a href="http://jgwu.top/COVID19-Symptoms-Twitter/network/">http://jgwu.top/COVID19-Symptoms-Twitter/network/</a></p>
-<hr>
-<p><strong>The best time is now.</strong></p>
+<h2 id="小提琴图-Violin-Plot"><a href="#小提琴图-Violin-Plot" class="headerlink" title="小提琴图&#x2F;Violin Plot"></a>小提琴图&#x2F;Violin Plot</h2><img src="/blogs/%E5%8C%BB%E5%AD%A6%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%9A%84%E5%9B%BE%E8%A1%A8-Chart-of-medical-statistics/%E5%B0%8F%E6%8F%90%E7%90%B4%E5%9B%BE.svg" class="" title="小提琴图">
+
+<img src="/blogs/医学统计学的图表-Chart-of-medical-statistics/小提琴图-16331701683732.svg"  alt="小提琴图" style="zoom:50%;" />
+
+<p>小提琴图 (Violin Plot) 用于显示数据分布及其<a href="https://zh.wikipedia.org/wiki/%E6%A9%9F%E7%8E%87%E5%AF%86%E5%BA%A6%E5%87%BD%E6%95%B8">概率密度</a>。</p>
+<p>这种图表结合了<a href="https://datavizcatalogue.com/ZH/%E6%96%B9%E6%B3%95/%E7%AE%B1%E5%BD%A2%E5%9B%BE.html">箱形图</a>和<a href="https://datavizcatalogue.com/ZH/%E6%96%B9%E6%B3%95/%E5%AF%86%E5%BA%A6%E5%9B%BE.html">密度图</a>的特征，主要用来显示数据的<a href="https://en.wikipedia.org/wiki/Shape_of_the_distribution">分布形状</a>。中间的黑色粗条表示四分位数范围，从其延伸的幼细黑线代表 95% 置信区间，而白点则为中位数。</p>
+<p>箱形图在数据显示方面受到限制，简单的设计往往隐藏了有关数据分布的重要细节。例如使用箱形图时，我们不能了解数据分布是<a href="https://en.wikipedia.org/wiki/Multimodal_distribution">双模还是多模</a>。虽然小提琴图可以显示更多详情，但它们也可能包含较多干扰信息。</p>
 ]]></content>
+      <categories>
+        <category>medicine</category>
+      </categories>
+      <tags>
+        <tag>statistics</tag>
+      </tags>
   </entry>
   <entry>
-    <title>categories</title>
-    <url>/categories/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>tags</title>
-    <url>/tags/index.html</url>
-    <content><![CDATA[]]></content>
+    <title>Gephi</title>
+    <url>/blogs/Gephi%E7%9B%B8%E5%85%B3/</url>
+    <content><![CDATA[<p>Gephi相关</p>
+<span id="more"></span>
+
+<p>先挖坑</p>
+]]></content>
+      <categories>
+        <category>software</category>
+      </categories>
+      <tags>
+        <tag>software</tag>
+      </tags>
   </entry>
 </search>
