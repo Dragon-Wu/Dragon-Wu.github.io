@@ -1,77 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title>Gephi</title>
-    <url>/blogs/Gephi%E7%9B%B8%E5%85%B3/</url>
-    <content><![CDATA[<p>Gephi相关</p>
-<span id="more"></span>
-
-<p>先挖坑</p>
-]]></content>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Gephi</title>
+      <link href="/blogs/Gephi%E7%9B%B8%E5%85%B3/"/>
+      <url>/blogs/Gephi%E7%9B%B8%E5%85%B3/</url>
+      
+        <content type="html"><![CDATA[<p>Gephi相关</p><span id="more"></span><p>先挖坑</p>]]></content>
+      
+      
       <categories>
-        <category>software</category>
+          
+          <category> software </category>
+          
       </categories>
-      <tags>
-        <tag>software</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/blogs/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<span id="more"></span>
-
-
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> software </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>医学统计学的图表-Chart of medical statistics</title>
+      <link href="/blogs/%E5%8C%BB%E5%AD%A6%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%9A%84%E5%9B%BE%E8%A1%A8-Chart-of-medical-statistics/"/>
+      <url>/blogs/%E5%8C%BB%E5%AD%A6%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%9A%84%E5%9B%BE%E8%A1%A8-Chart-of-medical-statistics/</url>
+      
+        <content type="html"><![CDATA[<p>一些常用的医学统计学图表</p><span id="more"></span><h2 id="森林图"><a href="#森林图" class="headerlink" title="森林图"></a>森林图</h2><p>森林图(forest plot)怎么看？ - 钟多少玲的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/268431281">https://zhuanlan.zhihu.com/p/268431281</a></p><p><a href="https://mp.weixin.qq.com/s?__biz=MzI2OTQyMzc5MA==&mid=2247490396&idx=1&sn=b415ea07c997858b5791f08a6e6bb35b&chksm=eae1de9ddd96578bb77a8b15b13c80e377e9483292ec12a248624d9bb2cf2ec291e8cd19bdd7&scene=21#wechat_redirect">一文带你玩转森林图！</a></p><h2 id="RR-OR-HR"><a href="#RR-OR-HR" class="headerlink" title="RR&#x2F;OR&#x2F;HR"></a>RR&#x2F;OR&#x2F;HR</h2><p>RR：相对风险比</p><p>OR：比值比</p><p>HR：风险比</p><p>一篇非常好的文章：<a href="https://blog.csdn.net/weixin_41858481/article/details/95773773">医学统计学中RR、OR和HR三个关于比值的概念</a></p><h2 id="Nomogram"><a href="#Nomogram" class="headerlink" title="Nomogram"></a>Nomogram</h2><p>手把手教你用R画列线图(Nomogram)及解读结果 - 医小咖的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/85790353">https://zhuanlan.zhihu.com/p/85790353</a> </p><img src="/blogs/%E5%8C%BB%E5%AD%A6%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%9A%84%E5%9B%BE%E8%A1%A8-Chart-of-medical-statistics/image-20211109021327963.png" class="" title="image-20211109021327963"><style>.cmqkwcbnezkg{zoom:150%;}</style><img src="/blogs/%E5%8C%BB%E5%AD%A6%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%9A%84%E5%9B%BE%E8%A1%A8-Chart-of-medical-statistics/image-20211109021307670.png" class="cmqkwcbnezkg" alt="image-20211109021307670"><h2 id="小提琴图-Violin-Plot"><a href="#小提琴图-Violin-Plot" class="headerlink" title="小提琴图&#x2F;Violin Plot"></a>小提琴图&#x2F;Violin Plot</h2><img src="/blogs/%E5%8C%BB%E5%AD%A6%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%9A%84%E5%9B%BE%E8%A1%A8-Chart-of-medical-statistics/%E5%B0%8F%E6%8F%90%E7%90%B4%E5%9B%BE.svg" class="" title="小提琴图"><style>.dixgcxigvewc{zoom:50%;}</style><img src="/blogs/%E5%8C%BB%E5%AD%A6%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%9A%84%E5%9B%BE%E8%A1%A8-Chart-of-medical-statistics/%E5%B0%8F%E6%8F%90%E7%90%B4%E5%9B%BE-16331701683732.svg" class="dixgcxigvewc" alt="小提琴图"><p>小提琴图 (Violin Plot) 用于显示数据分布及其<a href="https://zh.wikipedia.org/wiki/%E6%A9%9F%E7%8E%87%E5%AF%86%E5%BA%A6%E5%87%BD%E6%95%B8">概率密度</a>。</p><p>这种图表结合了<a href="https://datavizcatalogue.com/ZH/%E6%96%B9%E6%B3%95/%E7%AE%B1%E5%BD%A2%E5%9B%BE.html">箱形图</a>和<a href="https://datavizcatalogue.com/ZH/%E6%96%B9%E6%B3%95/%E5%AF%86%E5%BA%A6%E5%9B%BE.html">密度图</a>的特征，主要用来显示数据的<a href="https://en.wikipedia.org/wiki/Shape_of_the_distribution">分布形状</a>。中间的黑色粗条表示四分位数范围，从其延伸的幼细黑线代表 95% 置信区间，而白点则为中位数。</p><p>箱形图在数据显示方面受到限制，简单的设计往往隐藏了有关数据分布的重要细节。例如使用箱形图时，我们不能了解数据分布是<a href="https://en.wikipedia.org/wiki/Multimodal_distribution">双模还是多模</a>。虽然小提琴图可以显示更多详情，但它们也可能包含较多干扰信息。</p>]]></content>
+      
+      
       <categories>
-        <category>something</category>
+          
+          <category> medicine </category>
+          
       </categories>
-      <tags>
-        <tag>something</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>医学统计学的图表-Chart of medical statistics</title>
-    <url>/blogs/%E5%8C%BB%E5%AD%A6%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%9A%84%E5%9B%BE%E8%A1%A8-Chart-of-medical-statistics/</url>
-    <content><![CDATA[<p>一些常用的医学统计学图表</p>
-<span id="more"></span>
-
-<h2 id="森林图"><a href="#森林图" class="headerlink" title="森林图"></a>森林图</h2><p>森林图(forest plot)怎么看？ - 钟多少玲的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/268431281">https://zhuanlan.zhihu.com/p/268431281</a></p>
-<p><a href="https://mp.weixin.qq.com/s?__biz=MzI2OTQyMzc5MA==&mid=2247490396&idx=1&sn=b415ea07c997858b5791f08a6e6bb35b&chksm=eae1de9ddd96578bb77a8b15b13c80e377e9483292ec12a248624d9bb2cf2ec291e8cd19bdd7&scene=21#wechat_redirect">一文带你玩转森林图！</a></p>
-<h2 id="RR-OR-HR"><a href="#RR-OR-HR" class="headerlink" title="RR&#x2F;OR&#x2F;HR"></a>RR&#x2F;OR&#x2F;HR</h2><p>RR：相对风险比</p>
-<p>OR：比值比</p>
-<p>HR：风险比</p>
-<p>一篇非常好的文章：<a href="https://blog.csdn.net/weixin_41858481/article/details/95773773">医学统计学中RR、OR和HR三个关于比值的概念</a></p>
-<h2 id="Nomogram"><a href="#Nomogram" class="headerlink" title="Nomogram"></a>Nomogram</h2><p>手把手教你用R画列线图(Nomogram)及解读结果 - 医小咖的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/85790353">https://zhuanlan.zhihu.com/p/85790353</a> </p>
-<img src="/blogs/%E5%8C%BB%E5%AD%A6%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%9A%84%E5%9B%BE%E8%A1%A8-Chart-of-medical-statistics/image-20211109021327963.png" class="" title="image-20211109021327963">
-
-<img src="/blogs/医学统计学的图表-Chart-of-medical-statistics/image-20211109021307670.png"  alt="image-20211109021307670" style="zoom:150%;" />
-
-<h2 id="小提琴图-Violin-Plot"><a href="#小提琴图-Violin-Plot" class="headerlink" title="小提琴图&#x2F;Violin Plot"></a>小提琴图&#x2F;Violin Plot</h2><img src="/blogs/%E5%8C%BB%E5%AD%A6%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%9A%84%E5%9B%BE%E8%A1%A8-Chart-of-medical-statistics/%E5%B0%8F%E6%8F%90%E7%90%B4%E5%9B%BE.svg" class="" title="小提琴图">
-
-<img src="/blogs/医学统计学的图表-Chart-of-medical-statistics/小提琴图-16331701683732.svg"  alt="小提琴图" style="zoom:50%;" />
-
-<p>小提琴图 (Violin Plot) 用于显示数据分布及其<a href="https://zh.wikipedia.org/wiki/%E6%A9%9F%E7%8E%87%E5%AF%86%E5%BA%A6%E5%87%BD%E6%95%B8">概率密度</a>。</p>
-<p>这种图表结合了<a href="https://datavizcatalogue.com/ZH/%E6%96%B9%E6%B3%95/%E7%AE%B1%E5%BD%A2%E5%9B%BE.html">箱形图</a>和<a href="https://datavizcatalogue.com/ZH/%E6%96%B9%E6%B3%95/%E5%AF%86%E5%BA%A6%E5%9B%BE.html">密度图</a>的特征，主要用来显示数据的<a href="https://en.wikipedia.org/wiki/Shape_of_the_distribution">分布形状</a>。中间的黑色粗条表示四分位数范围，从其延伸的幼细黑线代表 95% 置信区间，而白点则为中位数。</p>
-<p>箱形图在数据显示方面受到限制，简单的设计往往隐藏了有关数据分布的重要细节。例如使用箱形图时，我们不能了解数据分布是<a href="https://en.wikipedia.org/wiki/Multimodal_distribution">双模还是多模</a>。虽然小提琴图可以显示更多详情，但它们也可能包含较多干扰信息。</p>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> statistics </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/blogs/hello-world/"/>
+      <url>/blogs/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><span id="more"></span><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
       <categories>
-        <category>medicine</category>
+          
+          <category> something </category>
+          
       </categories>
-      <tags>
-        <tag>statistics</tag>
-      </tags>
-  </entry>
+      
+      
+        <tags>
+            
+            <tag> something </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
 </search>
