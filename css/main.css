@@ -1233,7 +1233,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #2674a4;
+  background: #a8d0c6;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2434,6 +2434,7 @@ header.header {
 }
 header.header {
   padding-top: 100px;
+  width: 100%;
 }
 @media (max-width: 767px) {
   header.header {
@@ -2509,4 +2510,10 @@ header.header {
   .sidebar-active .footer-fixed {
     left: 320px;
   }
+}
+.header {
+  background-image: url("/images/head.jpg");
+}
+body {
+  background-attachment: fixed;
 }
