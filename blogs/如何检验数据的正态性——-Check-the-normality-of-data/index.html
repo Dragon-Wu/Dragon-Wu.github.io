@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/myblue.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/myblue.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/myblue.ico">
+  <link rel="mask-icon" href="/images/myblue.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jgwu.top","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="处理数据时，有时候需要观察数据分布，比如检验数据的正态性">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何检验数据的正态性——-Check the normality of data">
+<meta property="og:url" content="http://jgwu.top/blogs/%E5%A6%82%E4%BD%95%E6%A3%80%E9%AA%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%AD%A3%E6%80%81%E6%80%A7%E2%80%94%E2%80%94-Check-the-normality-of-data/index.html">
+<meta property="og:site_name" content="一个地方">
+<meta property="og:description" content="处理数据时，有时候需要观察数据分布，比如检验数据的正态性">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://jgwu.top/blogs/%E5%A6%82%E4%BD%95%E6%A3%80%E9%AA%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%AD%A3%E6%80%81%E6%80%A7%E2%80%94%E2%80%94-Check-the-normality-of-data/%E5%A6%82%E4%BD%95%E6%A3%80%E9%AA%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%AD%A3%E6%80%81%E6%80%A7%E2%80%94%E2%80%94-Check-the-normality-of-data/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAxOTkzNTY=,size_16,color_FFFFFF,t_70.png">
+<meta property="og:image" content="http://jgwu.top/blogs/%E5%A6%82%E4%BD%95%E6%A3%80%E9%AA%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%AD%A3%E6%80%81%E6%80%A7%E2%80%94%E2%80%94-Check-the-normality-of-data/%E5%A6%82%E4%BD%95%E6%A3%80%E9%AA%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%AD%A3%E6%80%81%E6%80%A7%E2%80%94%E2%80%94-Check-the-normality-of-data/faedab64034f78f0a3eb3ceb76310a55b2191cc1.png">
+<meta property="og:image" content="http://jgwu.top/blogs/%E5%A6%82%E4%BD%95%E6%A3%80%E9%AA%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%AD%A3%E6%80%81%E6%80%A7%E2%80%94%E2%80%94-Check-the-normality-of-data/%E5%A6%82%E4%BD%95%E6%A3%80%E9%AA%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%AD%A3%E6%80%81%E6%80%A7%E2%80%94%E2%80%94-Check-the-normality-of-data/1719714-20191013214048185-1444993105.png">
+<meta property="og:image" content="http://jgwu.top/blogs/%E5%A6%82%E4%BD%95%E6%A3%80%E9%AA%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%AD%A3%E6%80%81%E6%80%A7%E2%80%94%E2%80%94-Check-the-normality-of-data/%E5%A6%82%E4%BD%95%E6%A3%80%E9%AA%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%AD%A3%E6%80%81%E6%80%A7%E2%80%94%E2%80%94-Check-the-normality-of-data/b151f8198618367ab0efdec521738bd4b31ce540.png">
+<meta property="og:image" content="http://jgwu.top/blogs/%E5%A6%82%E4%BD%95%E6%A3%80%E9%AA%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%AD%A3%E6%80%81%E6%80%A7%E2%80%94%E2%80%94-Check-the-normality-of-data/%E5%A6%82%E4%BD%95%E6%A3%80%E9%AA%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%AD%A3%E6%80%81%E6%80%A7%E2%80%94%E2%80%94-Check-the-normality-of-data/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAxOTkzNTY=,size_16,color_FFFFFF,t_70.png">
+<meta property="article:published_time" content="2021-11-14T15:57:21.000Z">
+<meta property="article:modified_time" content="2024-06-02T22:46:22.863Z">
+<meta property="article:author" content="Jiageng Wu">
+<meta property="article:tag" content="math">
+<meta property="article:tag" content="statistics">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://jgwu.top/blogs/%E5%A6%82%E4%BD%95%E6%A3%80%E9%AA%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%AD%A3%E6%80%81%E6%80%A7%E2%80%94%E2%80%94-Check-the-normality-of-data/%E5%A6%82%E4%BD%95%E6%A3%80%E9%AA%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%AD%A3%E6%80%81%E6%80%A7%E2%80%94%E2%80%94-Check-the-normality-of-data/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAxOTkzNTY=,size_16,color_FFFFFF,t_70.png">
+
+
+<link rel="canonical" href="http://jgwu.top/blogs/%E5%A6%82%E4%BD%95%E6%A3%80%E9%AA%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%AD%A3%E6%80%81%E6%80%A7%E2%80%94%E2%80%94-Check-the-normality-of-data/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://jgwu.top/blogs/%E5%A6%82%E4%BD%95%E6%A3%80%E9%AA%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%AD%A3%E6%80%81%E6%80%A7%E2%80%94%E2%80%94-Check-the-normality-of-data/","path":"blogs/如何检验数据的正态性——-Check-the-normality-of-data/","title":"如何检验数据的正态性——-Check the normality of data"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>如何检验数据的正态性——-Check the normality of data | 一个地方</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">一个地方</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Wu's Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a></li><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E7%A4%BA%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">图示法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B4%E6%96%B9%E5%9B%BE"><span class="nav-number">1.1.</span> <span class="nav-text">直方图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#P-P%E5%9B%BE%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">P-P图法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Q-Q%E5%9B%BE"><span class="nav-number">1.3.</span> <span class="nav-text">Q-Q图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%9F%E8%AE%A1%E6%A3%80%E9%AA%8C%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">统计检验法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E7%94%A8%E6%B3%95%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">简单用法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#W%E6%A3%80%E9%AA%8C-Shapiro-%E6%A3%80%E9%AA%8C-Shapiro-Wilk%E6%A3%80%E9%AA%8C"><span class="nav-number">2.2.</span> <span class="nav-text">W检验 &#x2F; Shapiro 检验 &#x2F;  Shapiro-Wilk检验</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K-S%E6%A3%80%E9%AA%8C"><span class="nav-number">2.3.</span> <span class="nav-text">K-S检验</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A3%80%E9%AA%8C%E6%8C%87%E5%AE%9A%E7%9A%84%E6%95%B0%E5%88%97%E6%98%AF%E5%90%A6%E6%9C%8D%E4%BB%8E%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83"><span class="nav-number">2.3.1.</span> <span class="nav-text">检验指定的数列是否服从正态分布</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A3%80%E9%AA%8C%E6%8C%87%E5%AE%9A%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%95%B0%E5%88%97%E6%98%AF%E5%90%A6%E6%9C%8D%E4%BB%8E%E7%9B%B8%E5%90%8C%E5%88%86%E5%B8%83"><span class="nav-number">2.3.2.</span> <span class="nav-text">检验指定的两个数列是否服从相同分布</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Anderson-Darling-test"><span class="nav-number">2.4.</span> <span class="nav-text">Anderson-Darling test</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9F%A9%E6%B3%95-S-K%E6%A3%80%E9%AA%8C"><span class="nav-number">2.5.</span> <span class="nav-text">矩法 &#x2F; S-K检验</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Jiageng Wu</p>
+  <div class="site-description" itemprop="description">Records about My life</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://jgwu.top/blogs/%E5%A6%82%E4%BD%95%E6%A3%80%E9%AA%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%AD%A3%E6%80%81%E6%80%A7%E2%80%94%E2%80%94-Check-the-normality-of-data/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jiageng Wu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个地方">
+      <meta itemprop="description" content="Records about My life">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="如何检验数据的正态性——-Check the normality of data | 一个地方">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          如何检验数据的正态性——-Check the normality of data
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-11-14 23:57:21" itemprop="dateCreated datePublished" datetime="2021-11-14T23:57:21+08:00">2021-11-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-03 06:46:22" itemprop="dateModified" datetime="2024-06-03T06:46:22+08:00">2024-06-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/math/" itemprop="url" rel="index"><span itemprop="name">math</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>处理数据时，有时候需要观察数据分布，比如检验数据的正态性</p>
+<span id="more"></span>
+
+<h3 id="图示法"><a href="#图示法" class="headerlink" title="图示法"></a>图示法</h3><h4 id="直方图"><a href="#直方图" class="headerlink" title="直方图"></a>直方图</h4><p>绘制数据直方图，直接观察趋势</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">s = pd.DataFrame(np.random.randn(<span class="number">1000</span>)+<span class="number">10</span>,columns = [<span class="string">&#x27;value&#x27;</span>])</span><br><span class="line"><span class="built_in">print</span>(s.head())</span><br><span class="line"><span class="comment"># 创建随机数据</span></span><br><span class="line"></span><br><span class="line">fig = plt.figure(figsize = (<span class="number">10</span>,<span class="number">6</span>))</span><br><span class="line">ax1 = fig.add_subplot(<span class="number">2</span>,<span class="number">1</span>,<span class="number">1</span>)  <span class="comment"># 创建子图1</span></span><br><span class="line">ax1.scatter(s.index, s.values)</span><br><span class="line">plt.grid()</span><br><span class="line"><span class="comment"># 绘制数据分布图</span></span><br><span class="line"></span><br><span class="line">ax2 = fig.add_subplot(<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>)  <span class="comment"># 创建子图2</span></span><br><span class="line">s.hist(bins=<span class="number">30</span>,alpha = <span class="number">0.5</span>,ax = ax2)</span><br><span class="line">s.plot(kind = <span class="string">&#x27;kde&#x27;</span>, secondary_y=<span class="literal">True</span>,ax = ax2)</span><br><span class="line">plt.grid()</span><br><span class="line"><span class="comment"># 绘制直方图</span></span><br><span class="line"><span class="comment"># 呈现较明显的正态分布</span></span><br></pre></td></tr></table></figure>
+
+<img src="如何检验数据的正态性——-Check-the-normality-of-data/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAxOTkzNTY=,size_16,color_FFFFFF,t_70.png" alt="img" style="zoom:80%;" />
+
+<h4 id="P-P图法"><a href="#P-P图法" class="headerlink" title="P-P图法"></a>P-P图法</h4><p>proportion-proportion plots</p>
+<p>以样本的累计频率（百分比）作为横坐标，以按照正态分布计算的相应累计频率为纵坐标，把样本值表现为直角坐标系中的散点，把样本值表现为直角坐标系中的散点</p>
+<p>如果资料服从正态分布，那样本点应该围绕着第一象限的对角线分布</p>
+<img src="如何检验数据的正态性——-Check-the-normality-of-data/faedab64034f78f0a3eb3ceb76310a55b2191cc1.png" alt="img" style="zoom:80%;" />
+
+<img src="如何检验数据的正态性——-Check-the-normality-of-data/1719714-20191013214048185-1444993105.png" alt="img" style="zoom:80%;" />
+
+<h4 id="Q-Q图"><a href="#Q-Q图" class="headerlink" title="Q-Q图"></a>Q-Q图</h4><p>quantile-quantile plots</p>
+<p>以样本的分位数（Px）作为横坐标，以按照正态分布计算的相应分位数作为纵坐标，把样本值表现为直角坐标系中的散点</p>
+<p>如果资料服从正态分布，那样本点应该围绕着第一象限的对角线分布</p>
+<img src="如何检验数据的正态性——-Check-the-normality-of-data/b151f8198618367ab0efdec521738bd4b31ce540.png" alt="img" style="zoom:80%;" />
+
+<h3 id="统计检验法"><a href="#统计检验法" class="headerlink" title="统计检验法"></a>统计检验法</h3><h4 id="简单用法："><a href="#简单用法：" class="headerlink" title="简单用法："></a>简单用法：</h4><p>后面讲述具体，先来看看简单示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> stats</span><br><span class="line"> </span><br><span class="line">a = np.random.normal(<span class="number">0</span>,<span class="number">1</span>,<span class="number">50</span>)</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;输出结果中第一个为统计量，第二个为P值（统计量越接近1越表明数据和正态分布拟合的好，</span></span><br><span class="line"><span class="string">P值大于指定的显著性水平，接受原假设，认为样本来自服从正态分布的总体）&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(stats.shapiro(a)) </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;输出结果中第一个为统计量，第二个为P值（注：统计量越接近0就越表明数据和标准正态分布拟合的越好，</span></span><br><span class="line"><span class="string">如果P值大于显著性水平，通常是0.05，接受原假设，则判断样本的总体服从正态分布）&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(stats.kstest(a, <span class="string">&#x27;norm&#x27;</span>))  </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;输出结果中第一个为统计量，第二个为P值（注：p值大于显著性水平0.05，认为样本数据符合正态分布）&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(stats.normaltest(a)) </span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="W检验-Shapiro-检验-Shapiro-Wilk检验"><a href="#W检验-Shapiro-检验-Shapiro-Wilk检验" class="headerlink" title="W检验 &#x2F; Shapiro 检验 &#x2F;  Shapiro-Wilk检验"></a>W检验 &#x2F; Shapiro 检验 &#x2F;  Shapiro-Wilk检验</h4><p>专门用于检验正态分布，</p>
+<p>官方手册：scipy.stat.shapiro <a target="_blank" rel="noopener" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.shapiro.html">https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.shapiro.html</a></p>
+<p>原假设：样本数据符合正态分布</p>
+<p>注意：shapiro是用来检验小样本数据 (For N &gt; 5000 the W test statistic is accurate but the p-value may not be.)</p>
+<p>scipy.stats.shapiro(x, a&#x3D;None, reta&#x3D;False)</p>
+<p>一般我们只用 x 参数就行，x 即待检验的数据</p>
+<h4 id="K-S检验"><a href="#K-S检验" class="headerlink" title="K-S检验"></a>K-S检验</h4><p>方法：scipy.stats.kstest (rvs, cdf, args &#x3D; ( ), N &#x3D; 20, alternative &#x3D;’two-sided’, mode &#x3D;’auto’)</p>
+<p>官方文档：scipy.stats.kstest <a target="_blank" rel="noopener" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.kstest.html">https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.kstest.html</a></p>
+<p><strong>原理：</strong><a target="_blank" rel="noopener" href="https://www.cnblogs.com/arkenstone/p/5496761.html">KS-检验（Kolmogorov-Smirnov test） – 检验数据是否符合某种分布</a></p>
+<p>kstest 是一个很强大的检验模块，除了正态性检验，还能检验 scipy.stats 中的其他数据分布类型，仅适用于连续分布的检验，</p>
+<p>原假设：数据符合正态分布</p>
+<p>对于正态性检验，我们只需要手动设置三个参数即可：</p>
+<p>rvs：待检验的一组一维数据</p>
+<p>cdf：检验方法，例如’norm’，’expon’，’rayleigh’，’gamma’，这里我们设置为’norm’，即正态性检验</p>
+<p>alternative：默认为双尾检验，可以设置为’less’或’greater’作单尾检验</p>
+<p>model: auto(默认)，选取其中一个</p>
+<p>​			‘approx’，使用检验统计量的精确分布的近视值，</p>
+<p>​			‘asymp’：使用检验统计量的渐进分布</p>
+<img src="如何检验数据的正态性——-Check-the-normality-of-data/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAxOTkzNTY=,size_16,color_FFFFFF,t_70.png" alt="img" style="zoom:80%;" />
+
+<h5 id="检验指定的数列是否服从正态分布"><a href="#检验指定的数列是否服从正态分布" class="headerlink" title="检验指定的数列是否服从正态分布"></a>检验指定的数列是否服从正态分布</h5><p>借助假设检验的思想，利用K-S检验可以对数列的性质进行检验，看代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy.stats <span class="keyword">import</span> kstest</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"> </span><br><span class="line">x = np.random.normal(<span class="number">0</span>,<span class="number">1</span>,<span class="number">1000</span>)</span><br><span class="line">test_stat = kstest(x, <span class="string">&#x27;norm&#x27;</span>)</span><br><span class="line"><span class="comment">#&gt;&gt;&gt; test_stat</span></span><br><span class="line"><span class="comment">#(0.021080234718821145, 0.76584491300591395)</span></span><br></pre></td></tr></table></figure>
+
+<p>首先生成1000个服从N(0,1)标准正态分布的随机数，在使用k-s检验该数据是否服从正态分布，提出假设：x从正态分布。</p>
+<p>最终返回的结果，p-value&#x3D;0.76584491300591395，比指定的显著水平（假设为5%）大，则我们不能拒绝假设：x服从正态分布。</p>
+<p>这并不是说x服从正态分布一定是正确的，而是说没有充分的证据证明x不服从正态分布。因此我们的假设被接受，认为x服从正态分布。</p>
+<p>如果p-value小于我们指定的显著性水平，则我们可以肯定的拒绝提出的假设，认为x肯定不服从正态分布，这个拒绝是绝对正确的。</p>
+<h5 id="检验指定的两个数列是否服从相同分布"><a href="#检验指定的两个数列是否服从相同分布" class="headerlink" title="检验指定的两个数列是否服从相同分布"></a>检验指定的两个数列是否服从相同分布</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy.stats <span class="keyword">import</span> ks_2samp</span><br><span class="line">beta=np.random.beta(<span class="number">7</span>,<span class="number">5</span>,<span class="number">1000</span>)</span><br><span class="line">norm=np.random.normal(<span class="number">0</span>,<span class="number">1</span>,<span class="number">1000</span>)</span><br><span class="line">ks_2samp(beta,norm)</span><br><span class="line"><span class="comment">#&gt;&gt;&gt;(0.60099999999999998, 4.7405805465370525e-159)</span></span><br></pre></td></tr></table></figure>
+
+<p>我们先分别使用beta分布和normal分布产生两个样本大小为1000的数列，使用ks_2samp检验两个数列是否来自同一个样本，提出假设：beta和norm服从相同的分布。</p>
+<p>最终返回的结果，p-value&#x3D;4.7405805465370525e-159，比指定的显著水平（假设为5%）小，则我们完全可以拒绝假设：beta和norm不服从同一分布。</p>
+<h4 id="Anderson-Darling-test"><a href="#Anderson-Darling-test" class="headerlink" title="Anderson-Darling test"></a>Anderson-Darling test</h4><p>方法：scipy.stats.anderson (x, dist &#x3D;’norm’ )</p>
+<p>该方法是由 scipy.stats.kstest 改进而来的，可以做正态分布、指数分布、Logistic 分布、Gumbel 分布等多种分布检验。默认参数为 norm，即正态性检验。</p>
+<p>官方文档：<a href="https://link.zhihu.com/?target=https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.anderson.html">SciPy v1.1.0 Reference Guide</a></p>
+<p>参数：x - 待检验数据；dist - 设置需要检验的分布类型</p>
+<p>返回：statistic - 统计数；critical_values - 评判值；significance_level - 显著性水平</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#生成标准正态随机数</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">np.random.seed(<span class="number">0</span>)</span><br><span class="line">data_norm = np.random.normal(<span class="number">0</span>,<span class="number">1</span>,<span class="number">100</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">##用Anderson-Darling检验生成的数组是否服从正态分布</span></span><br><span class="line"><span class="keyword">import</span> scipy.stats <span class="keyword">as</span> stats</span><br><span class="line">stats.anderson(data_norm, dist=<span class="string">&#x27;norm&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;输出AndersonResult(statistic=0.18097695613924714, </span></span><br><span class="line"><span class="string">                      critical_values=array([ 0.555,  0.632,  0.759,  0.885,  1.053]), </span></span><br><span class="line"><span class="string">                      significance_level=array([ 15. ,  10. ,   5. ,   2.5,   1. ]))</span></span><br><span class="line"><span class="string">如果输出的统计量值statistic &lt; critical_values，则表示在相应的significance_level下，</span></span><br><span class="line"><span class="string">接受原假设，认为样本数据来自给定的正态分布。&#x27;&#x27;&#x27;</span></span><br><span class="line">stats.anderson(data_norm, dist=<span class="string">&#x27;expon&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;输出AndersonResult(statistic=inf, </span></span><br><span class="line"><span class="string">                      critical_values=array([ 0.917,  1.072,  1.333,  1.596,  1.945]), </span></span><br><span class="line"><span class="string">                      significance_level=array([ 15. ,  10. ,   5. ,   2.5,   1. ]))</span></span><br><span class="line"><span class="string">拒绝原假设，认为生成的正态分布样本数据不来自指数分布。&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="comment"># 原文链接：https://blog.csdn.net/qq_20207459/article/details/102863982</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="矩法-S-K检验"><a href="#矩法-S-K检验" class="headerlink" title="矩法 &#x2F; S-K检验"></a>矩法 &#x2F; S-K检验</h4><p>Skewness 偏度，kurtosis峰度</p>
+<p>对分布的峰度与偏度进行检验</p>
+<p>官方手册：scipy.stats.normaltest <a target="_blank" rel="noopener" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.normaltest.html">https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.normaltest.html</a></p>
+<p>normaltest 也是专门做正态性检验的模块，原理是基于数据的skewness和kurtosis</p>
+<p>scipy.stats.normaltest(a, axis&#x3D;0, nan_policy&#x3D;’propagate’)</p>
+<p>a：待检验的数据</p>
+<p>axis：默认为0，表示在0轴上检验，即对数据的每一行做正态性检验，我们可以设置为 axis&#x3D;None 来对整个数据做检验</p>
+<p>nan_policy：当输入的数据中有空值时的处理办法。默认为 ‘propagate’，返回空值；设置为 ‘raise’ 时，抛出错误；设置为 ‘omit’ 时，在计算中忽略空值。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42059534/article/details/101703027">python使用scipy.stats数据（正态）分布检验方法</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u010199356/article/details/87873596">数据分析之正态分布检验及python实现</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yuanjingnan/p/11668547.html">PP图|QQ图|正态性检验|K-S检验|S-W检验|</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/math/" rel="tag"># math</a>
+              <a href="/tags/statistics/" rel="tag"># statistics</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blogs/%E6%97%A0%E5%81%8F%E4%BC%B0%E8%AE%A1%E4%B8%8B%E7%9A%84%E5%9D%87%E5%80%BC%E4%B8%8E%E6%96%B9%E5%B7%AE/" rel="prev" title="无偏估计下的均值与方差">
+                  <i class="fa fa-angle-left"></i> 无偏估计下的均值与方差
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/blogs/%E5%8C%BB%E5%AD%A6%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%9A%84%E5%9B%BE%E8%A1%A8-Chart-of-medical-statistics/" rel="next" title="医学统计学的图表-Chart of medical statistics">
+                  医学统计学的图表-Chart of medical statistics <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Jiageng Wu</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">11k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">10 分钟</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

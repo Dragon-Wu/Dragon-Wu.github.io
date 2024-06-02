@@ -1,77 +1,234 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title>Gephi</title>
-    <url>/blogs/Gephi%E7%9B%B8%E5%85%B3/</url>
-    <content><![CDATA[<p>Gephi相关</p>
-<span id="more"></span>
-
-<p>先挖坑</p>
-]]></content>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Gephi</title>
+      <link href="/blogs/Gephi%E7%9B%B8%E5%85%B3/"/>
+      <url>/blogs/Gephi%E7%9B%B8%E5%85%B3/</url>
+      
+        <content type="html"><![CDATA[<p>Gephi相关</p><span id="more"></span><p>软件下载：<a href="https://gephi.org/">https://gephi.org/</a></p><p>生物信息工具 | 如何用Gephi绘制漂亮的网络图？ - 基迪奥生物的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/168689727">https://zhuanlan.zhihu.com/p/168689727</a></p>]]></content>
+      
+      
       <categories>
-        <category>software</category>
+          
+          <category> software </category>
+          
       </categories>
-      <tags>
-        <tag>software</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/blogs/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<span id="more"></span>
-
-
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> software </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>医学统计学的图表-Chart of medical statistics</title>
+      <link href="/blogs/%E5%8C%BB%E5%AD%A6%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%9A%84%E5%9B%BE%E8%A1%A8-Chart-of-medical-statistics/"/>
+      <url>/blogs/%E5%8C%BB%E5%AD%A6%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%9A%84%E5%9B%BE%E8%A1%A8-Chart-of-medical-statistics/</url>
+      
+        <content type="html"><![CDATA[<p>一些常用的医学统计学图表</p><span id="more"></span><h2 id="森林图"><a href="#森林图" class="headerlink" title="森林图"></a>森林图</h2><p>森林图(forest plot)怎么看？ - 钟多少玲的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/268431281">https://zhuanlan.zhihu.com/p/268431281</a></p><p><a href="https://mp.weixin.qq.com/s?__biz=MzI2OTQyMzc5MA==&mid=2247490396&idx=1&sn=b415ea07c997858b5791f08a6e6bb35b&chksm=eae1de9ddd96578bb77a8b15b13c80e377e9483292ec12a248624d9bb2cf2ec291e8cd19bdd7&scene=21#wechat_redirect">一文带你玩转森林图！</a></p><h2 id="RR-OR-HR"><a href="#RR-OR-HR" class="headerlink" title="RR&#x2F;OR&#x2F;HR"></a>RR&#x2F;OR&#x2F;HR</h2><p>RR：相对风险比</p><p>OR：比值比</p><p>HR：风险比</p><p>一篇非常好的文章：<a href="https://blog.csdn.net/weixin_41858481/article/details/95773773">医学统计学中RR、OR和HR三个关于比值的概念</a></p><h2 id="Nomogram"><a href="#Nomogram" class="headerlink" title="Nomogram"></a>Nomogram</h2><p>手把手教你用R画列线图(Nomogram)及解读结果 - 医小咖的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/85790353">https://zhuanlan.zhihu.com/p/85790353</a> </p><img src="医学统计学的图表-Chart-of-medical-statistics/image-20211109021327963.png" alt="image-20211109021327963" style="zoom:80%;" /><img src="医学统计学的图表-Chart-of-medical-statistics/image-20211109021307670.png" alt="image-20211109021307670" style="zoom: 100%;" /><h2 id="小提琴图-Violin-Plot"><a href="#小提琴图-Violin-Plot" class="headerlink" title="小提琴图&#x2F;Violin Plot"></a>小提琴图&#x2F;Violin Plot</h2><img src="医学统计学的图表-Chart-of-medical-statistics/小提琴图.svg" alt="小提琴图" style="zoom: 67%;" /><img src="医学统计学的图表-Chart-of-medical-statistics/小提琴图-16331701683732.svg" alt="小提琴图" style="zoom: 67%;" /><p>小提琴图 (Violin Plot) 用于显示数据分布及其<a href="https://zh.wikipedia.org/wiki/%E6%A9%9F%E7%8E%87%E5%AF%86%E5%BA%A6%E5%87%BD%E6%95%B8">概率密度</a>。</p><p>这种图表结合了<a href="https://datavizcatalogue.com/ZH/%E6%96%B9%E6%B3%95/%E7%AE%B1%E5%BD%A2%E5%9B%BE.html">箱形图</a>和<a href="https://datavizcatalogue.com/ZH/%E6%96%B9%E6%B3%95/%E5%AF%86%E5%BA%A6%E5%9B%BE.html">密度图</a>的特征，主要用来显示数据的<a href="https://en.wikipedia.org/wiki/Shape_of_the_distribution">分布形状</a>。中间的黑色粗条表示四分位数范围，从其延伸的幼细黑线代表 95% 置信区间，而白点则为中位数。</p><p>箱形图在数据显示方面受到限制，简单的设计往往隐藏了有关数据分布的重要细节。例如使用箱形图时，我们不能了解数据分布是<a href="https://en.wikipedia.org/wiki/Multimodal_distribution">双模还是多模</a>。虽然小提琴图可以显示更多详情，但它们也可能包含较多干扰信息。</p>]]></content>
+      
+      
       <categories>
-        <category>something</category>
+          
+          <category> medicine </category>
+          
       </categories>
-      <tags>
-        <tag>something</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>医学统计学的图表-Chart of medical statistics</title>
-    <url>/blogs/%E5%8C%BB%E5%AD%A6%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%9A%84%E5%9B%BE%E8%A1%A8-Chart-of-medical-statistics/</url>
-    <content><![CDATA[<p>一些常用的医学统计学图表</p>
-<span id="more"></span>
-
-<h2 id="森林图"><a href="#森林图" class="headerlink" title="森林图"></a>森林图</h2><p>森林图(forest plot)怎么看？ - 钟多少玲的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/268431281">https://zhuanlan.zhihu.com/p/268431281</a></p>
-<p><a href="https://mp.weixin.qq.com/s?__biz=MzI2OTQyMzc5MA==&mid=2247490396&idx=1&sn=b415ea07c997858b5791f08a6e6bb35b&chksm=eae1de9ddd96578bb77a8b15b13c80e377e9483292ec12a248624d9bb2cf2ec291e8cd19bdd7&scene=21#wechat_redirect">一文带你玩转森林图！</a></p>
-<h2 id="RR-OR-HR"><a href="#RR-OR-HR" class="headerlink" title="RR&#x2F;OR&#x2F;HR"></a>RR&#x2F;OR&#x2F;HR</h2><p>RR：相对风险比</p>
-<p>OR：比值比</p>
-<p>HR：风险比</p>
-<p>一篇非常好的文章：<a href="https://blog.csdn.net/weixin_41858481/article/details/95773773">医学统计学中RR、OR和HR三个关于比值的概念</a></p>
-<h2 id="Nomogram"><a href="#Nomogram" class="headerlink" title="Nomogram"></a>Nomogram</h2><p>手把手教你用R画列线图(Nomogram)及解读结果 - 医小咖的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/85790353">https://zhuanlan.zhihu.com/p/85790353</a> </p>
-<img src="/blogs/%E5%8C%BB%E5%AD%A6%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%9A%84%E5%9B%BE%E8%A1%A8-Chart-of-medical-statistics/image-20211109021327963.png" class title="image-20211109021327963">
-
-<img src="/blogs/医学统计学的图表-Chart-of-medical-statistics/image-20211109021307670.png" alt="image-20211109021307670" style="zoom:150%;">
-
-<h2 id="小提琴图-Violin-Plot"><a href="#小提琴图-Violin-Plot" class="headerlink" title="小提琴图&#x2F;Violin Plot"></a>小提琴图&#x2F;Violin Plot</h2><img src="/blogs/%E5%8C%BB%E5%AD%A6%E7%BB%9F%E8%AE%A1%E5%AD%A6%E7%9A%84%E5%9B%BE%E8%A1%A8-Chart-of-medical-statistics/%E5%B0%8F%E6%8F%90%E7%90%B4%E5%9B%BE.svg" class title="小提琴图">
-
-<img src="/blogs/医学统计学的图表-Chart-of-medical-statistics/小提琴图-16331701683732.svg" alt="小提琴图" style="zoom:50%;">
-
-<p>小提琴图 (Violin Plot) 用于显示数据分布及其<a href="https://zh.wikipedia.org/wiki/%E6%A9%9F%E7%8E%87%E5%AF%86%E5%BA%A6%E5%87%BD%E6%95%B8">概率密度</a>。</p>
-<p>这种图表结合了<a href="https://datavizcatalogue.com/ZH/%E6%96%B9%E6%B3%95/%E7%AE%B1%E5%BD%A2%E5%9B%BE.html">箱形图</a>和<a href="https://datavizcatalogue.com/ZH/%E6%96%B9%E6%B3%95/%E5%AF%86%E5%BA%A6%E5%9B%BE.html">密度图</a>的特征，主要用来显示数据的<a href="https://en.wikipedia.org/wiki/Shape_of_the_distribution">分布形状</a>。中间的黑色粗条表示四分位数范围，从其延伸的幼细黑线代表 95% 置信区间，而白点则为中位数。</p>
-<p>箱形图在数据显示方面受到限制，简单的设计往往隐藏了有关数据分布的重要细节。例如使用箱形图时，我们不能了解数据分布是<a href="https://en.wikipedia.org/wiki/Multimodal_distribution">双模还是多模</a>。虽然小提琴图可以显示更多详情，但它们也可能包含较多干扰信息。</p>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> statistics </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>如何检验数据的正态性——-Check the normality of data</title>
+      <link href="/blogs/%E5%A6%82%E4%BD%95%E6%A3%80%E9%AA%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%AD%A3%E6%80%81%E6%80%A7%E2%80%94%E2%80%94-Check-the-normality-of-data/"/>
+      <url>/blogs/%E5%A6%82%E4%BD%95%E6%A3%80%E9%AA%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E6%AD%A3%E6%80%81%E6%80%A7%E2%80%94%E2%80%94-Check-the-normality-of-data/</url>
+      
+        <content type="html"><![CDATA[<p>处理数据时，有时候需要观察数据分布，比如检验数据的正态性</p><span id="more"></span><h3 id="图示法"><a href="#图示法" class="headerlink" title="图示法"></a>图示法</h3><h4 id="直方图"><a href="#直方图" class="headerlink" title="直方图"></a>直方图</h4><p>绘制数据直方图，直接观察趋势</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">s = pd.DataFrame(np.random.randn(<span class="number">1000</span>)+<span class="number">10</span>,columns = [<span class="string">&#x27;value&#x27;</span>])</span><br><span class="line"><span class="built_in">print</span>(s.head())</span><br><span class="line"><span class="comment"># 创建随机数据</span></span><br><span class="line"></span><br><span class="line">fig = plt.figure(figsize = (<span class="number">10</span>,<span class="number">6</span>))</span><br><span class="line">ax1 = fig.add_subplot(<span class="number">2</span>,<span class="number">1</span>,<span class="number">1</span>)  <span class="comment"># 创建子图1</span></span><br><span class="line">ax1.scatter(s.index, s.values)</span><br><span class="line">plt.grid()</span><br><span class="line"><span class="comment"># 绘制数据分布图</span></span><br><span class="line"></span><br><span class="line">ax2 = fig.add_subplot(<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>)  <span class="comment"># 创建子图2</span></span><br><span class="line">s.hist(bins=<span class="number">30</span>,alpha = <span class="number">0.5</span>,ax = ax2)</span><br><span class="line">s.plot(kind = <span class="string">&#x27;kde&#x27;</span>, secondary_y=<span class="literal">True</span>,ax = ax2)</span><br><span class="line">plt.grid()</span><br><span class="line"><span class="comment"># 绘制直方图</span></span><br><span class="line"><span class="comment"># 呈现较明显的正态分布</span></span><br></pre></td></tr></table></figure><img src="如何检验数据的正态性——-Check-the-normality-of-data/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAxOTkzNTY=,size_16,color_FFFFFF,t_70.png" alt="img" style="zoom:80%;" /><h4 id="P-P图法"><a href="#P-P图法" class="headerlink" title="P-P图法"></a>P-P图法</h4><p>proportion-proportion plots</p><p>以样本的累计频率（百分比）作为横坐标，以按照正态分布计算的相应累计频率为纵坐标，把样本值表现为直角坐标系中的散点，把样本值表现为直角坐标系中的散点</p><p>如果资料服从正态分布，那样本点应该围绕着第一象限的对角线分布</p><img src="如何检验数据的正态性——-Check-the-normality-of-data/faedab64034f78f0a3eb3ceb76310a55b2191cc1.png" alt="img" style="zoom:80%;" /><img src="如何检验数据的正态性——-Check-the-normality-of-data/1719714-20191013214048185-1444993105.png" alt="img" style="zoom:80%;" /><h4 id="Q-Q图"><a href="#Q-Q图" class="headerlink" title="Q-Q图"></a>Q-Q图</h4><p>quantile-quantile plots</p><p>以样本的分位数（Px）作为横坐标，以按照正态分布计算的相应分位数作为纵坐标，把样本值表现为直角坐标系中的散点</p><p>如果资料服从正态分布，那样本点应该围绕着第一象限的对角线分布</p><img src="如何检验数据的正态性——-Check-the-normality-of-data/b151f8198618367ab0efdec521738bd4b31ce540.png" alt="img" style="zoom:80%;" /><h3 id="统计检验法"><a href="#统计检验法" class="headerlink" title="统计检验法"></a>统计检验法</h3><h4 id="简单用法："><a href="#简单用法：" class="headerlink" title="简单用法："></a>简单用法：</h4><p>后面讲述具体，先来看看简单示例：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> stats</span><br><span class="line"> </span><br><span class="line">a = np.random.normal(<span class="number">0</span>,<span class="number">1</span>,<span class="number">50</span>)</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;输出结果中第一个为统计量，第二个为P值（统计量越接近1越表明数据和正态分布拟合的好，</span></span><br><span class="line"><span class="string">P值大于指定的显著性水平，接受原假设，认为样本来自服从正态分布的总体）&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(stats.shapiro(a)) </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;输出结果中第一个为统计量，第二个为P值（注：统计量越接近0就越表明数据和标准正态分布拟合的越好，</span></span><br><span class="line"><span class="string">如果P值大于显著性水平，通常是0.05，接受原假设，则判断样本的总体服从正态分布）&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(stats.kstest(a, <span class="string">&#x27;norm&#x27;</span>))  </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;输出结果中第一个为统计量，第二个为P值（注：p值大于显著性水平0.05，认为样本数据符合正态分布）&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(stats.normaltest(a)) </span><br></pre></td></tr></table></figure><h4 id="W检验-Shapiro-检验-Shapiro-Wilk检验"><a href="#W检验-Shapiro-检验-Shapiro-Wilk检验" class="headerlink" title="W检验 &#x2F; Shapiro 检验 &#x2F;  Shapiro-Wilk检验"></a>W检验 &#x2F; Shapiro 检验 &#x2F;  Shapiro-Wilk检验</h4><p>专门用于检验正态分布，</p><p>官方手册：scipy.stat.shapiro <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.shapiro.html">https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.shapiro.html</a></p><p>原假设：样本数据符合正态分布</p><p>注意：shapiro是用来检验小样本数据 (For N &gt; 5000 the W test statistic is accurate but the p-value may not be.)</p><p>scipy.stats.shapiro(x, a&#x3D;None, reta&#x3D;False)</p><p>一般我们只用 x 参数就行，x 即待检验的数据</p><h4 id="K-S检验"><a href="#K-S检验" class="headerlink" title="K-S检验"></a>K-S检验</h4><p>方法：scipy.stats.kstest (rvs, cdf, args &#x3D; ( ), N &#x3D; 20, alternative &#x3D;’two-sided’, mode &#x3D;’auto’)</p><p>官方文档：scipy.stats.kstest <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.kstest.html">https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.kstest.html</a></p><p><strong>原理：</strong><a href="https://www.cnblogs.com/arkenstone/p/5496761.html">KS-检验（Kolmogorov-Smirnov test） – 检验数据是否符合某种分布</a></p><p>kstest 是一个很强大的检验模块，除了正态性检验，还能检验 scipy.stats 中的其他数据分布类型，仅适用于连续分布的检验，</p><p>原假设：数据符合正态分布</p><p>对于正态性检验，我们只需要手动设置三个参数即可：</p><p>rvs：待检验的一组一维数据</p><p>cdf：检验方法，例如’norm’，’expon’，’rayleigh’，’gamma’，这里我们设置为’norm’，即正态性检验</p><p>alternative：默认为双尾检验，可以设置为’less’或’greater’作单尾检验</p><p>model: auto(默认)，选取其中一个</p><p>​‘approx’，使用检验统计量的精确分布的近视值，</p><p>​‘asymp’：使用检验统计量的渐进分布</p><img src="如何检验数据的正态性——-Check-the-normality-of-data/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAxOTkzNTY=,size_16,color_FFFFFF,t_70.png" alt="img" style="zoom:80%;" /><h5 id="检验指定的数列是否服从正态分布"><a href="#检验指定的数列是否服从正态分布" class="headerlink" title="检验指定的数列是否服从正态分布"></a>检验指定的数列是否服从正态分布</h5><p>借助假设检验的思想，利用K-S检验可以对数列的性质进行检验，看代码：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy.stats <span class="keyword">import</span> kstest</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"> </span><br><span class="line">x = np.random.normal(<span class="number">0</span>,<span class="number">1</span>,<span class="number">1000</span>)</span><br><span class="line">test_stat = kstest(x, <span class="string">&#x27;norm&#x27;</span>)</span><br><span class="line"><span class="comment">#&gt;&gt;&gt; test_stat</span></span><br><span class="line"><span class="comment">#(0.021080234718821145, 0.76584491300591395)</span></span><br></pre></td></tr></table></figure><p>首先生成1000个服从N(0,1)标准正态分布的随机数，在使用k-s检验该数据是否服从正态分布，提出假设：x从正态分布。</p><p>最终返回的结果，p-value&#x3D;0.76584491300591395，比指定的显著水平（假设为5%）大，则我们不能拒绝假设：x服从正态分布。</p><p>这并不是说x服从正态分布一定是正确的，而是说没有充分的证据证明x不服从正态分布。因此我们的假设被接受，认为x服从正态分布。</p><p>如果p-value小于我们指定的显著性水平，则我们可以肯定的拒绝提出的假设，认为x肯定不服从正态分布，这个拒绝是绝对正确的。</p><h5 id="检验指定的两个数列是否服从相同分布"><a href="#检验指定的两个数列是否服从相同分布" class="headerlink" title="检验指定的两个数列是否服从相同分布"></a>检验指定的两个数列是否服从相同分布</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy.stats <span class="keyword">import</span> ks_2samp</span><br><span class="line">beta=np.random.beta(<span class="number">7</span>,<span class="number">5</span>,<span class="number">1000</span>)</span><br><span class="line">norm=np.random.normal(<span class="number">0</span>,<span class="number">1</span>,<span class="number">1000</span>)</span><br><span class="line">ks_2samp(beta,norm)</span><br><span class="line"><span class="comment">#&gt;&gt;&gt;(0.60099999999999998, 4.7405805465370525e-159)</span></span><br></pre></td></tr></table></figure><p>我们先分别使用beta分布和normal分布产生两个样本大小为1000的数列，使用ks_2samp检验两个数列是否来自同一个样本，提出假设：beta和norm服从相同的分布。</p><p>最终返回的结果，p-value&#x3D;4.7405805465370525e-159，比指定的显著水平（假设为5%）小，则我们完全可以拒绝假设：beta和norm不服从同一分布。</p><h4 id="Anderson-Darling-test"><a href="#Anderson-Darling-test" class="headerlink" title="Anderson-Darling test"></a>Anderson-Darling test</h4><p>方法：scipy.stats.anderson (x, dist &#x3D;’norm’ )</p><p>该方法是由 scipy.stats.kstest 改进而来的，可以做正态分布、指数分布、Logistic 分布、Gumbel 分布等多种分布检验。默认参数为 norm，即正态性检验。</p><p>官方文档：<a href="https://link.zhihu.com/?target=https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.anderson.html">SciPy v1.1.0 Reference Guide</a></p><p>参数：x - 待检验数据；dist - 设置需要检验的分布类型</p><p>返回：statistic - 统计数；critical_values - 评判值；significance_level - 显著性水平</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#生成标准正态随机数</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">np.random.seed(<span class="number">0</span>)</span><br><span class="line">data_norm = np.random.normal(<span class="number">0</span>,<span class="number">1</span>,<span class="number">100</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">##用Anderson-Darling检验生成的数组是否服从正态分布</span></span><br><span class="line"><span class="keyword">import</span> scipy.stats <span class="keyword">as</span> stats</span><br><span class="line">stats.anderson(data_norm, dist=<span class="string">&#x27;norm&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;输出AndersonResult(statistic=0.18097695613924714, </span></span><br><span class="line"><span class="string">                      critical_values=array([ 0.555,  0.632,  0.759,  0.885,  1.053]), </span></span><br><span class="line"><span class="string">                      significance_level=array([ 15. ,  10. ,   5. ,   2.5,   1. ]))</span></span><br><span class="line"><span class="string">如果输出的统计量值statistic &lt; critical_values，则表示在相应的significance_level下，</span></span><br><span class="line"><span class="string">接受原假设，认为样本数据来自给定的正态分布。&#x27;&#x27;&#x27;</span></span><br><span class="line">stats.anderson(data_norm, dist=<span class="string">&#x27;expon&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;输出AndersonResult(statistic=inf, </span></span><br><span class="line"><span class="string">                      critical_values=array([ 0.917,  1.072,  1.333,  1.596,  1.945]), </span></span><br><span class="line"><span class="string">                      significance_level=array([ 15. ,  10. ,   5. ,   2.5,   1. ]))</span></span><br><span class="line"><span class="string">拒绝原假设，认为生成的正态分布样本数据不来自指数分布。&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="comment"># 原文链接：https://blog.csdn.net/qq_20207459/article/details/102863982</span></span><br><span class="line"></span><br></pre></td></tr></table></figure><h4 id="矩法-S-K检验"><a href="#矩法-S-K检验" class="headerlink" title="矩法 &#x2F; S-K检验"></a>矩法 &#x2F; S-K检验</h4><p>Skewness 偏度，kurtosis峰度</p><p>对分布的峰度与偏度进行检验</p><p>官方手册：scipy.stats.normaltest <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.normaltest.html">https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.normaltest.html</a></p><p>normaltest 也是专门做正态性检验的模块，原理是基于数据的skewness和kurtosis</p><p>scipy.stats.normaltest(a, axis&#x3D;0, nan_policy&#x3D;’propagate’)</p><p>a：待检验的数据</p><p>axis：默认为0，表示在0轴上检验，即对数据的每一行做正态性检验，我们可以设置为 axis&#x3D;None 来对整个数据做检验</p><p>nan_policy：当输入的数据中有空值时的处理办法。默认为 ‘propagate’，返回空值；设置为 ‘raise’ 时，抛出错误；设置为 ‘omit’ 时，在计算中忽略空值。</p><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://blog.csdn.net/weixin_42059534/article/details/101703027">python使用scipy.stats数据（正态）分布检验方法</a></p><p><a href="https://blog.csdn.net/u010199356/article/details/87873596">数据分析之正态分布检验及python实现</a></p><p><a href="https://www.cnblogs.com/yuanjingnan/p/11668547.html">PP图|QQ图|正态性检验|K-S检验|S-W检验|</a></p>]]></content>
+      
+      
       <categories>
-        <category>medicine</category>
+          
+          <category> math </category>
+          
       </categories>
-      <tags>
-        <tag>statistics</tag>
-      </tags>
-  </entry>
+      
+      
+        <tags>
+            
+            <tag> math </tag>
+            
+            <tag> statistics </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>无偏估计下的均值与方差</title>
+      <link href="/blogs/%E6%97%A0%E5%81%8F%E4%BC%B0%E8%AE%A1%E4%B8%8B%E7%9A%84%E5%9D%87%E5%80%BC%E4%B8%8E%E6%96%B9%E5%B7%AE/"/>
+      <url>/blogs/%E6%97%A0%E5%81%8F%E4%BC%B0%E8%AE%A1%E4%B8%8B%E7%9A%84%E5%9D%87%E5%80%BC%E4%B8%8E%E6%96%B9%E5%B7%AE/</url>
+      
+        <content type="html"><![CDATA[<p>无偏估计，老生常谈了，但以防忘记，蛮记录一下存着吧</p><span id="more"></span><h2 id="无偏估计"><a href="#无偏估计" class="headerlink" title="无偏估计"></a>无偏估计</h2><p>理想情况下的统计量的估计，是通过全体样本进行评估，这一定是无偏的，但问题是没办法，所以我们需要通过抽样来统计</p><p>但是如果仅是一次抽样，很明显的，抽样结果不可能完全符合真实情况，</p><img src="无偏估计下的均值与方差/v2-76bf35d3e15bac45de3e7a01a3c4b733_720w.jpg" alt="img" style="zoom:80%;" /><p>因为“抽样出来的样本”的均值，也是一个随机变量，这个<strong>随机变量的期望</strong>才是真正的均值，才意味着是<strong>无偏估计</strong></p><p>所以，其实简单来讲，用一次抽样的方式来表征全体的统计信息是不可取的，需要多次抽样才能获得可靠的统计</p><p>这里其实涉及到了大数定理和中心极限定理，但还没有找到有结合这个讲得比较好的，留个坑吧，以后再说</p><p>大数定理就是多采样，就容易对</p><p>中心极限定理就是多次采样的结果会形成以真实期望为中心的正态分布</p><h2 id="无偏估计下的均值"><a href="#无偏估计下的均值" class="headerlink" title="无偏估计下的均值"></a>无偏估计下的均值</h2><p>所以无偏估计下的均值就是</p><img src="无偏估计下的均值与方差/image-20200612212612521.png" alt="image-20200612212612521" style="zoom:80%;" /><h2 id="无偏估计下的方差"><a href="#无偏估计下的方差" class="headerlink" title="无偏估计下的方差"></a>无偏估计下的方差</h2><p>那么根据上述无偏估计均值的方式，按道理方差的无偏估计是：</p><img src="无偏估计下的均值与方差/image-20200612212831851.png" alt="image-20200612212831851" style="zoom:80%;" /><p>但是关键就在于，咱们的均值是未知的，那么这时候实际上算出的期望并非无偏估计，需要将分母改为n-1</p><h3 id="数学证明"><a href="#数学证明" class="headerlink" title="数学证明"></a>数学证明</h3><img src="无偏估计下的均值与方差/image-20200612212938807.png" alt="image-20200612212938807" style="zoom:80%;" /><h3 id="直观解释"><a href="#直观解释" class="headerlink" title="直观解释"></a>直观解释</h3><p>估计的理论基础在于，每个数据都是独立的，但是统计出的均值使得数据间存在了联系，简单来说就是前n-1个值与X拔就确定了，第n个值，自由度仅有n-1，最后一个值不具有信息量了</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.zhihu.com/question/22983179">什么是无偏估计？</a></p><p><a href="https://www.zhihu.com/question/20099757">为什么样本方差（sample variance）的分母是 n-1？</a></p><p>数学推导可看：<a href="https://www.matongxue.com/madocs/607.html">为什么样本方差（sample variance）的分母是 n-1？</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> math </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> math </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Typora+hexo发布博客</title>
+      <link href="/blogs/Typora-hexo%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2/"/>
+      <url>/blogs/Typora-hexo%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2/</url>
+      
+        <content type="html"><![CDATA[<p>前一阵子忙于工程上的任务，好久没写博客了，然后今天打开typora发现本地图片不显示，但是远程是没问题的，吓坏我了。。。都不敢new blog，生怕本地出了问题，排查了半天，发现是typora升级。。。然后相对根目录原来是全局的，现在是每个文档不同，需要再设置的问题。。。以防今后忘记，还是自己做个记录和梳理</p><span id="more"></span><h2 id="Typora"><a href="#Typora" class="headerlink" title="Typora"></a>Typora</h2><p>Typora是一个方便简便且强力的Markdown编辑工具，一直都使用他来配合hexo进行博客管理，</p><p><a href="https://www.typora.io/">https://www.typora.io/</a>  是官方网址，支持各个系统，非常nice！</p><p>轻量，干净，</p><p>所以，</p><p>下载，安装，</p><p>完美！</p><h2 id="预备工作"><a href="#预备工作" class="headerlink" title="预备工作"></a>预备工作</h2><p>首先，在咱们blog根目录下，</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo n <span class="string">&quot;title&quot;</span></span><br><span class="line">// the sanme as $ hexo new <span class="string">&quot;title&quot;</span></span><br></pre></td></tr></table></figure><p>然后就会发现，在根目录</p><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\blog\source\_posts</span><br></pre></td></tr></table></figure><p>底下出现了，title.md以及title文件夹，一个是咱们的这篇blog的内容，一个即是咱们这篇blog的文件夹，可以用来存图片，之后相应博客的图片素材都存在各自相应的文件夹内</p><p>而后，我们用typora打开文档，可以直接打开，或者建议是打开到_posts底下，之后再打开typora就自动到工作路径，再直接选定需要编辑的博客进行编辑即可</p><p>typora左下角，点击打开_posts文件夹，选定需要编辑的blog，进入编辑界面</p><img src="Typora-hexo发布博客/image-20200320164445581.png" alt="image-20200320164445581" style="zoom:100%;" /><img src="Typora-hexo发布博客/image-20200320171914618.png" alt="image-20200320171914618" style="zoom:80%;" /><p>接着，我们就可以欢乐地进行编辑blog啦！</p><h2 id="编辑内容"><a href="#编辑内容" class="headerlink" title="编辑内容"></a>编辑内容</h2><p>首先，要注意blog最上方的<strong>红方框</strong>里的内容，里面是本篇blog的属性，包括title、date、tags、categories，还可能会有是否加密、根目录设置等等，后来发现这些个属性，不全是必须的，date、tags、categories都可以不要；</p><p>相应的格式是：</p><figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">tags:</span> [tagA,tagB,...]</span><br><span class="line">//like as</span><br><span class="line"><span class="keyword">tags:</span> [Tensorflow,机器学习]</span><br><span class="line"></span><br><span class="line">categories： categoryA</span><br><span class="line">//like as </span><br><span class="line">categories: Something</span><br></pre></td></tr></table></figure><p>关于tag和categories具体可以看：<a href="https://hexo.io/docs/front-matter.html">https://hexo.io/docs/front-matter.html</a></p><img src="Typora-hexo发布博客/image-20200320215354479.png" alt="image-20200320215354479" style="zoom:80%;" /><p>tag内容，就是会显示首页的内容，之下则需要点开博客查看，效果如下：</p><img src="Typora-hexo发布博客/image-20200320172418649.png" alt="image-20200320172418649" style="zoom:80%;" /><h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><p>接下来说说插入图片的问题，也就是写这篇文章的诱因……</p><p>typora写md有一点好，就是可以<strong>直接</strong>把图片拖到文档里，就插入，非常流畅，这也是我觉得最好的一点，就像我们把代码拖进IDE一样，舒服~</p><p>但是需要注意：</p><p>1.图片最好都放在咱们blog相应的文档里，符合规范，也方便管理</p><p>2.直接拖入图片的时候，是<strong>绝对路径</strong>，这样咱们上传远程后，肯定是不中的，所以要改成相对路径，根目录就定为_posts，如下图红框中所示，前面是博客对应的文件，后面是文件名</p><img src="Typora-hexo发布博客/image-20200320210615757.png" alt="image-20200320210615757" style="zoom:80%;" /><p>这样部署到远程后就可以正常访问了</p><h2 id="插图小贴士"><a href="#插图小贴士" class="headerlink" title="插图小贴士"></a>插图小贴士</h2><p>最后讲讲，上述的操作如何在Typora中更高效的完成，最主要是插入图片：</p><p>针对插入图片是绝对路径的问题，可以做两件事方便插图：</p><p>1.在<strong>格式-&gt;图像-&gt;全局图像设置</strong>中修改设置：</p><p>插入图片时复制到咱们相应的文件夹里，这样就很方便了，我们可以直接通过截图软件截图，然后ctrl+c复制进来，然后他会自动把图复制到博客对应的文件夹里，不用像我原来先用截图工具然后保存到文件里，再拖入了，真的，舒服~</p><p>勾选<strong>优先使用相对路径</strong>，这样咱们插入的时候就是相对根目录的<strong>相对路径</strong></p><p>2.在<strong>格式-&gt;图像-&gt;设置图片根目录</strong>中<strong>把当前文档的根目录设置在_posts</strong>下</p><p>原来的时候typora是把这个放在<strong>全局</strong>里的，所以我当时在本地编辑的时候是可以识别到的，而后来可能考虑到不同文档的根目录可以不同，所以把这个升级变成<strong>跟随文档自定义</strong>了，也就导致了我原来的文档看不到图了，但是部署上去的时候倒是没问题的（因为丢失了根目录），而本地在typora编辑的时候，是根据绝对路径的，所以一定要勾选<strong>优先使用相对路径</strong>，</p><img src="Typora-hexo发布博客/image-20200320211324239.png" alt="image-20200320211324239" style="zoom:80%;" /><img src="Typora-hexo发布博客/image-20200320211135023.png" alt="image-20200320211135023" style="zoom:80%;" /><p>最后，需要注意的是，因为我们插入图片的时候就自动复制了，可能文件夹里有一些图片在编辑过程中加入了，但最后不需要了，所以记得发布前确认下哪些图需要，把不需要的图删了，免得上传上去太大~</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> something </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> something </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>多元高斯分布</title>
+      <link href="/blogs/%E5%A4%9A%E5%85%83%E9%AB%98%E6%96%AF%E5%88%86%E5%B8%83/"/>
+      <url>/blogs/%E5%A4%9A%E5%85%83%E9%AB%98%E6%96%AF%E5%88%86%E5%B8%83/</url>
+      
+        <content type="html"><![CDATA[<p>多元高斯分布应用于机器学习</p><span id="more"></span><h2 id="原始的多元高斯分布模型解析："><a href="#原始的多元高斯分布模型解析：" class="headerlink" title="原始的多元高斯分布模型解析："></a>原始的多元高斯分布模型解析：</h2><p><a href="https://www.cnblogs.com/bingjianing/p/9117330.html">多元高斯分布（The Multivariate normal distribution）</a></p><h2 id="应用于分类的多元高斯分布模型解析："><a href="#应用于分类的多元高斯分布模型解析：" class="headerlink" title="应用于分类的多元高斯分布模型解析："></a>应用于分类的多元高斯分布模型解析：</h2><p><a href="https://study.163.com/course/courseLearn.htm?courseId=1004570029#/learn/text?lessonId=1053422073&courseId=1004570029">吴恩达  机器学习 异常检测</a></p><p><a href="https://www.cnblogs.com/yan2015/p/7406904.html">异常检测: 多元高斯分布</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> math </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> math </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>傅里叶变换</title>
+      <link href="/blogs/%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/"/>
+      <url>/blogs/%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/</url>
+      
+        <content type="html"><![CDATA[<p>只能说：</p><p><strong>牛逼</strong></p><p>所以他值得一篇专门的文</p><span id="more"></span><h2 id="傅里叶变换"><a href="#傅里叶变换" class="headerlink" title="傅里叶变换"></a>傅里叶变换</h2><p><strong>相关资料：</strong></p><p><a href="https://zhuanlan.zhihu.com/p/19763358">https://zhuanlan.zhihu.com/p/19763358</a> 傅里叶分析之掐死教程（完整版）更新于2014.06.06</p><p><a href="https://www.bilibili.com/video/av19141078?from=search&seid=3411146207299915686">https://www.bilibili.com/video/av19141078?from=search&amp;seid=3411146207299915686</a> 形象展示傅里叶变换</p><p><a href="https://blog.csdn.net/Replus_/article/details/81945495">https://blog.csdn.net/Replus_/article/details/81945495</a> 图像处理：如何理解傅里叶变换在图像处理中的应用</p><p><a href="https://www.matongxue.com/madocs/8.html">https://www.matongxue.com/madocs/8.html</a> 如何通俗地解释欧拉公式（e^πi+1&#x3D;0）？</p><p><a href="https://imlogm.github.io/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/image-fft/">https://imlogm.github.io/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/image-fft/</a> 二维图像的傅立叶变换</p><p><a href="https://www.zhihu.com/question/19714540/answer/334686351">“如何理解傅里叶变换公式？-马同学的回答”</a>。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> math </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> math </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>正则化作用及其推导</title>
+      <link href="/blogs/%E6%AD%A3%E5%88%99%E5%8C%96%E4%BD%9C%E7%94%A8%E5%8F%8A%E5%85%B6%E6%8E%A8%E5%AF%BC/"/>
+      <url>/blogs/%E6%AD%A3%E5%88%99%E5%8C%96%E4%BD%9C%E7%94%A8%E5%8F%8A%E5%85%B6%E6%8E%A8%E5%AF%BC/</url>
+      
+        <content type="html"><![CDATA[<p>监督学习可以简单的理解为在最小化loss function 的同时，保证模型的复杂度尽可能的低，防止出现过拟合（overfitting）。防止过拟合的一个有效方法是使用正则化（Regularization)</p><span id="more"></span><h2 id="正则化概述（Regularization）"><a href="#正则化概述（Regularization）" class="headerlink" title="正则化概述（Regularization）"></a>正则化概述（Regularization）</h2><p>​           监督学习可以简单的理解为在最小化loss function 的同时，保证模型的复杂度尽可能的低，防止出现过拟合（overfitting）。关于正则化（Regularization），它一方面可用于控制模型的复杂度，提高模型的范化能力；另一方面还可以用于约束模型的特性，例如稀疏、平滑特性等。在数学上公式体现为在最优化loss Funcition后面加上正则化项（regularizer）也称为惩罚项（penalty term），用于限制模型参数w。实际中常使用模型参数w的范数来约束w，0范数、1范数、2范数分别称为L0正则化、L1正则化、L2正则化。</p><h2 id="L0、L1、L2正则化"><a href="#L0、L1、L2正则化" class="headerlink" title="L0、L1、L2正则化"></a>L0、L1、L2正则化</h2><p>​        向量的0范数是指向量中非零元素的个数。L0正则化的值是模型中非零参数的个数，L0正则化可以实现模型参数的稀疏化。模型参数稀疏化使得模型能自动的选择比较重要的特征属性进行yi的预测，去掉没用的信息项。模型自动选择的比较少的特征属性一般会有比较好的解释性，例如1000维的患病样本，到底是怎么影响患病的？1000维的解释性远不如模型参数稀疏化后选择的几个重要的维度。遗憾的是，L0正则化是个NP难问题，很难求解，这才有了我们常见的L1正则化，L1也能达到模型参数稀疏化的效果。</p><p>​向量的1范数是指向量中所有元素的绝对值之和。L1正则化用于替代L0正则化，也称为lasso Regularizer。</p><p>​       向量的2范数是指向量的模值||W|，向量所有元素的平方和然后求均值。L2正则项不是像L1正则化中通过稀疏模型参数来降低模型复杂度，而是通过减少模型参数的权值来控制过拟合的效果，因此L2正则化也被称为“权值衰减 weight decay”，在回归分析中也有人称为“岭回归 Ridge Regression”。L2正则化中模型参数W中每个元素都很小，接近于0，一般不会等于0。在实际中正则化中感觉使用L2的会更多一些，因为L1 会趋向于产生少量的有效特征项，L2会选择更多的特征。在所有特征中只有少量特征起重要作用的情况，可以选择lasso来自动选择比较合适的特征属性。而如果所有的特征中，大部分的特征都能起到一定的作用，还是使用L2会比较合适。</p><h2 id="L1-Regularization"><a href="#L1-Regularization" class="headerlink" title="L1 Regularization"></a>L1 Regularization</h2><p> 在原始的代价函数后面加上一个L1正则化项，即所有权重w的绝对值的和，乘以λ&#x2F;n（这里不像L2正则化项那样，需要再乘以1&#x2F;2，具体原因上面已经说过）</p><p> <img src="http://i.imgur.com/6jbxq15.jpg" alt="img"></p><p> 同样先计算导数：</p><p> <img src="http://i.imgur.com/kju5RTZ.jpg" alt="img"></p><p> 上式中sgn(w)表示w的符号。那么权重w的更新规则为：</p><p> <img src="http://i.imgur.com/HCkJZYl.jpg" alt="img"></p><p> 比原始的更新规则多出了η * λ * sgn(w)&#x2F;n这一项。当w为正时，更新后的w变小。当w为负时，更新后的w变大——因此它的效果就是让w往0靠，使网络中的权重尽可能为0，也就相当于减小了网络复杂度，防止过拟合。</p><p> 另外，上面没有提到一个问题，当w为0时怎么办？当w等于0时，|W|是不可导的，所以我们只能按照原始的未经正则化的方法去更新w，这就相当于去掉η<em>λ</em>sgn(w)&#x2F;n这一项，所以我们可以规定sgn(0)&#x3D;0，这样就把w&#x3D;0的情况也统一进来了。（在编程的时候，令sgn(0)&#x3D;0,sgn(w&gt;0)&#x3D;1,sgn(w&lt;0)&#x3D;-1）</p><h2 id="L2-regularization（权重衰减）"><a href="#L2-regularization（权重衰减）" class="headerlink" title="L2 regularization（权重衰减）"></a>L2 regularization（权重衰减）</h2><p> L2正则化就是在代价函数后面再加上一个正则化项：</p><p> <img src="http://i.imgur.com/9WnBBu1.jpg" alt="img"></p><p> C0代表原始的代价函数，后面那一项就是L2正则化项，它是这样来的：所有参数w的平方的和，除以训练集的样本大小n。λ就是正则项系数，权衡正则项与C0项的比重。另外还有一个系数1&#x2F;2，1&#x2F;2经常会看到，主要是为了后面求导的结果方便，后面那一项求导会产生一个2，与1&#x2F;2相乘刚好凑整。</p><p> L2正则化项是怎么避免overfitting的呢？我们推导一下看看，先求导：</p><p> <img src="http://i.imgur.com/mebEC90.jpg" alt="img"></p><p> 可以发现L2正则化项对b的更新没有影响，但是对于w的更新有影响:</p><p> <img src="http://i.imgur.com/qM83geg.jpg" alt="img"></p><p> 在不使用L2正则化时，求导结果中w前系数为1，现在w前面系数为 1−ηλ&#x2F;n ，因为η、λ、n都是正的，所以 1−ηλ&#x2F;n小于1，它的效果是减小w，这也就是权重衰减（weight decay）的由来。当然考虑到后面的导数项，w最终的值可能增大也可能减小。</p><p> 另外，需要提一下，对于基于mini-batch的随机梯度下降，w和b更新的公式跟上面给出的有点不同：</p><p> <img src="http://i.imgur.com/Xs2p2EN.jpg" alt="img"></p><p> <img src="http://i.imgur.com/yDETU7x.jpg" alt="img"></p><p> 对比上面w的更新公式，可以发现后面那一项变了，变成所有导数加和，乘以η再除以m，m是一个mini-batch中样本的个数。</p><p> 到目前为止，我们只是解释了L2正则化项有让w“变小”的效果，但是还没解释为什么w“变小”可以防止overfitting？一个所谓“显而易见”的解释就是：更小的权值w，从某种意义上说，表示网络的复杂度更低，对数据的拟合刚刚好（这个法则也叫做奥卡姆剃刀），而在实际应用中，也验证了这一点，L2正则化的效果往往好于未经正则化的效果。当然，对于很多人（包括我）来说，这个解释似乎不那么显而易见，所以这里添加一个稍微数学一点的解释（引自知乎）：</p><p> 过拟合的时候，拟合函数的系数往往非常大，为什么？如下图所示，过拟合，就是拟合函数需要顾忌每一个点，最终形成的拟合函数波动很大。在某些很小的区间里，函数值的变化很剧烈。这就意味着函数在某些小区间里的导数值（绝对值）非常大，由于自变量值可大可小，所以只有系数足够大，才能保证导数值很大。</p><p> <img src="http://i.imgur.com/RsR5cOK.png" alt="img"></p><p> 而正则化是通过约束参数的范数使其不要太大，所以可以在一定程度上减少过拟合情况。</p><p>参考博客<br><a href="https://www.cnblogs.com/wxquare/p/5396885.html">https://www.cnblogs.com/wxquare/p/5396885.html</a>   机器学习中的正则化</p><p><a href="https://blog.csdn.net/kyang624823/article/details/78646234">https://blog.csdn.net/kyang624823/article/details/78646234</a>  深度学习：正则化（L2、dropout）</p><p><a href="https://blog.csdn.net/u012162613/article/details/44261657">https://blog.csdn.net/u012162613/article/details/44261657</a> 正则化方法：L1和L2 regularization、数据集扩增、dropout</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> math </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> math </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/blogs/hello-world/"/>
+      <url>/blogs/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><span id="more"></span><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> something </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> something </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
 </search>

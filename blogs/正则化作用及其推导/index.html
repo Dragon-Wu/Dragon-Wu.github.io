@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/myblue.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/myblue.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/myblue.ico">
+  <link rel="mask-icon" href="/images/myblue.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jgwu.top","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="监督学习可以简单的理解为在最小化loss function 的同时，保证模型的复杂度尽可能的低，防止出现过拟合（overfitting）。防止过拟合的一个有效方法是使用正则化（Regularization)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="正则化作用及其推导">
+<meta property="og:url" content="http://jgwu.top/blogs/%E6%AD%A3%E5%88%99%E5%8C%96%E4%BD%9C%E7%94%A8%E5%8F%8A%E5%85%B6%E6%8E%A8%E5%AF%BC/index.html">
+<meta property="og:site_name" content="一个地方">
+<meta property="og:description" content="监督学习可以简单的理解为在最小化loss function 的同时，保证模型的复杂度尽可能的低，防止出现过拟合（overfitting）。防止过拟合的一个有效方法是使用正则化（Regularization)">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://i.imgur.com/6jbxq15.jpg">
+<meta property="og:image" content="http://i.imgur.com/kju5RTZ.jpg">
+<meta property="og:image" content="http://i.imgur.com/HCkJZYl.jpg">
+<meta property="og:image" content="http://i.imgur.com/9WnBBu1.jpg">
+<meta property="og:image" content="http://i.imgur.com/mebEC90.jpg">
+<meta property="og:image" content="http://i.imgur.com/qM83geg.jpg">
+<meta property="og:image" content="http://i.imgur.com/Xs2p2EN.jpg">
+<meta property="og:image" content="http://i.imgur.com/yDETU7x.jpg">
+<meta property="og:image" content="http://i.imgur.com/RsR5cOK.png">
+<meta property="article:published_time" content="2018-10-08T13:23:43.000Z">
+<meta property="article:modified_time" content="2024-06-02T22:45:13.988Z">
+<meta property="article:author" content="Jiageng Wu">
+<meta property="article:tag" content="math">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://i.imgur.com/6jbxq15.jpg">
+
+
+<link rel="canonical" href="http://jgwu.top/blogs/%E6%AD%A3%E5%88%99%E5%8C%96%E4%BD%9C%E7%94%A8%E5%8F%8A%E5%85%B6%E6%8E%A8%E5%AF%BC/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://jgwu.top/blogs/%E6%AD%A3%E5%88%99%E5%8C%96%E4%BD%9C%E7%94%A8%E5%8F%8A%E5%85%B6%E6%8E%A8%E5%AF%BC/","path":"blogs/正则化作用及其推导/","title":"正则化作用及其推导"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>正则化作用及其推导 | 一个地方</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">一个地方</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Wu's Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a></li><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E5%8C%96%E6%A6%82%E8%BF%B0%EF%BC%88Regularization%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">正则化概述（Regularization）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L0%E3%80%81L1%E3%80%81L2%E6%AD%A3%E5%88%99%E5%8C%96"><span class="nav-number">2.</span> <span class="nav-text">L0、L1、L2正则化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L1-Regularization"><span class="nav-number">3.</span> <span class="nav-text">L1 Regularization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L2-regularization%EF%BC%88%E6%9D%83%E9%87%8D%E8%A1%B0%E5%87%8F%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">L2 regularization（权重衰减）</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Jiageng Wu</p>
+  <div class="site-description" itemprop="description">Records about My life</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://jgwu.top/blogs/%E6%AD%A3%E5%88%99%E5%8C%96%E4%BD%9C%E7%94%A8%E5%8F%8A%E5%85%B6%E6%8E%A8%E5%AF%BC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jiageng Wu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个地方">
+      <meta itemprop="description" content="Records about My life">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="正则化作用及其推导 | 一个地方">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          正则化作用及其推导
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-10-08 21:23:43" itemprop="dateCreated datePublished" datetime="2018-10-08T21:23:43+08:00">2018-10-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-03 06:45:13" itemprop="dateModified" datetime="2024-06-03T06:45:13+08:00">2024-06-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/math/" itemprop="url" rel="index"><span itemprop="name">math</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.6k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>监督学习可以简单的理解为在最小化loss function 的同时，保证模型的复杂度尽可能的低，防止出现过拟合（overfitting）。防止过拟合的一个有效方法是使用正则化（Regularization)</p>
+<span id="more"></span>
+
+<h2 id="正则化概述（Regularization）"><a href="#正则化概述（Regularization）" class="headerlink" title="正则化概述（Regularization）"></a>正则化概述（Regularization）</h2><p>​           监督学习可以简单的理解为在最小化loss function 的同时，保证模型的复杂度尽可能的低，防止出现过拟合（overfitting）。关于正则化（Regularization），它一方面可用于控制模型的复杂度，提高模型的范化能力；另一方面还可以用于约束模型的特性，例如稀疏、平滑特性等。在数学上公式体现为在最优化loss Funcition后面加上正则化项（regularizer）也称为惩罚项（penalty term），用于限制模型参数w。实际中常使用模型参数w的范数来约束w，0范数、1范数、2范数分别称为L0正则化、L1正则化、L2正则化。</p>
+<h2 id="L0、L1、L2正则化"><a href="#L0、L1、L2正则化" class="headerlink" title="L0、L1、L2正则化"></a>L0、L1、L2正则化</h2><p>​        向量的0范数是指向量中非零元素的个数。L0正则化的值是模型中非零参数的个数，L0正则化可以实现模型参数的稀疏化。模型参数稀疏化使得模型能自动的选择比较重要的特征属性进行yi的预测，去掉没用的信息项。模型自动选择的比较少的特征属性一般会有比较好的解释性，例如1000维的患病样本，到底是怎么影响患病的？1000维的解释性远不如模型参数稀疏化后选择的几个重要的维度。遗憾的是，L0正则化是个NP难问题，很难求解，这才有了我们常见的L1正则化，L1也能达到模型参数稀疏化的效果。</p>
+<p>​	向量的1范数是指向量中所有元素的绝对值之和。L1正则化用于替代L0正则化，也称为lasso Regularizer。</p>
+<p>​       向量的2范数是指向量的模值||W|，向量所有元素的平方和然后求均值。L2正则项不是像L1正则化中通过稀疏模型参数来降低模型复杂度，而是通过减少模型参数的权值来控制过拟合的效果，因此L2正则化也被称为“权值衰减 weight decay”，在回归分析中也有人称为“岭回归 Ridge Regression”。L2正则化中模型参数W中每个元素都很小，接近于0，一般不会等于0。在实际中正则化中感觉使用L2的会更多一些，因为L1 会趋向于产生少量的有效特征项，L2会选择更多的特征。在所有特征中只有少量特征起重要作用的情况，可以选择lasso来自动选择比较合适的特征属性。而如果所有的特征中，大部分的特征都能起到一定的作用，还是使用L2会比较合适。</p>
+<h2 id="L1-Regularization"><a href="#L1-Regularization" class="headerlink" title="L1 Regularization"></a>L1 Regularization</h2><p> 在原始的代价函数后面加上一个L1正则化项，即所有权重w的绝对值的和，乘以λ&#x2F;n（这里不像L2正则化项那样，需要再乘以1&#x2F;2，具体原因上面已经说过）</p>
+<p> <img src="http://i.imgur.com/6jbxq15.jpg" alt="img"></p>
+<p> 同样先计算导数：</p>
+<p> <img src="http://i.imgur.com/kju5RTZ.jpg" alt="img"></p>
+<p> 上式中sgn(w)表示w的符号。那么权重w的更新规则为：</p>
+<p> <img src="http://i.imgur.com/HCkJZYl.jpg" alt="img"></p>
+<p> 比原始的更新规则多出了η * λ * sgn(w)&#x2F;n这一项。当w为正时，更新后的w变小。当w为负时，更新后的w变大——因此它的效果就是让w往0靠，使网络中的权重尽可能为0，也就相当于减小了网络复杂度，防止过拟合。</p>
+<p> 另外，上面没有提到一个问题，当w为0时怎么办？当w等于0时，|W|是不可导的，所以我们只能按照原始的未经正则化的方法去更新w，这就相当于去掉η<em>λ</em>sgn(w)&#x2F;n这一项，所以我们可以规定sgn(0)&#x3D;0，这样就把w&#x3D;0的情况也统一进来了。（在编程的时候，令sgn(0)&#x3D;0,sgn(w&gt;0)&#x3D;1,sgn(w&lt;0)&#x3D;-1）</p>
+<h2 id="L2-regularization（权重衰减）"><a href="#L2-regularization（权重衰减）" class="headerlink" title="L2 regularization（权重衰减）"></a>L2 regularization（权重衰减）</h2><p> L2正则化就是在代价函数后面再加上一个正则化项：</p>
+<p> <img src="http://i.imgur.com/9WnBBu1.jpg" alt="img"></p>
+<p> C0代表原始的代价函数，后面那一项就是L2正则化项，它是这样来的：所有参数w的平方的和，除以训练集的样本大小n。λ就是正则项系数，权衡正则项与C0项的比重。另外还有一个系数1&#x2F;2，1&#x2F;2经常会看到，主要是为了后面求导的结果方便，后面那一项求导会产生一个2，与1&#x2F;2相乘刚好凑整。</p>
+<p> L2正则化项是怎么避免overfitting的呢？我们推导一下看看，先求导：</p>
+<p> <img src="http://i.imgur.com/mebEC90.jpg" alt="img"></p>
+<p> 可以发现L2正则化项对b的更新没有影响，但是对于w的更新有影响:</p>
+<p> <img src="http://i.imgur.com/qM83geg.jpg" alt="img"></p>
+<p> 在不使用L2正则化时，求导结果中w前系数为1，现在w前面系数为 1−ηλ&#x2F;n ，因为η、λ、n都是正的，所以 1−ηλ&#x2F;n小于1，它的效果是减小w，这也就是权重衰减（weight decay）的由来。当然考虑到后面的导数项，w最终的值可能增大也可能减小。</p>
+<p> 另外，需要提一下，对于基于mini-batch的随机梯度下降，w和b更新的公式跟上面给出的有点不同：</p>
+<p> <img src="http://i.imgur.com/Xs2p2EN.jpg" alt="img"></p>
+<p> <img src="http://i.imgur.com/yDETU7x.jpg" alt="img"></p>
+<p> 对比上面w的更新公式，可以发现后面那一项变了，变成所有导数加和，乘以η再除以m，m是一个mini-batch中样本的个数。</p>
+<p> 到目前为止，我们只是解释了L2正则化项有让w“变小”的效果，但是还没解释为什么w“变小”可以防止overfitting？一个所谓“显而易见”的解释就是：更小的权值w，从某种意义上说，表示网络的复杂度更低，对数据的拟合刚刚好（这个法则也叫做奥卡姆剃刀），而在实际应用中，也验证了这一点，L2正则化的效果往往好于未经正则化的效果。当然，对于很多人（包括我）来说，这个解释似乎不那么显而易见，所以这里添加一个稍微数学一点的解释（引自知乎）：</p>
+<p> 过拟合的时候，拟合函数的系数往往非常大，为什么？如下图所示，过拟合，就是拟合函数需要顾忌每一个点，最终形成的拟合函数波动很大。在某些很小的区间里，函数值的变化很剧烈。这就意味着函数在某些小区间里的导数值（绝对值）非常大，由于自变量值可大可小，所以只有系数足够大，才能保证导数值很大。</p>
+<p> <img src="http://i.imgur.com/RsR5cOK.png" alt="img"></p>
+<p> 而正则化是通过约束参数的范数使其不要太大，所以可以在一定程度上减少过拟合情况。</p>
+<p>参考博客<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wxquare/p/5396885.html">https://www.cnblogs.com/wxquare/p/5396885.html</a>   机器学习中的正则化</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/kyang624823/article/details/78646234">https://blog.csdn.net/kyang624823/article/details/78646234</a>  深度学习：正则化（L2、dropout）</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u012162613/article/details/44261657">https://blog.csdn.net/u012162613/article/details/44261657</a> 正则化方法：L1和L2 regularization、数据集扩增、dropout</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/math/" rel="tag"># math</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blogs/hello-world/" rel="prev" title="Hello World">
+                  <i class="fa fa-angle-left"></i> Hello World
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/blogs/%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/" rel="next" title="傅里叶变换">
+                  傅里叶变换 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Jiageng Wu</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">11k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">10 分钟</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

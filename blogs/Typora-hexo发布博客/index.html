@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/myblue.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/myblue.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/myblue.ico">
+  <link rel="mask-icon" href="/images/myblue.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jgwu.top","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="前一阵子忙于工程上的任务，好久没写博客了，然后今天打开typora发现本地图片不显示，但是远程是没问题的，吓坏我了。。。都不敢new blog，生怕本地出了问题，排查了半天，发现是typora升级。。。然后相对根目录原来是全局的，现在是每个文档不同，需要再设置的问题。。。以防今后忘记，还是自己做个记录和梳理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Typora+hexo发布博客">
+<meta property="og:url" content="http://jgwu.top/blogs/Typora-hexo%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:site_name" content="一个地方">
+<meta property="og:description" content="前一阵子忙于工程上的任务，好久没写博客了，然后今天打开typora发现本地图片不显示，但是远程是没问题的，吓坏我了。。。都不敢new blog，生怕本地出了问题，排查了半天，发现是typora升级。。。然后相对根目录原来是全局的，现在是每个文档不同，需要再设置的问题。。。以防今后忘记，还是自己做个记录和梳理">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://jgwu.top/blogs/Typora-hexo%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2/Typora-hexo%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2/image-20200320164445581.png">
+<meta property="og:image" content="http://jgwu.top/blogs/Typora-hexo%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2/Typora-hexo%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2/image-20200320171914618.png">
+<meta property="og:image" content="http://jgwu.top/blogs/Typora-hexo%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2/Typora-hexo%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2/image-20200320215354479.png">
+<meta property="og:image" content="http://jgwu.top/blogs/Typora-hexo%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2/Typora-hexo%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2/image-20200320172418649.png">
+<meta property="og:image" content="http://jgwu.top/blogs/Typora-hexo%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2/Typora-hexo%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2/image-20200320210615757.png">
+<meta property="og:image" content="http://jgwu.top/blogs/Typora-hexo%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2/Typora-hexo%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2/image-20200320211324239.png">
+<meta property="og:image" content="http://jgwu.top/blogs/Typora-hexo%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2/Typora-hexo%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2/image-20200320211135023.png">
+<meta property="article:published_time" content="2020-03-20T12:38:05.000Z">
+<meta property="article:modified_time" content="2024-06-02T22:45:49.002Z">
+<meta property="article:author" content="Jiageng Wu">
+<meta property="article:tag" content="something">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://jgwu.top/blogs/Typora-hexo%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2/Typora-hexo%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2/image-20200320164445581.png">
+
+
+<link rel="canonical" href="http://jgwu.top/blogs/Typora-hexo%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://jgwu.top/blogs/Typora-hexo%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2/","path":"blogs/Typora-hexo发布博客/","title":"Typora+hexo发布博客"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Typora+hexo发布博客 | 一个地方</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">一个地方</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Wu's Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a></li><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Typora"><span class="nav-number">1.</span> <span class="nav-text">Typora</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%84%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">预备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%BE%91%E5%86%85%E5%AE%B9"><span class="nav-number">3.</span> <span class="nav-text">编辑内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87"><span class="nav-number">4.</span> <span class="nav-text">插入图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E5%9B%BE%E5%B0%8F%E8%B4%B4%E5%A3%AB"><span class="nav-number">5.</span> <span class="nav-text">插图小贴士</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Jiageng Wu</p>
+  <div class="site-description" itemprop="description">Records about My life</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://jgwu.top/blogs/Typora-hexo%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jiageng Wu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个地方">
+      <meta itemprop="description" content="Records about My life">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Typora+hexo发布博客 | 一个地方">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Typora+hexo发布博客
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-03-20 20:38:05" itemprop="dateCreated datePublished" datetime="2020-03-20T20:38:05+08:00">2020-03-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-03 06:45:49" itemprop="dateModified" datetime="2024-06-03T06:45:49+08:00">2024-06-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/something/" itemprop="url" rel="index"><span itemprop="name">something</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>前一阵子忙于工程上的任务，好久没写博客了，然后今天打开typora发现本地图片不显示，但是远程是没问题的，吓坏我了。。。都不敢new blog，生怕本地出了问题，排查了半天，发现是typora升级。。。然后相对根目录原来是全局的，现在是每个文档不同，需要再设置的问题。。。以防今后忘记，还是自己做个记录和梳理</p>
+<span id="more"></span>
+
+<h2 id="Typora"><a href="#Typora" class="headerlink" title="Typora"></a>Typora</h2><p>Typora是一个方便简便且强力的Markdown编辑工具，一直都使用他来配合hexo进行博客管理，</p>
+<p><a target="_blank" rel="noopener" href="https://www.typora.io/">https://www.typora.io/</a>  是官方网址，支持各个系统，非常nice！</p>
+<p>轻量，干净，</p>
+<p>所以，</p>
+<p>下载，安装，</p>
+<p>完美！</p>
+<h2 id="预备工作"><a href="#预备工作" class="headerlink" title="预备工作"></a>预备工作</h2><p>首先，在咱们blog根目录下，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo n <span class="string">&quot;title&quot;</span></span><br><span class="line">// the sanme as $ hexo new <span class="string">&quot;title&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后就会发现，在根目录</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\blog\source\_posts</span><br></pre></td></tr></table></figure>
+
+<p>底下出现了，title.md以及title文件夹，一个是咱们的这篇blog的内容，一个即是咱们这篇blog的文件夹，可以用来存图片，之后相应博客的图片素材都存在各自相应的文件夹内</p>
+<p>而后，我们用typora打开文档，可以直接打开，或者建议是打开到_posts底下，之后再打开typora就自动到工作路径，再直接选定需要编辑的博客进行编辑即可</p>
+<p>typora左下角，点击打开_posts文件夹，选定需要编辑的blog，进入编辑界面</p>
+<img src="Typora-hexo发布博客/image-20200320164445581.png" alt="image-20200320164445581" style="zoom:100%;" />
+
+<img src="Typora-hexo发布博客/image-20200320171914618.png" alt="image-20200320171914618" style="zoom:80%;" />
+
+<p>接着，我们就可以欢乐地进行编辑blog啦！</p>
+<h2 id="编辑内容"><a href="#编辑内容" class="headerlink" title="编辑内容"></a>编辑内容</h2><p>首先，要注意blog最上方的<strong>红方框</strong>里的内容，里面是本篇blog的属性，包括title、date、tags、categories，还可能会有是否加密、根目录设置等等，后来发现这些个属性，不全是必须的，date、tags、categories都可以不要；</p>
+<p>相应的格式是：</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">tags:</span> [tagA,tagB,...]</span><br><span class="line">//like as</span><br><span class="line"><span class="keyword">tags:</span> [Tensorflow,机器学习]</span><br><span class="line"></span><br><span class="line">categories： categoryA</span><br><span class="line">//like as </span><br><span class="line">categories: Something</span><br></pre></td></tr></table></figure>
+
+<p>关于tag和categories具体可以看：<a target="_blank" rel="noopener" href="https://hexo.io/docs/front-matter.html">https://hexo.io/docs/front-matter.html</a></p>
+<img src="Typora-hexo发布博客/image-20200320215354479.png" alt="image-20200320215354479" style="zoom:80%;" />
+
+<p>tag内容，就是会显示首页的内容，之下则需要点开博客查看，效果如下：</p>
+<img src="Typora-hexo发布博客/image-20200320172418649.png" alt="image-20200320172418649" style="zoom:80%;" />
+
+<h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><p>接下来说说插入图片的问题，也就是写这篇文章的诱因……</p>
+<p>typora写md有一点好，就是可以<strong>直接</strong>把图片拖到文档里，就插入，非常流畅，这也是我觉得最好的一点，就像我们把代码拖进IDE一样，舒服~</p>
+<p>但是需要注意：</p>
+<p>1.图片最好都放在咱们blog相应的文档里，符合规范，也方便管理</p>
+<p>2.直接拖入图片的时候，是<strong>绝对路径</strong>，这样咱们上传远程后，肯定是不中的，所以要改成相对路径，根目录就定为_posts，如下图红框中所示，前面是博客对应的文件，后面是文件名</p>
+<img src="Typora-hexo发布博客/image-20200320210615757.png" alt="image-20200320210615757" style="zoom:80%;" />
+
+<p>这样部署到远程后就可以正常访问了</p>
+<h2 id="插图小贴士"><a href="#插图小贴士" class="headerlink" title="插图小贴士"></a>插图小贴士</h2><p>最后讲讲，上述的操作如何在Typora中更高效的完成，最主要是插入图片：</p>
+<p>针对插入图片是绝对路径的问题，可以做两件事方便插图：</p>
+<p>1.在<strong>格式-&gt;图像-&gt;全局图像设置</strong>中修改设置：</p>
+<p>插入图片时复制到咱们相应的文件夹里，这样就很方便了，我们可以直接通过截图软件截图，然后ctrl+c复制进来，然后他会自动把图复制到博客对应的文件夹里，不用像我原来先用截图工具然后保存到文件里，再拖入了，真的，舒服~</p>
+<p>勾选<strong>优先使用相对路径</strong>，这样咱们插入的时候就是相对根目录的<strong>相对路径</strong></p>
+<p>2.在<strong>格式-&gt;图像-&gt;设置图片根目录</strong>中<strong>把当前文档的根目录设置在_posts</strong>下</p>
+<p>原来的时候typora是把这个放在<strong>全局</strong>里的，所以我当时在本地编辑的时候是可以识别到的，而后来可能考虑到不同文档的根目录可以不同，所以把这个升级变成<strong>跟随文档自定义</strong>了，也就导致了我原来的文档看不到图了，但是部署上去的时候倒是没问题的（因为丢失了根目录），而本地在typora编辑的时候，是根据绝对路径的，所以一定要勾选<strong>优先使用相对路径</strong>，</p>
+<img src="Typora-hexo发布博客/image-20200320211324239.png" alt="image-20200320211324239" style="zoom:80%;" />
+
+<img src="Typora-hexo发布博客/image-20200320211135023.png" alt="image-20200320211135023" style="zoom:80%;" />
+
+<p>最后，需要注意的是，因为我们插入图片的时候就自动复制了，可能文件夹里有一些图片在编辑过程中加入了，但最后不需要了，所以记得发布前确认下哪些图需要，把不需要的图删了，免得上传上去太大~</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/something/" rel="tag"># something</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blogs/%E5%A4%9A%E5%85%83%E9%AB%98%E6%96%AF%E5%88%86%E5%B8%83/" rel="prev" title="多元高斯分布">
+                  <i class="fa fa-angle-left"></i> 多元高斯分布
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/blogs/%E6%97%A0%E5%81%8F%E4%BC%B0%E8%AE%A1%E4%B8%8B%E7%9A%84%E5%9D%87%E5%80%BC%E4%B8%8E%E6%96%B9%E5%B7%AE/" rel="next" title="无偏估计下的均值与方差">
+                  无偏估计下的均值与方差 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Jiageng Wu</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">11k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">10 分钟</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
